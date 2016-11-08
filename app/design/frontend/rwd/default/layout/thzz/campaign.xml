@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <thzz_campaign_index_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/landing_page.phtml</template></action>
+            <block type="core/template" name="landing_header" as="landing_header" template="page/html/landing_header.phtml">
+                <block type="core/text_list" name="top.menu.landing" as="topMenuLanding" translate="label">
+                    <block type="cms/block" name="top_mega_menu_landing">
+                        <action method="setBlockId"><block_id>top_mega_menu_landing</block_id></action>
+                    </block>
+                </block>
+            </block>
+            <block type="core/template" name="landing_footer" as="landing_footer" template="page/html/landing_footer.phtml" />
+        </reference>
+        <reference name="content">
+            <block type="thzz_campaign/campaign" name="campaign" template="thzz/campaign.phtml"/>
+        </reference>
+    </thzz_campaign_index_index>
+    <thzz_campaign_index_success>
+        <reference name="content">
+            <block type="core/template" name="campaignsuccess" template="thzz/success.phtml"/>
+        </reference>
+    </thzz_campaign_index_success>
+</layout>

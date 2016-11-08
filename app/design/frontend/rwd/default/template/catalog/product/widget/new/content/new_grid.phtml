@@ -1,0 +1,55 @@
+<?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
+<div class="s2">
+        	<div class="wrapper">
+            	<div class="FullWidth">
+                	<h3>new arrivals</h3>
+                    <!--<h4 class="ani_active ani">The best of 2016</h4>-->
+                    <?php $_columnCount = $this->getColumnCount(); ?>
+                    <div class="carouselDiv">
+                    	<div id="owl-demo1" class="owl-carousel">
+                        <?php $i=0; foreach ($_products->getItems() as $_product): ?>
+                            <div class="item">
+                            <div class="productContent">
+                                	  <?php 
+                                        $categoryIds = $_product->getCategoryIds();
+                                            if(count($categoryIds) ){
+                                    $firstCategoryId = $categoryIds[count($categoryIds)-1];
+                                    $_category = Mage::getModel('catalog/category')->load($firstCategoryId);
+
+                                    //echo $_category->getName();
+                                        } 
+                                        ?>
+                                	<h1><?php echo $this->escapeHtml($_product->getName()) ?>
+                                        
+                                            <span><?php  echo $_category->getName() ; ?></span>
+                                        </h1>
+                                    <!--<h5><?php //echo $this->getReviewsSummaryHtml($_product, 'short') ?></h5>-->
+                                        
+                                    <!--<h5></h5>-->
+                                    <div class="productImgDiv ani_active ani">
+                                         <?php $_imgSize_h = 236;$_imgSize_w = 260; ?>
+										 <a href="<?php echo $_product->getProductUrl() ?>">
+                                    	<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize_h,$_imgSize_w = 260); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"/>
+                                    	</a>
+										<div class="producticonsFull">
+                                        	<div class="producticons"><a class="zoomIcon popupBtn" title="popup1" id="<?php echo $_product->getId(); ?>" href="javascript:void(0)"><i class="fa fa-search-plus" aria-hidden="true"></i></a></div><!--producticons-->
+                                               <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                                <div class="producticons"><a href="<?php echo $this->getAddToWishlistUrl($_product) ?>" ><i class="fa fa-heart-o" aria-hidden="true"></i></a></div><!--producticons-->
+                                              <?php endif; ?>                                           </div><!--producticonsFull-->
+                                    </div><!--carouselImgDiv-->
+                                    <div class="productPrice"><?php echo $this->getPriceHtml($_product, true, '-new') ?></div><!--carouselPrice-->
+                                        <?php if($_product->isSaleable()): ?>
+                                    <div class="productBuyNow"><a href="javascript:void(0)" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')" class="BuyNowBtn"><div class="btn-icon"><img src="<?php echo $this->getSkinUrl('img/cart.png');?>" class="BuyImg" alt="buy"/> </div><span><?php echo $this->__('buy now') ?></span></a></div><!--carouselBuyNow-->
+                                       <?php else: ?>
+                                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                                        <?php endif; ?>                                </div><!--productContent-->
+                            </div><!--item-->
+                            <?php endforeach; ?>
+                           
+                          </div>
+                    </div><!--carouselDiv-->
+                </div><!--Fullwidth-->
+            </div><!--wrapper-->
+        </div><!--s2-->
+<?php endif; ?> 
+        

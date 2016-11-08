@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mindstermob_Mobileconnect>
+            <version>0.1.0</version>    <!-- Version number of your module -->
+        </Mindstermob_Mobileconnect>
+    </modules>
+    <frontend>
+        <routers>
+            <mobileconnect>
+                <use>standard</use>
+                <args>
+                    <module>Mindstermob_Mobileconnect</module>
+                    <frontName>mindster</frontName>
+                </args>
+            </mobileconnect>
+        </routers>
+    </frontend>
+    <global>
+         <models>
+             
+            <mobileconnect>
+                <class>Mindstermob_Mobileconnect_Model</class>
+            </mobileconnect>
+        </models>
+    </global>
+</config>

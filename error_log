@@ -1,0 +1,337 @@
+[20-Oct-2015 07:53:01 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/catalog/product/' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[20-Oct-2015 11:39:32 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[20-Oct-2015 13:26:17 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[20-Oct-2015 13:29:12 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[20-Oct-2015 13:31:23 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[20-Oct-2015 13:32:03 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[20-Oct-2015 13:35:21 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[21-Oct-2015 12:43:01 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/css' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[21-Oct-2015 12:43:06 UTC] PHP Warning:  SoapServer::SoapServer(http://...@www.storieshomes.com/index.php/api/soap/index/?wsdl=1): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/stori5i7/public_html/lib/Zend/Soap/Server.php on line 811
+[21-Oct-2015 12:43:06 UTC] PHP Warning:  SoapServer::SoapServer(): I/O warning : failed to load external entity &quot;http://localhost/:MageReport%20SUPEE%206482%20check@www.storieshomes.com/index.php/api/soap/index/?wsdl=1&quot; in /home/stori5i7/public_html/lib/Zend/Soap/Server.php on line 811
+[21-Oct-2015 12:43:06 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://localhost/:MageReport SUPEE 6482 check@www.storieshomes.com/index.php/api/soap/index/?wsdl=1' : failed to load external entity "http://localhost/:MageReport%20SUPEE%206482%20check@www.storieshomes.com/index.php/api/soap/index/?wsdl=1"
+ in /home/stori5i7/public_html/lib/Zend/Soap/Server.php on line 811
+[22-Oct-2015 04:46:59 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 05:09:43 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 05:31:06 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 05:34:32 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 05:40:13 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 05:41:36 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 05:41:43 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 05:42:38 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 05:43:12 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 05:43:34 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 05:44:55 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 05:45:19 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 05:45:55 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 05:53:04 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 06:14:13 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 06:14:27 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 06:14:34 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 06:19:05 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 06:19:33 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 06:19:52 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 06:22:20 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 06:22:55 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 06:24:42 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 06:26:32 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 06:30:42 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 06:36:29 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 06:36:58 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 06:37:26 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 06:44:53 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 06:53:32 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 06:56:20 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[22-Oct-2015 06:57:02 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Chec' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/CheckoutController.php on line 1
+[09-Nov-2015 10:54:10 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/catalog/product/' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[09-Nov-2015 12:01:06 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/catalog/product/' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[09-Nov-2015 14:29:15 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/catalog/product/' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[18-Nov-2015 05:40:51 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/css' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[23-Nov-2015 05:38:57 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/catalog/product/' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[24-Nov-2015 07:39:43 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 2006 MySQL server has gone away' in /home/stori5i7/public_html/lib/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /home/stori5i7/public_html/lib/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /home/stori5i7/public_html/lib/Varien/Db/Statement/Pdo/Mysql.php(110): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /home/stori5i7/public_html/app/code/core/Zend/Db/Statement.php(291): Varien_Db_Statement_Pdo_Mysql->_execute(Array)
+#3 /home/stori5i7/public_html/lib/Zend/Db/Adapter/Abstract.php(480): Zend_Db_Statement->execute(Array)
+#4 /home/stori5i7/public_html/lib/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('SELECT `core_se...', Array)
+#5 /home/stori5i7/public_html/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SELECT `core_se...', Array)
+#6 /home/stori5i7/public_html/lib/Zend/Db/Adapter/Abstract.php(828): Varien_Db_Adapter_Pdo_Mysql->query(Object(Varien_Db_Select), Arr in /home/stori5i7/public_html/lib/Zend/Db/Statement/Pdo.php on line 234
+[02-Dec-2015 04:10:12 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/catalog/product/' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[04-Dec-2015 13:41:01 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/catalog/product/' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[08-Dec-2015 06:36:14 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/catalog/product/' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[08-Dec-2015 08:03:53 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/wysiwyg/home/' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[10-Dec-2015 09:24:05 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:24:24 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:24:47 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:25:07 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:25:19 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:25:21 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:25:42 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:25:51 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:26:05 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:26:17 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:26:46 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:26:53 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:26:59 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:27:03 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:27:43 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:27:48 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:27:52 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:30:19 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:33:22 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:33:35 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:33:35 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:33:36 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:33:37 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:33:37 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:33:38 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:33:53 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:33:56 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:33:59 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:34:09 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:34:12 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:34:19 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[10-Dec-2015 09:34:41 UTC] PHP Parse error:  syntax error, unexpected 'Magebuzz_Testimonial_Block_Tes' (T_STRING) in /home/stori5i7/public_html/app/code/community/Magebuzz/Testimonial/Block/Testimonial.php on line 1
+[11-Dec-2015 10:17:29 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/catalog/product/' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[14-Dec-2015 12:06:15 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/catalog/product/' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[14-Dec-2015 17:51:36 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[14-Dec-2015 17:53:13 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[15-Dec-2015 04:16:59 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 04:17:49 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 04:18:14 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 04:18:25 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 04:19:49 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 04:19:59 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 04:21:28 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 04:21:40 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 04:21:51 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 04:22:05 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 04:22:08 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 04:22:21 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 04:22:30 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 04:22:59 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 04:23:11 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 04:25:09 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 04:25:48 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 04:26:41 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 04:49:23 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 04:59:35 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 06:12:52 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 06:13:06 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 06:32:40 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 06:34:12 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[15-Dec-2015 13:29:33 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[15-Dec-2015 13:36:55 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[15-Dec-2015 13:39:34 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[15-Dec-2015 13:53:16 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[15-Dec-2015 16:15:43 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[16-Dec-2015 01:20:08 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[16-Dec-2015 01:23:34 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[16-Dec-2015 02:01:41 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[16-Dec-2015 02:01:58 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[16-Dec-2015 04:31:48 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[16-Dec-2015 04:34:10 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[16-Dec-2015 04:50:01 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[17-Dec-2015 05:24:09 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/catalog/product/' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[18-Dec-2015 13:11:34 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/catalog/product/' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[20-Dec-2015 17:01:10 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[22-Dec-2015 10:35:57 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/catalog/product/' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[22-Dec-2015 11:41:08 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/catalog/product/' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[28-Dec-2015 12:46:31 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:46:37 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:46:39 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:46:41 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:46:42 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:47:07 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:48:14 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:48:34 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:48:44 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:48:55 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:49:05 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:49:10 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:49:18 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:49:24 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:49:26 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:49:41 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:49:42 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:50:24 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:50:26 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:50:31 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:51:19 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[28-Dec-2015 12:51:23 UTC] PHP Parse error:  syntax error, unexpected 'Mindstermob_Mobileconnect_Prod' (T_STRING) in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php on line 1
+[30-Dec-2015 07:43:17 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/catalog/product/' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[05-Jan-2016 10:38:20 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/catalog/product/' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[08-Jan-2016 09:11:39 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/catalog/product/' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[11-Jan-2016 12:23:34 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[11-Jan-2016 12:23:45 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[11-Jan-2016 12:24:44 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[25-Jan-2016 08:16:46 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[25-Jan-2016 08:16:56 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[25-Jan-2016 08:20:28 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[12-Feb-2016 03:46:02 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[12-Feb-2016 03:46:17 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[12-Feb-2016 03:46:30 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[12-Feb-2016 03:47:20 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[12-Feb-2016 03:47:28 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[12-Feb-2016 03:48:48 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[12-Feb-2016 04:24:08 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[17-Feb-2016 23:48:09 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[24-Feb-2016 06:39:59 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/stori5i7/public_html/media/catalog/product/' does not exists.' in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/stori5i7/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/stori5i7/...')
+#1 /home/stori5i7/public_html/get.php(165): sendFile('/home/stori5i7/...')
+#2 {main}
+  thrown in /home/stori5i7/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
+[19-Mar-2016 21:06:06 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[19-Mar-2016 21:12:33 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[19-Mar-2016 21:13:51 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[19-Mar-2016 21:15:10 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[19-Mar-2016 21:29:33 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[20-Mar-2016 01:24:12 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[20-Mar-2016 06:58:24 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[20-Mar-2016 16:07:11 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[20-Mar-2016 16:51:20 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[20-Mar-2016 17:58:15 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[20-Mar-2016 18:23:27 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[20-Mar-2016 18:24:48 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[20-Mar-2016 18:36:14 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[20-Mar-2016 18:47:29 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[20-Mar-2016 18:54:54 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[20-Mar-2016 19:00:10 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[20-Mar-2016 19:43:45 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[20-Mar-2016 19:48:50 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[20-Mar-2016 19:53:40 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[20-Mar-2016 20:01:24 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[20-Mar-2016 20:09:10 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[20-Mar-2016 20:19:40 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[20-Mar-2016 21:01:21 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[20-Mar-2016 21:25:18 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[20-Mar-2016 22:19:38 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[20-Mar-2016 23:10:26 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[20-Mar-2016 23:18:13 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[21-Mar-2016 00:06:20 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[21-Mar-2016 01:14:46 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[21-Mar-2016 18:03:47 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[21-Mar-2016 22:38:51 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[21-Mar-2016 22:52:33 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[21-Mar-2016 22:56:13 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[21-Mar-2016 22:58:58 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[21-Mar-2016 23:01:42 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[22-Mar-2016 03:50:29 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[22-Mar-2016 03:50:43 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[22-Mar-2016 11:10:23 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[22-Mar-2016 11:41:39 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[23-Mar-2016 10:35:21 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[23-Mar-2016 10:37:41 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[23-Mar-2016 10:40:59 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[23-Mar-2016 17:05:19 UTC] PHP Fatal error:  Call to a member function getBlockName() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Captcha/Block/Captcha.php on line 43
+[23-Mar-2016 21:59:27 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[24-Mar-2016 01:22:08 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[24-Mar-2016 01:22:33 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[24-Mar-2016 01:24:57 UTC] PHP Fatal error:  Call to a member function getCode() on a non-object in /home/stori5i7/public_html/app/code/core/Mage/Customer/Model/Session.php on line 71
+[31-Mar-2016 19:48:02 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/stori5i7/public_html/lib/Varien/Image/Adapter/Gd2.php on line 375
+[31-Mar-2016 19:48:40 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/stori5i7/public_html/lib/Varien/Image/Adapter/Gd2.php on line 60
+[31-Mar-2016 19:49:36 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/stori5i7/public_html/lib/Varien/Image/Adapter/Gd2.php on line 375
+[31-Mar-2016 19:50:06 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/stori5i7/public_html/lib/Varien/Image/Adapter/Gd2.php on line 375
+[18-Apr-2016 03:34:31 UTC] PHP Fatal error:  Call to a member function getMessage() on a non-object in /home/stori5i7/public_html/app/code/local/Mindstermob/Mobileconnect/Model/Checkout.php on line 127

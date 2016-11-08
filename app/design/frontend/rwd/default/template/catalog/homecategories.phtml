@@ -1,0 +1,36 @@
+<?php
+$popular_cats = array();
+$categories = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('*');
+foreach ($categories as $category) {
+    $cat = Mage::getModel("catalog/category")->load($category->getId());
+    //if($cat->getData('custom_attribute')) // NULL
+    if ($cat->getCustomAttribute())
+        $popular_cats[] = $cat;
+}
+?>
+<?php if (!empty($popular_cats)): ?>
+    <div class="featured-slider">
+        <h2 class="subtitle"><span><?php echo $this->__('Popular') ?> <span class="grey">Categories</span></span></h2>
+        <div class="dashed-div"></div>
+
+        <div class="bx-slider-container">
+            <?php
+            /* if ($i++%$_columnCount==0): ?>
+              <ul class="products-grid">
+              <?php endif */
+            foreach ($popular_cats as $category):
+                $cat_uri = $category->getUrl();
+                $cat_name = $category->getName();
+                $img_uri = $category->getCategoryImage($category);
+                ?>
+                <div class="slide">
+                    <a href="<?php echo $cat_uri ?>" title="<?php echo $this->escapeHtml($cat_name) ?>" class="product-image">
+                        <img src="<?php echo $img_uri; ?>" alt="" />
+                    </a>
+                    <h3 class="product-name"><a href="<?php echo $cat_uri ?>" title="<?php echo $this->escapeHtml($cat_name) ?>"><?php echo $cat_name; ?></a></h3>
+
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <?php endif; ?>

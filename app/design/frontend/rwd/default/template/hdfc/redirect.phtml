@@ -1,0 +1,13 @@
+<?php
+$post=  Zend_Registry::get('post');
+?>
+<p>&nbsp;</p>
+<h2>Please wait while we redirect to payment gateway page.</h2>
+<form name="mygatewayform" method="post" action="https://secure.ebs.in/pg/ma/payment/request/">
+    <?php foreach ($post as $name => $value) : ?>
+        <input type="hidden" name="<?= $name ?>" value="<?= $value ?>"/>
+    <?php endforeach; ?>
+</form>
+<script type="text/javascript">
+    document.mygatewayform.submit();
+</script>

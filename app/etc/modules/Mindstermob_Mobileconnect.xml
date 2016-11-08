@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mindstermob_Mobileconnect>
+        <active>true</active>
+        <codePool>local</codePool>
+        </Mindstermob_Mobileconnect>
+    </modules>
+</config>

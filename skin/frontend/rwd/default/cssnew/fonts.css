@@ -1,0 +1,25 @@
+@font-face {
+	font-family: 'Engravers Gothic';
+	src: url('../fonts/engraversgothic.eot');
+	src: local('Engravers Gothic'), url('../fonts/engraversgothic.woff') format('woff'), url('../fonts/engraversgothic.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'SEGOEUIL';
+	src: url('../fonts/SEGOEUIL.eot');
+	src: local('SEGOEUIL'), url('../fonts/SEGOEUIL.woff') format('woff'), url('../fonts/SEGOEUIL.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'unisansregularregular';
+    src: url('../fonts/uni_sans-webfont.woff2') format('woff2'),
+         url('../fonts/uni_sans-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'unisansregularitalicitalic';
+    src: url('../fonts/uni_sans_italic-webfont.woff2') format('woff2'),
+         url('../fonts/uni_sans_italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

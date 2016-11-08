@@ -1,0 +1,214 @@
+<?php $testimonial = $this->getTestimonial(); ?>
+<div class="s5">
+    <div class="wrapper">
+        <div class="FullWidth">
+            <h3><?php echo $this->__('customer') ?> testimonials</h3>
+            <!--<h4 class="ani_active ani">Review & Feedback</h4>-->
+
+            <div class="testimonialDiv ani_active ani">
+
+                <div id="owl-demo3" class="owl-carousel">
+                    <?php if ($testimonial->getSize()): ?>
+                    <?php $i == 0;
+                    foreach ($testimonial as $obj): ?>
+                        <div class="item">
+                            <?php if ($obj->getStatus() == 1): ?>
+                                <!--<div class="productContent">-->
+                                <div class="customerProfile">
+                                    <?php if ($obj->getAvatarName() != '') {
+                                        $avatarLink = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'magebuzz/avatar/' . $obj->getAvatarName();
+                                        ?>
+                                        <div class="customerImg"><img src="<?php echo $avatarLink ?>" alt="customer"/>
+                                        </div><!--customerImg-->
+                                    <?php } ?>
+                                    <div class="customerName"><?php echo $obj->getName(); ?></div><!--customerName-->
+                                    <!--<div class="customerDesignation">Executive Director,<br/>galexy Builder</div>customerDesignation-->
+                                    <div
+                                        class="testimonialDate"> <?php echo date('F d, Y', Mage::getModel('core/date')->gmtTimestamp($obj->getCreatedTime())); ?> </div>
+                                    <!--testimonialdate-->
+                                </div><!--customer profile-->
+                                <div class="customerStatement">
+                                    <p>
+                                        <?php echo $obj->getTestimonial(); ?>
+                                    </p>
+                                </div><!--customerstatement-->
+                                <!--</div>productContent-->
+                            <?php endif ?>
+                            <?php $i++; ?>
+                        </div><!--item-->
+
+                    <?php endforeach; ?>
+
+
+                </div><!--owl-demo3-->
+                <?php endif ?>
+            </div><!--testimonialsDiv-->
+        </div><!--Fullwidth-->
+    </div><!--wrapper-->
+</div><!--s5-->
+
+<!--code for blog feed -->
+
+<?php if (Mage::getSingleton('cms/page')->getIdentifier() == 'home'): ?>
+<?php
+$rss = new DOMDocument();
+//$rss->load('http://www.storieshomes.com/blog/feed/');
+//http://192.168.100.116/Storieshomes_meganto/blog/feed/
+//  $rss->load('http://192.168.100.116/Storieshomes_magento/blog/feed/');
+//$rss->load('http://119.226.240.222:900/Storieshomes_magento/blog/feed/');
+
+$rss->load('http://www.storieshomes.com/blog/feed/');
+
+$feed = array();
+foreach ($rss->getElementsByTagName('item') as $node) {
+    $item = array(
+        'title' => $node->getElementsByTagName('title')->item(0)->nodeValue,
+        'desc' => $node->getElementsByTagName('description')->item(0)->nodeValue,
+        'link' => $node->getElementsByTagName('link')->item(0)->nodeValue,
+        'date' => $node->getElementsByTagName('pubDate')->item(0)->nodeValue,
+        'img' => $node->getElementsByTagName('encoded')->item(0)->nodeValue,
+    );
+    array_push($feed, $item);
+}
+$limit = 5;
+$small_imgs = array();
+$larg_imgs = array();
+$s = 0;
+$l = 0;
+for ($x = 0; $x < $limit; $x++) {
+    $title = str_replace(' & ', ' &amp; ', $feed[$x]['title']);
+    $link = $feed[$x]['link'];
+    $description = $feed[$x]['desc'];
+
+    $img = $feed[$x]['img'];
+
+    $date = date('l F d, Y', strtotime($feed[$x]['date']));
+    //echo '<p><strong><a href="'.$link.'" title="'.$title.'">'.$title.'</a></strong><br />';
+    //echo '<small><em>Posted on '.$date.'</em></small></p>';
+    //echo '<p>'.$description.'</p>';
+    $dom = new DOMDocument();
+    //$html = file_get_contents('example.html');
+
+    $dom->loadHTML($img);
+
+    $a = $dom->getElementsByTagName('img');
+    //print_r($a);exit;
+    for ($i = 0; $i < $a->length; $i++) {
+
+        $img_class = $a->item($i)->getAttribute('class');
+
+        if ($img_class == "smallimg wp-post-image") {
+
+            $attr_small = $a->item($i)->getAttribute('src');
+            $small_imgs[$x]["src"] = $attr_small;
+            $small_imgs[$x]["link"] = $link;
+            $small_imgs[$x]["title"] = $title;
+            //echo "smal--".$attr . "\n";
+        }
+        if ($img_class == "largimg wp-post-image") {
+            //echo $img_class;exit;
+            // print_r($a->item($i)->getAttribute('class'));exit;
+            $attr_large = $a->item($i)->getAttribute('src');
+            $large_imgs[$x]["src"] = $attr_large;
+            $large_imgs[$x]["link"] = $link;
+            $large_imgs[$x]["title"] = $title;
+            $large_imgs[$x]["desc"] = $description;
+            //echo "larg--".$attr . "\n";exit;
+        }
+
+        // $attr = $a->item($i)->getAttribute('src');
+//                $small_imgs[$x]["src"] = $attr;
+//                 $small_imgs[$x]["link"] = $link;
+//                 $small_imgs[$x]["title"] = $title;               
+//                 break;
+        //echo $attr . "\n";
+    }
+
+}
+//exit;
+//var_dump($large_imgs);exit;
+
+$media_url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+?>
+<!-- end of code for blog feed -->
+
+<div class="s6">
+    <div class="wrapper">
+        <div class="FullWidth">
+            <h3>LIFESTYLE BLOG</h3>
+            <!--<h4 class="ani_active ani">Latest news of the week</h4>-->
+            <ul class="s6Ul">
+                <li>
+                    <!--<div class="blogImg ani_active ani"><img src="<?php echo $large_imgs[0]["src"] ?>" alt="blog"/></div>blogImg-->
+                    <div id="blogImg1" class="blogImg ani_active ani"
+                         style="background-image: url(<?php echo $large_imgs[0]["src"] ?>)"></div>
+
+                    <div id="blogCnt1" class="blogCnt ani_active ani">
+                        <div class="MiddleCnt">
+                            <div class="bloginnerDiv">
+                                <!--<div class="blogLifeStyle">life style</div>blogLifeStyle-->
+                                <div class="blogHead"><?php echo $large_imgs[0]["title"] ?></div><!--blogHead-->
+                                <?php echo strtolower(substr($large_imgs[0]["desc"], 0, 150)) . "..."; ?>
+                                <div class="BlogLink">
+                                    <a href="<?php echo $large_imgs[0]["link"] ?>" class="BlogReadmore"/>read more <img
+                                        src="<?php echo $media_url; ?>wysiwyg/blog/readmore_arrow.png"
+                                        class="ReamoreImg" alt="readmore"/></a>
+                                </div><!--BlogLink-->
+                            </div><!--bloginnerDiv-->
+                        </div><!--MiddleCnt-->
+                    </div><!--blogCnt-->
+                </li>
+                <li>
+                    <!--<div class="blogImg BlogImg2nd ani_active ani"><img src="<?php echo $large_imgs[1]["src"] ?>" alt="blog"/></div>blogImg-->
+                    <div id="blogImg2" class="blogImg BlogImg2nd ani_active ani"
+                         style="background-image: url(<?php echo $large_imgs[1]["src"] ?>)"></div>
+
+                    <div id="blogCnt2" class="blogCnt ani_active ani blogcont2">
+                        <div class="MiddleCnt">
+                            <div class="bloginnerDiv">
+                                <!--<div class="blogLifeStyle green">life style</div>blogLifeStyle-->
+                                <div class="blogHead"><?php echo $large_imgs[1]["title"] ?></div><!--blogHead-->
+                                <?php echo strtolower(substr($large_imgs[1]["desc"], 0, 150)) . "..."; ?>
+                                <div class="BlogLink">
+                                    <a href="<?php echo $large_imgs[1]["link"] ?>" class="BlogReadmore"/>read more <img
+                                        src="<?php echo $media_url; ?>wysiwyg/blog/readmore_arrow.png"
+                                        class="ReamoreImg" alt="readmore"/></a>
+                                </div><!--BlogLink-->
+                            </div><!--bloginnerDiv-->
+                        </div><!--MiddleCnt-->
+                    </div><!--blogCnt-->
+
+                </li>
+            </ul>
+        </div><!--Fullwidth-->
+    </div><!--wrapper-->
+</div><!--s6-->
+
+<div class="s7">
+    <div class="wrapper">
+        <div class="FullWidth">
+            <ul class="s7Ul">
+
+                <?php
+                $i = 0;
+                foreach ($small_imgs as $imgs): ?>
+                    <!--<li class="ani_active ani"><a href="<?php echo $imgs["link"] ?>"> <img src="<?php echo $imgs["src"] ?>" alt="blog image"/></a></li>-->
+                    <li class="ani_active ani blogimg-small"
+                        onclick="window.location.href='<?php echo $imgs["link"] ?>'"
+                        style="background-image: url(<?php echo $imgs["src"] ?>)"></li>
+
+                    <?php
+
+                endforeach; ?>
+                <!--                    	<li class="ani_active ani"><img src="{{media url="wysiwyg/blog/s7image1.jpg"}}" alt="blog image"/></li>
+                                        <li class="ani_active ani"><img src="{{media url="wysiwyg/blog/s7image2.jpg"}}" alt="blog image"/></li>
+                                        <li class="ani_active ani"><img src="{{media url="wysiwyg/blog/s7image3.jpg"}}" alt="blog image"/></li>
+                                        <li class="ani_active ani"><img src="{{media url="wysiwyg/blog/s7image4.jpg"}}" alt="blog image"/></li>
+                                        <li class="ani_active ani"><img src="{{media url="wysiwyg/blog/s7image5.jpg"}}" alt="blog image"/></li>-->
+            </ul>
+        </div><!--Fullwidth-->
+    </div><!--wrapper-->
+</div><!--s7-->
+<?php endif; ?>
+
+       

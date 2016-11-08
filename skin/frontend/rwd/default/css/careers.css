@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+
+.careers-blocks{font-family:Lato,Helvetica, arial, serif;width:320px;background:#eeede9;padding:25px 30px;float:left;margin-bottom:34px}
+.careers-blocks h3{color:#dba83b}
+.careers-blocks ul{margin-bottom:20px;}
+.careers-blocks ul li{color:#242933;font-style:italic;margin-bottom:3px}
+.grid:after{content:'';display:block;clear:both}
+.careers-textlabel{ margin-bottom:27px}
+
+
+/*-----image zoom-------*/
+/*.slider { margin: 50px 0 10px!important; width:500px;}*/
+#carousel li {margin-right: 5px;}
+#carousel img {display: block; opacity: .5; cursor: pointer;}
+#carousel img:hover {opacity: 1;}
+#carousel .flex-active-slide img {opacity: 1; cursor: default;}
+
+/*#containerzoom {padding: 60px 40px 100px;}*/
+
+#main {/*margin-left: 420px; margin-top: -25px;*/ overflow: hidden;}
+aside h3 {float: left;}
+
+
+
+
+.flexslider{margin:0; width:100%; float:left}
+.flexslider .slides li {height:450px;}
+.flexslider .slides li img {margin:0 auto}
+.flexslider#carousel .slides {width:100%!important}
+.flexslider#carousel .slides li {width:90px;height:auto; margin:0 10px 0 0!important}
+.flexslider#carousel .slides li img {max-height:90px;}
+.flexslider#carousel .flex-viewport {margin:15px 0 20px 0; width:100%; padding:0 20px;}
+.flexslider#carousel .flex-active-slide {border:1px solid #c7c7c7;}
+
+/*.flexslider#carousel .flex-direction-nav{
+    //ROTATION
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    -o-transform: rotate(90deg);
+
+    //POSITIONING
+    display: inline-block;
+    vertical-align: text-top;
+    text-indent: 0px;
+    width: 51%;
+    margin-top: -24%;
+}*/
+
+.product-img-box {}
+.easy-zoom-container {position:absolute; left:80px;top:-190px}
+.zoom-icon {background:#fff url(../images/zoom-icon.png) no-repeat 16px 16px / 18px auto; width:50px;height:50px; position:absolute; left:46%;top:46%; display:none;}
+.product-image-gallery:hover {cursor:pointer;}
+/*.product-image-gallery:hover img.gallery-image {opacity:0.6}*/
+.product-image-gallery:hover .zoom-icon {display:block;}
+/*-----------end of image zoom-----------*/
+
+
+
+

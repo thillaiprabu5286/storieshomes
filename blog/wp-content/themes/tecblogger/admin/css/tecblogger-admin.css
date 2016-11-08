@@ -1,0 +1,17 @@
+.support {
+    display: block;
+    overflow: hidden;
+}
+.support .single-items {
+  border: 5px solid #3498db;
+  float: left;
+  height: 160px;
+  margin-right: 20px;
+  margin-top: 20px;
+  padding: 10px;
+  text-align: center;
+  width: 339px;
+}
+.support .single-items:last-child {
+    margin-right: 0;
+}

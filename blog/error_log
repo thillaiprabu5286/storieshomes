@@ -1,0 +1,4 @@
+[26-Nov-2015 09:02:40 UTC] PHP Fatal error:  Call to undefined function the_excert() in /home/stori5i7/public_html/blog/wp-content/themes/twentyfifteen/content-link.php on line 30
+[20-Jul-2016 12:09:51 UTC] PHP Fatal error:  Call to undefined function add_filter() in /home/stori5i7/public_html/blog/wp-includes/functions.php on line 4999
+[20-Jul-2016 12:09:55 UTC] PHP Fatal error:  Call to undefined function add_filter() in /home/stori5i7/public_html/blog/wp-includes/functions.php on line 4999
+[20-Jul-2016 12:10:07 UTC] PHP Fatal error:  Call to undefined function add_filter() in /home/stori5i7/public_html/blog/wp-includes/functions.php on line 4999

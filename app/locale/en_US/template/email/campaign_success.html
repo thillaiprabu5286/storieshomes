@@ -1,0 +1,27 @@
+<!--@subject Welcome {{var customer.name}} @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"var logo_url":"Email Logo Image Url",
+"var logo_alt":"Email Logo Image Alt",
+"store url=\"customer/account/\"":"Customer Account Url",
+"htmlescape var=$customer.name":"Customer Name",
+"var customer.email":"Customer Email",
+"store url=\"customer/account/confirm/\" _query_id=$customer.id _query_key=$customer.confirmation _query_back_url=$back_url":"Confirmation Url",
+"htmlescape var=$customer.password":"Customer password"}
+@-->
+
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+<table cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="action-content">
+            <p>Thank you for showing interest in Stories.</p>
+            <p>When you come to Stories at #2004, 100Ft Road, Indiranagar, you'll get to see creations by designers from 19 countries - encompassing
+                furniture, furnishings, carpets, lights and home accessories. All made with the finest materials and craftsmanship.</p>
+            <p>What's more, if you show this mail at the counter, you'll get a free Rs. 1500 voucher, redeemable against anything that you buy on your first visit.</p>
+            <p>So come and experience a world of home decor - from around the world. After all, who deserves it more than you?</p>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,52 @@
+/*PopUp CSS*/
+.PopupFullBg{ position:fixed; left:0; top:0; width:100%; height:100%; text-align:center; background:rgba(0,0,0,0.8); z-index:99; overflow-x:hidden; overflow-y:auto;box-sizing: content-box; padding-right:20px;transform:scale(1); -webkit-transform:scale(1); opacity:0; visibility:hidden; transition: all 0.5s ease; -webkit-transition: all 0.5s ease;}
+.PopupFullBg.active{ transform:scale(1); -webkit-transform:scale(1); opacity:1; visibility:visible;}
+.PopupBg{ margin:50px auto; max-width:900px; width:90%; background:#FFFFFF; min-height:100px; display:inline-block;  position:relative; z-index:999; border-radius:2px; padding:30px;}
+.PopupClose{ position:absolute; right:20px; top:20px; width:25px; height:25px; line-height:25px; cursor:pointer; z-index:1;}
+.PopupBg h1{ float:left; width:100%; margin:0; padding-bottom:20px; border-bottom:#ccc 1px solid; text-align:left;font-family: 'Engravers Gothic'; font-size: 35px;}
+.PopupBg h1 span{  padding-bottom:20px; text-align:left;    font-family: 'SEGOEUIL'; font-size: 18px;}
+.PopupBg p{float:left; width:100%; padding:20px; line-height:25px; color:#666; text-align:justify; }
+
+.PopUp_Discription_Div_Full{ float:left; width:100%; background: #fff; padding: 30px 0; }
+.PopUp_Item_left{ float: left; width: 45%; }
+.PopUp_Item_Right{ float: right; width:50%; text-align: left; }
+
+.PopUp_Item_Right .PopupItemName{ float: left; width: 100%; font-size: 30px;}
+.PopUp_Item_Right .PopupStockDetails{float: left; width: 100%; font-size: 18px; font-weight: normal; color:#666;}
+.PopUp_Item_Right  .PopupItemDescription{float: left; width: 100%; font-size: 18px; font-weight: normal; color:#666; padding-top: 5px;}
+.PopUp_Item_Right .PopupItemPrice{float: left; width: 100%; font-size: 25px; font-weight: normal; color:#e63e01; padding-top: 20px;}
+.PopupInputDiv{ float: left; width: 100%; font-size: 25px; font-weight: normal; color:#e63e01; padding-top: 30px; }
+.PopupInputLabel{ float: left; height: 40px; line-height: 40px; padding-right: 5px; color:#666; font-size: 18px; }
+.PopupInputBox[type=text]{ float: left; width:50px; line-height: 40px; height: 40px; margin-right: 5px; text-align: center; }
+.PopupInputSbmt{ float: left; padding: 0 25px; height: 40px; line-height: 40px; background: #B08222; color: #FFFFFF; border: none; cursor: pointer; }
+.PopupInputSbmt:hover{ background: #000; }
+
+/**/
+#sync1 .item{
+    background: #0c83e7;
+    margin: 5px;
+    color: #FFF;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+}
+#sync1 .item img{ width: 100%; }
+#sync2 .item{
+    background: #C9C9C9;
+    padding: 0px;
+    margin: 5px;
+    color: #FFF;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+}
+#sync2 .item h1{
+  font-size: 18px;
+}
+#sync2 .synced .item{
+  background: #0c83e7;
+}
+.PopUp_Item_left .item{ margin: 0; }

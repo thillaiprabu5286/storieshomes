@@ -1,0 +1,140 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+
+    $_productCollection=$this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+?>
+<?php if(!$_productCollection->count()): ?>
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+ <?php echo $this->getToolbarHtml() ?>
+<ul class="InnerproductDisplayUl">
+
+    <?php foreach ($_productCollection as $_product): ?>
+    <li>
+        <div class="productContent">
+            <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+                <h1><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></h1>
+                <?php if($_product->getRatingSummary()): ?>
+                <h5><?php echo $this->getReviewsSummaryHtml($_product) ?></h5>
+                 <?php endif; ?>
+                <div class="productImgDiv ani_active ani">
+                     <?php $_imgSize = 300; ?>
+                    <a class="product-image" href="<?php echo $_product->getProductUrl() ?>" id="pb_item_<?php echo $_product->getId(); ?>">
+                    <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->keepFrame(false)->resize($_imgSize); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"/>
+                    </a>
+                    <div class="producticonsFull">
+                        <div class="producticons"><a class="zoomIcon popupBtn" title="popup1" id="<?php echo $_product->getId(); ?>" href="#"><i class="fa fa-search-plus" aria-hidden="true"></i></a></div><!--producticons-->
+                         <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                        <div class="producticons"><a href="<?php echo $this->getAddToWishlistUrl($_product) ?>"><i class="fa fa-heart-o" aria-hidden="true"></i></a></div><!--producticons-->
+                         <?php endif; ?>
+                    </div><!--producticonsFull-->
+                </div><!--carouselImgDiv-->
+                <div class="productPrice"> <?php echo $this->getPriceHtml($_product, true) ?></div><!--carouselPrice-->
+                <?php if($_product->isSaleable() && !$_product->canConfigure()): ?>
+               <div class="productBuyNow"><a href="javascript:void(0)" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')" class="BuyNowBtn"><div class="btn-icon"><img src="<?php echo $this->getSkinUrl('img/cart.png');?>" class="BuyImg" alt="buy"/> </div><span><?php echo $this->__('buy now') ?></span></a></div><!--carouselBuyNow-->
+                 <?php elseif($_product->isSaleable()): ?>
+                     <div class="productBuyNow"><a href="javascript:void(0)" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')" class="BuyNowBtn"><img src="<?php echo $this->getSkinUrl('img/cart.png');?>" class="BuyImg" alt="buy"/> View Details</a></div><!--carouselBuyNow-->
+
+                   <?php else: ?>
+                    <p class="action availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+
+                 <?php endif; ?>
+            </div><!--productContent-->
+    </li>
+     <?php endforeach; ?>
+</ul>
+<?php endif; ?>
+<div class="toolbar-bottom">
+        <?php echo $this->getToolbarHtml() ?>
+    </div>
+
+     <div class="PopupFullBg" id="popup1">
+
+
+    </div><!--PopupFullBg-->
+
+      <?php //echo $this->getChildHtml('addtocart') ?>
+
+<script type="text/javascript">
+        //<![CDATA[
+
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+
+            productAddToCartForm.submit = function(button, url) {
+                console.log("inside sub,it"+url);
+              $j("#product_addtocart_form").submit();
+                if ($j("#product_addtocart_form").validator.validate()) {
+                    //var form = this.form;
+                    var form = $j("#product_addtocart_form");
+                    var oldUrl = form.action;
+
+                    if (url) {
+                       form.action = url;
+                    }
+                    var e = null;
+                    try {
+                        this.form.submit();
+                    } catch (e) {
+                    }
+                    this.form.action = oldUrl;
+                    if (e) {
+                        throw e;
+                    }
+
+                    if (button && button != 'undefined') {
+                        button.disabled = true;
+                    }
+                }
+            }.bind(productAddToCartForm);
+
+            productAddToCartForm.submitLight = function(button, url){
+
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    // Remove custom datetime validators
+                    for (var methodName in Validation.methods) {
+                        if (methodName.match(/^validate-datetime-.*/i)) {
+                            delete Validation.methods[methodName];
+                        }
+                    }
+
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        //]]>
+        </script>

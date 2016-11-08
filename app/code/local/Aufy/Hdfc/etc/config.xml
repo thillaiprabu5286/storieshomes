@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Aufy_Hdfc>
+            <version>0.1.0</version>
+        </Aufy_Hdfc>
+    </modules>
+    <global>
+        <models>
+            <hdfc>
+                <class>Aufy_Hdfc_Model</class>
+            </hdfc>
+        </models>
+        <helpers>
+            <hdfc>
+                <class>Aufy_Hdfc_Helper</class>
+            </hdfc>
+        </helpers>
+        <blocks>
+            <hdfc>
+                <class>Aufy_Hdfc_Block</class>
+            </hdfc>
+        </blocks>
+    </global>
+    <default>
+        <payment>
+            <hdfc>
+                <model>hdfc/credit</model>
+                <active>1</active>
+                <order_status>pending</order_status>
+                <title>Hdfc Gateway</title>
+                <payment_action>sale</payment_action>
+                <allowspecific>0</allowspecific>
+                <sort_order>1</sort_order>
+            </hdfc>
+            <hdfc_debit>
+                <model>hdfc/debit</model>
+                <active>1</active>
+                <order_status>pending</order_status>
+                <title>Hdfc Debit card</title>
+                <payment_action>sale</payment_action>
+                <allowspecific>0</allowspecific>
+                <sort_order>1</sort_order>
+            </hdfc_debit>
+            <hdfc_net>
+                <model>hdfc/netbanking</model>
+                <active>1</active>
+                <order_status>pending</order_status>
+                <title>Hdfc Debit card</title>
+                <payment_action>sale</payment_action>
+                <allowspecific>0</allowspecific>
+                <sort_order>1</sort_order>
+            </hdfc_net>
+        </payment>
+    </default>
+    <frontend>
+        <routers>
+            <hdfc>
+                <use>standard</use>
+                <args>
+                    <module>Aufy_Hdfc</module>
+                    <frontName>hdfc</frontName>
+                </args>
+            </hdfc>
+        </routers>
+    </frontend>
+</config>
