@@ -1,0 +1,52 @@
+app/etc/local.xml
+var
+media
+/utils
+/.htaccess
+
+**/*.sample
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+.tmp
+
+# TEXT MATE
+
+*.tmproj
+*.tmproject
+tmtags
+
+
+bower_components
+node_modules
+*.map
+
+*.swp
+*.crt
+*.key
