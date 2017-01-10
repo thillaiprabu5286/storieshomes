@@ -109,7 +109,7 @@ header{ height:80px; font-family: 'unisansregularregular'; position:relative;}
 
 .DesDiv{ position:relative;}
 .s1 h2{ position:absolute; z-index:1; color:#2b2a29; left:40px; top:20%; margin:0; padding:0; font-size:24px; font-family: 'unisansregularregular'; text-transform:uppercase;}
-.DesDiv a{ position: absolute; z-index:1; left:40px; bottom:20%; font-family: 'unisansregularregular'; font-size:13px; color:#2b2a29; text-transform:uppercase;}
+.DesDiv span{ position: absolute; z-index:1; left:40px; bottom:20%; font-family: 'unisansregularregular'; font-size:13px; color:#2b2a29; text-transform:uppercase;}
 .DesDiv a:hover{text-decoration:none !important;}
 .DesDiv a img.linkImg{ display:inline-block; vertical-align:middle; transition: all 0.5s ease; -webkit-transition: all 0.5s ease;}
 .DesDiv a:hover  .linkImg{ margin-left:10px; text-decoration:none !important;}
@@ -451,6 +451,11 @@ h3 {margin:0 auto 30px auto;}
 .s8 .wrapper {max-width:90%}
 .footerimg{
     width:40%;
+}
+
+.DesDiv span img {
+	float: right;
+	padding: 3px 0 0 5px;
 }
 /*#owl-demo5 .owl-pagination{
     display: block;

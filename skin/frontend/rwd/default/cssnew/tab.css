@@ -1,0 +1,118 @@
+/*  tab */
+.home-tab-container{
+  z-index: 10;
+  background-color: #ffffff;
+  padding: 0 !important;
+  background-clip: padding-box;
+}
+.tab-cont-left{
+  float: left;
+  width: 75%;
+}
+.cat-tab-content{
+  background-color: #ffffff;
+  position: relative;
+  height: 426px;
+  overflow: hidden;
+  vertical-align: top;
+}
+.cat-tab-content .img-holder{
+  position: relative;
+}
+.cat-tab-content .img-holder a img{
+  width: 100%;
+  display: block;
+  height: auto;
+}
+.cat-tab-content .shop-now-btn{
+  background: rgba(218,78,62,0.7);
+  display: block;
+  border-radius:50px;
+  color: #fff;
+  position: absolute;
+  bottom: 30px;
+  left:0;
+  right: 0;
+  margin: auto;
+  text-transform: uppercase;
+  padding:10px 0;
+  width: 150px;
+  text-align: center;
+}
+.tab-cont-left .cat-tab-content:not(.active){
+  display: none;
+}
+.tab-menu{
+  padding: 0;
+  float: left;
+  width: 25%;
+  padding: 0 0 0 0;
+ height: 426px;
+  background: #e94f42;
+  box-sizing: border-box;
+}
+.tab-menu .list-group{
+  margin-bottom: 0;
+}
+.tab-menu .list-group-item{
+	padding: 25px 0;
+	position: relative;
+	display:block;
+	text-align: center;
+	text-transform: uppercase;
+	color: #fff;
+	margin:0 0 0 0;
+}
+.tab-menu .list-group>a.active:after{
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  margin-top: -13px;
+  border-right: 0;
+  border-bottom: 13px solid transparent;
+  border-top: 13px solid transparent;
+  border-right: 10px solid #fff;
+}
+.tab-menu .list-group-item:hover{
+	text-decoration: none;
+}
+.tab-menu .list-group>a.active{
+  color: #333;
+  background: #fff;
+}
+@media only screen and (max-width: 768px) {
+.tab-cont-left{
+  float: none;
+  width: 100%;
+}
+.cat-tab-content{
+  height:auto;
+}
+.cat-tab-content .img-holder a img{
+  height: auto;
+}
+.tab-menu{
+  float: none;
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+}
+@media only screen and (max-width: 766px) {
+.tab-cont-left{
+  float: none;
+  width: 100%;
+}
+.cat-tab-content{
+  height:auto;
+}
+.cat-tab-content .img-holder a img{
+  height: auto;
+}
+.tab-menu{
+  float: none;
+  width: 100%;
+  height: auto;
+}
+}
