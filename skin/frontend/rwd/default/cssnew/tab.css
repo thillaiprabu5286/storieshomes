@@ -4,6 +4,8 @@
   background-color: #ffffff;
   padding: 0 !important;
   background-clip: padding-box;
+  width: 100%;
+  overflow: hidden;
 }
 .tab-cont-left{
   float: left;
