@@ -1017,11 +1017,11 @@ div#cat:after {
 .header { position: relative;}
 .page-header-content { padding: 0; position: relative; text-align: center; }
 .header a.logo {
-    z-index: 99;
-    padding: 50px 0 42px;
     display: inline-block;
-    margin: auto;
     float: left;
+    margin: auto;
+    position: absolute;
+    z-index: 99;
 }
 .header .logo strong { position:absolute; top:-999em; left:-999em; width:0; height:0; font-size:0; line-height:0; text-indent:-999em; overflow:hidden; }
 .header h1.logo { margin:0; }
