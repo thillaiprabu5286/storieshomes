@@ -1018,7 +1018,6 @@ div#cat:after {
 .page-header-content { padding: 0; position: relative; text-align: center; }
 .header a.logo {
     z-index: 99;
-    padding: 50px 0 42px;
     display: inline-block;
     margin: auto;
     float: left;
