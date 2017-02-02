@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<arion>
+    <resources>
+        <resource>
+            <title>arion Home</title>
+            <identifier>arion_home</identifier>
+            <root_template>two_columns_left</root_template>
+				<content><![CDATA[
+				<div class="home-content">{{block type="featuredproduct/featuredproduct" name="featuredproduct" before="-" template="themevast/featuredproduct/featuredproduct.phtml" }}</div>
+				]]></content>
+				<sort_order>1</sort_order>
+            <is_active>1</is_active>
+        </resource>
+    </resources>
+</arion>

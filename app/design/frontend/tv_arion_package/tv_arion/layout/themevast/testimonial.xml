@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+		<reference name="top.links">
+			<action method="addLink" translate="label title" module="testimonial" ifconfig="testimonial/general/show_link_testimonial">
+				<label>Testimonial</label>
+				<url>testimonial</url>
+				<title>Testimonial</title>
+				<prepare>true</prepare>
+				<urlParams/>
+				<position>0</position>
+			</action>
+		</reference>
+	</default>
+	<cms_index_index>
+		<reference name="head">
+			<action method="addJs" ifconfig="testimonial/general/enabled"><script>themevast/jquery.min.js</script></action>
+			<action method="addJs" ifconfig="testimonial/general/enabled"><script>themevast/plugin/jquery.bxslider.js</script></action>
+		</reference>
+		<reference name="testimonial_sidebar">
+		    <block type="testimonial/sidebar" name="testimonial.sidebar" after="blog.slide" />
+		</reference>
+	</cms_index_index>
+	<testimonial_index_index>
+		<reference name="root">
+			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+		</reference>
+		<reference name="head">
+			<action method="addCss"><stylesheet>themevast/testimonial/css/testimonial.css</stylesheet> </action>
+		</reference>
+		<reference name="content">
+		  <block type="testimonial/testimonial" name="testimonial" template="themevast/testimonial/testimonial.phtml" />
+		</reference>
+		<reference name="left">
+			<remove name="testimonial.sidebar"/>
+		</reference>
+	</testimonial_index_index>
+	<testimonial_form_index>
+		<reference name="head">
+			<action method="addCss"><stylesheet>themevast/testimonial/css/testimonial.css</stylesheet> </action>
+		</reference>
+		<reference name="root">
+			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+		</reference>
+		<reference name="content">
+			<block type="testimonial/form" name="form" template="themevast/testimonial/form.phtml">
+				<block type="testimonial/captcha" name="captcha" template="themevast/testimonial/captcha.phtml"/>
+			</block>
+		</reference>
+	</testimonial_form_index>
+</layout> 
+

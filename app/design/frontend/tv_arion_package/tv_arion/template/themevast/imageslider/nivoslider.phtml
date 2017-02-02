@@ -1,0 +1,98 @@
+<?php if($this->getConfig('enabled')){ ?>	  <!-- start enable -->
+<?php $cur_store = Mage::app()->getStore()->getId() ?>
+<div class="imageslider-container">
+	<div class="flexslider tv-nivoslider image-effect">
+		<div class="ajax_loading"><i class="fa fa-spinner fa-spin"></i></div>
+		<div id="tv-inivoslider" class="sliders">
+		<?php
+			// Get data banner
+			$slider = $this->getDataSlider();
+			$path = Mage::getBaseUrl('media');					
+			$qty_Item = $this->getConfig('qty_item');
+			if ($this->getConfig('auto')) { $auto = 'true'; } else { $auto = 'false'; }
+			/* Get max item & qty item */
+			if ($qty_Item > count($slider)) {
+				$qty_Item = count($slider);
+			}
+		?>
+		<?php
+			$i = 1;
+			foreach($slider as $silde) {
+				if($i <= $qty_Item) {;
+					$imag = $path;
+					$imag .= $silde['image'];
+					if ($silde['store_id'] == $cur_store || $silde['store_id'] == 0 ): ?>					
+					<a href="<?php echo $s['link']?>" title="<?php echo $s['link'] ?>"><img src="<?php echo $imag?>"  title="#imageslider-caption<?php echo $i; ?>" alt="" /></a>
+
+					<?php $i++; endif; ?>
+					<?php
+				}//end if
+			} // end foreach
+		?>
+		</div>
+		<?php if($this->getConfig('description')){ ?>
+		<?php
+			$i = 1;
+			foreach($slider as $s) { ?>
+				<div id="imageslider-caption<?php echo $i; ?>" class="imageslider-caption nivo-html-caption nivo-caption zoomIn animated">
+					<div class="container">
+						<div class="imageslider-title">
+							<div class="title"><?php echo $this->__($s['title']) ?></div>
+						</div>
+						<div class="imageslider-des">
+							<?php echo $this->__($s['description']) ?>
+						</div>
+						<?php //if( $s['link'] ) { ?>
+							<!--<div class="imageslider-readmore">
+								<a href="<?php //echo $s['link']?>" title="<?php //echo $this->__('Read more') ?>"><?php //echo $this->__('Read more') ?></a>	
+							</div>-->
+						<?php //} ?>
+					</div>
+				</div>						
+		<?php
+			$i++;
+			}
+			}
+		?>
+		<script type="text/javascript">
+			jQuery( document ).ready(function($) {
+				$('#tv-inivoslider').nivoSlider({
+						effect: '<?php echo $this->getConfig('animation') ?>',
+						slices: 15,
+						boxCols: 8,
+						boxRows: 4,
+						animSpeed: <?php echo $this->getConfig('interval') ?>,
+						pauseTime: <?php echo $this->getConfig('speed') ?>,
+						startSlide: 0,
+						<?php if (!$this->getConfig('nav_ctrl')) { ?>
+						controlNav: false,
+						<?php } ?>
+						<?php if (!$this->getConfig('next_back')) { ?>
+						directionNav: false,
+						<?php } ?>
+						controlNavThumbs: false,
+						pauseOnHover: true,
+						manualAdvance: false,
+						prevText: 'Prev',
+						nextText: 'Next',
+						afterLoad: function(){
+							$('.ajax_loading').css("display","none");
+							
+							}/*,     
+						beforeChange: function(){ 
+							$('.imageslider-title').css("top","-500px" );
+							$('.imageslider-des').css("top","-1000px"); 
+							$('.imageslider-readmore').css("top","-2000px"); 
+						}, 
+						afterChange: function(){ 
+							$('.imageslider-title').css("top","150px");
+							$('.imageslider-des').css("top","250px");
+							$('.imageslider-readmore').css("top","250px");
+						}*/
+					});
+			});
+		</script>
+	</div>
+</div>
+<?php } ?> <!-- end enable -->
+

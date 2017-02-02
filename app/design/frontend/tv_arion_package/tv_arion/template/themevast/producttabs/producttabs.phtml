@@ -1,0 +1,85 @@
+<?php if(!$this->getProducttabsCfg('enabled')) return;
+
+$default = $this->getProductCfg('product_type');
+$_tabs = $this->getTabs();
+if(count($_tabs)){
+?>
+
+	<div class= "producttabs-container">
+		
+		<div  class="producttabs-title bx-title"><?php //echo $this->__($this->getProducttabsCfg('title'))?>
+			<div class="bg-title"><ul id="tabs-title">
+					<li class="item-title"><h2>product Tabs</h2></li>
+				<?php
+					foreach ($_tabs as $type =>$name) {
+						$active = (!isset($active)) ? 'active':'';
+						echo '<li class="item '.$active.'" data-type ="'.$type.'"><h3 class ="title">'.$name.'</h3></li>';
+					}
+				?>
+			</ul>
+			
+			</div>
+		</div>
+		
+		<div class="ajax_loading" style="display:none">
+			<i class="fa fa-spinner fa-spin"></i>
+		</div>
+		<div class="producttabs-products">
+		</div>
+	</div>
+
+<script type="text/javascript">
+
+	jQuery( document ).ready(function($) {
+
+		(function(selector){
+
+			$content = $(selector);
+			$nav	 = $('#tabs-title', $content);
+			$products= $('.producttabs-products', $content);
+			$loading = $(".ajax_loading", $content);
+			$items 	 = $('.item', $nav);
+			$items.click(function() {
+				var type = $(this).data('type');
+				if(type != "random" && $(this).hasClass('active')) return;
+				$items.removeClass('active');
+				$(this).addClass('active');
+				getProduct(type);
+			});
+
+			<?php if($this->getTypeDefault()) echo 'getProduct("'.$this->getTypeDefault().'");';?>
+
+			function getProduct(type) {
+				$loading.show();
+				$.ajax({
+					type:'post',
+					data:{ type: type},
+					url:'<?php echo $this->getUrl('producttabs/index/result')?>',
+					success: function(data){
+						$loading.hide();
+						$products.html(data);		
+						$data = data;
+						$('.products-grid', $products).bxSlider({
+							<?php echo $this->setBxslider()?>
+							controls: true,
+							pager: false,
+							autoControls: true,
+							autoHover: true,
+							moveSlides:1,
+							slideMargin: 1,
+						});
+						ajaxTooltipAfter()
+				        
+					},
+				});		
+			}
+
+		})('.producttabs-container');
+
+		});
+</script>
+
+<?php
+}
+?>
+

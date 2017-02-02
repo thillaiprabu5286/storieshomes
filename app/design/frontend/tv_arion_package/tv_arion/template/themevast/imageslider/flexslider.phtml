@@ -1,0 +1,83 @@
+<?php if($this->getConfig('enabled')){ ?>	  <!-- start enable -->
+	<?php $cur_store = Mage::app()->getStore()->getId() ?>
+	<div class="imageslider-container">
+	<div class="flexslider">
+		<div class="st-loading"></div>
+		<ul class="slides">
+			
+				<?php
+					// Get data banner
+					$slider = $this->getDataSlider();
+					$path = Mage::getBaseUrl('media');					
+					$qty_Item = $this->getConfig('qty_item');
+					if ($this->getConfig('auto')) { $auto = 'true'; } else { $auto = 'false'; }
+					/* Get max item & qty item */
+					if ($qty_Item > count($slider)) {
+						$qty_Item = count($slider);
+					}
+				?>
+				<?php
+					$i = 1;
+					foreach($slider as $slide)
+					{
+						
+						if($i <= $qty_Item) {
+						$imag = $path;
+						$imag .= $slide['image'];
+					?>
+					<?php if ($slide['store_id'] == $cur_store || $slide['store_id'] == 0 ): ?>
+						<li>						
+							<img src="<?php echo $imag;?>" alt="" />
+							<?php if ($this->getConfig('description')){ ?>
+								<div class="imageslider-caption zoomIn animated">
+									<div class="imageslider-title">
+										<h3><?php echo $this->__($slide['title']) ?></h3>
+									</div>
+									<div class="imageslider-des">
+										<?php echo $this->__($slide['description']) ?>
+									</div>
+									<?php if( $slide['link'] ) { ?>
+										<div class="imageslider-readmore">
+											<a href="<?php echo $slide['link']?>" title="<?php echo $this->__('Shop now') ?>"><?php echo $this->__('Shop now') ?></a>	
+										</div>
+									<?php } ?>
+								</div>
+							<?php } ?>
+						</li>
+					<?php $i++; endif; ?>
+				<?php
+                        }//end if
+                    } // end foreach
+				?>
+		</ul>
+		<script type="text/javascript">
+			jQuery( document ).ready(function($) {
+			  $('.imageslider-container .flexslider').flexslider({
+				slideshow: true,
+				animation: "<?php echo $this->getConfig('animation') ?>",
+				slideshowSpeed: <?php echo $this->getConfig('speed') ?>,
+				animationSpeed: <?php echo $this->getConfig('interval') ?>,
+				<?php if (!$this->getConfig('nav_ctrl')) { ?>
+				controlNav: false,
+				<?php } ?>
+				<?php if (!$this->getConfig('next_back')) { ?>
+				directionNav: false,
+				<?php } ?>
+				//start: function(slider){
+				//	$('.st-loading').css("display","none");
+				//	//$('.imageslider-title, .imageslider-des, .imageslider-readmore').css("left","100px");
+				//},
+				//before: function(){ 
+				//	$('.imageslider-title, .imageslider-des').css("left","-550px");
+				//	$('.imageslider-readmore').css("left","-1500px"); 
+				//}, 
+				//after: function(){ 
+				//	$('.imageslider-title, .imageslider-des, .imageslider-readmore').css("left","100px") 
+				//}
+			  });
+			});
+		</script>
+	</div>
+	</div>
+<?php } ?> <!-- end enable -->
+

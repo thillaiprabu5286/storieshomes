@@ -1,0 +1,383 @@
+<?xml version="1.0"?>
+<arion>
+    <blocks>
+
+        <block>
+            <title>Footer Information</title>
+            <identifier>footer_info</identifier>
+            <content>
+                    <![CDATA[
+			<div class="f-col f-col1 col-sm-55 col-sm-6 col-sms-6 col-smb-12">
+			<div class="footer-static-title">
+			<h3>information</h3>
+			</div>
+			<div class="footer-static-content">
+			<ul>
+			<li><a href="{{store direct_url="contacts"}}">Delivery Information</a></li>
+			<li><a href="{{store direct_url="privacy-policy-cookie-restriction-mode"}}">Privacy Policy</a></li>
+			<li><a href="{{store direct_url="contacts"}}">Discount</a></li>
+			<li><a href="{{store direct_url="catalogsearch/term/popular"}}">Terms &amp; Condition</a></li>
+			<li class="first"><a href="{{store direct_url="catalog/seo_sitemap/category"}}">Sitemap</a></li>
+			<li><a href="{{store direct_url="privacy-policy-cookie-restriction-mode"}}">Privacy Policy</a></li>
+			<li><a href="{{store direct_url="customer/account/index"}}">My Account</a></li>
+			<li class="last"><a href="{{store direct_url="catalogsearch/advanced"}}">Advanced Search</a></li>
+			</ul>
+			</div>
+			</div>
+			<div class="f-col f-col2 col-sm-55 col-sms-6 col-sm-6 col-smb-12">
+			<div class="footer-static-title">
+			<h3>our offers</h3>
+			</div>
+			<div class="footer-static-content">
+			<ul>
+			<li class="first"><a href="{{store direct_url="catalog/seo_sitemap/category"}}">Sitemap</a></li>
+			<li><a href="{{store direct_url="contacts"}}">Delivery Information</a></li>
+			<li><a href="{{store direct_url="privacy-policy-cookie-restriction-mode"}}">Privacy Policy</a></li>
+			<li><a href="{{store direct_url="contacts"}}">Discount</a></li>
+			<li><a href="{{store direct_url="privacy-policy-cookie-restriction-mode"}}">Privacy Policy</a></li>
+			<li><a href="{{store direct_url="customer/account/index"}}">My Account</a></li>
+			<li><a href="{{store direct_url="contacts"}}">Discount</a></li>
+			<li class="last"><a href="{{store direct_url="catalogsearch/advanced"}}">Advanced Search</a></li>
+			</ul>
+			</div>
+			</div>
+			<div class="f-col f-col3 col-sm-55 col-sms-6 col-sm-6 col-smb-12">
+			<div class="footer-static-title">
+			<h3>our service</h3>
+			</div>
+			<div class="footer-static-content">
+			<ul>
+			<li class="first"><a href="{{store direct_url="contacts"}}">Contact Us</a></li>
+			<li><a href="{{store direct_url="contacts"}}">Discount</a></li>
+			<li><a href="{{store direct_url="catalog/seo_sitemap/category"}}">Sitemap</a></li>
+			<li><a href="{{store direct_url="about-magento-demo-store"}}">About us</a></li>
+			<li><a href="{{store direct_url="customer-service"}}">Custom Service</a></li>
+			<li><a href="{{store direct_url="contacts"}}">Contact Us</a></li>
+			<li><a href="{{store direct_url="customer-service"}}">Custom Service</a></li>
+			<li class="last"><a href="{{store direct_url="about-magento-demo-store"}}">About us</a></li>
+			</ul>
+			</div>
+			</div>
+			<div class="f-col f-col4 col-sm-55 col-sms-6 col-sm-6  col-smb-12">
+			<div class="footer-static-title">
+			<h3>About Us</h3>
+			</div>
+			<div class="footer-static-content">
+			<ul>
+			<li class="first"><a href="{{store direct_url="customer/account/index"}}">My Account</a></li>
+			<li><a href="{{store direct_url="catalog/seo_sitemap/category"}}">Sitemap</a></li>
+			<li><a href="{{store direct_url="contacts"}}">Contact Us</a></li>
+			<li><a href="{{store direct_url="contacts"}}">Discount</a></li>
+			<li><a href="{{store direct_url="catalog/seo_sitemap/category"}}">Sitemap</a></li>
+			<li><a href="{{store direct_url="contacts"}}">Contact Us</a></li>
+			<li><a href="{{store direct_url="customer-service"}}">Custom Service</a></li>
+			<li class="last"><a href="{{store direct_url="about-magento-demo-store"}}">About us</a></li>
+			</ul>
+			</div>
+			</div>
+			<div class="f-col f-col5 col-sm-55 col-sms-12 col-sm-12 col-smb-12">{{block type="newsletter/subscribe" name="left.newsletter" template="newsletter/subscribe.phtml"}}
+			<div class="footer-static-title">
+			<h3>connect with us</h3>
+			</div>
+			<div class="connect"><a class="social1" title="twitter" href="#"><span><em class="fa fa-twitter">&nbsp;</em></span></a> <a class="social2" title="skype" href="#"><span><em class="fa fa-skype">&nbsp;</em></span></a> <a class="social3" title="facebook" href="#"><span><em class="fa fa-facebook">&nbsp;</em></span></a> <a class="social4" title="google" href="#"><span><em class="fa fa-google-plus">&nbsp;</em></span></a> <a class="social5" title="vine" href="#"><span><em class="fa fa-vine">&nbsp;</em></span></a></div>
+			</div>
+		    ]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+		
+		<block>
+            <title>Footer Social</title>
+            <identifier>footer_social</identifier>
+            <content>
+                    <![CDATA[
+			<div class="links-bottom">
+				<a href="#"><em class="fa fa-cc-discover"></em></a>
+				<a href="#"><em class="fa fa-cc-paypal"></em></a>
+				<a href="#"><em class="fa fa-cc-mastercard"></em></a>
+				<a href="#"><em class="fa fa-cc-visa"></em></a>
+				<a href="#"><em class="fa fa-cc-stripe"></em></a>
+			</div>
+		    ]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+		
+		<block>
+            <title>Banner Left</title>
+            <identifier>banner_left</identifier>
+            <content>
+                    <![CDATA[
+			<div class="banner_catalog col-sms-6">
+			<div class="banner-box">
+			<div class="image-bn"><a href="#"><img src="{{media url="wysiwyg/banner-left.jpg"}}" alt="" /></a></div>
+			</div>
+			</div>
+		    ]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+		<block>
+            <title>Block Menu Links Blog</title>
+            <identifier>megamenu_link</identifier>
+            <content>
+                    <![CDATA[
+			<p><a href="{{store direct_url="blog"}}">Blog</a></p>
+		    ]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+		
+		
+		
+		<block>
+            <title>block_image</title>
+            <identifier>block_image</identifier>
+            <content>
+                    <![CDATA[
+			<p><img src="{{media url="wysiwyg/thum1.jpg"}}" alt="" /></p>
+		    ]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+		<block>
+            <title>block_image1</title>
+            <identifier>block_image1</identifier>
+            <content>
+                    <![CDATA[
+			<p class="thum-image1"><img class="image1" src="{{media url="wysiwyg/thum2.jpg"}}" alt="" /></p>
+			<p class="thum-image2"><img class="image1" src="{{media url="wysiwyg/thum3.jpg"}}" alt="" /></p>
+		    ]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+		<block>
+            <title>banner content home1</title>
+            <identifier>banner_content_home1</identifier>
+            <content>
+                    <![CDATA[
+			<div class="banner_content_home1">
+			<div class="banner-box banner1">
+			<div class="box-image"><img src="{{media url="wysiwyg/stb1.jpg"}}" alt="" /></div>
+			<a title="view more" href="#">&nbsp;</a></div>
+			<div class="banner-position1">
+			<div class="banner-box banner2">
+			<div class="box-image"><img src="{{media url="wysiwyg/stb2.jpg"}}" alt="" /></div>
+			<a title="view more" href="#">&nbsp;</a></div>
+			<div class="banner-box banner3">
+			<div class="box-image"><img src="{{media url="wysiwyg/stb3.jpg"}}" alt="" /></div>
+			<a title="view more" href="#">&nbsp;</a></div>
+			</div>
+			</div>
+		    ]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+		
+		
+		
+		
+		
+		<block>
+            <title>Custom Menu</title>
+            <identifier>megamenu_extra</identifier>
+            <content>
+                    <![CDATA[
+			<div class="custom-menu-wrapper">
+			<div class="row">
+			<div class="col-xs-12 col-sm-3">
+			<div class="menu-col menu-col1">
+			<h3>This is Photoshop's version of Lorem Ipsum...</h3>
+			<div class="menu-custom-img"><img src="{{media url="wysiwyg/cus1.jpg"}}" alt="" /></div>
+			<div class="menu-custom-des">This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet...</div>
+			</div>
+			</div>
+			<div class="col-xs-12 col-sm-3">
+			<div class="menu-col menu-col2">
+			<h3>This is Photoshop's version of Lorem Ipsum...</h3>
+			<div class="menu-custom-img"><img src="{{media url="wysiwyg/cus2.jpg"}}" alt="" /></div>
+			<div class="menu-custom-des">This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet...</div>
+			</div>
+			</div>
+			<div class="col-xs-12 col-sm-3">
+			<div class="menu-col menu-col3">
+			<h3>This is Photoshop's version of Lorem Ipsum...</h3>
+			<div class="menu-custom-img"><img src="{{media url="wysiwyg/cus3.jpg"}}" alt="" /></div>
+			<div class="menu-custom-des">This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet...</div>
+			</div>
+			</div>
+			<div class="col-xs-12 col-sm-3">
+			<div class="menu-col menu-col4">
+			<h3>This is Photoshop's version of Lorem Ipsum...</h3>
+			<div class="menu-custom-img"><img src="{{media url="wysiwyg/cus4.jpg"}}" alt="" /></div>
+			<div class="menu-custom-des">This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet...</div>
+			</div>
+			</div>
+			</div>
+			</div>
+		    ]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+		<block>
+            <title>block-social-right</title>
+            <identifier>block-social-right</identifier>
+            <content>
+                    <![CDATA[
+			<div class="block-social-right">
+				<ul>
+				<li><a id="facebook-btn" class="socialitems" href="https://www.facebook.com/themevast" target="_blank"> <span class="social-icon" style="overflow: hidden; width: 43px;"> <span class="social-text">Follow via Facebook</span> </span> </a></li>
+				<li><a id="twitter-btn" class="socialitems" href="https://twitter.com/themevast/" target="_blank"> <span class="social-icon" style="overflow: hidden; width: 43px;"> <span class="social-text">Follow via Twitter</span> </span> </a></li>
+				<li><a id="googleplus-btn" class="socialitems" href="https://plus.google.com/118344202233498904921/posts" target="_blank"> <span class="social-icon" style="overflow: hidden; width: 43px;"> <span class="social-text">Follow via Google +</span> </span> </a></li>
+				<li><a id="youtube-btn" class="socialitems" href="https://www.youtube.com/channel/UCUQOzUZakbmxwP8MvHE_KpQ" target="_blank"> <span class="social-icon" style="overflow: hidden; width: 43px;"> <span class="social-text">Follow via Youtube</span> </span> </a></li>
+				<li><a id="pinterest-btn" class="socialitems" href="https://www.pinterest.com/" target="_blank"> <span class="social-icon"> <span class="social-text">Follow via Pinterest</span> </span> </a></li>
+				<li><a id="mail-btn" class="socialitems" href="mailto:themevast@gmail.com" target="_blank"> <span class="social-icon"> <span class="social-text">Mail To</span> </span> </a></li>
+				</ul>
+				</div>
+		    ]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+		<block>
+            <title>block_vmegamenu</title>
+            <identifier>block_vmegamenu</identifier>
+            <content>
+                    <![CDATA[
+			<p>{{block type="megamenu/megamenu" before="-" name="vmegamenu" template="themevast/megamenu/vmegamenu.phtml" /&gt;}}</p>
+		    ]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+		
+		
+		<block>
+            <title>Contacts Map</title>
+            <identifier>contact_maps</identifier>
+            <content>
+                    <![CDATA[
+			<div class="col-sm-6">
+			<div class="maps"><iframe style="border: 0;" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d380532.06546720286!2d-103.63787427721105!3d41.830305820980094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1425608883672" frameborder="0" width="100%" height="350"></iframe></div>
+			</div>
+			<div style="clear: both; padding: 15px 0px;">&nbsp;</div>
+			<div class="col-md-3 col-sm-6 store-info">
+			<ul class="list-info">
+			<li class="item-info main-info">
+			<div class="info-content"><em class="fa fa-map-marker">&nbsp;</em>
+			<h2>Address 1</h2>
+			<div class="des-info">Sed ut perspiciatis unde omnis 907 Street Name, Los Angeles</div>
+			</div>
+			</li>
+			<li class="item-info email-info">
+			<div class="info-content"><em class="fa fa-envelope">&nbsp;</em>
+			<h2>Email</h2>
+			<div class="des-info"><a class="mailto" title="Send Email" href="mailto:Support1@themevast.com">Support1@themevast.com</a><br /> <a class="mailto" title="Send Email" href="mailto:Support2@themevast.com">Support2@themevast.com</a></div>
+			</div>
+			</li>
+			<li class="item-info phone-info">
+			<div class="info-content"><em class="fa fa-phone">&nbsp;</em>
+			<h2>Phone</h2>
+			<div class="des-info"><a class="call-phone" title="Call: 0123-4567-89" href="tel:0123-4567-89">0123-4567-89</a><br /> <a class="call-phone" title="Call: 0123-4567-89" href="tel:0123-4567-89">0123-4567-89</a></div>
+			</div>
+			</li>
+			</ul>
+			</div>
+			<div class="col-md-3 col-sm-6 store-info">
+			<ul class="list-info">
+			<li class="item-info main-info">
+			<div class="info-content"><em class="fa fa-map-marker">&nbsp;</em>
+			<h2>Address 2</h2>
+			<div class="des-info">Sed ut perspiciatis unde omnis 709 Street Name, Los Angeles</div>
+			</div>
+			</li>
+			<li class="item-info email-info">
+			<div class="info-content"><em class="fa fa-envelope">&nbsp;</em>
+			<h2>Email</h2>
+			<div class="des-info"><a class="mailto" title="Send Email" href="mailto:Support1@themevast.com">Support1@themevast.com</a><br /> <a class="mailto" title="Send Email" href="mailto:Support2@themevast.com">Support2@themevast.com</a></div>
+			</div>
+			</li>
+			<li class="item-info phone-info">
+			<div class="info-content"><em class="fa fa-phone">&nbsp;</em>
+			<h2>Phone</h2>
+			<div class="des-info"><a class="call-phone" title="Call: 0123-4567-89" href="tel:0123-4567-89">0123-4567-89</a><br /> <a class="call-phone" title="Call: 0123-4567-89" href="tel:0123-4567-89">0123-4567-89</a></div>
+			</div>
+			</li>
+			</ul>
+			</div>
+			<div class="col-md-3 col-sm-6 store-info">
+			<ul class="list-info">
+			<li class="item-info main-info">
+			<div class="info-content"><em class="fa fa-map-marker">&nbsp;</em>
+			<h2>Address 3</h2>
+			<div class="des-info">Sed ut perspiciatis unde omnis 709 Street Name, Los Angeles</div>
+			</div>
+			</li>
+			<li class="item-info email-info">
+			<div class="info-content"><em class="fa fa-envelope">&nbsp;</em>
+			<h2>Email</h2>
+			<div class="des-info"><a class="mailto" title="Send Email" href="mailto:Support1@themevast.com">Support1@themevast.com</a><br /> <a class="mailto" title="Send Email" href="mailto:Support2@themevast.com">Support2@themevast.com</a></div>
+			</div>
+			</li>
+			<li class="item-info phone-info">
+			<div class="info-content"><em class="fa fa-phone">&nbsp;</em>
+			<h2>Phone</h2>
+			<div class="des-info"><a class="call-phone" title="Call: 0123-4567-89" href="tel:0123-4567-89">0123-4567-89</a><br /> <a class="call-phone" title="Call: 0123-4567-89" href="tel:0123-4567-8910">0123-4567-89</a></div>
+			</div>
+			</li>
+			</ul>
+			</div>
+			<div class="col-md-3 col-sm-6 store-info">
+			<ul class="list-info">
+			<li class="item-info main-info">
+			<div class="info-content"><em class="fa fa-map-marker">&nbsp;</em>
+			<h2>Address 4</h2>
+			<div class="des-info">Sed ut perspiciatis unde omnis 907 Street Name, Los Angeles</div>
+			</div>
+			</li>
+			<li class="item-info email-info">
+			<div class="info-content"><em class="fa fa-envelope">&nbsp;</em>
+			<h2>Email</h2>
+			<div class="des-info"><a class="mailto" title="Send Email" href="mailto:Support1@themevast.com">Support1@themevast.com</a><br /> <a class="mailto" title="Send Email" href="mailto:Support2@themevast.com">Support2@themevast.com</a></div>
+			</div>
+			</li>
+			<li class="item-info phone-info">
+			<div class="info-content"><em class="fa fa-phone">&nbsp;</em>
+			<h2>Phone</h2>
+			<div class="des-info"><a class="call-phone" title="Call: 0123-4567-89" href="tel:0123-4567-89">0123-4567-89</a><br /> <a class="call-phone" title="Call: 0123-4567-89" href="tel:0123-4567-89">0123-4567-89</a></div>
+			</div>
+			</li>
+			</ul>
+			</div>
+		    ]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+        <block>
+            <title>block banner header</title>
+            <identifier>block_banner_header</identifier>
+            <content>
+                    <![CDATA[
+			<div class="block_banner_header">
+			<div class="main-banner banner1">
+			<p><span>free</span>&nbsp;shipping</p>
+			</div>
+			<div class="main-banner banner2">
+			<p><span>Payment</span>&nbsp;Secured</p>
+			</div>
+			<div class="main-banner banner3">
+			<p>support&nbsp;<span>24/7</span></p>
+			</div>
+			<div class="main-banner banner4">
+			<p><span>free</span>&nbsp;return</p>
+			</div>
+
+			</div>
+		    ]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+	
+	
+    </blocks>
+
+</arion>
+

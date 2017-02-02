@@ -1,0 +1,79 @@
+<?php
+$slide = Mage::helper('blog')->getSlideCfg();
+if(isset($slide['enabled']) && !$slide['enabled']) return;
+$width = isset($slide['width']) ? $slide['width'] : '900';
+$column = isset($slide['numbercolumn']) ? $slide['numbercolumn'] : '1';
+$numberrow = isset($slide['numberrow']) ? $slide['numberrow'] : '1';
+$speed = isset($slide['speed']) ? $slide['speed'] : '300';
+$auto = isset($slide['auto']) ? $slide['auto'] : 'false';
+$show_image = isset($slide['showimage']) ? $slide['showimage'] : '';
+$image_width = isset($slide['widthimage']) ? $slide['widthimage'] : '100';
+$image_height = isset($slide['heightimage']) ? $slide['heightimage'] : '100';
+$show_title = isset($slide['showtitle']) ? $slide['showtitle'] : '';
+$show_author = isset($slide['showauthor']) ? $slide['showauthor'] : '';
+$show_time = isset($slide['showtime']) ? $slide['showtime'] : '';
+$show_shortcontent = isset($slide['showshortcontent']) ? $slide['showshortcontent'] : '';
+$show_readmore = isset($slide['showreadmore']) ? $slide['showreadmore'] : '';
+?>
+<?php if ($posts = $this->getRecent()):  $i = 1;?>
+<?php if(!count($posts)) return; ?>
+<div class="blog-testimonial">
+
+	<div class="blog-content">
+		
+			<div class="bx-title"><div class="bg-title"><h2 class="title"><i class="fa fa-bookmark"></i><?php echo $this->__('LATEST BLOG') ?></h2></div></div>
+			<ul class="bxslider">
+			<?php if($numberrow > 1){ ?>
+				<?php foreach ($posts as $post): ?>
+					<?php if($i % $numberrow == 1) echo '<li class="item">'; ?>
+						<?php if($show_image) echo '<img width="'.$image_width.'px" height="'.$image_height.'px" src="'.Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA). $post->getImage().'">'; ?>
+						<div class="main-blog">
+						<?php if($show_title): ?> <a href="<?php echo $post->getAddress(); ?>" ><?php echo '<h3 class="title">'.$post->getTitle().'</h3>' ?></a> <?php endif; ?>
+						<?php $s = $post->getCreatedTime(); $date = strtotime($s); ?>
+						<?php if($show_author) echo '<p class="author"><i class="fa fa-user"></i>By '.$post->getUser(); if($show_author && $show_time) echo '<span class="times"><span>'; if($show_time) echo date("d", $date).'</span>'; if($show_author && $show_time) echo '<span class="month">'; if($show_time) echo date("M", $date).'</span></span></p>'; ?>
+						
+						<?php if($show_shortcontent) echo $this->getContentBlogSidebar($post->getShortContent(),500);?>
+						<?php if($show_readmore): ?> <p class="link-more"><a href="<?php echo $post->getAddress(); ?>"><?php echo $this->__('Read more') ?></a></p> <?php endif; ?>
+					<?php if($i % $numberrow == 0)echo '</div></li>'; $i++; ?>
+				<?php endforeach; ?>
+				<?php if($i % $numberrow != 1)echo '</li>'; ?>
+			<?php } else{ ?>
+				<?php foreach ($posts as $post): ?>
+					<li class="item">
+						<?php if($show_image) echo '<img  width="'.$image_width.'" height="'.$image_height.'" alt="blog" src="'.Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA). $post->getImage().'" />'; ?>
+						<div class="main-blog">
+							<?php if($show_author) echo '<p class="author"><i class="fa fa-user"></i>By '.$post->getUser(); if($show_author && $show_time) echo '<span class="times"><span>'; if($show_time) echo date("d", $date).'</span>'; if($show_author && $show_time) echo '<span class="month">'; if($show_time) echo date("M", $date).'</span></span></p>'; ?>
+							<?php if($show_title): ?> <a href="<?php echo $post->getAddress(); ?>" ><?php echo '<span class="title">'.$post->getTitle().'</span>' ?></a> <?php endif; ?>
+							<?php $s = $post->getCreatedTime(); $date = strtotime($s); ?>
+						
+						
+						<?php if($show_shortcontent) echo '<div class="des">'.$this->getContentBlogSidebar($post->getShortContent(),500).'</p></div>';?>
+						<?php if($show_readmore): ?> <p class="link-more"><a href="<?php echo $post->getAddress(); ?>"><?php echo $this->__(' <i class="fa fa-arrow-circle-o-right"></i>Read more') ?></a></p> <?php endif; ?>
+					</div>
+					</li>
+				<?php endforeach; ?>
+			<?php } ?>
+			</ul>
+		</div>
+		</div>
+<?php endif ?>
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+		$('.blog-content .bxslider').bxSlider({
+			minSlides: 1,
+			maxSlides: 3,
+			slideWidth: <?php echo $width; ?>,
+			slideMargin: 30,
+			moveSlides:1,
+			auto: <?php echo $auto; ?>,
+			autoControls: true,
+			pager: true,
+			controls: true,
+			//mode: 'horizontal',
+			speed: <?php echo $speed; ?>,
+			pause: 600,
+			//easing: 'jswing',
+			autoHover: true
+		});
+	});
+</script>

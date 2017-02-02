@@ -1,0 +1,63 @@
+<?php if( !Mage::getStoreConfig('testimonial/general/enable_sidebar') ) return ;?>	
+<div class="block-testimonial-sidebar">			
+	<?php $latestTestimonial = $this->getTestimonialsLast()?>
+	<?php if(count($latestTestimonial) > 0):?>
+		<div class="testimonial-title bx-title">
+			<div class="bg-title"><h2><?php echo $this->__('<i class="fa fa-bookmark"></i>testimonials')?></h2></div>
+		</div>
+		<div class="testimonial-content">
+			<ul id="testimonialSidebar">			
+				<?php foreach($latestTestimonial as $_item):?>							
+					<li class="testimonial-list">
+						<div class="testimonial-content-avatar">
+							<?php
+							    if($_item->getAvatarName() != ''){
+								$avatarLink = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) .'themevast/avatar/'.$_item->getAvatarName();
+								?><img src="<?php echo $avatarLink ?>" alt="test" height="66" width="66" /><?php
+							    }
+							?>
+							
+							<div class="post-by">							
+										<p class="testimonial-author"><?php echo $_item->getName(); ?></p>
+										<p class="testimonial-company"><?php echo $_item->getCompany(); ?></p>
+										<p class="testimonial-date"><span class="date"><?php echo date('d', Mage::getModel('core/date')->gmtTimestamp($_item->getCreatedTime())); ?></span>
+											<span class="month"><?php echo date('M', Mage::getModel('core/date')->gmtTimestamp($_item->getCreatedTime())); ?></span>
+										</p>
+										
+									</div>
+						    </div>
+														
+						<div class="testimonial-sidebar-content">						
+							<div class="std">							
+								<a href="<?php echo $this->getUrl('testimonial')?>" title="testimonial">							    
+								<?php									
+									$_description = $_item->getTestimonial();									
+									$short_desc = $this->getContentTestimonialSidebar($_description, 320);									
+									echo $short_desc;							    ?>						   
+								</a>					
+							</div>						
+											
+						</div>
+						<?php if(Mage::getStoreConfig('testimonial/general/show_avatar')) : ?>
+		                    
+	                    <?php endif ?>
+					</li>							
+				<?php endforeach;?>		
+			</ul>
+		</div>	
+	<?php endif ?>	
+</div>
+
+<script type="text/javascript">		  
+	jQuery(document).ready(function($) {				
+		$('#testimonialSidebar').bxSlider({					
+			auto: true,					
+			mode: 'fade',					
+			speed: 600,					
+			preloadImages: 'visible',					
+			controls: true,						
+			pager: true,				  
+		});			  
+	});	
+</script>
+
