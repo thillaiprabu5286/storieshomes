@@ -2172,8 +2172,8 @@ div#cat:after {
 
 
 /* Content Styles ================================================================= */
-.product-name { margin:0; font-size:1em; font-weight:bold; }
-.product-name a { text-transform: capitalize; font-size: 14px; font-weight: 400; color: #5f5f5f; min-height: 53px;}
+.product-name { margin:0; font-size:1em; font-weight:bold; min-height: 53px; }
+.product-name a { text-transform: capitalize; font-size: 14px; font-weight: 400; color: #5f5f5f; }
 
 
 
