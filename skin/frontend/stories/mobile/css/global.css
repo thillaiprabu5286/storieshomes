@@ -95,7 +95,7 @@ p, h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 }
 header{
-	padding:30px 0; 
+	padding:50px 0; 
 	background: #fff;
 	position: relative;
 }
@@ -104,6 +104,16 @@ header .toggle-menu{
 	right: 20px;
 	color: #231f20 ;
 }
+header .logo{
+	background: url(../images/logo.png) no-repeat;
+	display: block;
+	height: 101px;
+	width: 80px;
+	position: absolute;
+	top: 0;
+	left: 10px;
+}
+
 header .logo-cont{
 	width: 60%;
 	float: left;
@@ -322,6 +332,9 @@ header .logo-cont .logo{
 .homepage-product a.add-cart-btn:hover{
 	background: #dba73d;
 }
+.top-category-products{
+	margin-bottom: 80px;
+}
 
 /* Footer Nav */
 .footer-nav {
@@ -530,10 +543,6 @@ header .logo-cont .logo{
 	height: 10px;
 	margin: 3px;
 }
-
-
-
-
 
 #categories-swiper{
 	padding: 10px 0 0 0;
