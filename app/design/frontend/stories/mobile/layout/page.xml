@@ -58,8 +58,6 @@ Default layout, loads most of the pages
 
                 <action method="addCss"><stylesheet>css/font-awesome.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/fonts.css</stylesheet></action>       
-                
-               
                 <action method="addCss"><stylesheet>css/owl.carousel.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/owl.theme.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/jquery.mobile-1.4.5.min.css</stylesheet></action>
