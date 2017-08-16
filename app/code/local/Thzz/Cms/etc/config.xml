@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Thzz_Cms>
+            <version>0.0.1</version>
+        </Thzz_Cms>
+    </modules>
+    <global>
+        <page>
+            <layouts>
+                <not_so_local>
+                    <label>Not so Local Page</label>
+                    <template>page/not-so-local.phtml</template>
+                </not_so_local>
+            </layouts>
+        </page>
+    </global>
+</config>
