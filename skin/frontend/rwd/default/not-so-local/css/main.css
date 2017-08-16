@@ -1,0 +1,136 @@
+
+/* COMMON PART CSS
+////////////////////////////*/
+a{outline:none;border:0px;-webkit-transition:all .3s ease-in-out .0s;-moz-transition:all .3s ease-in-out .0s;-ms-transition:all .3s ease-in-out .0s;-o-transition:all .3s ease-in-out .0s;transition:all .3s ease-in-out .0s;position:relative;border:0}
+a:after{content:'';position:absolute;bottom:-3px;left:0;width:0%;transition:0.4s;}
+a:hover:after{width:100%;}
+body{background: #efefef!important}
+
+
+
+/* HEADER PART CSS
+////////////////////////////*/
+#header_part{max-width: 1600px;margin: 0 auto 0 auto;background:#fff;}
+#header_left{float: left;width:61%;position: relative;}
+#header_right{float:right;height: 507px;width: auto;width: 39%;background: #dc9555}
+#header_right_fix{width: auto;}
+.top_call{color: #754031;font:500 14px 'Raleway', sans-serif;padding: 25px 0 0 90px}
+.top_call span{font:bold 13px Arial, Helvetica, sans-serif;}
+#banner_txt{padding: 105px 0 0 90px;}
+#main_logo{position: absolute;right:0;top:0;}
+.res_img{width:100%;}
+
+
+
+
+
+/* CONTENT PART CSS
+////////////////////////////*/
+#product_part{padding:120px 0 285px 0;background: #fff;max-width: 1600px;margin: 0 auto 0 auto}
+#product_part_fix{width: auto;}
+.product_imgs{width: auto;position:relative}
+.product_contents{width: auto;text-align: center;}
+.head2{font:600 16px 'Raleway', sans-serif;display: block;color: #3b342d;padding-top:20px}
+.head3{font:bold  20px Arial, Helvetica, sans-serif;display: block;color: #3e3e42;margin:7px 0 0 0;}
+.head3 span{color:#9fa1a8;font: 14px Arial, Helvetica, sans-serif;text-decoration:line-through;margin-left:10px}
+.cart_btn{width: 140px;margin: 12px auto 0 auto;}
+.cart_btn a{border:solid 1px #bc885d;display: block;-webkit-border-radius: 100px;-moz-border-radius: 100px;border-radius: 100px;text-transform: uppercase;font:700 12px 'Raleway', sans-serif;color: #b27644;padding: 13px 0;}
+.cart_btn a span{background:url(../images/cart.png) no-repeat 0 0;padding:0 0 0 30px}
+.cart_btn a:hover{background:#b27644;color: #fff;text-decoration: none;}
+.cart_btn a:hover span{background:url(../images/cart-hover.png) no-repeat 0 0;}
+.product_price{position: absolute;z-index: 999;left:40%;width: 76px;height: 76px;-webkit-border-radius: 100px;-moz-border-radius: 100px;border-radius: 100px;background: #edbc76;opacity: 0.9;text-align: center;color: #754031;font:600 28px/28px 'Raleway', sans-serif;bottom:8%;}
+.product_price span{display: block;font:500 15px 'Raleway', sans-serif;margin: 14px 0 0 0;}
+
+
+
+
+
+
+/* Grid Part
+///////////////////////////////////////////*/
+.wf-container {margin: 0 auto;}
+.wf-container:before,.wf-container:after {content: '';display: table;}
+.wf-container:after {clear: both;}
+.wf-box {margin: 10px 10px 20px 10px;-webkit-transition:all .3s ease-in-out .0s;-moz-transition:all .3s ease-in-out .0s;-ms-transition:all .3s ease-in-out .0s;-o-transition:all .3s ease-in-out .0s;transition:all .3s ease-in-out .0s;}
+.wf-box:hover {margin: 10px 10px 20px 10px;}
+.wf-box img { display: block;width: 100%;}
+.wf-box .content {width:auto}
+.wf-column {float: left;}
+
+
+
+
+/* FOOTER PART CSS
+////////////////////////////*/
+#footer_part{background: #dcb071;border-top: solid 1px #eaeaea;padding: 70px 0 70px 0;max-width: 1600px;margin: 0 auto 0 auto}
+#footer_address{padding: 0 50px 0 0;border-right:solid 1px #c89c5e;color: #231f20;font:500 13px/18px 'Raleway', sans-serif;}
+#social_footer{padding: 0 50px 0 40px;border-right:solid 1px #c89c5e;}
+#social_footer img{margin:0 0 8px 0;}
+#copyright_part{width: auto;color: #231f20;font:500 13px/21px 'Raleway', sans-serif;padding: 0 0 0 40px;}
+#copyright_part span{display: block;color: #353535;}
+.head4{color: #231f20;display: block;text-transform: uppercase;font:600 17px 'Raleway', sans-serif;margin: 0 0 10px 0;}
+.call_footer{display: block;background:url(../images/icon1.png) no-repeat 0 2px;margin:15px 0 0 0;padding: 0 0 0 25px;font:bold 13px Arial, Helvetica, sans-serif;color: #231f20}
+.email_footer{display: block;background:url(../images/icon2.png) no-repeat 0 3px;margin:5px 0 0 0;padding: 0 0 0 25px;font:bold 13px Arial, Helvetica, sans-serif;color: #231f20}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MOBILE PART CSS
+////////////////////////////*/
+@media (max-width: 1599px) {
+	#header_left{width:60%}
+	#header_right{width:40%}
+  
+}
+
+
+@media (max-width: 1199px) {
+	#header_left{width:70%}
+	#header_right{width:30%}
+	#banner_txt{padding-left:40px;}
+	.top_call{padding-left:40px;}
+	
+}
+
+@media (max-width: 991px) {
+
+	#social_footer{padding: 0 35px 0 35px;}
+	#header_left{float:none;width:100%;}
+	#header_right{float:none;width:100%;height:auto}
+	.top_call{padding:40px 0 15px 0;text-align:center}
+	#banner_txt{padding:20px 0 40px 0;text-align:center}
+	#product_part{padding-top:80px;}
+	#main_logo{left:50px;left:10px;}
+}
+
+
+@media (max-width: 767px) {
+	#footer_address{padding: 0 0 20px 0;margin: 0 0 20px 0;border:0;border-bottom: solid 1px #e6e6e6;}
+	#social_footer{padding: 0 0 20px 0;margin: 0 0 20px 0;border:0;border-bottom: solid 1px #e6e6e6;}
+	#copyright_part{padding: 0 0 0 0}
+	#main_logo{width:125px;}
+	#main_logo img{max-width:100%;}
+}
+
+@media (max-width: 580px) {
+	#footer_part{padding: 35px 0}
+
+	#main_logo{width:70px;}
+	
+	
+}
+
+
+@media (max-width: 360px) {
+	#main_logo{width:60px;}
+
+}
