@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <global>
+        <page>
+            <layouts>
+                <goodhope_custom_homepage>
+                    <label>Goodhope Homepage</label>
+                    <template>page/homepage.phtml</template>
+                </goodhope_custom_homepage>
+            </layouts>
+        </page>
+    </global>
+</config>
