@@ -36,8 +36,8 @@
     })
 
     /*mega menu*/
-    $(document).ready(function(){
-      $(".dropdown").hover(            
+    jQuery(document).ready(function($){
+      $(".dropdown").hover(
           function() {
               $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
               $(this).toggleClass('open');        

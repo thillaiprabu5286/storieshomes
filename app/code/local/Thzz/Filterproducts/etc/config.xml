@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Thzz_Filterproducts>
+            <version>0.1.0</version>
+        </Thzz_Filterproducts>
+    </modules>
+    <frontend>
+        <layout>
+            <updates>
+                <filterproducts>
+                    <file>thzz/filterproducts.xml</file>
+                </filterproducts>
+            </updates>
+        </layout>
+    </frontend>
+    <global>
+        <blocks>
+            <filterproducts>
+                <class>Thzz_Filterproducts_Block</class>
+            </filterproducts>
+        </blocks>
+        <helpers>
+            <filterproducts>
+                <class>Thzz_Filterproducts_Helper</class>
+            </filterproducts>
+        </helpers>
+    </global>
+</config>

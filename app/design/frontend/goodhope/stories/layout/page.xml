@@ -36,12 +36,6 @@ Default layout, loads most of the pages
 
             <block type="page/html_head" name="head" as="head">
 
-                <action method="addItem"><type>skin_js</type><name>js/jquery-1.10.2.js</name><params/></action>
-                <action method="addItem"><type>skin_js</type><name>js/bootstrap.min.js</name><params/></action>
-                <action method="addItem"><type>skin_js</type><name>js/push-menu.js</name><params/></action>
-                <action method="addItem"><type>skin_js</type><name>js/owl.carousel.min.js</name><params/></action>
-                <action method="addItem"><type>skin_js</type><name>js/common.js</name><params/></action>
-
                 <action method="addJs"><script>prototype/prototype.js</script></action>
                 <action method="addJs"><script>lib/ccard.js</script></action>
                 <action method="addJs"><script>prototype/validation.js</script></action>
@@ -55,7 +49,7 @@ Default layout, loads most of the pages
                 <action method="addJs"><script>varien/menu.js</script></action>
                 <action method="addJs"><script>mage/translate.js</script></action>
                 <action method="addJs"><script>mage/cookies.js</script></action>
-
+                
                 <block type="page/js_cookie" name="js_cookies" template="page/js/cookie.phtml"/>
 
                 <action method="addCss"><stylesheet>css/styles.css</stylesheet></action>
