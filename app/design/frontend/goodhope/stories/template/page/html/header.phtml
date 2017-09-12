@@ -1,3 +1,9 @@
+<?php echo $this->getChildHtml('sticky.nav') ?>
+<?php
+    $store = Mage::app()->getStore();
+    $code  = $store->getCode();
+?>
+
 <?php
 /**
  * Magento
@@ -53,8 +59,10 @@
         <div class="container">
             <div class="phone-no"><span class="txt-01">Contact</span> <span class="txt-02">0495 243 3633</span></div>
             <div class="search-cont">
-                <input type="text" name="" placeholder="Search Sofa,Carpet, Cloth Hanger">
-                <button class="search-arrow"></button>
+                <div class="search-area">
+                    <a href="javascript:void(0);" class="search-icon"><i class="icon-search"></i></a>
+                    <?php echo $this->getChildHtml('topSearch'); ?>
+                </div>
             </div>
             <div class="user-account">
                 <a href="">Login</a>
@@ -62,7 +70,12 @@
             </div>
             <div class="cart-wrapper">
                 <div class="cart-icon"><span class="total-products">12</span></div>
-                <span class="txt">My Cart</span>
+                <span class="txt">
+                    <div class="cart-area">
+                        <?php echo '<div class="custom-block">'.$this->getLayout()->createBlock('cms/block')->setBlockId($custom_block)->toHtml().'</div>'; ?>
+                        <?php echo $this->getChildHtml('minicart'); ?>
+                    </div>
+                </span>
             </div>
 
         </div>

@@ -5,15 +5,6 @@
             <version>0.1.0</version>
         </Thzz_Filterproducts>
     </modules>
-    <frontend>
-        <layout>
-            <updates>
-                <filterproducts>
-                    <file>thzz/filterproducts.xml</file>
-                </filterproducts>
-            </updates>
-        </layout>
-    </frontend>
     <global>
         <blocks>
             <filterproducts>

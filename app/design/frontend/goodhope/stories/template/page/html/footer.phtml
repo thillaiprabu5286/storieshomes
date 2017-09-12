@@ -32,19 +32,13 @@
     </div>
 </div>-->
 
-
 <!-- footer -->
 <footer>
     <div class="container">
         <div class="footer-top">
             <div class="row">
                 <div class="col-md-4 col-sm-4">
-                    <div class="contact-info">
-                        <h2>Stories Global home concept</h2>
-                        <p>Airport By Pass Road, Pantheerankav Junction Kozhikode, Kerala 673019</p>
-                        <span class="phone-no">243 3633</span>
-                        <span class="email">contact@storieshomes.com</span>
-                    </div>
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-contact-block')->toHtml(); ?>
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <div class="newsletter">
@@ -56,135 +50,13 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4">
-                    <div class="follow-us">
-                        <h2>Follow us on</h2>
-                        <ul class="social-icons">
-                            <li><a href="" class="facebook"></a></li>
-                            <li><a href="" class="twitter"></a></li>
-                            <li><a href="" class="gplus"></a></li>
-                            <li><a href="" class="pinterest"></a></li>
-                            <li><a href="" class="houzz"></a></li>
-                        </ul>
-                    </div>
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-social-block')->toHtml(); ?>
                 </div>
             </div>
         </div>
-        <div class="about-stories">
-            <div class="our-partner">
-                <div class="row">
-                    <div class="col-md-9 col-md-offset-3">
-                        <div class="img-holder">
-                            <img src="<?php echo $this->getSkinUrl('images/partner-logo-01.jpg') ?>" alt="">
-                        </div>
-                        <div class="img-holder">
-                            <img src="<?php echo $this->getSkinUrl('images/partner-logo-02.jpg') ?>" alt="">
-                        </div>
-                        <div class="img-holder">
-                            <img src="<?php echo $this->getSkinUrl('images/partner-logo-03.jpg') ?>" alt="">
-                        </div>
-                        <div class="img-holder">
-                            <img src="<?php echo $this->getSkinUrl('images/partner-logo-04.jpg') ?>" alt="">
-                        </div>
-                        <div class="img-holder">
-                            <img src="<?php echo $this->getSkinUrl('images/partner-logo-05.jpg') ?>" alt="">
-                        </div>
-                        <div class="img-holder">
-                            <img src="<?php echo $this->getSkinUrl('images/partner-logo-06.jpg') ?>" alt="">
-                        </div>
-                    </div>
-                </div>
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-about-block')->toHtml(); ?>
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-links')->toHtml(); ?>
 
-            </div>
-            <p class="about-us">Stories Global Home Concepts, South India's largest lifestyle destination, offers you with a one-stop solution for all your home decor needs. The company has carved a niche for itself in the market by offering you a unique selection of elegant, sleek, sophisticated, and intricate home decor products to go with the theme/story of your home. The handpicked imported home decor collection of Stories reflect an unrivalled design and quality. Seeking inspirations from global lifestyle, we bring you the widest collection of home decor designs across categories like, sofas, beds, tables, chairs, wardrobes, furnitures and designs for dining room, bedroom, living room, kitchen, home decor and housekeeping accessories, and lot more. The fabric, colors and styles of the furnitures and other home decorating accessories are cautiously chosen based on the quality, innovation and design. The wide range of products at Stories are designed to offer comfort and functionality for haute living at value prices </p>
-        </div>
-        <div class="footer-links">
-            <div class="row">
-                <div class="col-md-2 col-sm-2 col-xs-6">
-                    <div class="footer-links-grid">
-                        <h3>furniture</h3>
-                        <ul>
-                            <li><a href="">Sofa</a></li>
-                            <li><a href="">Seating</a></li>
-                            <li><a href="">Study & Office</a></li>
-                            <li><a href="">Coffee & Love set</a></li>
-                            <li><a href="">Bed Room</a></li>
-                            <li><a href="">Dining</a></li>
-                            <li><a href="">Home Decore</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6">
-                    <div class="footer-links-grid">
-                        <h3>furniture</h3>
-                        <ul>
-                            <li><a href="">Sofa</a></li>
-                            <li><a href="">Seating</a></li>
-                            <li><a href="">Study & Office</a></li>
-                            <li><a href="">Coffee & Love set</a></li>
-                            <li><a href="">Bed Room</a></li>
-                            <li><a href="">Dining</a></li>
-                            <li><a href="">Home Decore</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6">
-                    <div class="footer-links-grid">
-                        <h3>furniture</h3>
-                        <ul>
-                            <li><a href="">Sofa</a></li>
-                            <li><a href="">Seating</a></li>
-                            <li><a href="">Study & Office</a></li>
-                            <li><a href="">Coffee & Love set</a></li>
-                            <li><a href="">Bed Room</a></li>
-                            <li><a href="">Dining</a></li>
-                            <li><a href="">Home Decore</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6">
-                    <div class="footer-links-grid">
-                        <h3>furniture</h3>
-                        <ul>
-                            <li><a href="">Sofa</a></li>
-                            <li><a href="">Seating</a></li>
-                            <li><a href="">Study & Office</a></li>
-                            <li><a href="">Coffee & Love set</a></li>
-                            <li><a href="">Bed Room</a></li>
-                            <li><a href="">Dining</a></li>
-                            <li><a href="">Home Decore</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6">
-                    <div class="footer-links-grid">
-                        <h3>furniture</h3>
-                        <ul>
-                            <li><a href="">Sofa</a></li>
-                            <li><a href="">Seating</a></li>
-                            <li><a href="">Study & Office</a></li>
-                            <li><a href="">Coffee & Love set</a></li>
-                            <li><a href="">Bed Room</a></li>
-                            <li><a href="">Dining</a></li>
-                            <li><a href="">Home Decore</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6">
-                    <div class="footer-links-grid">
-                        <h3>furniture</h3>
-                        <ul>
-                            <li><a href="">Sofa</a></li>
-                            <li><a href="">Seating</a></li>
-                            <li><a href="">Study & Office</a></li>
-                            <li><a href="">Coffee & Love set</a></li>
-                            <li><a href="">Bed Room</a></li>
-                            <li><a href="">Dining</a></li>
-                            <li><a href="">Home Decore</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="footer-bottom">
             <p>Copyright 2017 Stories Homes furniture Store. All Rights Reserved</p>
         </div>
