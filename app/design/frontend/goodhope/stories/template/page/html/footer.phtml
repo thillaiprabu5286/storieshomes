@@ -41,13 +41,7 @@
                     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-contact-block')->toHtml(); ?>
                 </div>
                 <div class="col-md-4 col-sm-4">
-                    <div class="newsletter">
-                        <h2>stay updated</h2>
-                        <div class="newsletter-cont clearfix">
-                            <input type="text" name="" placeholder="Enter your email id">
-                            <button></button>
-                        </div>
-                    </div>
+                        <?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe.phtml')->toHtml(); ?>
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-social-block')->toHtml(); ?>
@@ -64,7 +58,7 @@
     </div>
 </footer>
 
-<script src="<?php echo $this->getSkinUrl('js/jquery-1.10.2.js') ?>"></script>
+
 <script src="<?php echo $this->getSkinUrl('js/bootstrap.min.js') ?>"></script>
 <script src="<?php echo $this->getSkinUrl('js/push-menu.js') ?>"></script>
 <script src="<?php echo $this->getSkinUrl('js/owl.carousel.min.js') ?>"></script>

@@ -1,104 +1,47 @@
-<?php 
+<?php
 $store = Mage::app()->getStore();
-$code  = $store->getCode();
+$code = $store->getCode();
 ?>
+<?php $_helper = Mage::helper('catalog/category') ?>
+<?php $_categories = $_helper->getStoreCategories() ?>
 
-<!-- slider area -->
-<div class="slider-area">
-    <div class="main-banner">
-        <div id="slider" class="owl-carousel owl-theme">
-            <div class="item"><img src="<?php echo $this->getSkinUrl('images/studytable_bannerq.jpg') ?>" alt=""></div>
-            <div class="item"><img src="<?php echo $this->getSkinUrl('images/wilmax_banner_2_1.jpg') ?>" alt=""></div>
+    <!-- slider area -->
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('homepage-slider')->toHtml(); ?>
+
+<?php echo $this->getLayout()->createBlock('filterproducts/new_home_list')->setProductCount(16)->setTemplate('filterproducts/new.phtml')->toHtml(); ?>
+
+    <!-- Categories items container -->
+<?php if (count($_categories) > 0): ?>
+    <div class="container">
+        <div class="total-item-cont clearfix">
+            <?php $i = 0; ?>
+            <?php foreach ($_categories as $_category): ?>
+                <?php if ($i++ == 6) break; ?>
+                <?php $ID = $_category->getId(); ?>
+                <div class="total-item-box">
+                    <div class="img-holder">
+                        <?php $thumb = Mage::getModel('catalog/category')->load($ID)->getThumbnail(); ?>
+                        <a href="<?php echo $_helper->getCategoryUrl($_category); ?>">
+                            <img src="<?php echo Mage::getBaseUrl('media') . 'catalog/category/' . $thumb; ?>">
+                        </a>
+                    </div>
+                    <div class="item-desc text-center">
+                        <?php $products_count = Mage::getModel('catalog/category')->load($_category->getId())
+                            ->getProductCount(); ?>
+                        <span class="total-number"><?php  echo ($products_count); ?></span>
+                        <span class="item-txt">items</span>
+                        <a id="<?php echo $ID ?>" class="item-title" href="<?php echo $_helper->getCategoryUrl($_category); ?>">
+                            <?php echo $_category->getName() ?>
+                        </a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+
         </div>
     </div>
-    <div class="side-ad-area">
-        <img src="<?php echo $this->getSkinUrl('images/top-ad.jpg') ?>" alt="">
-    </div>
-</div>
-
-<!-- top info container -->
-<div class="top-info-cont clearfix">
-    <div class="world-map">
-        <div class="world-map-detail">
-            <p>Lorem ipsum dolor sitccums anamet</p>
-        </div>
-    </div>
-    <div class="top-info-detail">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque </p>
-        <a href="">read more</a>
-    </div>
-</div>
-
-<?php echo $this->getLayout()->createBlock('filterproducts/new_home_list')->setProductCount(16)->setTemplate('filterproducts/new.phtml')->toHtml();?>
-
-<!-- total items container -->
-<div  class="container">
-    <div class="total-item-cont clearfix">
-
-        <div class="total-item-box">
-            <div class="img-holder">
-                <a href=""><img src="<?php echo $this->getSkinUrl('images/item-img-01.jpg') ?>" alt=""></a>
-            </div>
-            <div class="item-desc text-center">
-                <span class="total-number">56</span>
-                <span class="item-txt">items</span>
-                <a href="" class="item-title">furniture</a>
-            </div>
-        </div>
-        <div class="total-item-box">
-            <div class="img-holder">
-                <a href=""><img  src="<?php echo $this->getSkinUrl('images/item-img-02.jpg') ?>" alt=""></a>
-            </div>
-            <div class="item-desc text-center">
-                <span class="total-number">46</span>
-                <span class="item-txt">items</span>
-                <a href="" class="item-title">furnishing</a>
-            </div>
-        </div>
-        <div class="total-item-box">
-            <div class="img-holder">
-                <a href=""><img  src="<?php echo $this->getSkinUrl('images/item-img-03.jpg') ?>" alt=""></a>
-            </div>
-            <div class="item-desc text-center">
-                <span class="total-number">67</span>
-                <span class="item-txt">items</span>
-                <a href="" class="item-title">light</a>
-            </div>
-        </div>
-        <div class="total-item-box">
-            <div class="img-holder">
-                <a href=""><img  src="<?php echo $this->getSkinUrl('images/item-img-04.jpg') ?>" alt=""></a>
-            </div>
-            <div class="item-desc text-center">
-                <span class="total-number">32</span>
-                <span class="item-txt">items</span>
-                <a href="" class="item-title">carpets</a>
-            </div>
-        </div>
-        <div class="total-item-box">
-            <div class="img-holder">
-                <a href=""><img src="<?php echo $this->getSkinUrl('images/item-img-05.jpg') ?>" alt=""></a>
-            </div>
-            <div class="item-desc text-center">
-                <span class="total-number">12</span>
-                <span class="item-txt">items</span>
-                <a href="" class="item-title">home accessories</a>
-            </div>
-        </div>
-        <div class="total-item-box">
-            <div class="img-holder">
-                <a href=""><img  src="<?php echo $this->getSkinUrl('images/item-img-06.jpg') ?>" alt=""></a>
-            </div>
-            <div class="item-desc text-center">
-                <span class="total-number">8</span>
-                <span class="item-txt">items</span>
-                <a href="" class="item-title">photo frames</a>
-            </div>
-        </div>
-    </div>
-</div>
+<?php endif; ?>
 
 
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('homepage-tab-content')->toHtml(); ?>
 
-<?php echo $this->getLayout()->createBlock('filterproducts/new_home_list')->setProductCount(8)->setTemplate('filterproducts/best-sellers.phtml')->toHtml();?>
+<?php echo $this->getLayout()->createBlock('filterproducts/new_home_list')->setProductCount(8)->setTemplate('filterproducts/best-sellers.phtml')->toHtml(); ?>

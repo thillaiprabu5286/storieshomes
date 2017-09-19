@@ -54,7 +54,7 @@
 
 
 <header>
-    <a href="" class="logo"><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/logo.jpg') ?>" alt=""></a>
+    <a href="<?php echo Mage::getBaseUrl(); ?>" class="logo"><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/logo.jpg') ?>" alt=""></a>
     <div class="header-top">
         <div class="container">
             <div class="phone-no"><span class="txt-01">Contact</span> <span class="txt-02">0495 243 3633</span></div>
@@ -65,17 +65,21 @@
                 </div>
             </div>
             <div class="user-account">
-                <a href="">Login</a>
-                <a href="">Register</a>
+                <ul class="list-inline">
+                    <li>
+                        <a href="<?php echo Mage::getBaseUrl() ?>customer/account/"><i class="fa fa-sign-in" aria-hidden="true"></i>
+                             Login</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo Mage::getBaseUrl() ?>customer/account/create/"><i class="fa fa-user-plus" aria-hidden="true"></i>
+                             Register</a>
+                    </li>
+
+                </ul>
             </div>
+
             <div class="cart-wrapper">
-                <div class="cart-icon"><span class="total-products">12</span></div>
-                <span class="txt">
-                    <div class="cart-area">
-                        <?php echo '<div class="custom-block">'.$this->getLayout()->createBlock('cms/block')->setBlockId($custom_block)->toHtml().'</div>'; ?>
-                        <?php echo $this->getChildHtml('minicart'); ?>
-                    </div>
-                </span>
+                <?php echo $this->getChildHtml('minicart'); ?>
             </div>
 
         </div>
@@ -103,7 +107,11 @@
                         <?php foreach($_categories as $_category): ?>
                             <li class="dropdown mega-dropdown">
                                 <a href="<?php echo $_helper->getCategoryUrl($_category) ?>" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="furniture-icon"></span>
+                                    <?php $ID = $_category->getId(); ?>
+                                    <?php $thumb = Mage::getModel('catalog/category')->load($ID)->getImage(); ?>
+                                    <span class="furniture-icon" style="background:none">
+                                        <img src="<?php echo Mage::getBaseUrl('media') . 'catalog/category/' . $thumb; ?>">
+                                    </span>
                                     <?php echo $_category->getName() ?>
                                 </a>
                                 <ul class="dropdown-menu mega-dropdown-menu">
