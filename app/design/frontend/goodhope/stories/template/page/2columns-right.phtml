@@ -30,23 +30,24 @@
  */
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>"
+      lang="<?php echo $this->getLang() ?>">
 <head>
-<?php echo $this->getChildHtml('head') ?>
+    <?php echo $this->getChildHtml('head') ?>
 </head>
-<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<body<?php echo $this->getBodyClass() ? ' class="' . $this->getBodyClass() . '"' : '' ?>>
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
     <?php echo $this->getChildHtml('global_notices') ?>
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
-        <div class="container">
-                <?php echo $this->getChildHtml('breadcrumbs') ?>
-                <div class="col-md-10">
-                    <?php echo $this->getChildHtml('global_messages') ?>
-                    <?php echo $this->getChildHtml('content') ?>
-                </div>
-                <div class="col-md-2"><?php echo $this->getChildHtml('right') ?></div>
+        <div class="container content-wrap">
+            <?php echo $this->getChildHtml('breadcrumbs') ?>
+            <div class="col-md-9 main-content">
+                <?php echo $this->getChildHtml('global_messages') ?>
+                <?php echo $this->getChildHtml('content') ?>
+            </div>
+            <div class="col-md-3 side-content"><?php echo $this->getChildHtml('right') ?></div>
         </div>
         <?php echo $this->getChildHtml('footer') ?>
         <?php echo $this->getChildHtml('global_cookie_notice') ?>
@@ -56,3 +57,678 @@
 <?php echo $this->getAbsoluteFooter() ?>
 </body>
 </html>
+
+
+<!-- designer around the world -->
+<div class="designers-cont">
+    <div class="content">
+        <h2>DESIGNERS FROM AROUND THE WORLD <a href="" class="view-all">view all</a></h2>
+        <div class="container">
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <!-- Tab content 1 -->
+                <div class="tab-pane active" id="designer-01">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="designer-info">
+                                <div class="designer-thumb">
+                                    <img src="{{skin url='images/designer-thumb.jpg'}}" alt="">
+                                </div>
+                                <div class="designer-desc">
+                                    <p class="designer-name">Claudio Francesco Bellini</p>
+                                    <span class="country-name">Italy</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-sm-5 col-xs-12">
+                            <div class="designer-bio">
+                                <p>This Politecnico University graduate's strong fascination with creativity, is rooted
+                                    in his early childhood years, inspired by his father Mario Bellini, whom counts as
+                                    one of the most affluent figures in design history.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="designers-inner-tab">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#profile" data-toggle="tab">profile</a></li>
+                                    <li><a href="#latest-work" data-toggle="tab">latest work</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="profile">
+                            <div class="designer-profile-cont">
+                                <p> This Politecnico University graduate's strong fascination with creativity, is rooted
+                                    in his early childhood years, inspired by his father Mario Bellini, whom counts as
+                                    one of the most affluent figures in design history. He collaborated with father,
+                                    taking part of many types of projects and competitions in architecture and design
+                                    worldwide. In 1996 he founded Atelier Bellini, an innovative design studio with
+                                    special interest and an original approach on the relationship between new
+                                    technologies and the creative processes. In 1998, his revolutionary new office
+                                    furniture system, TW Collection (Frezza), introduced a completely new vision in the
+                                    contemporary office landscape. From that point on, his extensive production of
+                                    innovative projects in this area, has deeply contributed to anticipating behaviors
+                                    and trends in the working environment evolution over the last 15 years. Today
+                                    Claudio Bellini Design, recognized as one of the most influential European studios,
+                                    is active within several fields of architecture. </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="latest-work">
+                            <div class="designer-work-cont">
+                                <div class="row">
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-01.jpg'}}" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Ceramic Cruet 2p </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                            <div class="overlay"></div>
+                                            <div class="buy-now-btn"><a href="#">Buy Now</a></div>
+                                        </div>
+                                    </div>
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-02.jpg'}}" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Ceramic Cruet 2p </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                            <div class="overlay"></div>
+                                            <div class="buy-now-btn"><a href="#">Buy Now</a></div>
+                                        </div>
+                                    </div>
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-03.jpg'}}>" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Ceramic Cruet 2p </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                            <div class="overlay"></div>
+                                            <div class="buy-now-btn"><a href="#">Buy Now</a></div>
+                                        </div>
+                                    </div>
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-04.jpg'}}" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Flower With Ceramic Vase L.Green </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                            <div class="overlay"></div>
+                                            <div class="buy-now-btn"><a href="#">Buy Now</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Tab content 2 -->
+                <div class="tab-pane" id="designer-02">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="designer-info">
+                                <div class="designer-thumb">
+                                    <img src="{{skin url='images/designer-thumb-02.jpg'}}" alt="">
+                                </div>
+                                <div class="designer-desc">
+                                    <p class="designer-name">P H TEOH</p>
+                                    <span class="country-name">Malayasia</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-sm-5 col-xs-12">
+                            <div class="designer-bio">
+                                <p>Born in Bedong, a small city north of Malaysia. PH Teoh is a System Analyst by
+                                    profession and graduated in University of Windsor, Canada in 1985. </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="designers-inner-tab">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#phteoh-profile" data-toggle="tab">profile</a></li>
+                                    <li><a href="#phteoh-latest-work" data-toggle="tab">latest work</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="phteoh-profile">
+                            <div class="designer-profile-cont">
+                                <p>Born in Bedong, a small city north of Malaysia. PH Teoh is a System Analyst by
+                                    profession and graduated in University of Windsor, Canada in 1985. PH Teoh has
+                                    worked in the family business in his early years in various industries until 1991 he
+                                    started venture into wood industries operating sawmilling, kiln drying plant and
+                                    manufacturing of moulded components for the furniture industries. Then, It was in
+                                    2003 that he started to produce his own designs. He is motivated by passion for
+                                    quality, aesthetic value, functionality and innovative design and these are the main
+                                    ingredients that he strive for on each of his product. From 2005 to 2012, he has
+                                    earned a few awards and recognition during the furniture exhibition in Malaysia
+                                    Furniture International Fair which was held every March of the year. </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="phteoh-latest-work">
+                            <div class="designer-work-cont">
+                                <div class="row">
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-01.jpg'}}" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Ceramic Cruet 2p </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-02.jpg'}}" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Ceramic Cruet 2p </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-03.jpg'}}" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Ceramic Cruet 2p </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-04.jpg'}}" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Flower With Ceramic Vase L.Green </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab content 3 -->
+                <div class="tab-pane" id="designer-03">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="designer-info">
+                                <div class="designer-thumb">
+                                    <img src="{{skin url='images/robett.jpg'}}" alt="">
+                                </div>
+                                <div class="designer-desc">
+                                    <p class="designer-name">Robert Admiraal</p>
+                                    <span class="country-name">Netherland</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-sm-5 col-xs-12">
+                            <div class="designer-bio">
+                                <p>Studio Admiraal is a dutch design agency started in 2002 by Robert Admiraal. He
+                                    graduated from the Technical University of Industrial Design in Delft, the
+                                    Netherlands and worked for companies like Philips, Prandina and Hangzhou Light.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="designers-inner-tab">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#robett-profile" data-toggle="tab">profile</a></li>
+                                    <li><a href="#robett-latest-work" data-toggle="tab">latest work</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="robett-profile">
+                            <div class="designer-profile-cont">
+                                <p>
+                                    Our studio is located at Europe biggest creative development center based in a
+                                    former shipyard in Amsterdam with more than 150 creative companies and artist.
+                                    Since then the studio works on consumer and interior products such as yachting,
+                                    lighting and a variety of furniture projects.
+                                    Studio Admiraal has a strong focuses on the integration of well designed details,
+                                    consumer well being and commercial successful production.Many of the designs are
+                                    shown on tradeshows worldwide. </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="robett-latest-work">
+                            <div class="designer-work-cont">
+                                <div class="row">
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-01.jpg'}}" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Ceramic Cruet 2p </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                            <div class="overlay"></div>
+                                            <div class="buy-now-btn"><a href="#">Buy Now</a></div>
+                                        </div>
+                                    </div>
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-02.jpg'}}" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Ceramic Cruet 2p </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                            <div class="overlay"></div>
+                                            <div class="buy-now-btn"><a href="#">Buy Now</a></div>
+                                        </div>
+                                    </div>
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-03.jpg'}}>" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Ceramic Cruet 2p </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                            <div class="overlay"></div>
+                                            <div class="buy-now-btn"><a href="#">Buy Now</a></div>
+                                        </div>
+                                    </div>
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-04.jpg'}}" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Flower With Ceramic Vase L.Green </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                            <div class="overlay"></div>
+                                            <div class="buy-now-btn"><a href="#">Buy Now</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab content 4 -->
+                <div class="tab-pane" id="designer-04">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="designer-info">
+                                <div class="designer-thumb">
+                                    <img src="{{skin url='images/mario.jpg'}}" alt="">
+                                </div>
+                                <div class="designer-desc">
+                                    <p class="designer-name">Mario Mazzer</p>
+                                    <span class="country-name">Italy</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-sm-5 col-xs-12">
+                            <div class="designer-bio">
+                                <p>Bonn in 1955,he got the Architecture Degree at the Milan Polytechnic in 1978 and the
+                                    diploma in Industrial Design at the Polytechnic School of Design in 1979.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="designers-inner-tab">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#mario-profile" data-toggle="tab">profile</a></li>
+                                    <li><a href="#mario-latest-work" data-toggle="tab">latest work</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="mario-profile">
+                            <div class="designer-profile-cont">
+                                <p>
+                                    He gained experience in the 70s working with masters of Italian design,as Achille
+                                    Castiglioni e Marco Zanuso. In 1980 opened his studio at Conegliano Veneto,ltaly
+                                    where he started to develop his own personal design language.
+                                    He carries out activities in various fields,from architecture to industrial
+                                    design,in which he contributes to the cultural debate on design in conventions and
+                                    conferences and by showing his work in events to promote products made in Italy.
+
+                                    Many of his products were selected for the ADI Design Index and International Design
+                                    Yearbook,presented in many editions of the cultural events “Abitare il Tempo" in
+                                    Verona and at the London Design Museum. </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="mario-latest-work">
+                            <div class="designer-work-cont">
+                                <div class="row">
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-01.jpg'}}" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Ceramic Cruet 2p </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                            <div class="overlay"></div>
+                                            <div class="buy-now-btn"><a href="#">Buy Now</a></div>
+                                        </div>
+                                    </div>
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-02.jpg'}}" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Ceramic Cruet 2p </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                            <div class="overlay"></div>
+                                            <div class="buy-now-btn"><a href="#">Buy Now</a></div>
+                                        </div>
+                                    </div>
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-03.jpg'}}>" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Ceramic Cruet 2p </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                            <div class="overlay"></div>
+                                            <div class="buy-now-btn"><a href="#">Buy Now</a></div>
+                                        </div>
+                                    </div>
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-04.jpg'}}" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Flower With Ceramic Vase L.Green </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                            <div class="overlay"></div>
+                                            <div class="buy-now-btn"><a href="#">Buy Now</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab content 5 -->
+                <div class="tab-pane" id="designer-05">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="designer-info">
+                                <div class="designer-thumb">
+                                    <img src="{{skin url='images/Enrique.jpg'}}" alt="">
+                                </div>
+                                <div class="designer-desc">
+                                    <p class="designer-name">Enrique Marti Aguilera</p>
+                                    <span class="country-name">Spain</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-sm-5 col-xs-12">
+                            <div class="designer-bio">
+                                <p>TEnrique Marti Aguilera (VaIencia,Spain, 1972). Industrial Design engineer at
+                                    University Cardenal Herrera-CEU, obtaining a master in Design and Product
+                                    Development at the same university (1992-1997).</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="designers-inner-tab">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#Enrique-profile" data-toggle="tab">profile</a></li>
+                                    <li><a href="#Enrique-latest-work" data-toggle="tab">latest work</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Enrique-profile">
+                            <div class="designer-profile-cont">
+                                <p>Between 1997 and 2005 Enrique Marti was the Product Manager of the Spanish
+                                    companyAndreu World S.A. managing its Design and Technical depanment.
+                                    Nowadays Enrique Marti is the founder and director of Enrique Manf Associates
+                                    designing and developing new products for very important and well known European and
+                                    Asian furniture companies, being the technical advisor and product/art director of
+                                    some of them too. </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="Enrique-latest-work">
+                            <div class="designer-work-cont">
+                                <div class="row">
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-01.jpg'}}" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Ceramic Cruet 2p </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                            <div class="overlay"></div>
+                                            <div class="buy-now-btn"><a href="#">Buy Now</a></div>
+                                        </div>
+                                    </div>
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-02.jpg'}}" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Ceramic Cruet 2p </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                            <div class="overlay"></div>
+                                            <div class="buy-now-btn"><a href="#">Buy Now</a></div>
+                                        </div>
+                                    </div>
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-03.jpg'}}>" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Ceramic Cruet 2p </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                            <div class="overlay"></div>
+                                            <div class="buy-now-btn"><a href="#">Buy Now</a></div>
+                                        </div>
+                                    </div>
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-04.jpg'}}" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Flower With Ceramic Vase L.Green </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                            <div class="overlay"></div>
+                                            <div class="buy-now-btn"><a href="#">Buy Now</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab content 6 -->
+                <div class="tab-pane" id="designer-06">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="designer-info">
+                                <div class="designer-thumb">
+                                    <img src="{{skin url='images/chen.jpg'}}" alt="">
+                                </div>
+                                <div class="designer-desc">
+                                    <p class="designer-name">Chen Zhiyi</p>
+                                    <span class="country-name">China</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-sm-5 col-xs-12">
+                            <div class="designer-bio">
+                                <p>Chen Zhiyi, who won the design award of Shanghai international furniture exhibition
+                                    and plays an important role in the company's success of these yearn.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="designers-inner-tab">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#chen-profile" data-toggle="tab">profile</a></li>
+                                    <li><a href="#chen-latest-work" data-toggle="tab">latest work</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="chen-profile">
+                            <div class="designer-profile-cont">
+                                <p>After getting the diploma of Mechanical design, and finished Tsinghua Univemity
+                                    further education in 2002. He engaged in industrial and visual design for many
+                                    companies. In 2004, he accumulated a lot of experience
+                                    in the mould and production craft field. In 2005, he designed some furniture
+                                    products and achieved a very good sales
+                                    performance. In 2006, his achievement having been favored greatly by domestic and
+                                    foreign
+                                    customers with high pralse.“Generous simplicity, Portable fashion, Environmental
+                                    protection" is his consistent
+                                    design style, which is wonhy of the international furniture professional
+                                    association's highly recognization. </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="chen-latest-work">
+                            <div class="designer-work-cont">
+                                <div class="row">
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-01.jpg'}}" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Ceramic Cruet 2p </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                            <div class="overlay"></div>
+                                            <div class="buy-now-btn"><a href="#">Buy Now</a></div>
+                                        </div>
+                                    </div>
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-02.jpg'}}" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Ceramic Cruet 2p </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                            <div class="overlay"></div>
+                                            <div class="buy-now-btn"><a href="#">Buy Now</a></div>
+                                        </div>
+                                    </div>
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-03.jpg'}}>" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Ceramic Cruet 2p </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                            <div class="overlay"></div>
+                                            <div class="buy-now-btn"><a href="#">Buy Now</a></div>
+                                        </div>
+                                    </div>
+                                    <!-- product box -->
+                                    <div class="col-md-3">
+                                        <div class="product-box text-center">
+                                            <div class="img-holder">
+                                                <a href=""><img src="{{skin url='images/product-04.jpg'}}" alt=""> </a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <a href="" class="product-title"> Flower With Ceramic Vase L.Green </a>
+                                                <span class="product-price">Rs. 850</span>
+                                            </div>
+                                            <div class="overlay"></div>
+                                            <div class="buy-now-btn"><a href="#">Buy Now</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Nav tabs -->
+    <div class="container">
+        <div class="designers-main-tab">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#designer-01" data-toggle="tab">Claudio Francesco Bellini</a></li>
+                <li><a href="#designer-02" data-toggle="tab">PHTEOH</a></li>
+                <li><a href="#designer-03" data-toggle="tab">Robert Admiraal</a></li>
+                <li><a href="#designer-04" data-toggle="tab">Mario Mazzer</a></li>
+                <li><a href="#designer-05" data-toggle="tab">Enrique Marti Aguilera</a></li>
+                <li><a href="#designer-06" data-toggle="tab">Chen Zhiyi</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -14,6 +14,7 @@ body {
 	color: #333;
 	background:#fff;
 	text-align: left;
+	font-family: 'layarbahteraddw01-regularRg' !important;
 }
 .clearfix {
 	display: block;
@@ -65,7 +66,6 @@ a img:hover {
 }
 p, h1, h2, h3, h4, h5, h6 {
 	padding: 0;
-	margin: 0;
 	font-weight: 300;
 }
 label{
@@ -78,7 +78,7 @@ label{
 /*header*/
 header{
 	height: 179px;
-
+	margin-left: 134px;
 }
 header .logo{
 	position: absolute;
@@ -95,6 +95,7 @@ header .logo img:hover{
 
 .header-top{
 	height: 84px;
+	padding-left: 20px;
 }
 .header-top .phone-no{
 	float: left;
@@ -255,6 +256,13 @@ header .logo img:hover{
 .topCartContent .inner-wrapper .mini-products-list .totals {margin-bottom: 10px;}
 
 .mini-products-list .item {border-bottom: 1px solid #eee;padding-bottom: 10px;padding-top: 10px;}
+
+/* Product Category Pages */
+.content-wrap .main-content {width: 80%}
+
+/* Product Category Sidebar */
+.content-wrap .side-content {width: 20%}
+.content-wrap .side-content .newsletter {text-align: center}
 
 .checkout-btn{
 	background: #dba73d;
@@ -1046,7 +1054,6 @@ footer{
 .footer-top h2{
 	font-size: 17px;
 	padding-bottom: 15px;
-	text-transform: uppercase;
 }
 .footer-top .contact-info p{
 	color: #7d7d7d;

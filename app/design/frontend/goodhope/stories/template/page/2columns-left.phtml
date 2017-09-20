@@ -40,13 +40,13 @@
     <?php echo $this->getChildHtml('global_notices') ?>
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
-        <div class="container">
+        <div class="container content-wrap" style="padding-top: 0px;">
                 <?php echo $this->getChildHtml('breadcrumbs') ?>
-                <div class="col-md-10 product-view">
+            <div class="col-md-3 side-content"><?php echo $this->getChildHtml('left') ?></div>
+                <div class="col-md-9 main-content">
                     <?php echo $this->getChildHtml('global_messages') ?>
                     <?php echo $this->getChildHtml('content') ?>
                 </div>
-                <div class="col-md-2 side-content"><?php echo $this->getChildHtml('left') ?></div>
         </div>
         <?php echo $this->getChildHtml('footer') ?>
         <?php echo $this->getChildHtml('global_cookie_notice') ?>
