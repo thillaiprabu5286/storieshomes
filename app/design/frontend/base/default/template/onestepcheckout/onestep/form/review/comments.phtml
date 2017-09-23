@@ -1,0 +1,19 @@
+<?php
+/**
+ *
+ * @category   Rohde
+ * @package    Rohde_Onestepcheckout
+ * @author     Support <j.rohde@nederland.live>
+ */
+?><?php if ($this->canShow()): ?>
+<div id="onestepcheckout-review-comments">
+   <?php echo $this->getChildHtml('simple');?>
+</div>
+<script type="text/javascript">
+    var OSCReviewComments = new OnestepcheckoutReviewComments({
+        containerSelector: "#onestepcheckout-review-comments",
+        newRowCount: 5,
+        saveValuesUrl: <?php echo Zend_Json::encode($this->getSaveFormValuesUrl());?>
+    });
+</script>
+<?php endif;?>

@@ -143,7 +143,9 @@ select option { padding-right:10px; }
 select.multiselect option { border-bottom:1px solid #b6b6b6; padding:2px 5px; }
 select.multiselect option:last-child { border-bottom:0; }
 textarea { overflow:auto; }
-input.radio { margin-right:3px; }
+input.radio { margin-right:3px; float: left}
+#onestepcheckout-shipping-method label {margin-left: 5px;}
+#onestepcheckout-payment-method input.radio {margin-top: 10px !important;}
 input.checkbox { margin-right:3px; }
 input.qty { width:2.5em !important; }
 button.button::-moz-focus-inner { padding:0; border:0; } /* FF Fix */
@@ -172,8 +174,6 @@ input.input-text:focus,select:focus,textarea:focus { background-color:#edf7fd; }
 .form-list label.required {}
 .form-list label.required em { float:right; font-style:normal; color:#eb340a; position:absolute; top:0; right:-8px; }
 .form-list li.control label { float:none; }
-.form-list li.control input.radio,
-.form-list li.control input.checkbox { margin-right:6px; }
 .form-list li.control .input-box { clear:none; display:inline; width:auto; }
 /*.form-list li.fields { margin-right:-15px; }*/
 .form-list .input-box { display:block; clear:both; width:260px; }
@@ -1407,12 +1407,12 @@ tr.summary-details-excluded { font-style:italic; }
 .opc .allow .step-title h2 { color:#a4b3b9; }
 /*.opc .allow .step-title a { display:block; }*/
 
-.opc .active .step-title { background:#f9f3e3; border:1px solid #bbafa0; padding-bottom:5px; color:#dca73c; cursor:default; }
+.opc .active .step-title { background: none; border:1px solid #bbb; padding-bottom:5px; color:#dca73c; cursor:default; }
 .opc .active .step-title .number { background:#dca73c; border-color:#f19900; color:#fff; }
 .opc .active .step-title h2 { color:#dca73c; }
 /*.opc .active .step-title a { display:none; }*/
 
-.opc .step { border:1px solid #bbafa0; border-top:0; background:#fbfaf6 url(../images/bkg_checkout.gif) 0 0 repeat-x; padding:15px 30px; position:relative; }
+.opc .step { border:1px solid #bbb; border-top:0; padding:15px 30px !important; position:relative; }
 .opc .step .tool-tip { right:30px; }
 
 #opc-login .buttons-set { border-top:0; }

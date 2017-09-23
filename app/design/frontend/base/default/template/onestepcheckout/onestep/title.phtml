@@ -1,0 +1,26 @@
+<?php
+/**
+ *
+ * @category   Rohde
+ * @package    Rohde_Onestepcheckout
+ * @author     Support <j.rohde@nederland.live>
+ */
+?>
+<div id="onestepcheckout-title">
+    <h1><?php echo $this->__($this->getTitle()); ?></h1>
+    <p class="onestepcheckout-title-description form-instructions">
+        <?php echo $this->__($this->getDescription()); ?>
+        <?php if (!$this->isCustomerLoggedIn()) : ?>
+            <?php echo $this->__('Already got an account?'); ?>
+            <button id="onestepcheckout-authentification-button" class="button"><?php echo $this->__('Log in'); ?></button>
+        <?php endif; ?>
+    </p>
+</div>
+<?php if (!$this->isCustomerLoggedIn()) : ?>
+<script type="text/javascript">
+    $('onestepcheckout-authentification-button').on('click',function() {
+        $(this).hide();
+        $('onestepcheckout-authentification-wrapper').show();
+    });
+</script>
+<?php endif; ?>

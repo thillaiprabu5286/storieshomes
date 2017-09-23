@@ -1054,6 +1054,7 @@ footer{
 .footer-top h2{
 	font-size: 17px;
 	padding-bottom: 15px;
+	margin-top: 10px;
 }
 .footer-top .contact-info p{
 	color: #7d7d7d;
@@ -1083,7 +1084,7 @@ footer{
 	background: #fff;
 	height: 47px;
 	float:left;
-	width: 85%;
+	width: 85% !important;
 	border:none;
 	padding-left: 15px;
 	color: #a5907e;
