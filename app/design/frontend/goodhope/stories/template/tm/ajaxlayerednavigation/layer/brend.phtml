@@ -1,0 +1,18 @@
+<?php $titleData = $this->getCategoryTitleData(); ?>
+<?php if (count($titleData) > 0) : ?>
+    <?php foreach ($titleData as $data) : ?>
+        <?php if ((null === $data['category_image']) || ('' == $data['category_image'])) : ?>
+            <?php continue; ?>
+        <?php elseif ((null === $data['category_title']) || ('' == $data['category_title'])) : ?>
+            <?php continue; ?>
+        <?php elseif ((null === $data['category_description']) || ('' == $data['category_description'])) : ?>
+            <?php continue; ?>
+        <?php endif; ?>
+        
+        <h4><?php echo $data['category_title'] ?></h4>
+        <img class="ajax-category-image" src="<?php echo Mage::getBaseUrl('media') ?>ajaxlayerednavigation/<?php echo $data['category_image'] ?>" />
+        <p class="ajax-category-text">
+            <?php echo $data['category_description'] ?>
+        </p>        
+    <?php endforeach; ?>
+<?php endif ?>

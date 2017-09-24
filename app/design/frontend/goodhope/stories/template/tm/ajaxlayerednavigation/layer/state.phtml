@@ -1,0 +1,26 @@
+<?php $_filters = $this->getActiveFilters(); ?>
+<?php if (!Mage::helper('ajaxlayerednavigation')->isAdvancedSearchPage()) : ?>
+    <?php if(!empty($_filters)): ?>
+        <p class="block-subtitle">
+            <?php echo Mage::helper('ajaxlayerednavigation')->__('Currently Shopping By') ?>
+        </p>
+        <ol class="currently">
+        <?php foreach ($_filters as $_filter): ?>
+                <li>
+                    <a href="<?php echo $this->escapeHtml($_filter->getRemoveUrl()) ?>" title="<?php echo Mage::helper('ajaxlayerednavigation')->__('Remove This Item') ?>" class="btn-remove">
+                        <?php echo Mage::helper('ajaxlayerednavigation')->__('Remove This Item') ?>
+                    </a>
+                    <span class="label">
+                        <?php echo $this->stripTags($_filter->getName()) ?>:
+                    </span>
+                    <?php echo $this->stripTags($_filter->getLabel()) ?>
+                </li>
+        <?php endforeach; ?>
+        </ol>
+        <div class="actions">
+            <a href="<?php echo $this->escapeHtml($this->getClearUrl()) ?>">
+                <?php echo Mage::helper('ajaxlayerednavigation')->__('Clear All') ?>
+            </a>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

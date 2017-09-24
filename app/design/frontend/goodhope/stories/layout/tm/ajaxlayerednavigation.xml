@@ -1,0 +1,237 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <catalog_category_layered translate="label">
+        <label>Catalog Category (Anchor)</label>
+        <remove name="catalog.leftnav"/>
+        <remove name="enterprisecatalog.leftnav"/>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/tm/aln/ajaxlayerednavigation.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/tm/aln/ion.rangeSlider.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/tm/aln/ion.rangeSlider.skinNice.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/tm/aln/ajaxlayerednavigation.js</name>
+            </action>
+            <!--<action method="addItem" ifconfig="ajaxlayerednavigation/range/jquery">
+                <type>skin_js</type>
+                <name>js/tm/aln/jquery-1.12.3.min.js</name>
+            </action>
+            <action method="addItem" ifconfig="ajaxlayerednavigation/range/jquery">
+                <type>skin_js</type>
+                <name>js/tm/aln/jquery-noConflict.js</name>
+            </action>-->
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/tm/aln/ion.rangeSlider.min.js</name>
+            </action>
+            <action method="addItem" ifconfig="ajaxlayerednavigation/mobile/enabled">
+                <type>skin_js</type>
+                <name>js/tm/aln/ajaxlayerednavigation-mobile.js</name>
+            </action>
+        </reference>
+        <reference name="left">
+            <block type="ajaxlayerednavigation/layer_view" name="tm.catalog.left.navigation" after="currency">
+                <action method="setTemplate" ifconfig="ajaxlayerednavigation/general/enabled">
+                    <template>tm/ajaxlayerednavigation/layer/view.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="content">
+            <!-- <block type="ajaxlayerednavigation/layer_view" name="tm.catalog.left.navigation" before="-">
+                <action method="setTemplate" ifconfig="ajaxlayerednavigation/general/enabled">
+                    <template>tm/ajaxlayerednavigation/layer/content_view.phtml</template>
+                </action>
+            </block> -->
+            <block type="ajaxlayerednavigation/layer_brend" name="tm.catalog.top.brend" before="-" template="tm/ajaxlayerednavigation/layer/brend.phtml"/>
+        </reference>
+        <reference name="before_body_end">
+            <block type="ajaxlayerednavigation/layer_create" name="ajaxlayerednavigation_create">
+                <action method="setTemplate">
+                    <template>tm/ajaxlayerednavigation/create.phtml</template>
+                </action>
+            </block>
+            <block type="ajaxlayerednavigation/layer_sliders" name="ajaxlayerednavigation_create_sliders">
+                <action method="setTemplate">
+                    <template>tm/ajaxlayerednavigation/sliders.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </catalog_category_layered>
+
+    <cms_index_index>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/tm/aln/ajaxlayerednavigation.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/tm/aln/ion.rangeSlider.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/tm/aln/ion.rangeSlider.skinNice.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/tm/aln/ajaxlayerednavigation.js</name>
+            </action>
+            <!--<action method="addItem" ifconfig="ajaxlayerednavigation/range/jquery">
+                <type>skin_js</type>
+                <name>js/tm/aln/jquery-1.12.3.min.js</name>
+            </action>
+            <action method="addItem" ifconfig="ajaxlayerednavigation/range/jquery">
+                <type>skin_js</type>
+                <name>js/tm/aln/jquery-noConflict.js</name>
+            </action>-->
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/tm/aln/ion.rangeSlider.min.js</name>
+            </action>
+            <action method="addItem" ifconfig="ajaxlayerednavigation/mobile/enabled">
+                <type>skin_js</type>
+                <name>js/tm/aln/ajaxlayerednavigation-mobile.js</name>
+            </action>
+        </reference>
+        <reference name="before_body_end">
+            <block type="ajaxlayerednavigation/layer_create" name="ajaxlayerednavigation_home">
+                <action method="setTemplate" ifconfig="ajaxlayerednavigation/home_cat/enabled">
+                    <template>tm/ajaxlayerednavigation/create.phtml</template>
+                </action>
+            </block>
+            <block type="ajaxlayerednavigation/layer_sliders" name="ajaxlayerednavigation_create_sliders">
+                <action method="setTemplate">
+                    <template>tm/ajaxlayerednavigation/sliders.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </cms_index_index>
+
+    <catalogsearch_result_index>
+        <remove name="catalogsearch.leftnav"/>
+        <reference name="left">
+            <block type="ajaxlayerednavigation/catalogSearch_layer" name="tm.catalogsearch.navigation" after="currency">
+                <action method="setTemplate">
+                    <template>tm/ajaxlayerednavigation/layer/view.phtml</template>
+                </action>
+            </block>
+        </reference>
+
+        <reference name="content">
+            <!-- <block type="ajaxlayerednavigation/catalogSearch_layer" name="tm.catalogsearch.navigation" before="-">
+                <action method="setTemplate" ifconfig="ajaxlayerednavigation/general/enabled">
+                    <template>tm/ajaxlayerednavigation/layer/content_view.phtml</template>
+                </action>
+            </block> -->
+            <block type="ajaxlayerednavigation/layer_brend" name="my.catalogsearch.top.brend" before="-" template="tm/ajaxlayerednavigation/layer/brend.phtml"/>
+        </reference>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/tm/aln/ajaxlayerednavigation.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/tm/aln/ion.rangeSlider.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/tm/aln/ion.rangeSlider.skinNice.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/tm/aln/ajaxlayerednavigation.js</name>
+            </action>
+            <!--<action method="addItem" ifconfig="ajaxlayerednavigation/range/jquery">
+                <type>skin_js</type>
+                <name>js/tm/aln/jquery-1.12.3.min.js</name>
+            </action>
+            <action method="addItem" ifconfig="ajaxlayerednavigation/range/jquery">
+                <type>skin_js</type>
+                <name>js/tm/aln/jquery-noConflict.js</name>
+            </action>-->
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/tm/aln/ion.rangeSlider.min.js</name>
+            </action>
+            <action method="addItem" ifconfig="ajaxlayerednavigation/mobile/enabled">
+                <type>skin_js</type>
+                <name>js/tm/aln/ajaxlayerednavigation-mobile.js</name>
+            </action>
+        </reference>
+        <reference name="before_body_end">
+            <block type="ajaxlayerednavigation/layer_create" name="ajaxlayerednavigation_search">
+                <action method="setTemplate">
+                    <template>tm/ajaxlayerednavigation/create.phtml</template>
+                </action>
+            </block>
+            <block type="ajaxlayerednavigation/layer_sliders" name="ajaxlayerednavigation_create_sliders">
+                <action method="setTemplate">
+                    <template>tm/ajaxlayerednavigation/sliders.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </catalogsearch_result_index>
+
+    <catalogsearch_advanced_result>
+        <reference name="right">
+            <block type="ajaxlayerednavigation/advancedSearch_layer" name="tm.advancedsearch.navigation" before="-">
+                <action method="setTemplate" ifconfig="ajaxlayerednavigation/advanced_search/enabled">
+                    <template>tm/ajaxlayerednavigation/layer/view.phtml</template>
+                </action>
+            </block>
+        </reference>
+
+        <reference name="content">
+            <block type="ajaxlayerednavigation/layer_brend" name="my.catalogsearch.top.brend" before="-" template="tm/ajaxlayerednavigation/layer/brend.phtml"/>
+        </reference>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/tm/aln/ajaxlayerednavigation.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/tm/aln/ion.rangeSlider.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/tm/aln/ion.rangeSlider.skinNice.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/tm/aln/ajaxlayerednavigation.js</name>
+            </action>
+            j
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/tm/aln/ion.rangeSlider.min.js</name>
+            </action>
+            <action method="addItem" ifconfig="ajaxlayerednavigation/mobile/enabled">
+                <type>skin_js</type>
+                <name>js/tm/aln/ajaxlayerednavigation-mobile.js</name>
+            </action>
+        </reference>
+        <reference name="before_body_end">
+            <block type="ajaxlayerednavigation/layer_create" name="ajaxlayerednavigation_search">
+                <action method="setTemplate" ifconfig="ajaxlayerednavigation/advanced_search/enabled">
+                    <template>tm/ajaxlayerednavigation/advanced_search_create.phtml</template>
+                </action>
+            </block>
+            <block type="ajaxlayerednavigation/layer_sliders" name="ajaxlayerednavigation_create_sliders">
+                <action method="setTemplate">
+                    <template>tm/ajaxlayerednavigation/sliders.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </catalogsearch_advanced_result>
+</layout>

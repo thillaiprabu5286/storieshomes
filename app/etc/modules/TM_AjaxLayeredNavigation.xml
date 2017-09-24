@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<config>
+    <modules>
+        <TM_AjaxLayeredNavigation>
+            <active>true</active>
+            <codePool>local</codePool>
+            <tm_link><![CDATA[http://templates-master.com/magento-extensions/magento-ajax-layered-navigation.html]]></tm_link>
+            <depends>
+                <Mage_Catalog />
+                <Mage_CatalogSearch />
+            </depends>
+        </TM_AjaxLayeredNavigation>
+    </modules>
+</config>
