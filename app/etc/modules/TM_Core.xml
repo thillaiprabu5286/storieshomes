@@ -2,7 +2,7 @@
 <config>
     <modules>
         <TM_Core>
-            <active>true</active>
+            <active>false</active>
             <codePool>community</codePool>
         </TM_Core>
     </modules>
