@@ -1,4 +1,4 @@
-    $('#slider').owlCarousel({
+    jQuery('#slider').owlCarousel({
         loop:true,
         margin:10,
         nav:true,
@@ -16,7 +16,7 @@
             }
         }
     })
-    $('#carousel').owlCarousel({
+    jQuery('#carousel').owlCarousel({
         loop:true,
         margin:10,
         nav:true,
@@ -36,15 +36,15 @@
     })
 
     /*mega menu*/
-    $(document).ready(function(){
-      $(".dropdown").hover(            
+    jQuery(document).ready(function(){
+      jQuery(".dropdown").click(
           function() {
-              $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
-              $(this).toggleClass('open');        
+              jQuery('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
+              jQuery(this).toggleClass('open');
           },
           function() {
-              $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
-              $(this).toggleClass('open');       
+              jQuery('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
+              jQuery(this).toggleClass('open');
           }
       );
 

@@ -285,23 +285,22 @@ input:-webkit-autofill {background-color: #eee !important;}
 	padding:18px 29px 17px 29px;
 	text-align: center;
 }
-.mega-menu-wapper li a:hover{
-	background:#dfdfdf !important;
-	color: #000 !important;
-}
 .mega-menu-wapper li a span{
 	display: block;
 	margin:0 auto 5px;
 	height: 34px;
 	text-align: center;
 }
+
+.mega-dropdown-menu > li > ul > li.view-all {clear: both; border-top: 1px solid #eee;padding-left: 5px;margin-top: 20px;}
+
 /*mega menu*/
 .mega-dropdown {
   position: static !important;
 }
 .mega-dropdown-menu {
-    padding: 50px;
-    width: 100%;
+    padding: 20px;
+    width: 70%;
     box-shadow: none;
     border-radius: 0;
     -webkit-box-shadow: none;
@@ -315,14 +314,14 @@ input:-webkit-autofill {background-color: #eee !important;}
 }
 .mega-dropdown-menu > li > ul > li > a {
 	display: block;
-	color: #797979;
+	font-size: 16px;
 	padding: 3px 5px;
 	text-transform: capitalize;
 	text-align: left;
 }
 .mega-dropdown-menu > li ul > li > a:hover,
 .mega-dropdown-menu > li ul > li > a:focus {
-	text-decoration: none;
+	text-decoration: underline;
 }
 .mega-dropdown-menu .dropdown-header {
 	font-size: 18px;
@@ -332,6 +331,13 @@ input:-webkit-autofill {background-color: #eee !important;}
 	border-left: 3px solid #dba73d;
 	padding:0 0 0 5px !important;
 }
+
+.mega-menu-wapper .level3 li a {text-transform: none;
+	padding: 2px 5px;
+	color: #666;
+	width: 100%;
+	display: block;
+	text-align: left;}
 
 .breadcrumb{
 	background: #fff;
@@ -1175,6 +1181,7 @@ footer .about-stories p.about-us{
 .footer-links{
 	padding-bottom: 50px;
 }
+@media only screen and (min-width: 1280px) {.footer-links .col-md-2 {width: 16.66666667%;}}
 .footer-links .footer-links-grid h3{
 	color: #524f50;
 	font-size: 16px;
@@ -1214,7 +1221,7 @@ footer .about-stories p.about-us{
 @media only screen and (max-width: 940px) {
 	.header-top .search-cont {width: 30%;}
 	.mega-menu-wapper li a {padding: 10px 19px;}
-	.header-top {height: 102px;}
+	.header-top {height: 102px;padding-left: 5px;}
 	#slider .owl-next {top: 80px;}
 	#slider .owl-prev {top: 130px;}
 }
@@ -1253,7 +1260,12 @@ footer .about-stories p.about-us{
 	}
 	.navbar-inverse .navbar-nav > li > a{
 		padding: 18px 8px;
+		text-align: right;
 	}
+	.mega-dropdown-menu {padding: inherit;padding-right: 55px;}
+	.mega-dropdown-menu > li > ul > li > a {text-align: right}
+	.mega-menu-wapper li a span {float: right;margin-top: -5px;margin-left: 10px;}
+
 	.navbar-toggle {background-color: #dca73c;}
 	.slider-area .side-ad-area {
 	    display: none;
@@ -1287,6 +1299,9 @@ footer .about-stories p.about-us{
 	.designer-profile-cont p{
 		line-height: 24px;
 	}
+	.designers-cont .designers-main-tab ul.nav-tabs li {
+		width: 25%;
+	}
 	.designers-cont .designers-main-tab ul.nav-tabs li a{
 		font-size: 12px;
 	}
@@ -1298,7 +1313,7 @@ footer .about-stories p.about-us{
 		padding-bottom: 0;
 	}
 	.designers-cont .content{
-		padding: 30px 0;
+		padding: 30px 10px;
 	}
 	.designers-cont h2{
 		padding-bottom: 30px;
@@ -1316,6 +1331,7 @@ footer .about-stories p.about-us{
 	.designer-profile-cont p{
 		line-height: 22px;
 	}
+	.designers-main-tab {margin-right: -5px;margin-left: -5px;}
 	.contact-info{
 		padding-bottom: 20px;
 	}
@@ -1331,8 +1347,15 @@ footer .about-stories p.about-us{
 @media only screen and (max-width: 600px) {
 	.product-view .product-img-box {width: 100%;}
 	.product-view .product-shop {width: 100%;padding: 20px 0px;}
+	#carousel .owl-prev {left: 10px;}
+	#carousel .owl-next {right: 10px;}
+	.pager .pages {margin: 0 15%;width: 100%;}
+	.pager .pages li, .pager .pages ol {float: left;}
+	.pager .pages .current {padding: 6px;}
+	.slider-area .owl-theme .owl-nav {display: none}
+	.mega-menu-wapper .level3 li a {text-align: right}
 }
 @media only screen and (max-width: 500px) {
 	.total-item-box {width: 100%}
-	.products-grid-view .grid-item {width: 47.3%;}
+	.products-grid-view .grid-item {width: 46.5%;}
 }

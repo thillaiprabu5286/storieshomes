@@ -1,0 +1,33 @@
+<?php $_helper = Mage::helper('catalog/category') ?>
+<?php $_categories = $_helper->getStoreCategories() ?>
+<?php $currentCategory = Mage::registry('current_category') ?>
+
+<?php if (count($_categories) > 0): ?>
+    <div class="footer-links">
+        <div class="row">
+            <?php $i = 0; ?>
+            <?php foreach($_categories as $_category): ?>
+            <?php if ($i++ == 6) break; ?>
+            <div class="col-md-2 col-sm-2 col-xs-6">
+                <div class="footer-links-grid">
+                    <h3><a id="<?php echo $_category->getId() ?>" href="<?php echo $_helper->getCategoryUrl($_category); ?>">
+                            <?php echo $_category->getName() ?>
+                        </a></h3>
+                    <?php //if ($currentCategory && $currentCategory->getId() == $_category->getId()): ?>
+                    <?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
+                    <?php $_subcategories = $_category->getChildrenCategories() ?>
+                    <?php if (count($_subcategories) > 0): ?>
+                    <ul>
+                        <?php foreach($_subcategories as $_subcategory): ?>
+                        <li> <a  id="<?php echo $_subcategory->getId() ?>" href="<?php echo $_helper->getCategoryUrl($_subcategory); ?>">
+                                <?php echo $_subcategory->getName() ?>
+                            </a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+<?php endif;?>

@@ -49,7 +49,8 @@
             </div>
         </div>
         <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-about-block')->toHtml(); ?>
-        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-links')->toHtml(); ?>
+
+        <?php echo $this->getChildHtml('custom_footer_links') ?>
 
         <div class="footer-bottom">
             <p>Copyright 2017 Stories Homes furniture Store. All Rights Reserved</p>
@@ -59,17 +60,16 @@
 </footer>
 
 
+
 <script src="<?php echo $this->getSkinUrl('js/bootstrap.min.js') ?>"></script>
-<script src="<?php echo $this->getSkinUrl('js/push-menu.js') ?>"></script>
 <script src="<?php echo $this->getSkinUrl('js/owl.carousel.min.js') ?>"></script>
 <script src="<?php echo $this->getSkinUrl('js/common.js') ?>"></script>
-
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 <script>
-    $(document).ready(function () {
-        var trigger = $('.hamburger'),
-            overlay = $('.overlay'),
+    jQuery(document).ready(function () {
+        var trigger = jQuery('.hamburger'),
+            overlay = jQuery('.overlay'),
             isClosed = false;
 
         trigger.click(function () {
@@ -91,8 +91,8 @@
             }
         }
 
-        $('[data-toggle="offcanvas"]').click(function () {
-            $('#wrapper').toggleClass('toggled');
+        jQuery('[data-toggle="offcanvas"]').click(function () {
+            jQuery('#wrapper').toggleClass('toggled');
         });
     });
 </script>
