@@ -3,7 +3,7 @@
     <!-- AjaxSearch -->
     <modules>
         <TM_AjaxSearch>
-            <active>false</active>
+            <active>true</active>
             <codePool>local</codePool>
             <tm_link><![CDATA[http://templates-master.com/magento-extensions/magento-ajax-search.html]]></tm_link>
         </TM_AjaxSearch>
