@@ -1,5 +1,5 @@
 .autocomplete-w1 {z-index:999; position:absolute; top:7px; left:16px; /* IE6 fix: */ _top:1px; }
-.autocomplete { width:450px !important; border:1px solid #ccc; background:#fff; box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); cursor: default; text-align:left; max-height:350px; overflow:auto; margin:-6px 6px 6px -15px; /* IE specific: */ _height:350px; _margin:0px 6px 6px 0; overflow-x:hidden; -webkit-overflow-scrolling: touch; }
+.autocomplete { width:435px !important; border:1px solid #ccc; background:#fff; box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); cursor: default; text-align:left; max-height:350px; overflow:auto; margin:-9px 6px 6px -15px; /* IE specific: */ _height:350px; _margin:0px 6px 6px 0; overflow-x:hidden; -webkit-overflow-scrolling: touch; }
 .autocomplete .selected { background:#F0F0F0; }
 .autocomplete .selected p {margin: 0px;}
 .autocomplete div { padding: 10px;clear: both;overflow: hidden;line-height: 1.1em;color: #000;font-size: 13px;border-bottom: 1px dotted #aaa;cursor: pointer;margin: 0px 10px;}
@@ -17,7 +17,6 @@
 .form-search { display: table; width: 100%;}
 .form-search .ajaxsearch-category-select, .form-search button { display: table-cell;position: absolute;top: 18px;right: 15px;}
 .form-search #search { width: 100%; padding: 7px 10px !important;}
-.form-search div#anonymous_element_1 {left: 0px !important;}
 .form-search label {display: none;}
 
 .form-search .btn-search .fa-2x {font-size: 1.3em;}
@@ -79,6 +78,7 @@ p.ajaxsearch-small { margin: 0; }
 }
 @media only screen and (max-width: 770px) {
     #search_mini_form.rwd .search-field-wrapper { float: none; }
+    .autocomplete {width: 350px !important;}
 }
 .rwd .mini-search .button,
 .rwd .ajaxsearch-category-select { height: 40px; }
@@ -87,4 +87,4 @@ p.ajaxsearch-small { margin: 0; }
 .rwd .btn-search i { display: none; }
 
 /* Mobile view fix */
-@media only screen and (min-device-width:540px) { .autocomplete { width:300px; !important} }
+@media only screen and (max-width:540px) { .autocomplete { width:250px !important;margin-left: -50px;} }

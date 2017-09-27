@@ -318,6 +318,7 @@ input:-webkit-autofill {background-color: #eee !important;}
 	padding: 3px 5px;
 	text-transform: capitalize;
 	text-align: left;
+	font-weight: bold;
 }
 .mega-dropdown-menu > li ul > li > a:hover,
 .mega-dropdown-menu > li ul > li > a:focus {
@@ -1262,8 +1263,12 @@ footer .about-stories p.about-us{
 		padding: 18px 8px;
 		text-align: right;
 	}
-	.mega-dropdown-menu {padding: inherit;padding-right: 55px;}
+	.mega-dropdown-menu {padding: inherit;padding-right: 5px;}
 	.mega-dropdown-menu > li > ul > li > a {text-align: right}
+	.mega-dropdown-menu > li > ul > li.view-all {    border-top: inherit;
+		border-bottom: 1px solid #eee;
+		padding-left: 5px;
+		margin-top: inherit;}
 	.mega-menu-wapper li a span {float: right;margin-top: -5px;margin-left: 10px;}
 
 	.navbar-toggle {background-color: #dca73c;}

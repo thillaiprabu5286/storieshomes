@@ -37,17 +37,45 @@
 
     /*mega menu*/
     jQuery(document).ready(function(){
-      jQuery(".dropdown").click(
+      jQuery(".dropdown").hover(
           function() {
-              jQuery('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
+              jQuery('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).show();
               jQuery(this).toggleClass('open');
           },
           function() {
-              jQuery('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
+              jQuery('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).hide();
               jQuery(this).toggleClass('open');
           }
       );
 
+      /*
+      var trigger = jQuery('.hamburger'),
+            overlay = jQuery('.overlay'),
+            isClosed = false;
+
+        trigger.click(function () {
+            hamburger_cross();
+        });
+
+        function hamburger_cross() {
+
+            if (isClosed == true) {
+                overlay.hide();
+                trigger.removeClass('is-open');
+                trigger.addClass('is-closed');
+                isClosed = false;
+            } else {
+                overlay.show();
+                trigger.removeClass('is-closed');
+                trigger.addClass('is-open');
+                isClosed = true;
+            }
+        }
+
+        jQuery('[data-toggle="offcanvas"]').click(function () {
+            jQuery('#wrapper').toggleClass('toggled');
+        });
+        */
     });
 
 
