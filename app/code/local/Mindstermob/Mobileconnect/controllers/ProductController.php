@@ -82,6 +82,35 @@ class Mindstermob_Mobileconnect_ProductController extends Mage_Core_Controller_F
          $this->getResponse()->clearHeaders()->setHeader('Content-type','application/json',true);
           $this->getResponse()->setBody($out);
     }
+    public function addReviewAction(){
+        $json = array('success' => false, 'product' => array());
+        $model = Mage::getModel('mobileconnect/products'); 
+        $params =json_decode(file_get_contents('php://input'));
+        if($params->product_id != '' && $params->product_id != ''){
+            $product_id = $params->product_id;
+            $customer_id = $params->customer_id;
+            $out = $model->addReview($product_id,$customer_id,$params->data);
+            if($out == "saved"){
+                $json = array('success' => true, 'message' => "saved successfully");
+            }else{
+                $json = array('success' => false, 'message' => $out);
+            }
+            
+             $this->getResponse()->clearHeaders()->setHeader('Content-type','application/json',true);
+             $this->getResponse()->setBody(json_encode($json));
+
+
+
+            }else{
+                $json = array('success' => false, 'message' => "parameter missing");
+               // echo json_encode($json);
+                $this->getResponse()->clearHeaders()->setHeader('Content-type','application/json',true);
+               $this->getResponse()->setBody(json_encode($json));
+
+            }
+        
+        
+    }
     public function detailsAction()
     {
            $model = Mage::getModel('mobileconnect/products'); 
@@ -176,5 +205,60 @@ class Mindstermob_Mobileconnect_ProductController extends Mage_Core_Controller_F
          $this->getResponse()->setBody($out); 
          
      }
+    
+     //=================AUF edit filter all products=========//
+     public function filterproductsAction(){
+         $params = json_decode(file_get_contents('php://input'));
+        $category_id = $params->category_id;
+        $material_sel = $params->material_sel;
+        $color_sel = $params->color_sel;
+        $price_upper = $params->price_upper;
+        $subcategory_id = $params->subcategory_id;
+        $model = Mage::getModel('mobileconnect/products'); 
+        
+        $out = $model->filterProducts($category_id,$subcategory_id,$material_sel,$color_sel,$price_upper);
+        //$json["reviews"] = $out;
+        $this->getResponse()->clearHeaders()->setHeader('Content-type','application/json',true);
+        $this->getResponse()->setBody(json_encode($out)); 
+}
+     //================AUF edit All reviews===============//
+     
+     public function allreviewsAction(){
+          
+        $params = json_decode(file_get_contents('php://input'));
+        $product_id = $params->product_id;
+        $model = Mage::getModel('mobileconnect/products'); 
+        
+        $out = $model->getAllreviews($product_id);
+        //$json["reviews"] = $out;
+        $this->getResponse()->clearHeaders()->setHeader('Content-type','application/json',true);
+        $this->getResponse()->setBody(json_encode($out)); 
+         
+     }
+     public function allnewarrivalsAction(){
+       
+        $params = json_decode(file_get_contents('php://input'));
+        //$product_id = $params->product_id;
+        $model = Mage::getModel('mobileconnect/products'); 
+        
+        $out = $model->getAllnewarrivals();
+        $json["new_arrivals"] = $out;
+        $this->getResponse()->clearHeaders()->setHeader('Content-type','application/json',true);
+        $this->getResponse()->setBody(json_encode($json)); 
+         
+     }
+     public function allmostviewedproductsAction(){
+       
+        $params = json_decode(file_get_contents('php://input'));
+        $product_id = $params->product_id;
+        $model = Mage::getModel('mobileconnect/products'); 
+        
+        $out = $model->getAllMostViewedProducts($product_id);
+        $json["most_viewed"] = $out;
+        $this->getResponse()->clearHeaders()->setHeader('Content-type','application/json',true);
+        $this->getResponse()->setBody(json_encode($json)); 
+         
+     }
+     //===============AUF edit All reviews===============//
     
 }

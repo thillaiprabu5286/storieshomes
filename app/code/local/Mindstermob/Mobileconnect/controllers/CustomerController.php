@@ -33,6 +33,7 @@ class Mindstermob_Mobileconnect_CustomerController extends Mage_Core_Controller_
           $email=trim($params->email);
           $passwd=trim($params->passwd);
            $model = Mage::getModel('mobileconnect/customer'); 
+           
            $out=$model->customer_register($firstname,$lastname,$email,$passwd);
             $this->getResponse()->clearHeaders()->setHeader('Content-type','application/json',true);
              $this->getResponse()->setBody($out);

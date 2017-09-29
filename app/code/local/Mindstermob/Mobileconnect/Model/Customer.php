@@ -67,8 +67,9 @@ class Mindstermob_Mobileconnect_Model_Customer extends Mage_Core_Model_Abstract 
                       ->setEmail($email)
                       ->setPassword($passwd);
 
-         
+     
               $customer->save();
+              
               //================ sending E mail====================//
               if ($customer->getWebsiteId())
                     {
@@ -93,7 +94,7 @@ class Mindstermob_Mobileconnect_Model_Customer extends Mage_Core_Model_Abstract 
           }
           catch (Exception $e) {
               $json["status"]="error";
-              $json["message"]=$e->getMessage();
+              $json["message"]=$e->getMessage();   
               //echo $e->getMessage();
              // Zend_Debug::dump(($e->getMessage()));
            
@@ -762,6 +763,7 @@ $customer = Mage::getModel('customer/customer')
                                $json['data']["postcode"]=$address_arr["postcode"];
                                $json['data']["phone_mobile"]=$address_arr["telephone"];
                                $json['data']["id_address"]=$addressId;
+                                $json['data']["street"]=$address_arr["street"];
                                //$json['data']["alias"]="Shipping address";
 
                                $countryCollection = Mage::getModel('directory/country_api')->items();
