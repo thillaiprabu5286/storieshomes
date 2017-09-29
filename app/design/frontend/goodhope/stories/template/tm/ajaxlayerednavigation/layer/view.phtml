@@ -1,0 +1,82 @@
+<?php if($this->canShowBlock()): ?>
+    <?php $style = Mage::getStoreConfig('ajaxlayerednavigation/left/style') ?>
+    <div class="block block-layered-nav <?php if ($style == '4') : ?> ajaxlayerednav-menu<?php endif; ?>">
+    <div class="block-title">
+        <strong>
+            <span>
+                <?php echo Mage::helper('ajaxlayerednavigation')->__('Shop By') ?>
+            </span>
+        </strong>
+    </div>
+    <div class="block-content">
+        <?php echo $this->getStateHtml() ?>
+        <?php if($this->canShowOptions()): ?>
+            <dl id="narrow-by-list">
+                <?php $_filters = $this->getFilters() ?>
+                <?php foreach ($_filters as $_filter): ?>
+                    <?php if ($_filter->getType() == 'ajaxlayerednavigation/layer_filter_name') : ?>
+                        <dt><?php echo $this->__('Filter By Name') ?></dt>
+                        <dd><?php echo $_filter->_toHtml() ?></dd>
+                    <?php endif; ?>
+                    <?php if($_filter->getItemsCount()): ?>
+                        <?php if($_filter->getType() == "ajaxlayerednavigation/layer_filter_category") : ?>
+                            <dt><?php echo $this->__($_filter->getName()) ?></dt>
+                            <dd><?php echo $_filter->getHtml() ?></dd>
+                            <?php continue; ?>
+                        <?php endif; ?>
+                        <?php if($_filter->getType() != "ajaxlayerednavigation/layer_filter_category") : ?>
+                            <?php if ($_filter->getAttributeModel()) : ?>
+                            <?php
+                                if ('price' == $_filter->getAttributeModel()->getFrontendInput()) {
+                                    if ("price" !== $_filter->getAttributeModel()->getAttributeCode()) {
+                                        if (!(int)$_filter->getMinValue() && !(int)$_filter->getMaxValue()) {
+                                            continue;
+                                        }
+                                    }
+                                }
+                            ?>
+                        <?php endif; ?>
+                        <dt>
+                            <?php if ($style == '3') : ?>
+                                <span class="ajaxlayered-expander">
+                                    <?php echo $this->__($_filter->getName()) ?>
+                                </span>
+                            <?php else : ?>
+                                <?php echo $this->__($_filter->getName()) ?>
+                            <?php endif; ?>
+                        </dt>
+                        <?php $code = ''; ?>
+                        <?php if($_filter->getType() != "ajaxlayerednavigation/layer_filter_category") : ?>
+                            <?php
+                                if ($_filter->getAttributeModel()) {
+                                    $code = $_filter->getAttributeModel()->getFrontendInput();
+                                }
+                            ?>
+                        <?php endif; ?>
+                        <?php if ('price' == $code) : ?>
+                            <dd class="ajaxlayerednavigation-price"><?php echo $_filter->getHtml() ?></dd>
+                        <?php else : ?>
+                            <dd><?php echo $_filter->getHtml() ?></dd>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </dl>
+            <script type="text/javascript">decorateDataList('narrow-by-list')</script>
+            <script type="text/javascript">
+            jQuery(function($){
+                $(".block-layered-nav dt").click(function(){
+                    if($(this).next("dd").css("display") == "none"){
+                        $(this).next("dd").slideDown(200);
+                        $(this).removeClass("closed");
+                    } else {
+                        $(this).next("dd").slideUp(200);
+                        $(this).addClass("closed");
+                    }
+                });
+            });
+        </script>
+        <?php endif; ?>
+    </div>
+    </div>
+<?php endif; ?>

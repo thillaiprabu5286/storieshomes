@@ -1,0 +1,18 @@
+<?php
+/**
+ *
+ * @category   Rohde
+ * @package    Rohde_Onestepcheckout
+ * @author     Support <j.rohde@nederland.live>
+ */
+?>
+<label for="<?php echo $this->getFieldId('account_type')?>"<?php if ($this->isRequired()) echo ' class="required"' ?>><?php if ($this->isRequired()) echo '<em>*</em>' ?><?php echo $this->__('Account Type') ?></label>
+<div class="input-box">
+    <select onchange="setAccountTypeArea(this.options[this.selectedIndex].innerHTML)" id="<?php echo $this->getFieldId('account_type')?>" name="<?php echo $this->getFieldName('account_type')?>" title="<?php echo $this->__('Account Type') ?>"<?php if ($this->isRequired()):?> class="validate-select"<?php endif; ?> <?php echo $this->getFieldParams() ?>>
+        <?php $options = Mage::getResourceSingleton('customer/customer')->getAttribute('account_type')->getSource()->getAllOptions();?>
+        <?php $value = $this->getAccountType();?>
+        <?php foreach ($options as $option):?>
+            <option value="<?php echo $option['value'] ?>"<?php if ($option['value'] == $value) echo ' selected="selected"' ?>><?php echo $option['label'] ?></option>
+        <?php endforeach;?>
+    </select>
+</div>

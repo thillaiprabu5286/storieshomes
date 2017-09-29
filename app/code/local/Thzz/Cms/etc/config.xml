@@ -12,6 +12,10 @@
                     <label>Not so Local Page</label>
                     <template>page/not-so-local.phtml</template>
                 </not_so_local>
+                <goodhope_custom_homepage>
+                    <label>Goodhope Homepage</label>
+                    <template>page/homepage.phtml</template>
+                </goodhope_custom_homepage>
             </layouts>
         </page>
     </global>

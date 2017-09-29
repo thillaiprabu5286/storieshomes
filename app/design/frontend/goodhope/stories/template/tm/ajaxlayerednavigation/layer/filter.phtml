@@ -1,0 +1,90 @@
+<?php $_items = $this->getItems(); ?>
+<!-- Desktop Layered Navigation -->
+<?php $nofollow = Mage::getStoreConfig('ajaxlayerednavigation/seo/nofollow'); ?>
+<?php if (count($_items) > 0 && $_items[0]->getDisplay() == 3) : ?>
+        <ol>
+            <select class="ajax-option-select" style="width: 100%">
+                <option value=""><?php echo Mage::helper('ajaxlayerednavigation')->__('Please Select...') ?></option>
+
+                <?php foreach ($_items as $_item) : ?>
+                    <?php if ($_item->getCount() || $_item->getActive()) : ?>
+                    <option value="<?php if (!$_item->getActive()) { echo $this->urlEscape($_item->getUrl()); } else { echo ''; } ?>"> <?php  echo $_item->getLabel() ?>
+                        <?php
+                            if (!$_item->getActive() && Mage::getStoreConfig('ajaxlayerednavigation/general/show_quantity') && $_item->getCount() > 0) {
+                                if ($this->getActiveFilter()) {
+                                    echo '(+' . $_item->getCount() . ')';
+                                } else {
+                                    echo '(' . $_item->getCount() . ')';
+                                }
+                            }
+                        ?>
+                    </option>
+                    <?php endif; ?>
+                <?php endforeach ?>
+            </select>
+        </ol>
+<?php elseif (count($_items) > 0 && $_items[0]->getDisplay() == 2) : ?>
+    <ol>
+        <?php foreach ($_items as $_item) : ?>
+            <?php if ($_item->getImage()) : ?>
+                <?php if ($_item->getCount() > 0) : ?>
+                <li class="ajaxlayerednavigation-image-active">
+                    <a class="ajaxlayerednavigation-img-link" href="<?php echo $this->urlEscape($_item->getUrl()) ?>"<?php if ($nofollow): ?> rel="nofollow"<?php endif; ?>>
+                        <img class="ajaxlayerednavigation-img" src="<?php echo Mage::getBaseUrl('media') . 'ajaxlayerednavigation/' . $_item->getImage() ?>" alt="<?php echo $_item->getLabel() ?>" title="<?php echo $_item->getLabel() ?>" />
+                    </a>
+                </li>
+                <?php else : ?>
+                    <?php $li = false; ?>
+                    <li class="ajaxlayerednavigation-image">
+                        <img class="ajaxlayerednavigation-img" src="<?php echo Mage::getBaseUrl('media') . 'ajaxlayerednavigation/' . $_item->getImage() ?>" alt="<?php echo $this->urlEscape($_item->getLabel()) ?>" title="<?php echo $_item->getLabel() ?>" />
+                    </li>
+                <?php endif ?>
+            <?php endif ?>
+        <?php endforeach ?>
+    </ol>
+    <?php if (Mage::getStoreConfig('ajaxlayerednavigation/left/style') == 1) : ?>
+        <a href="#" class="see-all-show" style="float: right; display: none;"><?php echo Mage::helper('ajaxlayerednavigation')->__('More...'); ?></a>
+        <a href="#" class="see-all-hide" style="float: right; display: none;"><?php echo Mage::helper('ajaxlayerednavigation')->__('Hide'); ?></a>
+    <?php endif; ?>
+<?php else : ?>
+    <?php $searchCount = Mage::getStoreConfig('ajaxlayerednavigation/general/search_count') ?>
+    <?php if (count($_items) > $searchCount && $searchCount > 0) : ?>
+        <input type="text" class="tm_options_search" placeholder="<?php echo Mage::helper('ajaxlayerednavigation')->__('Search…');?>">
+    <?php endif; ?>
+    <ol>
+    <?php foreach ($_items as $_item) : ?>
+        <?php $li = false; ?>
+        <?php if (!$_item->getActive() && $_item->getCount() > 0) : ?>
+            <?php $li = true; ?>
+            <li>
+            <input type="checkbox" class="ajax-option-checkbox" name="option<?php echo $this->urlEscape($_item->getValue()) ?>" value="<?php if (!$_item->getActive()) { echo $this->urlEscape($_item->getUrl()); } else { echo $this->urlEscape($_item->getRemoveUrl()); } ?>" <?php if ($_item->getActive()) : ?> checked="checked"<?php endif; ?> >
+            <a href="<?php echo $this->urlEscape($_item->getUrl()) ?>" class="ajax-option-link" <?php if ($nofollow): ?>rel="nofollow"<?php endif; ?>><?php echo $_item->getLabel() ?></a>
+        <?php elseif ($_item->getActive()) : ?>
+            <?php $li = true; ?>
+            <li>
+            <input type="checkbox" class="ajax-option-checkbox" name="option<?php echo $this->urlEscape($_item->getValue()) ?>" value="<?php if (!$_item->getActive()) { echo $this->urlEscape($_item->getUrl()); } else { echo $this->urlEscape($_item->getRemoveUrl()); } ?>" <?php if ($_item->getActive()) : ?> checked="checked"<?php endif; ?> >
+            <?php echo $_item->getLabel() ?>
+        <?php endif; ?>
+        <?php if (!$_item->getActive() && Mage::getStoreConfig('ajaxlayerednavigation/general/show_quantity') && $_item->getCount() > 0) : ?>
+            <?php
+                if ($this->getActiveFilter()) {
+                    if ($_item->getMinus()) {
+                        echo '<span class="ajaxlayerednavigation-count"></span>';
+                    } else {
+                        echo '<span class="ajaxlayerednavigation-count-plus">(+' . $_item->getCount() . ')</span>';
+                    }
+                } else {
+                    echo '<span class="ajaxlayerednavigation-count">(' . $_item->getCount() . ')</span>';
+                }
+            ?>
+        <?php endif; ?>
+        <?php if ($li) : ?>
+            </li>
+        <?php endif; ?>
+    <?php endforeach ?>
+    </ol>
+    <?php if (Mage::getStoreConfig('ajaxlayerednavigation/left/style') == 1) : ?>
+        <a href="#" class="see-all-show" style="float: right; display: none;"><?php echo Mage::helper('ajaxlayerednavigation')->__('More...'); ?></a>
+        <a href="#" class="see-all-hide" style="float: right; display: none;"><?php echo Mage::helper('ajaxlayerednavigation')->__('Hide'); ?></a>
+    <?php endif ?>
+<?php endif ?>

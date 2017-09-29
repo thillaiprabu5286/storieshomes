@@ -1,0 +1,18 @@
+<?php
+    $from = $this->getMinValue();
+    $to = $this->getMaxValue();
+    if ($this->getMinValue() == $this->getMaxValue()) {
+        $from = $this->getMinValue() - 1;
+    }
+    $defaulValue = $from . ';' . $to;
+    $urlVar = $this->getUrlVar();
+?>
+<ul class="aln-mobile-options">
+    <input
+    	type="text"
+    	id="ajaxlayerednavigation-<?php echo $urlVar ?>"
+    	class="ajaxlayerednavigation-sliders"
+        data-var="<?php echo $urlVar ?>"
+    	name="rangeName"
+    	value="<?php echo $defaulValue ?>" />
+</ul>

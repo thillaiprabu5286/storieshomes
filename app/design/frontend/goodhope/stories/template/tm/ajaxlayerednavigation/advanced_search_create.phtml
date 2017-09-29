@@ -1,0 +1,77 @@
+<img 
+    id="ajax-loading-layer" 
+    style="display: none" 
+    src="<?php echo Mage::getBaseUrl('media') . 'ajaxlayerednavigation/' . Mage::getStoreConfig('ajaxlayerednavigation/general/layered_loader')?>" 
+    alt="Loading..." />
+<img 
+    id="ajax-loading-grid" 
+    style="display: none" 
+    src="<?php echo Mage::getBaseUrl('media') . 'ajaxlayerednavigation/' . Mage::getStoreConfig('ajaxlayerednavigation/general/list_loader')?>" 
+    alt="Loading..." />
+<?php
+    $baseRootId = Mage::app()->getStore()->getRootCategoryId();
+    $currentCategoryId = Mage::registry('current_category')->getId();
+    if (Mage::getStoreConfig('ajaxlayerednavigation/seo/enabled')) {
+        if ($this->isSeoHome() || $this->isHome()) {
+            $seoPath = $this->getSeoCategoryUrl();
+            $seoCategory = Mage::getBaseUrl() . $seoPath . Mage::getStoreConfig('ajaxlayerednavigation/seo/suffix').'/f';
+        } else {
+            $seoPath = $this->getSeoCategoryUrl();
+            $seoCategory = Mage::getBaseUrl() . $seoPath . '/' . Mage::getStoreConfig('ajaxlayerednavigation/seo/suffix');
+        }
+    } else {
+        $seoPath = null;
+        $seoCategory = null;
+    }
+
+    if ($this->isCatalogSearchPage()) {
+        $categoryUrl = Mage::getUrl('catalogsearch/result/index');
+    } elseif($this->isAdvancedSearchPage()) {
+        $categoryUrl = Mage::getUrl('catalogsearch/advanced/result');
+    } elseif ((int)$baseRootId == (int)$currentCategoryId) {
+        if (Mage::getStoreConfig('ajaxlayerednavigation/seo/enabled')) {
+            $shopPath = 'ajaxlayerednavigation/' . Mage::getStoreConfig('ajaxlayerednavigation/seo/suffix').'/f/';
+            $categoryUrl = Mage::getUrl($shopPath);
+        } else {
+            $categoryUrl = Mage::getUrl('ajaxlayerednavigation/layered/view');
+        }
+    } else {
+        $categoryUrl = Mage::registry('current_category')->getUrl();
+    }
+    $searchQuery = '';
+    if (Mage::getStoreConfig('ajaxlayerednavigation/seo/enabled')) {
+        if ($this->isCatalogSearchPage()) {
+            $searchQuery = $this->getRequest()->getParam('q');
+        }
+    }
+?>
+
+<script type="text/javascript">
+	var ajaxlayerednavigation;
+    function initAjaxLayeredNavigation(){
+        ajaxlayerednavigation = new LayeredNavigation({
+            'slider'         : '<?php echo Mage::getStoreConfig('ajaxlayerednavigation/range/slider') ?>',
+            'fixedHeight'    : '<?php echo Mage::getStoreConfig('ajaxlayerednavigation/left/height') ?>',
+            'seoUrls'        : '0',
+            'seoCategory'    : '<?php echo $seoCategory ?>',
+            'seoSuffix'      : '<?php echo Mage::getStoreConfig('catalog/seo/category_url_suffix') ?>',
+            'minRange'       : '<?php echo $this->getMinRange() ?>',
+            'maxRange'       : '<?php echo $this->getMaxRange() ?>',
+            'minPrice'       : '<?php echo $this->getMinPrice() ?>',
+            'maxPrice'       : '<?php echo $this->getMaxPrice() ?>',
+            'mediaUrl'       : '<?php echo Mage::getBaseUrl('media')?>',
+            'categoryUrl'    : '<?php echo $categoryUrl ?>',
+            'useAjax'        : '0',
+            'countOption'    : '<?php echo Mage::getStoreConfig('ajaxlayerednavigation/general/display_count') ?>',
+            'isHome'         : '<?php echo $this->isHome()?>',
+            'isCatalogSearch': '<?php echo $this->isCatalogSearchPage() ?>',
+            'isAdvancedSearch': '<?php echo $this->isAdvancedSearchPage() ?>',
+            'searchQuery'    : '<?php echo $searchQuery ?>',
+            'layerStyle'     : '<?php echo Mage::getStoreConfig('ajaxlayerednavigation/left/style') ?>',
+            'priceErrorText' : '<?php echo Mage::helper('ajaxlayerednavigation')->__('Sorry but requested price range is invalid.') ?>',
+        });
+    }
+    Event.observe(window, 'load', function() { //KB927917 fix
+        initAjaxLayeredNavigation();
+    });
+</script>

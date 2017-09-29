@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <translate>
+        <modules>
+            <TM_AjaxLayeredNavigation>
+                <files>
+                    <default>TM_AjaxLayeredNavigation.csv</default>
+                </files>
+            </TM_AjaxLayeredNavigation>
+        </modules>
+    </translate>
+    <menu>
+        <templates_master>
+            <title>Templates Master</title>
+            <sort_order>71</sort_order>
+            <children>
+                <ajaxlayerednavigation translate="title" module="ajaxlayerednavigation">
+                    <title>Ajax Layered Navigation</title>
+                    <sort_order>105</sort_order>
+                    <children>
+                        <filters translate="title">
+                            <title>Manage Filters</title>
+                            <action>adminhtml/ajaxlayerednavigation_filters/index</action>
+                            <sort_order>10</sort_order>
+                        </filters>
+                        <range translate="title">
+                            <title>Manage Ranges</title>
+                            <action>adminhtml/ajaxlayerednavigation_range/index</action>
+                            <sort_order>20</sort_order>
+                        </range>
+                    </children>
+                </ajaxlayerednavigation>
+            </children>
+        </templates_master>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <ajaxlayerednavigation translate="title" module="ajaxlayerednavigation">
+                                        <title>Ajax Layered Navigation Section</title>
+                                    </ajaxlayerednavigation>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <templates_master>
+                        <title>Templates Master</title>
+                        <sort_order>71</sort_order>
+                        <children>
+                            <ajaxlayerednavigation translate="title" module="ajaxlayerednavigation">
+                                <title>Ajax Layered Navigation</title>
+                                <sort_order>105</sort_order>
+                                <children>
+                                    <filters translate="title">
+                                        <title>Manage Filters</title>
+                                        <sort_order>10</sort_order>
+                                    </filters>
+                                    <range translate="title">
+                                        <title>Manage Ranges</title>
+                                        <sort_order>20</sort_order>
+                                    </range>
+                                </children>
+                            </ajaxlayerednavigation>
+                        </children>
+                    </templates_master>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+ </config>

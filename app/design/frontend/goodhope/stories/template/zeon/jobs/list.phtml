@@ -1,0 +1,77 @@
+<?php
+/**
+ * zeonsolutions inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.zeonsolutions.com/shop/license-community.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * This package designed for Magento Community edition
+ * =================================================================
+ * zeonsolutions does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * zeonsolutions does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   design
+ * @package    base_default
+ * @version    0.0.1
+ * @copyright  @copyright Copyright (c) 2013 zeonsolutions.Inc. (http://www.zeonsolutions.com)
+ * @license    http://www.zeonsolutions.com/shop/license-community.txt
+ */
+?>
+<?php
+$_jobsCollection = $this->getJobsCollection();
+$processor = Mage::helper('zeon_jobs')->getBlockTemplateProcessor();
+?>
+<div id="messages_jobs_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<?php if ($_category = $this->getCurrentCategory()): ?>
+    <div class="page-title category-title">
+        <h1><?php echo $this->htmlEscape($_category->getTitle()) ?></h1>
+    </div>
+    <div class="category-description std">
+        <?php echo $processor->filter($_category->getDescription()) ?>
+    </div>
+<?php else: ?>
+    <div class="">
+        <h1><?php echo $this->__('Careers') ?></h1>
+    </div>
+<div class="careers-textlabel">
+    Send Your CV at hrm@zeitimpex.com. See current openings for the following positions. 
+</div>
+<?php endif; ?>
+<?php if (!$_jobsCollection->count()): ?>
+    <p class="note-msg"><?php echo $this->__('There are no jobs matching the selection.') ?></p>
+<?php else: ?>
+    <div class="careers-wrapper grid">
+        <?php /*echo $this->getToolbarHtml()*/ ?>
+        <?php echo $this->getToolbarBlock()->setHidePager(true)->toHtml();?>
+        <?php $_iterator = 0; ?>
+         <?php foreach ($_jobsCollection as $_job): ?>
+             <div class="careers-blocks grid-item">
+                 <h3><?php  echo $this->htmlEscape($_job->getTitle()) ?></h3>
+                <ul>
+                    <!--<li> <?php echo $processor->filter($_job->getShortDescription()) ?></li>-->
+                   <li>Job Code: <?php  echo $this->htmlEscape($_job->getJob_code()) ?></li>
+                    <li><?php echo $processor->filter($_job->getShortDescription()) ?></li>
+                </ul>
+                
+                     <?php echo $processor->filter($_job->getDescription()) ?>
+                
+                </div>
+         <?php endforeach; ?>
+        <script type="text/javascript">decorateList('jobs-list', 'none-recursive')</script>
+        <?php /*echo $this->getToolbarHtml()*/ ?>
+        <?php echo $this->getToolbarBlock()->setHidePager(false)->toHtml();?>
+    </div>
+    
+    
+    
+<?php endif; ?>
+

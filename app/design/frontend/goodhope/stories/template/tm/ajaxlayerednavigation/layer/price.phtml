@@ -1,0 +1,40 @@
+<?php if (Mage::getStoreConfig('ajaxlayerednavigation/range/slider')) : ?>
+    <?php
+        $from = $this->getMinPrice();
+        $to = $this->getMaxPrice();
+        if ($this->getMinPrice() == $this->getMaxPrice()) {
+            $from = $this->getMinPrice() - 1;
+        }
+        $defaulValue = $from . ';' . $to;
+        $urlVar = $this->getUrlVar();
+    ?>
+
+<input type="text" id="ajaxlayerednavigation-<?php echo $urlVar ?>" data-var="<?php echo $urlVar ?>" class="ajaxlayerednavigation-sliders" name="rangeName" value="<?php echo $defaulValue ?>" />
+<?php else : ?>
+    <ol>
+        <?php foreach ($this->getItems() as $_item) : ?>
+            <li>
+                <?php if (!$_item->getActive() && $_item->getCount() > 0) : ?>
+                    <input type="checkbox" class="ajax-option-checkbox" name="option<?php echo $_item->getValue() ?>" value="<?php if (!$_item->getActive()) { echo $_item->getUrl(); } else { echo $_item->getRemoveUrl(); } ?>" <?php if ($_item->getActive()) : ?> checked="checked"<?php endif; ?> >
+                    <a href="<?php echo $this->urlEscape($_item->getUrl()) ?>" class="ajax-option-link"><?php echo $_item->getLabel() ?></a>
+                <?php elseif ($_item->getActive()) : ?>
+                    <input type="checkbox" class="ajax-option-checkbox" name="option<?php echo $_item->getValue() ?>" value="<?php if (!$_item->getActive()) { echo $_item->getUrl(); } else { echo $_item->getRemoveUrl(); } ?>" <?php if ($_item->getActive()) : ?> checked="checked"<?php endif; ?> >
+                    <?php echo $_item->getLabel() ?>
+                <?php elseif ((int)$_item->getCount() == 0) : ?>
+                    <input type="checkbox" class="ajax-option-checkbox" name="option<?php echo $_item->getValue() ?>" value="" DISABLED>
+                    <?php echo $_item->getLabel() ?>
+                <?php endif; ?>
+                <?php if (!$_item->getActive() && Mage::getStoreConfig('ajaxlayerednavigation/general/show_quantity') && $_item->getCount() > 0) : ?>
+                    <?php if ($this->getActiveFilter()) {
+                        echo '<span class="ajaxlayerednavigation-count-plus">(+' . $_item->getCount() . ')</span>';
+                    } else {
+                        echo '<span class="ajaxlayerednavigation-count">(' . $_item->getCount() . ')</span>';
+                    }
+                    ?>
+                <?php endif; ?>
+            </li>
+        <?php endforeach ?>
+    </ol>
+    <a href="#" class="see-all-show" style="float: right; display: none;"><?php echo Mage::helper('ajaxlayerednavigation')->__('More...'); ?></a>
+    <a href="#" class="see-all-hide" style="float: right; display: none;"><?php echo Mage::helper('ajaxlayerednavigation')->__('Hide'); ?></a>
+<?php endif; ?>
