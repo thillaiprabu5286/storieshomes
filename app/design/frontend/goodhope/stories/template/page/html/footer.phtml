@@ -1,0 +1,63 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<!--<div class="footer-container">
+    <div class="footer">
+        <?php /*echo $this->getChildHtml() */?>
+        <p class="bugs"><?php /*echo $this->__('Help Us to Keep Magento Healthy') */?> - <a href="http://www.magentocommerce.com/bug-tracking" onclick="this.target='_blank'"><strong><?php /*echo $this->__('Report All Bugs') */?></strong></a> <?php /*echo $this->__('(ver. %s)', Mage::getVersion()) */?></p>
+        <address><?php /*echo $this->getCopyright() */?></address>
+    </div>
+</div>-->
+
+<!-- footer -->
+<footer>
+    <div class="container">
+        <div class="footer-top">
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-contact-block')->toHtml(); ?>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                        <?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe.phtml')->toHtml(); ?>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-social-block')->toHtml(); ?>
+                </div>
+            </div>
+        </div>
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-about-block')->toHtml(); ?>
+
+        <?php echo $this->getChildHtml('custom_footer_links') ?>
+
+        <div class="footer-bottom">
+            <p>Copyright 2017 Stories Homes furniture Store. All Rights Reserved</p>
+        </div>
+
+    </div>
+</footer>
+
+<script src="<?php echo $this->getSkinUrl('js/owl.carousel.min.js') ?>"></script>
+<script src="<?php echo $this->getSkinUrl('js/common.js') ?>"></script>

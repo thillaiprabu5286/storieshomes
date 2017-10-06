@@ -1,0 +1,220 @@
+<?php
+    $currencySymbol = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol();
+    // determinate currency symbol position
+    if (strpos(Mage::helper('core')->currency('0', true, false), $currencySymbol) > 0) {
+        $prefixSymbol = '';
+        $postfixSymbol = ' '.$currencySymbol;
+    } else {
+        $prefixSymbol = $currencySymbol;
+        $postfixSymbol = '';
+    }
+?>
+<script type="text/javascript">
+    function initAjaxLayeredNavigationSliders() {
+        jQuery('.ajaxlayerednavigation-sliders').each(function() {
+            var prices = jQuery(this).val(),
+                priceData = prices.split(';'),
+                from = priceData[0],
+                to = priceData[1],
+                prefixSymbol = '',
+                postfixSymbol = '',
+                id = jQuery(this).attr('id'),
+                requestVar = id.substr(22);
+            if ('price' == requestVar) {
+                prefixSymbol = '<?php echo $prefixSymbol?>';
+                postfixSymbol = '<?php echo $postfixSymbol?>';
+            }
+            ajaxlayerednavigation.slidersValues[requestVar] = prices;
+            min = priceData[0];
+            max = priceData[1];
+            jQuery("#" + id).ionRangeSlider({
+                min: parseInt(min),
+                max: parseInt(max),
+                from: parseInt(from),
+                to: parseInt(to),
+                type: "double",
+                step: 1,
+                prefix: prefixSymbol,
+                postfix: postfixSymbol,
+                prettify: true,
+                grid: true,
+                onFinish: function(obj) {
+                    var isAjax     = '<?php echo Mage::getStoreConfig("ajaxlayerednavigation/general/use_ajax") ?>';
+                    var isAdvanced = '<?php echo Mage::helper('ajaxlayerednavigation')->isAdvancedSearchPage() ?>';
+                    var currentUrl = jQuery(location).attr('href');
+                    if ('1' == isAjax && !isAdvanced) {
+                        updateUrlHash(jQuery(obj.input[0]).attr('data-var'), obj.from, obj.to);
+                        ajaxlayerednavigation.checkUrlHash();
+                    } else if(isAdvanced){
+                        var url = updateAdvancedURLParameter(window.location.href, jQuery(obj.input[0]).attr('data-var'), obj.from + ',' + obj.to);
+                        window.location.href = url;
+                    } else {
+                        var url = updateURLParameter(window.location.href, jQuery(obj.input[0]).attr('data-var'), obj.from + ',' + obj.to);
+                        window.location.href = url;
+                    }
+                }
+            });
+        });
+     }
+    Event.observe(window, 'load', function() { //KB927917 fix
+        initAjaxLayeredNavigationSliders();
+    });
+
+    function updateAjaxLayeredSliders(){
+        jQuery('.ajaxlayerednavigation-sliders').each(function() {
+            var prices = jQuery(this).val(),
+                priceData = prices.split(';'),
+                from = parseInt(priceData[0]),
+                to = parseInt(priceData[1]),
+                prefixSymbol = '',
+                postfixSymbol = '',
+                id = jQuery(this).attr('id'),
+                requestVar = id.substr(22);
+
+            if ('price' == requestVar) {
+                prefixSymbol = '<?php echo $prefixSymbol?>';
+                postfixSymbol = '<?php echo $postfixSymbol?>';
+            }
+            var maxMin = ajaxlayerednavigation.slidersValues[requestVar],
+                maxPriceData = "",
+                minValue = 0,
+                maxValue = 0;
+            if (!maxMin) {
+                minValue = from;
+                maxValue = to;
+            } else {
+                maxPriceData = maxMin.split(';');
+                minValue = maxPriceData[0];
+                maxValue = maxPriceData[1];
+            }
+
+            jQuery(this).val(maxMin);
+
+            var slider = jQuery("#" + id).ionRangeSlider({
+                min: parseInt(minValue),
+                max: parseInt(maxValue),
+                from: parseInt(from),
+                to: parseInt(to),
+                type: "double",
+                step: 1,
+                prefix: prefixSymbol,
+                postfix: postfixSymbol,
+                prettify: true,
+                grid: true,
+                onFinish: function(obj) {
+                    var isAjax     = '<?php echo Mage::getStoreConfig("ajaxlayerednavigation/general/use_ajax") ?>';
+                    var currentUrl = jQuery(location).attr('href');
+                    if ('1' == isAjax) {
+                        updateUrlHash(jQuery(obj.input[0]).attr('data-var'), obj.from, obj.to);
+                        ajaxlayerednavigation.checkUrlHash();
+                    } else if(isAdvanced){
+                        var url = updateAdvancedURLParameter(window.location.href, jQuery(obj.input[0]).attr('data-var'), obj.from + ',' + obj.to);
+                        window.location.href = url;
+                    } else {
+                        var url = updateURLParameter(window.location.href, jQuery(obj.input[0]).attr('data-var'), obj.from + ',' + obj.to);
+                        window.location.href = url;
+                    }
+                }
+            });
+        });
+    }
+
+    function updateURLParameter(url, param, paramVal) {
+        var newAdditionalURL = "";
+        var tempArray = url.split("?");
+        var baseURL = tempArray[0];
+        var additionalURL = tempArray[1];
+        var temp = "";
+        if (additionalURL) {
+            tempArray = additionalURL.split("&");
+            for (i=0; i<tempArray.length; i++){
+                if(tempArray[i].split('=')[0] != param){
+                    newAdditionalURL += temp + tempArray[i];
+                    temp = "&";
+                }
+            }
+        }
+
+        var rows_txt = temp + "" + param + "=" + paramVal;
+        return baseURL + "?" + newAdditionalURL + rows_txt;
+    }
+
+    function updateAdvancedURLParameter(url, param, paramVal) {
+        if (ajaxlayerednavigation.home && ajaxlayerednavigation.seoUrls) {
+            if (ajaxlayerednavigation.useAjax) {
+                window.location = ajaxlayerednavigation.seoCat + ajaxlayerednavigation.seoSuffix + '#' + requestVar + '=' + from + ',' + to;
+            } else {
+                window.location = ajaxlayerednavigation.seoCat + ajaxlayerednavigation.seoSuffix + '?' + requestVar + '=' + from + ',' + to;
+            }
+            return false;
+        } else if (ajaxlayerednavigation.home){
+            if (ajaxlayerednavigation.useAjax) {
+                window.location = this.categoryUrl + '#' + requestVar + '=' + from + ',' + to;
+            } else {
+                window.location = this.categoryUrl + '?' + requestVar + '=' + from + ',' + to;
+            }
+            return false;
+        }
+
+        url = decodeURIComponent(url);
+        var newAdditionalURL = "";
+        var tempArray = url.split("?");
+        var baseURL = tempArray[0];
+        var additionalURL = tempArray[1];
+        var temp = "";
+        if (additionalURL) {
+            tempArray = additionalURL.split("&");
+            for (i=0; i<tempArray.length; i++){
+                if(tempArray[i].split('=')[0] != param+'[from]' && tempArray[i].split('=')[0] != param+'[to]'){
+                    newAdditionalURL += temp + tempArray[i];
+                    temp = "&";
+                }
+            }
+        }
+        var params = paramVal.split(',');
+        var rows_txt = temp + "" + param + '[from]' + "=" + params[0];
+        rows_txt += temp + "" + param + '[to]' + "=" + params[1];
+        return baseURL + "?" + newAdditionalURL + rows_txt;
+    }
+
+    function updateUrlHash(requestVar, from, to) {
+        var hash = location.hash,
+            newHash = '#',
+            hashParams = [],
+            i = 0
+            hashLenght = 0;
+        if (-1 != hash.indexOf(requestVar + "=")) {
+            hash = hash.substr(1, hash.length);
+            hashParams = hash.split('&');
+            hashLenght = hashParams.length;
+
+            hashParams.each(function(param){
+                if (-1 !== param.indexOf(requestVar)) {
+                    newHash += requestVar + '=' + from + ',' + to;
+                } else {
+                   newHash += param;
+                }
+                i++;
+
+                if (i != hashLenght) { newHash += "&"; }
+            });
+
+            window.location.hash = newHash;
+        } else {
+            if (ajaxlayerednavigation.home && ajaxlayerednavigation.seoUrls) {
+                if (ajaxlayerednavigation.useAjax) {
+                    window.location = ajaxlayerednavigation.seoCat + ajaxlayerednavigation.seoSuffix + '#' + requestVar + '=' + from + ',' + to;
+                } else {
+                    window.location = ajaxlayerednavigation.seoCat + ajaxlayerednavigation.seoSuffix + '?' + requestVar + '=' + from + ',' + to;
+                }
+            } else {
+                if (hash.length > 1) {
+                    window.location.hash = hash + '&' + requestVar + '=' + from + ',' + to;
+                } else {
+                    window.location.hash = requestVar + '=' + from + ',' + to;
+                }
+            }
+
+        }
+    }
+</script>

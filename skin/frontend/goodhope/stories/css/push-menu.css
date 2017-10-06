@@ -1,0 +1,12 @@
+
+/*layarbahtera fonts*/
+@font-face {
+    font-family: 'layarbahteraddw01-regularRg';
+    src: url('../fonts/layarbahtera_dd_w01_regular-webfont.woff2') format('woff2'),
+         url('../fonts/layarbahtera_dd_w01_regular-webfont.woff') format('woff'),
+         url('../fonts/layarbahtera_dd_w01_regular-webfont.svg#layarbahteraddw01-regularRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+

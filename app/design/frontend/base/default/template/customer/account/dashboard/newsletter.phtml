@@ -29,3 +29,23 @@
     <a href="<?php echo $this->getUrl('newsletter/manage') ?>"><?php echo $this->__('Edit Newsletters') ?></a>
     <p><?php echo $this->__('You are currently subscribed to our newsletter.') ?></p>
 </div>
+
+
+<div class="newsletter">
+    <h2><?php echo $this->__('STAY UPDATED'); ?></h2>
+    <div class="newsletter-cont clearfix">
+        <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail">
+            <div class="input-box">
+                <input type="text" name="email" id="newsletter" title="<?php echo $this->__('Sign up for our newsletter') ?>" class="input-text required-entry validate-email" />
+            </div>
+            <div class="actions">
+                <button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="button"></button>
+            </div>
+        </form>
+        <script type="text/javascript">
+            //<![CDATA[
+            var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+            //]]>
+        </script>
+    </div>
+</div>
