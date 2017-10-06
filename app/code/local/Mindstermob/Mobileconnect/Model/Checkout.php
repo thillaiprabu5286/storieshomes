@@ -212,6 +212,7 @@ class Mindstermob_Mobileconnect_Model_Checkout extends Mage_Core_Model_Abstract 
             if($order_id<0){
                 $ouput_arr["message"]="Order Fails";
                 $ouput_arr["status"]="0";
+				$ouput_arr["post"] = null;
                 return json_encode($ouput_arr);
                // return;
             }

@@ -1,0 +1,1243 @@
+From 63673c54d9b5191a1a9c50758688012106e01a78 Mon Sep 17 00:00:00 2001
+From: Nadeem P <nadeem.p@mindster.in>
+Date: Fri, 29 Sep 2017 14:40:22 +0530
+Subject: [PATCH] mobile API updates by aufait
+
+---
+ app/code/community/Youama/Slider/etc/system.xml    |  51 +-
+ .../Mindstermob/Mobileconnect/Model/Customer.php   |   6 +-
+ .../Mindstermob/Mobileconnect/Model/Homepage.php   | 247 ++++++++
+ .../Mindstermob/Mobileconnect/Model/Products.php   | 648 ++++++++++++++++++++-
+ .../controllers/CustomerController.php             |   1 +
+ .../controllers/HomepageController.php             |  45 ++
+ .../controllers/ProductController.php              |  84 +++
+ 7 files changed, 1075 insertions(+), 7 deletions(-)
+ create mode 100644 app/code/local/Mindstermob/Mobileconnect/Model/Homepage.php
+ create mode 100644 app/code/local/Mindstermob/Mobileconnect/controllers/HomepageController.php
+
+diff --git a/app/code/community/Youama/Slider/etc/system.xml b/app/code/community/Youama/Slider/etc/system.xml
+index b187aa6..80bfe88 100644
+--- a/app/code/community/Youama/Slider/etc/system.xml
++++ b/app/code/community/Youama/Slider/etc/system.xml
+@@ -401,7 +401,56 @@
+                         </title>
+                     </fields>
+                 </slideritem6>
+-                
++                <mobileoffer translate="label">
++                    <label>mobile offer</label>
++                    <frontend_type>text</frontend_type>
++                    <sort_order>6</sort_order>
++                    <show_in_default>1</show_in_default>
++                    <show_in_website>1</show_in_website>
++                    <show_in_store>1</show_in_store>
++                    
++                    <fields>
++                        <image translate="label comment">
++                            <label>Image</label>
++                            <comment>
++                                <![CDATA[Upload an image from your computer]]>
++                            </comment>
++                            <frontend_type>image</frontend_type>
++                            <backend_model>adminhtml/system_config_backend_image</backend_model>
++                            <upload_dir config="system/filesystem/media" scope_info="1">youama/slider</upload_dir>
++                            <base_url type="media" scope_info="1">youama/slider</base_url>
++                            <sort_order>1</sort_order>
++                            <show_in_default>1</show_in_default>
++                            <show_in_website>1</show_in_website>
++                            <show_in_store>1</show_in_store>
++						</image>
++
++                        <link translate="label comment">
++                            <label>Link</label>
++                            <comment>
++                                <![CDATA[Link on the Image]]>
++                            </comment>
++                            <frontend_type>text</frontend_type>
++                            <sort_order>2</sort_order>
++                            <show_in_default>1</show_in_default>
++                            <show_in_website>1</show_in_website>
++                            <show_in_store>1</show_in_store>
++                        </link>
++                                             
++                        <title translate="label comment">
++                            <label>Text</label>
++                            <comment>
++                                <![CDATA[Text on the Image - HTML allowed]]>
++                            </comment>
++                            <frontend_type>textarea</frontend_type>
++                            <sort_order>3</sort_order>
++                            <show_in_default>1</show_in_default>
++                            <show_in_website>1</show_in_website>
++                            <show_in_store>1</show_in_store>
++                        </title>
++                    </fields>
++                </mobileoffer>
++				
+                 <animations translate="label">
+                     <label>Animation Settings</label>
+                     <frontend_type>text</frontend_type>
+diff --git a/app/code/local/Mindstermob/Mobileconnect/Model/Customer.php b/app/code/local/Mindstermob/Mobileconnect/Model/Customer.php
+index ffddd69..c7d42a4 100644
+--- a/app/code/local/Mindstermob/Mobileconnect/Model/Customer.php
++++ b/app/code/local/Mindstermob/Mobileconnect/Model/Customer.php
+@@ -67,8 +67,9 @@ class Mindstermob_Mobileconnect_Model_Customer extends Mage_Core_Model_Abstract
+                       ->setEmail($email)
+                       ->setPassword($passwd);
+ 
+-         
++     
+               $customer->save();
++              
+               //================ sending E mail====================//
+               if ($customer->getWebsiteId())
+                     {
+@@ -93,7 +94,7 @@ class Mindstermob_Mobileconnect_Model_Customer extends Mage_Core_Model_Abstract
+           }
+           catch (Exception $e) {
+               $json["status"]="error";
+-              $json["message"]=$e->getMessage();
++              $json["message"]=$e->getMessage();   
+               //echo $e->getMessage();
+              // Zend_Debug::dump(($e->getMessage()));
+            
+@@ -762,6 +763,7 @@ $customer = Mage::getModel('customer/customer')
+                                $json['data']["postcode"]=$address_arr["postcode"];
+                                $json['data']["phone_mobile"]=$address_arr["telephone"];
+                                $json['data']["id_address"]=$addressId;
++                                $json['data']["street"]=$address_arr["street"];
+                                //$json['data']["alias"]="Shipping address";
+ 
+                                $countryCollection = Mage::getModel('directory/country_api')->items();
+diff --git a/app/code/local/Mindstermob/Mobileconnect/Model/Homepage.php b/app/code/local/Mindstermob/Mobileconnect/Model/Homepage.php
+new file mode 100644
+index 0000000..fec49c1
+--- /dev/null
++++ b/app/code/local/Mindstermob/Mobileconnect/Model/Homepage.php
+@@ -0,0 +1,247 @@
++<?php
++class Mindstermob_Mobileconnect_Model_Homepage extends Mage_Core_Model_Abstract {
++    public function _construct()
++    {   
++       $this->_init('mobileconnect/homepage');
++    }
++    
++    
++    public function getSlider(){
++        
++        $banner_config = Mage::getStoreConfig('youamaslider');
++        $banner_media_url = Mage::getBaseUrl('media') . 'youama/slider/';
++        ////print_r($banner_config["slideritem1"]["image"]);exit;
++        ////echo "saved ";exit;
++        $sliderItems = array();
++        
++        $item = 0;
++        for ($i = 0; $i < 6; $i++)
++        {
++            if (isset($banner_config["slideritem$i"]['image']))
++            {
++                if ($banner_config["slideritem$i"]['image'] != null && $banner_config["slideritem$i"]['image'] != '')
++                {
++                    
++                    $sliderItems[$item]['image'] = $banner_media_url . $banner_config["slideritem$i"]["image"];
++                    $sliderItems[$item]['title'] = $banner_config["slideritem$i"]["title"];
++                    $sliderItems[$item]['link'] = $banner_config["slideritem$i"]["link"];
++                    $item++;
++                }
++            }
++        }
++        
++        return $sliderItems;
++    }
++    
++    public function getOffers(){
++        $offerbanners = array();
++        $banner_config = Mage::getStoreConfig('youamaslider');
++        $banner_media_url = Mage::getBaseUrl('media') . 'youama/slider/';
++        //print_r($banner_config["mobileoffer"]);exit;
++        $offerbanners["image"] = $banner_media_url = Mage::getBaseUrl('media') . 'youama/slider/'.$banner_config["mobileoffer"]["image"];
++        $offerbanners["link"] = $banner_config["mobileoffer"]["link"];
++        $offerbanners["link"] = $banner_config["mobileoffer"]["title"];
++        return $offerbanners;
++       
++    }
++    //============New Arrival products=================//
++    
++    public function getNewarrivals(){
++        $json = array();
++        $base_url=Mage::getModel('mobileconnect/baseurl');
++            $todayStartOfDayDate  = Mage::app()->getLocale()->date()
++            ->setTime('00:00:00')
++            ->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
++            $todayEndOfDayDate  = Mage::app()->getLocale()->date()
++            ->setTime('23:59:59')
++            ->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
++            /** @var $collection Mage_Catalog_Model_Resource_Product_Collection */
++            $collection = Mage::getResourceModel('catalog/product_collection')
++            ->setVisibility(Mage::getSingleton('catalog/product_visibility')
++            ->getVisibleInCatalogIds());    
++            $products = $collection->addMinimalPrice()
++            ->addFinalPrice()
++            ->addTaxPercents()
++            ->addAttributeToSelect(Mage::getSingleton('catalog/config')
++            ->getProductAttributes())
++            ->addUrlRewrite()
++            ->addStoreFilter()
++            ->addAttributeToFilter('news_from_date', array('or'=> array(
++            0 => array('date' => true, 'to' => $todayEndOfDayDate),
++            1 => array('is' => new Zend_Db_Expr('null')))
++            ), 'left')
++            ->addAttributeToFilter('news_to_date', array('or'=> array(
++            0 => array('date' => true, 'from' => $todayStartOfDayDate),
++            1 => array('is' => new Zend_Db_Expr('null')))
++            ), 'left')
++            ->addAttributeToFilter(
++            array(
++            array('attribute' => 'news_from_date', 'is'=>new Zend_Db_Expr('not null')),
++            array('attribute' => 'news_to_date', 'is'=>new Zend_Db_Expr('not null'))
++            )
++            )
++            ->addAttributeToSort('news_from_date', 'desc');
++            foreach($products as $product){ 
++                $product_image = $base_url->getBaseurl_products((string)Mage::helper('catalog/image')->init($product, 'small_image')->keepAspectRatio(true)->resize(200, 200));
++
++                //==========get stock quantity==============//
++                $stockItem = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product->getId());
++                       $stockItemData = $stockItem->getData();
++                       //$json["product"]["quantity"]=$stockItemData["qty"];
++                       //$json["product"]["id"]=$product_id;
++                       $quantity = $stockItemData["qty"];
++                //==========get stock quantity==============//
++                $json[] = array(
++                                   'id'                    => $product->getId(),
++                                   'name'                  => $product->getName(),
++                                   'description'           => $product->getShortDescription(),
++                                   'price'                 => $product->getPrice()+0,  //." ".$currencyCode,
++                                   'href'                  => $product->getProductUrl(),
++                                    'image'                => $product_image,
++                                    'currency_code'        => "Rs.",
++                                   //'thumb'                 => $base_url->getBaseurl_products((string)Mage::helper('catalog/image')->init($product, 'small_image')->keepAspectRatio(true)->resize(200, 200)),//$image,
++                                   'quantity'             => $quantity
++                               );
++
++            }
++
++        return $json;
++    }
++    
++    public function getTopcategories(){
++        
++        $top_categories =array("furniture" => 3,"furnishing" => 5, "lights" => 86,"carpets" => 76,"homeaccessories" => 13);
++
++$base_url = Mage::getModel('mobileconnect/baseurl');
++           
++           foreach ($top_categories as $cat_label => $cat_id) {
++    
++   
++                $category = Mage::getModel ('catalog/category')->load($cat_id);
++                $products = Mage::getResourceModel('catalog/product_collection')
++                              // ->addAttributeToSelect('*')
++                              ->AddAttributeToSelect('name')
++                              ->addAttributeToSelect('price')
++                              ->addFinalPrice()
++                              ->addAttributeToSelect('small_image')
++                              ->addAttributeToSelect('image')
++                              ->addAttributeToSelect('thumbnail')
++                              ->addAttributeToSelect('short_description')
++                              ->addAttributeToFilter('status', 1) // enabled
++                              ->setOrder('created_at', 'desc')
++                              ->addUrlRewrite()
++                              ->setPage(1, 4)
++                              ->AddCategoryFilter($category);
++                Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($products);
++                //$currencyCode = Mage::app()->getStore()->getBaseCurrencyCode();
++                $json[$cat_label]["category_id"] = $cat_id;
++                foreach($products as $product){ 
++                    $product_image = $base_url->getBaseurl_products((string)Mage::helper('catalog/image')->init($product, 'small_image')->keepAspectRatio(true)->resize(200, 200));
++                    //---get stock details------------------//
++                    
++                    $stockItem = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product->getId());
++                    $stockItemData = $stockItem->getData();
++                    //$json["product"]["quantity"]=$stockItemData["qty"];
++                    //$json["product"]["id"]=$product_id;
++                    $quantity=$stockItemData["qty"];
++
++
++
++                //----end of get stock details-----------//
++                        $json[$cat_label]["products"][] = array(
++                                'id'                    => $product->getId(),
++                                'name'                  => $product->getName(),
++                                'description'           => $product->getShortDescription(),
++                                'price'                 => $product->getPrice()+0,  //." ".$currencyCode,
++                                'href'                  => $product->getProductUrl(),
++                                'currency_code'         => "Rs.",
++                                'image'                 => $product_image,
++                                //'thumb'                 => $base_url->getBaseurl_products((string)Mage::helper('catalog/image')->init($product, 'small_image')->keepAspectRatio(true)->resize(200, 200)),//$image,
++                                'quantity'             => $quantity
++                            );
++
++
++                }
++     }//===========top-category-loop===========//
++     
++     return $json;
++     
++    }
++    
++    //=================Favourites=================//
++    
++    public function getFavourites($data,$email, $password){
++      
++        $base_url=Mage::getModel('mobileconnect/baseurl');
++         $json = array('status'=>'0','login'=>'0','message'=>'','items' => array());
++       
++           
++           foreach($data as $product){
++               if($product->id != ''){
++                   $product_id = $product->id;
++                   //$json = array('success' => true, 'product' => array());
++                   $product = Mage::getModel('catalog/product')->load($product_id);
++                   $details = $product->getData();
++                   //---get stock details------------------//
++                   $stockItem = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product_id);
++                   $stockItemData = $stockItem->getData();
++                  // if($stockItemData["qty"] > $cart->qty){
++                       $json["status"]="1";
++                       $instock=1;
++                       //$details["is_in_stock"]
++                      
++                       $json["items"][]=array( "stock_quantity"=>$stockItemData["qty"],
++                           
++                           "id"=>$product_id,
++                            "name"=>$details["name"],
++                            "price"=>$details["price"]+0,   
++                           // "total_price"=>$details["price"]* $cart->qty,
++                            "description"=>$details["description"],
++                            "short_description"=>$details["short_description"],
++                            "is_in_stock"=>$instock,
++                           /* "image"=> getBaseurl()."media/catalog/product".$details["image"],*/
++                           "image"=> $base_url->getBaseurl_products((string)Mage::helper('catalog/image')->init($product, 'small_image')->keepAspectRatio(true)->resize(200, 200)),
++                            "thumbnail"=>$details["thumbnail"]
++                          // "options"=>$cart->options
++                        );
++                         
++                       //$json["cart"][]=array("id"=>$cart->id,"qty"=>$cart->qty,"options"=>$cart->options);
++
++               }else{
++                  $json = array('success' => false, 'product' => array());
++                  // echo json_encode($json);
++
++               }
++                
++           }
++        return json_encode($json);
++    }//==============favourites===============//
++    
++    //====================filter functions=====================//
++    public function getFiltermaterials(){
++        $options = array();
++        $attribute = Mage::getSingleton('eav/config')
++    ->getAttribute(Mage_Catalog_Model_Product::ENTITY, 'material');
++
++        if ($attribute->usesSource()) {
++              $options = $attribute->getSource()->getAllOptions(false);
++
++        }
++        return $options;
++    }
++    
++    public function getFiltercolors(){
++        $options = array();
++        $attribute = Mage::getSingleton('eav/config')
++    ->getAttribute(Mage_Catalog_Model_Product::ENTITY, 'color');
++
++        if ($attribute->usesSource()) {
++              $options = $attribute->getSource()->getAllOptions(false);
++
++        }
++        return $options;
++    }
++    //====================filter functions======================//
++    
++}
++ ?>
+\ No newline at end of file
+diff --git a/app/code/local/Mindstermob/Mobileconnect/Model/Products.php b/app/code/local/Mindstermob/Mobileconnect/Model/Products.php
+index 5078a54..0d17788 100644
+--- a/app/code/local/Mindstermob/Mobileconnect/Model/Products.php
++++ b/app/code/local/Mindstermob/Mobileconnect/Model/Products.php
+@@ -124,6 +124,38 @@ class Mindstermob_Mobileconnect_Model_Products extends Mage_Core_Model_Abstract
+ 
+      public  function getproducts($category_id){
+            //$category_id=3;
++         //================Auf all colors and materials==========//
++          $color_options = array();
++        $attribute = Mage::getSingleton('eav/config')
++    ->getAttribute(Mage_Catalog_Model_Product::ENTITY, 'color');
++
++        if ($attribute->usesSource()) {
++              $color_options = $attribute->getSource()->getAllOptions(false);
++
++        }
++        $materials_options = array();
++        $attribute = Mage::getSingleton('eav/config')
++    ->getAttribute(Mage_Catalog_Model_Product::ENTITY, 'material');
++
++        if ($attribute->usesSource()) {
++              $materials_options = $attribute->getSource()->getAllOptions(false);
++
++        }
++        
++        $filter_categories = array();
++        $category_main = Mage::getModel('catalog/category')->load($category_id);
++       $subcategories = $category_main->getChildrenCategories();
++       if (count($subcategories) > 0){
++           //echo $category->getName();
++           foreach($subcategories as $subcategory){
++               $filter_categories[]= array("value" => $subcategory->getId(),"label" => $subcategory->getName() );
++               //$filter_categories[] = $subcategory->getName();
++               //$filter_categories[] = $subcategory->getId();
++
++           }
++}
++         //===================Auf all colors and materials==========//
++         
+            $base_url=Mage::getModel('mobileconnect/baseurl');
+            $json = array('success' => true, 'products' => array());
+            $category = Mage::getModel ('catalog/category')->load($category_id);
+@@ -137,10 +169,38 @@ class Mindstermob_Mobileconnect_Model_Products extends Mage_Core_Model_Abstract
+                          ->addAttributeToSelect('thumbnail')
+                          ->addAttributeToSelect('short_description')
+                          ->addUrlRewrite()
++                        ->addAttributeToSelect('color')
++                         ->addAttributeToSelect('material')
+                          ->AddCategoryFilter($category);
+            Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($products);
+            $currencyCode = Mage::app()->getStore()->getBaseCurrencyCode();
+-           foreach($products as $product){ 
++           $c = 0;
++           $m = 0;
++           $json["colors"] = array();
++           $json["materials"] = array();
++           $_colors = array();
++           $_materials = array();
++           foreach($products as $product){
++               //===========Auf get colors and materials========//
++               if($product->getColor() != ''){        
++                    $key = array_search($product->getColor(), array_column($color_options, 'value'));
++                    
++                      //$json["colors"][$c] = $color_options[$key];
++                    $_colors[$c] = $color_options[$key];
++                      $c++;
++                    
++                   }
++
++                    if($product->getMaterial() != ''){        
++                    $key = array_search($product->getMaterial(), array_column($materials_options, 'value'));
++                    
++                      //$json["materials"][$m] = $materials_options[$key];
++                    $_materials[$m] = $materials_options[$key];
++                      $m++;
++                    
++                   }
++                   
++               //===========Auf get colors and materials========//    
+                //---get stock details------------------//
+            $stockItem = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product->getId());
+            $stockItemData = $stockItem->getData();
+@@ -172,6 +232,20 @@ class Mindstermob_Mobileconnect_Model_Products extends Mage_Core_Model_Abstract
+ 
+ 
+            }
++           $_materials = array_map("unserialize", array_unique(array_map("serialize", $_materials)));
++           $_colors = array_map("unserialize", array_unique(array_map("serialize", $_colors)));
++           $_materials_out = array();
++           $_colors_out = array();
++           foreach ($_materials as $key=>$value){
++               $_materials_out[]= $value;
++           }
++           foreach ($_colors as $key=>$value){
++               $_colors_out[]= $value;
++           }
++           $json["materials"] = $_materials_out;
++           $json["colors"] = $_colors_out;
++           
++           $json["sub_categories"] = $filter_categories;
+            return $json;
+        }
+        //-----------making ip image url-----------------//
+@@ -220,6 +294,565 @@ class Mindstermob_Mobileconnect_Model_Products extends Mage_Core_Model_Abstract
+          
+          
+      }//=======end of function===========//
++ //=====================AUF edit====================//
++     public function filterProducts($category_id,$subcategory_id,$material_sel,$color_sel,$price_upper){
++         $json=array('success' => true,"products"=>array());
++         $base_url = Mage::getModel('mobileconnect/baseurl');
++         if($subcategory_id != ''){
++             $category_id = $subcategory_id;
++         }
++ $category = Mage::getModel ('catalog/category')->load($category_id);
++ $products_pr = Mage::getResourceModel('catalog/product_collection');
++ 
++ //if($category_id != $material_sel)
++                            $products =   $products_pr->addAttributeToSelect('*')
++                              ->AddAttributeToSelect('name')
++                              ->addAttributeToSelect('price')
++                              ->addFinalPrice()
++                              ->addAttributeToSelect('small_image')
++                              ->addAttributeToSelect('image')
++                              ->addAttributeToSelect('thumbnail')
++                              ->addAttributeToSelect('short_description')
++                              ->addAttributeToFilter('status', 1) // enabled
++                              ->setOrder('created_at', 'desc')
++                              ->addUrlRewrite()
++                              ->addAttributeToSelect('color')
++                              ->addAttributeToSelect('material')
++                              //->setPage(1, 4);
++                              ->AddCategoryFilter($category);
++                            $filter_arr = array();
++                            if($color_sel != '' && $material_sel != ''){
++                                $filter_arr = array(
++                                   array('attribute'=> 'color','eq' => "$color_sel"),
++                                   array('attribute'=> 'material','eq' => "$material_sel"),    
++                                   );
++                                 $products = $products_pr->addAttributeToFilter($filter_arr);
++                                
++                            }
++                            if($color_sel != ''){
++                                $filter_arr = array(
++                                   array('attribute'=> 'color','eq' => "$color_sel"),
++                                      
++                                   );
++                                 $products = $products_pr->addAttributeToFilter($filter_arr);
++                            }
++                            if($material_sel != ''){
++                                $filter_arr = array(
++                                   array('attribute'=> 'material','eq' => "$material_sel"),
++                                      
++                                   );
++                                 $products = $products_pr->addAttributeToFilter($filter_arr);
++                            }
++                           
++                            
++                      
++                         if($price_upper != ''){
++                             $products = $products_pr->addFieldToFilter('price',array(array('from'=>'0','to'=>"$price_upper"))); 
++                         }
++                Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($products);
++                //$currencyCode = Mage::app()->getStore()->getBaseCurrencyCode();
++               // $json[$cat_label]["category_id"] = $cat_id;
++                foreach($products as $product){ 
++                    $product_image = $base_url->getBaseurl_products((string)Mage::helper('catalog/image')->init($product, 'small_image')->keepAspectRatio(true)->resize(200, 200));
++                    //---get stock details------------------//
++                    
++                    $stockItem = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product->getId());
++                    $stockItemData = $stockItem->getData();
++                    //$json["product"]["quantity"]=$stockItemData["qty"];
++                    //$json["product"]["id"]=$product_id;
++                    $quantity=$stockItemData["qty"];
++
++
++
++                //----end of get stock details-----------//
++                        $json["products"][] = array(
++                                'id'                    => $product->getId(),
++                                'name'                  => $product->getName(),
++                                'description'           => $product->getShortDescription(),
++                                'price'                 => $product->getPrice()+0,  //." ".$currencyCode,
++                                'href'                  => $product->getProductUrl(),
++                                'currency_code'         => "Rs.",
++                                'thumb'                 => $product_image,
++                                //'thumb'                 => $base_url->getBaseurl_products((string)Mage::helper('catalog/image')->init($product, 'small_image')->keepAspectRatio(true)->resize(200, 200)),//$image,
++                                'quantity'             => $quantity,
++                                'color'               => $product->getColor(),
++                                'material'               => $product->getMaterial(),
++                            );
++
++
++                }
++                
++                return $json;
++                
++     }
++     public function addReview($product_id,$customer_id,$review_data){
++         
++          // $customer_id = 15;
++           // $product_id = 308;
++         
++            $row_source_review["title"] = $review_data->title;
++            $row_source_review['Review'] = $review_data->review;
++            $row_source_review['review_value1'] = $review_data->votes_1;
++            $row_source_review['review_value2'] = $review_data->votes_2;
++            $row_source_review['review_value3'] = $review_data->votes_3;
++            
++            $row_source_review['Status'] = "Pending";
++
++            $_customer = Mage::getModel("customer/customer")->load($customer_id);
++            $_session = Mage::getSingleton('customer/session')->setCustomer($_customer)->setCustomerAsLoggedIn($_customer);
++
++            $_review = Mage::getModel('review/review')
++           ->setEntityPkValue($product_id)
++           //->setStatusId($sc_to_mage_review_status[$row_source_review['Status']])
++           ->setStatusId(2)         
++           ->setTitle($row_source_review['title'])
++           ->setDetail($row_source_review['Review'])
++           ->setEntityId(1)
++           //->setStoreId($store)
++           //->setStores(array($store))
++           ->setStores(array(Mage::app()->getStore()->getId()))             
++           ->setCustomerId($_customer->getId())
++           ->setNickname($_customer->getFirstname())
++           ->save();
++           $_review->aggregate();
++          $rating_options = array(
++           1 => array(1,2,3,4,5), // <== Look at your database table `rating_option` for these vals
++           2 => array(6,7,8,9,10),
++           3 => array(11,12,13,14,15)
++           );
++
++           $rating_options_selected = array(
++           1 => $row_source_review['review_value1'], // <== Look at your database table `rating_option` for these vals
++           2 => $row_source_review['review_value2'],
++           3 => $row_source_review['review_value3']
++           );
++           
++           foreach($rating_options as $rating_id => $option_ids):
++           try {
++               $_rating = Mage::getModel('rating/rating')
++                   ->setRatingId($rating_id)
++                   ->setReviewId($_review->getId())
++                   //->addOptionVote($option_ids[$rating_value-1],$product_id);
++                  //->addOptionVote($option_ids[3],$product_id);  
++                  ->addOptionVote($option_ids[$rating_options_selected[$rating_id]],$product_id);       
++           } catch (Exception $e) {
++               //die($e->getMessage());
++               return $e->getMessage();
++           }
++           endforeach;
++         return "saved";
++     }
++     public function getVotes($product_id){
++         
++            $star_point = 0;
++            $reviews = Mage::getModel('review/review')
++            ->getResourceCollection()
++            ->addStoreFilter(Mage::app()->getStore()->getId()) 
++            ->addEntityFilter('product', $product_id)
++            ->addStatusFilter(Mage_Review_Model_Review::STATUS_APPROVED)
++            ->setDateOrder()
++            ->addRateVotes();
++            /**
++            * Getting average of ratings/reviews
++            */
++            $avg = 0;
++            $totalrv = 0;
++            $totalrvper =0;
++            $ratings = array();
++
++            if (count($reviews) > 0) {
++            foreach ($reviews->getItems() as $review) {
++                foreach( $review->getRatingVotes() as $vote ) {
++
++                $totalrv = $totalrv+$vote->getValue();
++                $totalrvper = $totalrvper + $vote->getPercent(); 
++                $ratings[] = $vote->getPercent();
++
++                }
++            }
++            //echo $totalrv;exit;
++            $totalrv = ($totalrv/3)/4;
++            $totalrvper = ($totalrvper/3)/4;
++
++            $avgrate = round($totalrv, 1);
++
++            }
++
++            $avgnew = array_sum($ratings)/count($ratings);
++            $star_point  = (5/100)*$avgnew;  
++            
++            return $star_point;
++     }
++     
++     public function getAllMostViewedProducts($product_id)
++        {     
++            // number of products to display
++          $json = array('success' => true, 'message' =>'' );
++         $base_url = Mage::getModel('mobileconnect/baseurl');
++            $productCount = 10; 
++            
++            $total_count = 0;
++            // store ID
++            $storeId    = Mage::app()->getStore()->getId(); 
++
++            // get today and last 30 days time
++            $today = time();
++            $last = $today - (60*60*24*30);
++
++            $from = date("Y-m-d", $last);
++            $to = date("Y-m-d", $today);
++
++            // get most viewed products for last 30 days
++            $products = Mage::getResourceModel('reports/product_collection')
++                ->addAttributeToSelect('*')        
++                ->setStoreId($storeId)
++                ->addStoreFilter($storeId)
++                ->addViewsCount()
++                //->addViewsCount($from, $to)
++                ->setPageSize($productCount); 
++
++            Mage::getSingleton('catalog/product_status')
++                    ->addVisibleFilterToCollection($products);
++            Mage::getSingleton('catalog/product_visibility')
++                    ->addVisibleInCatalogFilterToCollection($products);
++            
++            foreach($products as $product){
++                if($total_count > 20){
++                    break;
++                }
++                $product_image = $base_url->getBaseurl_products((string)Mage::helper('catalog/image')->init($product, 'small_image')->keepAspectRatio(true)->resize(200, 200));
++
++                //==========get stock quantity==============//
++                $stockItem = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product->getId());
++                       $stockItemData = $stockItem->getData();
++                       //$json["product"]["quantity"]=$stockItemData["qty"];
++                       //$json["product"]["id"]=$product_id;
++                       $quantity = $stockItemData["qty"];
++                //==========get stock quantity==============//
++               if( $product->getId() != $product_id){        
++                $json["products"][] = array(
++                                   'id'                    => $product->getId(),
++                                   'name'                  => $product->getName(),
++                                   'description'           => $product->getShortDescription(),
++                                   'price'                 => $product->getPrice()+0,  //." ".$currencyCode,
++                                   'href'                  => $product->getProductUrl(),
++                                    'thumb'                => $product_image,
++                                    'currency_code'        => "Rs.",
++                                   //'thumb'                 => $base_url->getBaseurl_products((string)Mage::helper('catalog/image')->init($product, 'small_image')->keepAspectRatio(true)->resize(200, 200)),//$image,
++                                   'quantity'             => $quantity
++                               );
++                $total_count++;
++               }
++            }
++            return $json;
++        }
++     public function getTopMostViewedProducts($product_id)
++        {     
++            // number of products to display
++         $base_url = Mage::getModel('mobileconnect/baseurl');
++            $productCount = 10; 
++            
++            $total_count = 0;
++            // store ID
++            $storeId    = Mage::app()->getStore()->getId(); 
++
++            // get today and last 30 days time
++            $today = time();
++            $last = $today - (60*60*24*30);
++
++            $from = date("Y-m-d", $last);
++            $to = date("Y-m-d", $today);
++
++            // get most viewed products for last 30 days
++            $products = Mage::getResourceModel('reports/product_collection')
++                ->addAttributeToSelect('*')        
++                ->setStoreId($storeId)
++                ->addStoreFilter($storeId)
++                ->addViewsCount()
++                //->addViewsCount($from, $to)
++                ->setPageSize($productCount); 
++
++            Mage::getSingleton('catalog/product_status')
++                    ->addVisibleFilterToCollection($products);
++            Mage::getSingleton('catalog/product_visibility')
++                    ->addVisibleInCatalogFilterToCollection($products);
++            
++            foreach($products as $product){
++                if($total_count > 3){
++                    break;
++                }
++                $product_image = $base_url->getBaseurl_products((string)Mage::helper('catalog/image')->init($product, 'small_image')->keepAspectRatio(true)->resize(200, 200));
++
++                //==========get stock quantity==============//
++                $stockItem = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product->getId());
++                       $stockItemData = $stockItem->getData();
++                       //$json["product"]["quantity"]=$stockItemData["qty"];
++                       //$json["product"]["id"]=$product_id;
++                       $quantity = $stockItemData["qty"];
++                //==========get stock quantity==============//
++               if( $product->getId() != $product_id){        
++                $json[] = array(
++                                   'id'                    => $product->getId(),
++                                   'name'                  => $product->getName(),
++                                   'description'           => $product->getShortDescription(),
++                                   'price'                 => $product->getPrice()+0,  //." ".$currencyCode,
++                                   'href'                  => $product->getProductUrl(),
++                                    'image'                => $product_image,
++                                    'currency_code'        => "Rs.",
++                                   //'thumb'                 => $base_url->getBaseurl_products((string)Mage::helper('catalog/image')->init($product, 'small_image')->keepAspectRatio(true)->resize(200, 200)),//$image,
++                                   'quantity'             => $quantity
++                               );
++                $total_count++;
++               }
++            }
++            return $json;
++        }
++ public function getAllnewarrivals(){
++     $json = array('success' => true, 'message' =>'' );
++     $total_count = 0;
++    // $json = array();
++        $base_url = Mage::getModel('mobileconnect/baseurl');
++            $todayStartOfDayDate  = Mage::app()->getLocale()->date()
++            ->setTime('00:00:00')
++            ->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
++            $todayEndOfDayDate  = Mage::app()->getLocale()->date()
++            ->setTime('23:59:59')
++            ->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
++            /** @var $collection Mage_Catalog_Model_Resource_Product_Collection */
++            $collection = Mage::getResourceModel('catalog/product_collection')
++            ->setVisibility(Mage::getSingleton('catalog/product_visibility')
++            ->getVisibleInCatalogIds());    
++            $products = $collection->addMinimalPrice()
++            ->addFinalPrice()
++            ->addTaxPercents()
++            ->addAttributeToSelect(Mage::getSingleton('catalog/config')
++            ->getProductAttributes())
++            ->addUrlRewrite()
++            ->addStoreFilter()
++            ->addAttributeToFilter('news_from_date', array('or'=> array(
++            0 => array('date' => true, 'to' => $todayEndOfDayDate),
++            1 => array('is' => new Zend_Db_Expr('null')))
++            ), 'left')
++            ->addAttributeToFilter('news_to_date', array('or'=> array(
++            0 => array('date' => true, 'from' => $todayStartOfDayDate),
++            1 => array('is' => new Zend_Db_Expr('null')))
++            ), 'left')
++            ->addAttributeToFilter(
++            array(
++            array('attribute' => 'news_from_date', 'is'=>new Zend_Db_Expr('not null')),
++            array('attribute' => 'news_to_date', 'is'=>new Zend_Db_Expr('not null'))
++            )
++            )
++            ->addAttributeToSort('news_from_date', 'desc');
++            foreach($products as $product){
++                if($total_count > 10){
++                    break;
++                }
++                $product_image = $base_url->getBaseurl_products((string)Mage::helper('catalog/image')->init($product, 'small_image')->keepAspectRatio(true)->resize(200, 200));
++
++                //==========get stock quantity==============//
++                $stockItem = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product->getId());
++                       $stockItemData = $stockItem->getData();
++                       //$json["product"]["quantity"]=$stockItemData["qty"];
++                       //$json["product"]["id"]=$product_id;
++                       $quantity = $stockItemData["qty"];
++                //==========get stock quantity==============//
++               if( $product->getId() != $product_id){        
++                $json ["products"][] = array(
++                                   'id'                    => $product->getId(),
++                                   'name'                  => $product->getName(),
++                                   'description'           => $product->getShortDescription(),
++                                   'price'                 => $product->getPrice()+0,  //." ".$currencyCode,
++                                   'href'                  => $product->getProductUrl(),
++                                    'thumb'                => $product_image,
++                                    'currency_code'        => "Rs.",
++                                   //'thumb'                 => $base_url->getBaseurl_products((string)Mage::helper('catalog/image')->init($product, 'small_image')->keepAspectRatio(true)->resize(200, 200)),//$image,
++                                   'quantity'             => $quantity
++                               );
++                $total_count++;
++               }
++            }
++
++        return $json;
++ }       
++ public function getTopnewarrival($product_id){
++     $total_count = 0;
++     $json = array();
++        $base_url=Mage::getModel('mobileconnect/baseurl');
++            $todayStartOfDayDate  = Mage::app()->getLocale()->date()
++            ->setTime('00:00:00')
++            ->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
++            $todayEndOfDayDate  = Mage::app()->getLocale()->date()
++            ->setTime('23:59:59')
++            ->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
++            /** @var $collection Mage_Catalog_Model_Resource_Product_Collection */
++            $collection = Mage::getResourceModel('catalog/product_collection')
++            ->setVisibility(Mage::getSingleton('catalog/product_visibility')
++            ->getVisibleInCatalogIds());    
++            $products = $collection->addMinimalPrice()
++            ->addFinalPrice()
++            ->addTaxPercents()
++            ->addAttributeToSelect(Mage::getSingleton('catalog/config')
++            ->getProductAttributes())
++            ->addUrlRewrite()
++            ->addStoreFilter()
++            ->addAttributeToFilter('news_from_date', array('or'=> array(
++            0 => array('date' => true, 'to' => $todayEndOfDayDate),
++            1 => array('is' => new Zend_Db_Expr('null')))
++            ), 'left')
++            ->addAttributeToFilter('news_to_date', array('or'=> array(
++            0 => array('date' => true, 'from' => $todayStartOfDayDate),
++            1 => array('is' => new Zend_Db_Expr('null')))
++            ), 'left')
++            ->addAttributeToFilter(
++            array(
++            array('attribute' => 'news_from_date', 'is'=>new Zend_Db_Expr('not null')),
++            array('attribute' => 'news_to_date', 'is'=>new Zend_Db_Expr('not null'))
++            )
++            )
++            ->addAttributeToSort('news_from_date', 'desc');
++            foreach($products as $product){
++                if($total_count > 1){
++                    break;
++                }
++                $product_image = $base_url->getBaseurl_products((string)Mage::helper('catalog/image')->init($product, 'small_image')->keepAspectRatio(true)->resize(200, 200));
++
++                //==========get stock quantity==============//
++                $stockItem = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product->getId());
++                       $stockItemData = $stockItem->getData();
++                       //$json["product"]["quantity"]=$stockItemData["qty"];
++                       //$json["product"]["id"]=$product_id;
++                       $quantity = $stockItemData["qty"];
++                //==========get stock quantity==============//
++               if( $product->getId() != $product_id){        
++                $json[] = array(
++                                   'id'                    => $product->getId(),
++                                   'name'                  => $product->getName(),
++                                   'description'           => $product->getShortDescription(),
++                                   'price'                 => $product->getPrice()+0,  //." ".$currencyCode,
++                                   'href'                  => $product->getProductUrl(),
++                                    'image'                => $product_image,
++                                    'currency_code'        => "Rs.",
++                                   //'thumb'                 => $base_url->getBaseurl_products((string)Mage::helper('catalog/image')->init($product, 'small_image')->keepAspectRatio(true)->resize(200, 200)),//$image,
++                                   'quantity'             => $quantity
++                               );
++                $total_count++;
++               }
++            }
++
++        return $json;
++ }
++ public function getAllreviews($productId){
++      $json = array('success' => false, 'message' =>'' ); 
++        $all_reviews = array();  
++        $final_reviews = array();
++        $final_reviews_arr = array();
++       //productId = $product->getId();
++       //$productId = 308;
++    try{
++         $reviews = Mage::getModel('review/review')
++                         ->getResourceCollection()
++                         ->addStoreFilter(Mage::app()->getStore()->getId())
++                         ->addEntityFilter('product', $productId)
++                         ->addStatusFilter(Mage_Review_Model_Review::STATUS_APPROVED)
++                         ->setDateOrder()
++                         ->addRateVotes();
++   }catch(Exception $ex){
++       $json["success"] = false;
++       $json["message"] = $ex->getMessage();
++       $json["reviews"] = null;
++       return $json;
++   }
++       //echo count($reviews);exit;
++       $i = 0;
++       $total_reviews_count = count($reviews);
++       if($total_reviews_count >0){
++       foreach( $reviews as $_review ){
++           $all_reviews[$i]["title"] = $_review->getData('title');
++           $all_reviews[$i]["detail"] = $_review->getData('detail');
++           $all_reviews[$i]["nickname"] = $_review->getData('nickname');
++           $created_date = date('jS F Y',strtotime($_review->getData('created_at')));
++           $all_reviews[$i]["created_at"] = $created_date;
++            $ratings = array();
++           foreach( $_review->getRatingVotes() as $vote ) {
++                   $ratings[] = $vote->getPercent();
++               }
++           $ratings_avg = array_sum($ratings)/count($ratings); 
++           if(!$ratings_avg){
++               $ratings_avg = 0;
++           }
++           $all_reviews[$i]["ratings_avg"] = $ratings_avg;
++           //$final_reviews[$ratings_avg] = $all_reviews[$i];
++           //$final_reviews_arr[] = $final_reviews;
++           $i++;
++          } 
++   
++    }
++    
++    
++
++    //krsort($final_reviews);
++    //print_r($final_reviews);exit;
++    //$final_reviews_arr =  array_slice($final_reviews, 0, 1);
++    if(count($all_reviews) > 0){        
++        $json["success"] = true;
++        $json["message"] = "success";
++       $json["reviews"] = $all_reviews;       
++        return $json;
++    }else{
++        $json["success"] = true;
++        $json["message"] = "No reviews";
++        $json["reviews"] = null;
++        return $json;
++    }
++ }
++ public function getTopreview($productId){
++     
++        $all_reviews = array();  
++        $final_reviews = array();
++        $final_reviews_arr = array();
++       //productId = $product->getId();
++       //$productId = 308;
++
++       $reviews = Mage::getModel('review/review')
++                       ->getResourceCollection()
++                       ->addStoreFilter(Mage::app()->getStore()->getId())
++                       ->addEntityFilter('product', $productId)
++                       ->addStatusFilter(Mage_Review_Model_Review::STATUS_APPROVED)
++                       ->setDateOrder()
++                       ->addRateVotes();
++       //echo count($reviews);exit;
++       $i = 0;
++       $total_reviews_count = count($reviews);
++       if($total_reviews_count >0){
++       foreach( $reviews as $_review ){
++           $all_reviews[$i]["title"] = $_review->getData('title');
++           $all_reviews[$i]["detail"] = $_review->getData('detail');
++           $all_reviews[$i]["nickname"] = $_review->getData('nickname');
++           $created_date = date('jS F Y',strtotime($_review->getData('created_at')));
++           $all_reviews[$i]["created_at"] = $created_date;
++            $ratings = array();
++           foreach( $_review->getRatingVotes() as $vote ) {
++                   $ratings[] = $vote->getPercent();
++               }
++           $ratings_avg = array_sum($ratings)/count($ratings); 
++
++           $all_reviews[$i]["ratings_avg"] = $ratings_avg;
++           $final_reviews[$ratings_avg] = $all_reviews[$i];
++            $i++;
++          } 
++   
++    }
++
++    krsort($final_reviews);
++    //print_r($final_reviews);exit;
++    $final_reviews_arr =  array_slice($final_reviews, 0, 1);
++    if(count($final_reviews_arr) > 0){
++        return $final_reviews_arr[0];
++    }else{
++        return null;
++    }
++ }    
+  public function getProductdetails($product_id){
+       $base_url=Mage::getModel('mobileconnect/baseurl');
+      $json = array('success' => true, 'product' => array());
+@@ -265,7 +898,7 @@ class Mindstermob_Mobileconnect_Model_Products extends Mage_Core_Model_Abstract
+         $json["product"]["is_in_stock"]=$details["is_in_stock"];
+         $json["product"]["image"]=$base_url->getBaseurl()."media/catalog/product".$details["image"];
+         $json["product"]["thumbnail"]=$details["thumbnail"];
+-        //=========attribute details======================//
++         //=========attribute details======================//
+          $colorValue = Mage::getModel('catalog/product')
+ 			->load($product_id)
+ 			->getAttributeText('color');
+@@ -303,7 +936,11 @@ class Mindstermob_Mobileconnect_Model_Products extends Mage_Core_Model_Abstract
+             }//----end of options foreach---
+ 
+         }//=============end of options=======//
+-        $json["product"]["custom_options"]=$custom_option;
++        $json["product"]["custom_options"] = $custom_option;
++        $json["product"]["topreview"] = $this->getTopreview($product_id);
++        $json["product"]["top_new_arrivals"] = $this->getTopnewarrival($product_id);
++        $json["product"]["top_most_viewed"] = $this->getTopMostViewedProducts($product_id);
++        $json["product"]["votes"] = $this->getVotes($product_id);
+         return(json_encode($json));
+ 
+   }//=======end of function=============//      
+@@ -324,7 +961,7 @@ class Mindstermob_Mobileconnect_Model_Products extends Mage_Core_Model_Abstract
+     return(json_encode($json));
+      
+  }//====end of function==//
+-//========product quick view in home page============//
++ 
+  public function getQuickview($product_id){
+      
+      $model = Mage::getModel('catalog/product'); //getting product model
+@@ -396,5 +1033,8 @@ $_product = $model->load($product_id); //getting product object for particular p
+      
+      return(json_encode($json));
+  }
++ 
++ 
++
+ }//=======end of class===============//
+ ?>
+\ No newline at end of file
+diff --git a/app/code/local/Mindstermob/Mobileconnect/controllers/CustomerController.php b/app/code/local/Mindstermob/Mobileconnect/controllers/CustomerController.php
+index 10e22d3..dc41664 100644
+--- a/app/code/local/Mindstermob/Mobileconnect/controllers/CustomerController.php
++++ b/app/code/local/Mindstermob/Mobileconnect/controllers/CustomerController.php
+@@ -33,6 +33,7 @@ class Mindstermob_Mobileconnect_CustomerController extends Mage_Core_Controller_
+           $email=trim($params->email);
+           $passwd=trim($params->passwd);
+            $model = Mage::getModel('mobileconnect/customer'); 
++           
+            $out=$model->customer_register($firstname,$lastname,$email,$passwd);
+             $this->getResponse()->clearHeaders()->setHeader('Content-type','application/json',true);
+              $this->getResponse()->setBody($out);
+diff --git a/app/code/local/Mindstermob/Mobileconnect/controllers/HomepageController.php b/app/code/local/Mindstermob/Mobileconnect/controllers/HomepageController.php
+new file mode 100644
+index 0000000..c6fd8ea
+--- /dev/null
++++ b/app/code/local/Mindstermob/Mobileconnect/controllers/HomepageController.php
+@@ -0,0 +1,45 @@
++<?php
++
++class Mindstermob_Mobileconnect_HomepageController extends Mage_Core_Controller_Front_Action
++{
++    public function indexAction()
++    {
++        //echo "hii";exit;
++        $json_out = array();
++        $model = Mage::getModel('mobileconnect/homepage');
++        $banner_images = $model->getSlider();
++        $new_arrivals = $model->getNewarrivals();
++        $top_categories = $model->getTopcategories();
++        $mobileoffers = $model->getOffers();
++        //$filter_materials = $model->getFiltermaterials();
++        //$filter_colors = $model->getFiltermaterials();
++        $json_out["status"] = 'success';
++        $json_out["banner_images"] = $banner_images;
++        $json_out["new_arrivals"] = $new_arrivals;
++        $json_out["top_categories"] = $top_categories;
++        $json_out["offers"] = $mobileoffers;
++        //$json_out["filter"]["materials"] = $filter_materials;
++        //$json_out["filter"]["colors"] = $filter_colors;
++        
++        $this->getResponse()->clearHeaders()->setHeader('Content-type','application/json',true);
++        $this->getResponse()->setBody(json_encode($json_out));
++    }
++    
++    public function favouriteAction(){
++        $params = json_decode(file_get_contents('php://input'));
++
++        $data = $params->data;
++        $logindata = $params->logindata;
++        $email = $logindata->email;
++        $password = $logindata->password;
++        $model = Mage::getModel('mobileconnect/homepage');
++        $out = $model->getFavourites($data, $email, $password);
++        $this->getResponse()->clearHeaders()->setHeader('Content-type', 'application/json', true);
++        $this->getResponse()->setBody($out);
++        
++    }
++    
++   
++    
++}
++?>
+\ No newline at end of file
+diff --git a/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php b/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php
+index a5e520b..5a6e921 100644
+--- a/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php
++++ b/app/code/local/Mindstermob/Mobileconnect/controllers/ProductController.php
+@@ -82,6 +82,35 @@ class Mindstermob_Mobileconnect_ProductController extends Mage_Core_Controller_F
+          $this->getResponse()->clearHeaders()->setHeader('Content-type','application/json',true);
+           $this->getResponse()->setBody($out);
+     }
++    public function addReviewAction(){
++        $json = array('success' => false, 'product' => array());
++        $model = Mage::getModel('mobileconnect/products'); 
++        $params =json_decode(file_get_contents('php://input'));
++        if($params->product_id != '' && $params->product_id != ''){
++            $product_id = $params->product_id;
++            $customer_id = $params->customer_id;
++            $out = $model->addReview($product_id,$customer_id,$params->data);
++            if($out == "saved"){
++                $json = array('success' => true, 'message' => "saved successfully");
++            }else{
++                $json = array('success' => false, 'message' => $out);
++            }
++            
++             $this->getResponse()->clearHeaders()->setHeader('Content-type','application/json',true);
++             $this->getResponse()->setBody(json_encode($json));
++
++
++
++            }else{
++                $json = array('success' => false, 'message' => "parameter missing");
++               // echo json_encode($json);
++                $this->getResponse()->clearHeaders()->setHeader('Content-type','application/json',true);
++               $this->getResponse()->setBody(json_encode($json));
++
++            }
++        
++        
++    }
+     public function detailsAction()
+     {
+            $model = Mage::getModel('mobileconnect/products'); 
+@@ -177,4 +206,59 @@ class Mindstermob_Mobileconnect_ProductController extends Mage_Core_Controller_F
+          
+      }
+     
++     //=================AUF edit filter all products=========//
++     public function filterproductsAction(){
++         $params = json_decode(file_get_contents('php://input'));
++        $category_id = $params->category_id;
++        $material_sel = $params->material_sel;
++        $color_sel = $params->color_sel;
++        $price_upper = $params->price_upper;
++        $subcategory_id = $params->subcategory_id;
++        $model = Mage::getModel('mobileconnect/products'); 
++        
++        $out = $model->filterProducts($category_id,$subcategory_id,$material_sel,$color_sel,$price_upper);
++        //$json["reviews"] = $out;
++        $this->getResponse()->clearHeaders()->setHeader('Content-type','application/json',true);
++        $this->getResponse()->setBody(json_encode($out)); 
++}
++     //================AUF edit All reviews===============//
++     
++     public function allreviewsAction(){
++          
++        $params = json_decode(file_get_contents('php://input'));
++        $product_id = $params->product_id;
++        $model = Mage::getModel('mobileconnect/products'); 
++        
++        $out = $model->getAllreviews($product_id);
++        //$json["reviews"] = $out;
++        $this->getResponse()->clearHeaders()->setHeader('Content-type','application/json',true);
++        $this->getResponse()->setBody(json_encode($out)); 
++         
++     }
++     public function allnewarrivalsAction(){
++       
++        $params = json_decode(file_get_contents('php://input'));
++        //$product_id = $params->product_id;
++        $model = Mage::getModel('mobileconnect/products'); 
++        
++        $out = $model->getAllnewarrivals();
++        $json["new_arrivals"] = $out;
++        $this->getResponse()->clearHeaders()->setHeader('Content-type','application/json',true);
++        $this->getResponse()->setBody(json_encode($json)); 
++         
++     }
++     public function allmostviewedproductsAction(){
++       
++        $params = json_decode(file_get_contents('php://input'));
++        $product_id = $params->product_id;
++        $model = Mage::getModel('mobileconnect/products'); 
++        
++        $out = $model->getAllMostViewedProducts($product_id);
++        $json["most_viewed"] = $out;
++        $this->getResponse()->clearHeaders()->setHeader('Content-type','application/json',true);
++        $this->getResponse()->setBody(json_encode($json)); 
++         
++     }
++     //===============AUF edit All reviews===============//
++    
+ }
+-- 
+2.7.2.windows.1
+
