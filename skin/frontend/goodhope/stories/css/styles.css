@@ -808,7 +808,7 @@ tr.summary-details-excluded { font-style:italic; }
 
 /* View Type: Grid New Style */
 .products-grid-view {overflow: hidden}
-.products-grid-view .grid-item {float: left; width: 23.8%; min-height: 310px; padding: 10px; border: 1px solid #ddd; margin: 10px 5px;text-align: center;}
+.products-grid-view .grid-item {float: left; width: 23.8%; min-height: 340px; padding: 10px; border: 1px solid #ddd; margin: 10px 5px;text-align: center;}
 .products-grid-view .grid-item .product-name {margin: 10px 0px; font-size: 1em; font-weight: normal;}
 .products-grid-view .grid-item .product-name a {height: 38px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2;-webkit-box-orient: vertical;}
 .products-grid-view .grid-item .old-price .price {float: left}

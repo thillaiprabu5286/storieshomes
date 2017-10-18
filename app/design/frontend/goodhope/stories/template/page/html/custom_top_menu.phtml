@@ -45,7 +45,7 @@
                                                     <ul class="level3">
                                                         <?php foreach($_subcategories2 as $_subcategory2): ?>
                                                             <li>
-                                                                <a id="<?php echo $_subcategory2->getId()  ?>" href="javascript:void(0)">
+                                                                <a id="<?php echo $_subcategory2->getId()  ?>" href="<?php echo $_helper->getCategoryUrl($_subcategory2) ?>">
                                                                     <?php echo $_subcategory2->getName() ?>
                                                                 </a>
                                                             </li>
