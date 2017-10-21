@@ -1,0 +1,326 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+?>
+<?php
+$_product = $this->getProduct();
+$_helper = $this->helper('catalog/output');
+$_settings = Mage::getStoreConfig('attributeswatches/settings');
+$_small_image_width = (int) $_settings['small_image_width'];
+$_small_image_height = (int) $_settings['small_image_height'];
+$_large_image_width = (int) $_settings['large_image_width'];
+$_large_image_height = (int) $_settings['large_image_height'];
+$_zoom_image_width = (int) $_settings['zoom_image_width'];
+$_zoom_image_height = (int) $_settings['zoom_image_height'];
+$_etalage_settings = Mage::getStoreConfig('attributeswatches/etalage');
+
+/* check if gallery items can be used as swatches selectors */
+$_gallery_selectors = !(bool)Mage::getStoreConfig("attributeswatches/settings/switchgallery")  && (bool)Mage::getStoreConfig("attributeswatches/settings/gallery_swatches");
+
+?>
+<div id="etalage-gallery-container" style="max-width:100%;display: block;width: 100%;float: left;position:relative;">
+    <!-- Give it any id or class to identify it with: -->
+    <ul id="etalage">
+        <?php foreach ($this->getGalleryImages() as $_image): ?>
+            <li  class="<?php echo $_image->getAssociatedAttributes(); ?> product-image-thumbs" <?php if($_gallery_selectors):?>data-config="<?php echo $_image->getConfigValue();?>"<?php endif;?> <?php if ($_image->getDisabled()): ?>style="display:none;"<?php endif; ?>>
+                <img class="etalage_source_image" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($_zoom_image_width, $_zoom_image_height); ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /> 
+                <img class="etalage_thumb_image" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($_large_image_width, $_large_image_height); ?>" data-anchor="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($_zoom_image_width, $_zoom_image_height); ?>"  data-attributes-class="<?php echo $_image->getAssociatedAttributes(); ?>"/>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+    <ul id="etalage-clone-images" style="display:none;">
+        <?php foreach ($this->getGalleryImages() as $_image): ?>
+            <li  class="<?php echo $_image->getAssociatedAttributes(); ?> product-image-thumbs" <?php if($_gallery_selectors):?>data-config="<?php echo $_image->getConfigValue();?>"<?php endif;?> <?php if ($_image->getDisabled()): ?>style="display:none;"<?php endif; ?>>
+                <img class="etalage_source_image" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($_zoom_image_width, $_zoom_image_height); ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /> 
+                <img class="etalage_thumb_image" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($_large_image_width, $_large_image_height); ?>" data-anchor="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($_zoom_image_width, $_zoom_image_height); ?>"  title="<?php echo $this->htmlEscape($_image->getLabel()) ?>"  data-attributes-class="<?php echo $_image->getAssociatedAttributes(); ?>"/>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+    <?php
+    /* hide gallery when only one image is present and option is enabled... */
+    $_hide_gallery = (int) $_settings['hide_gallery'] && $this->getGalleryImages()->count() == 1;
+    ?>
+    <?php if (!$_hide_gallery): 
+        if ($_etalage_settings["use_porto_icons"]):?>
+            <a id="product-image-gallery-prev" class="prev-next-glyphicons" href="#"><i class="icon-angle-left"></i></a>
+            <a id="product-image-gallery-next" class="prev-next-glyphicons" href="#"><i class="icon-angle-right"></i></a>
+        <?php else: ?>
+            <a id="product-image-gallery-prev" href="#"><span>&laquo;</span></a>
+            <a id="product-image-gallery-next" href="#"><span>&raquo;</span></a>
+        <?php endif;
+    endif; ?>
+</div>
+<script type="text/javascript">
+    /* fancybox function */
+    var _enable_fancybox = '<?php echo Mage::getStoreConfig('attributeswatches/lightbox/enabled'); ?>' && jQuery.fn.fancybox !== undefined;
+    var _image_ratio = <?php echo round($_large_image_width / $_large_image_height, 2); ?>;
+    var _SWITCH_GALLERY = <?php echo (int) ($_settings["switchgallery"]); ?>;
+    var _etalage_admin_settings = <?php echo Mage::helper('core')->jsonEncode($_etalage_settings); ?>;
+    var getGalleryWidth = function () {
+        if (_etalage_admin_settings.smallthumbs_position == 'left' || _etalage_admin_settings.smallthumbs_position == 'right') {
+            return jQuery("#etalage-gallery-container").width() * parseInt(_etalage_admin_settings.small_thumbs) / (parseInt(_etalage_admin_settings.small_thumbs) + 1) - 14;
+        } else {
+            return jQuery("#etalage-gallery-container").width();
+        }
+    };
+    var getGalleryHeight = function () {
+        return Math.ceil(window.getGalleryWidth() / window._image_ratio);
+    };
+    var loadEtalageGallery = function () {
+        var _etalage_settings = {
+            /*  CALCULATED SETTINGS */
+            thumb_image_width: getGalleryWidth(),
+            thumb_image_height: getGalleryHeight(),
+            /* EOF CALCULATED SETTINGS  SETTINGS TO ENTER IN THE ADMIN SECTION */
+            source_image_width: <?php echo $_zoom_image_width; ?>,
+            source_image_height: <?php echo $_zoom_image_height; ?>,
+            /* SETTINGS TO ENTER IN THE ADMIN SECTION */
+
+            /* DEFAULT SETTINGS, DO NOT NEED TO CALCULATE OR RETRIEVE */
+            smallthumb_hide_single: true,
+            show_hint: false,
+            keyboard: false,
+            autoplay: false,
+            autoplay_interval: 0,
+            click_to_zoom: false,
+            show_icon: _enable_fancybox, /* icon used only for triggering fancybox */
+            click_callback: function (image_anchor, instance_id) {
+                return false;
+            }
+        };
+        /* EOF DEFAULT SETTINGS, DO NOT NEED TO CALCULATE OR RETRIEVE */
+
+        if (window._enable_fancybox) {
+            jQuery(document).on("click", "#etalage-gallery-container li.etalage_icon", function () {
+                /* create array of images */
+                _images = new Array();
+                _index = jQuery("#etalage li.etalage_thumb").index(jQuery("li.etalage_thumb_active"));
+                _count = 0;                
+                
+                jQuery("#etalage li.etalage_thumb > img.etalage_source_image").each(function () {
+                    _images.push({
+                        href: jQuery(this).attr("src"),
+                        title: jQuery(this).attr("title")
+                    });
+                    _count++;
+                });
+                
+                if(_count===0){/* no images in gallery */
+                    _images.push({
+                        "href": _first_image,
+                        "title": jQuery("a#main-image-link").attr("title")
+                    });
+                }
+
+                
+<?php
+    $_enable_thumbs  = Mage::getStoreConfig('attributeswatches/lightbox/thumbs');
+    $_enable_buttons  = Mage::getStoreConfig('attributeswatches/lightbox/buttons');
+?>
+                jQuery.fancybox.open(
+                        _images,
+                        {
+                            openEffect: "none",
+                            closeEffect: "none",
+                            nextEffect: "fade",
+                            prevEffect: "fade",
+                            index: _index,
+                            padding     : 10, /* Space inside fancyBox around content. 0 for no border */
+                            margin      : 20, /* Minimum space between viewport and fancyBox.  */
+                            <?php if($_enable_buttons):?>
+                            closeBtn    : false,
+                            <?php endif;?>
+                            <?php if($_enable_thumbs || $_enable_buttons){?>
+                            helpers     : {
+                                <?php if($_enable_buttons):?>
+                                    buttons : {}
+                                <?php endif;?>
+                                <?php if($_enable_buttons && $_enable_thumbs):?>,<?php endif;?>
+                                <?php if($_enable_thumbs):?>
+                                thumbs  : {
+                                    width  : 50,
+                                    height : 50
+                                }
+                                <?php endif;?>
+                            }
+                            <?php } ?>
+                        });
+                return false;
+            });
+            // Invoke the Fancybox plugin when an image is clicked
+        }
+
+
+<?php if ($_etalage_settings["disable_zoom"]): ?>
+            /* INCLUDE THIS WHEN ZOOM DISABLED */
+            _etalage_settings.disable_zoom = 1;
+            _etalage_settings.magnifier_opacity = 1;
+            /* EOF INCLUDE THIS WHEN ZOOM DISABLED */
+<?php endif; ?>
+
+        /* reload gallery with settings */
+        jQuery('#etalage').etalage(jQuery.extend(
+                _etalage_admin_settings,
+                _etalage_settings
+                <?php if($_gallery_selectors):?>
+                    ,{
+                        change_callback: function(image_number, instance_id){
+                            _data = jQuery("#" + instance_id + " li.thumb_" + image_number).first().data("config");
+                            if(_data){
+                                _values = eval(_data);
+                                if(spConfig<?php echo $_product->getId();?> !== null){
+                                    window.spConfig<?php echo $_product->getId();?>.values = _values;
+                                    window.spConfig<?php echo $_product->getId();?>.configureForValues();
+                                }
+                            }
+                        }
+                    }
+                <?php endif ; ?>
+                ));
+
+
+        /* if only one image, remove prev/next button */
+        _el = jQuery("#etalage li.etalage_thumb");
+        if (_el.length <= 1) {
+            jQuery("#etalage-gallery-container #product-image-gallery-prev, #etalage-gallery-container #product-image-gallery-next").hide().removeClass("show-on-hover");
+        } else {
+            jQuery("#etalage-gallery-container #product-image-gallery-prev, #etalage-gallery-container #product-image-gallery-next").show().addClass("show-on-hover");
+        }
+        
+<?php if ($_etalage_settings["use_porto_icons"]): ?>
+        jQuery("#etalage li.etalage_icon").addClass("etalage-icon-glyphicon").html('<a href="#"><span class="glyphicon glyphicon-search"></span></a>');
+<?php endif;?>    
+        
+
+    };
+    window.switchGallery = function (select_id , product_id) {
+        /* don't do anything if gallery is disabled... */
+        if (window._HIDE_PRODUCT_SINGLE_IMAGE_GALLERY)
+            return;
+        /* switch only if select can switch the gallery */
+        if (jQuery("#options-container-" + product_id + " dd select.configurable-option-select.switch-gallery#attribute" + select_id).length > 0) {
+            _classes = new Array();
+            jQuery("#options-container-" + product_id + " dd select.configurable-option-select.switch-gallery").each(function () {
+                if (jQuery("option:selected", this).val() !== "") {
+                    _classes.push(jQuery(this).attr("id") + "-" + jQuery("option:selected", this).val());
+                }
+            });
+            _class = _classes.join(".");
+            if (!_class)
+                return; /* don't do anything if there is no class... */
+            if (window._SWITCH_GALLERY) {
+                if (jQuery("#etalage-clone-images li." + _class).length > 0) {
+                    //jQuery('#product-gallery-container').append('<ul class="slides"></ul>');
+                    jQuery('#etalage-gallery-container #etalage').empty();
+                    /* copy items */
+                    jQuery("#etalage-clone-images li." + _class).clone().appendTo("#etalage-gallery-container #etalage");
+                    /* restart slider */
+                    window.loadEtalageGallery();
+                }
+            } else { /* just switch main image */
+                //_index = jQuery("#etalage-gallery-container #etalage li.etalage_small_thumbs ul li." + _class).first().index();
+                _index = jQuery("#etalage-gallery-container #etalage li.etalage_thumb." + _class).first().index();
+                window.etalage_show(_index+1);
+            }
+        }
+    }
+    ;
+    jQuery(document).ready(function () {
+        loadEtalageGallery();
+        /* prev-next buttons */
+        jQuery("#product-image-gallery-prev").on("click", function () {
+            etalage_previous();
+        });
+        jQuery("#product-image-gallery-next").on("click", function () {
+            etalage_next();
+        });
+        /* resize etalage when resize is finished */
+        jQuery(window).resize(function () {
+            clearTimeout(window.resizedFinished);
+            window.resizedFinished = setTimeout(function () {
+                _last_image = jQuery("#etalage li.etalage_thumb").index(jQuery("li.etalage_thumb_active"));
+                loadEtalageGallery();
+                /* go to last visited image.. */
+                if (_last_image > 0)
+                    jQuery("#etalage-gallery-container #etalage li.etalage_small_thumbs ul li").eq(_last_image).click();
+            }, 250);
+        });
+    });
+</script>
+<style type="text/css">
+    /* prev-next button position for leff-right carousel */
+    <?php
+    $_thumbs_sidebar = isset($_etalage_settings["smallthumbs_position"]) && in_array($_etalage_settings["smallthumbs_position"], array("left", "right")) ? $_etalage_settings["smallthumbs_position"] : false;
+    if ($_thumbs_sidebar):
+        $_total_thumbs = (int) $_etalage_settings["small_thumbs"];
+        $_position = round(100 / ($_total_thumbs + 1 ), 5);
+        ?>
+        #product-image-gallery-<?php echo ( $_thumbs_sidebar == "left" ) ? "prev" : "next"; ?> {
+            <?php echo $_thumbs_sidebar; ?>: <?php echo $_position ?>%;  
+        }
+    <?php endif;
+    ?>
+    #etalage .etalage_icon{
+        cursor: pointer;
+    }
+    <?php if ($_etalage_settings["disable_zoom"]): ?>
+        #etalage .etalage_magnifier{
+            border:transparent !important;
+        }
+    <?php endif; ?>    
+        
+    <?php if ($_etalage_settings["use_porto_icons"]): ?>
+        #etalage li.etalage_icon.etalage-icon-glyphicon{
+            background:none;
+        }
+        
+        #product-image-gallery-prev.prev-next-glyphicons,
+        #product-image-gallery-next.prev-next-glyphicons{
+            text-indent: 0px;
+            background:none;
+            font-size:40px;
+        }
+
+        /* hide & show on hover for large screens */
+        @media (min-width: 768px){
+            #product-image-gallery-prev.show-on-hover,
+            #product-image-gallery-next.show-on-hover{
+                display:none !important;
+            }
+
+            #etalage-gallery-container:hover #product-image-gallery-prev.show-on-hover,
+            #etalage-gallery-container:hover #product-image-gallery-next.show-on-hover{
+                display:block !important;
+            }
+        }
+    <?php endif; ?>    
+        
+
+</style>

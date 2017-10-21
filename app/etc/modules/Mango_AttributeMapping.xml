@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   Mango
+ * @package    Mango_Attributemapping
+ * @author     MangoExtensions
+  */
+ -->
+<config>
+    <modules>
+        <Mango_Attributemapping>
+            <active>false</active>
+            <codePool>local</codePool>
+        </Mango_Attributemapping>
+    </modules>
+</config> 
