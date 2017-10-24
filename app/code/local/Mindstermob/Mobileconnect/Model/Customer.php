@@ -332,7 +332,8 @@ class Mindstermob_Mobileconnect_Model_Customer extends Mage_Core_Model_Abstract 
 
                                $items_arr[]=array( "product_id"=>$item->getItemId(),
                                                "product_name"=>$item->getName(),
-                                               "display_price"=>(float)$item->getPrice(),
+                                              // "display_price"=>(float)$item->getPrice(),
+											  "display_price"=> number_format($item->getPrice(),2),
                                                "product_quantity"=>(float)$item->getQtyOrdered(),
                                                 "options"=>$custom_option,
                                                "image"=>$base_url->getBaseurl()."media/catalog/product".$details["image"],
@@ -514,7 +515,9 @@ class Mindstermob_Mobileconnect_Model_Customer extends Mage_Core_Model_Abstract 
 
            $json["items"][]=array( "product_id"=>$item->getItemId(),
                            "product_name"=>$item->getName(),
-                           "display_price"=>(float)$item->getPrice(),
+                          // "display_price"=>(float)$item->getPrice(),
+						  
+						  "display_price"=>number_format($item->getPrice(),2),
                            "product_quantity"=>(float)$item->getQtyOrdered(),
                            "options"=>$custom_option,
                            "image"=>$base_url->getBaseurl()."media/catalog/product".$details["image"],
@@ -745,7 +748,7 @@ $customer = Mage::getModel('customer/customer')
  
     public function getAddressbyId($addressId,$email) {
         
-        $json = array('status'=>'error','message'=>'','code'=>'','country_data'=>'','state_data'=>'','data' => array());
+        $json = array('status'=>'error','message'=>'','code'=>'','country_data'=>'','state_data'=> array(),'data' => array());
         if($email!=""){
 
                try{ 

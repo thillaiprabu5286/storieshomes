@@ -224,10 +224,11 @@ class Mindstermob_Mobileconnect_Model_Products extends Mage_Core_Model_Abstract 
                        'id'                    => $product->getId(),
                        'name'                  => $product->getName(),
                        'description'           => $product->getShortDescription(),
-                       'price'                 => $product->getPrice()+0,  //." ".$currencyCode,
+                       'price'                 => number_format($product->getPrice(),2),  //." ".$currencyCode,
                        'href'                  => $product->getProductUrl(),
                        'thumb'                 => $base_url->getBaseurl_products((string)Mage::helper('catalog/image')->init($product, 'small_image')->keepAspectRatio(true)->resize(200, 200)),//$image,
-                       'quantity'             => $quantity
+                       'quantity'             => $quantity,
+					   'currency_code'        => "Rs.",
                    );
 
 
@@ -282,10 +283,11 @@ class Mindstermob_Mobileconnect_Model_Products extends Mage_Core_Model_Abstract 
                        'id'                    => $product->getId(),
                        'name'                  => $product->getName(),
                        'description'           => $product->getShortDescription(),
-                       'price'                 => $product->getPrice()+0, //." ".$currencyCode,
+                       'price'                 => number_format($product->getPrice(),2), //." ".$currencyCode,
                        'href'                  => $product->getProductUrl(),
                        'thumb'                 =>$base_url->getBaseurl_products((string)Mage::helper('catalog/image')->init($product, 'thumbnail')),
-                      'quantity'             => $quantity
+                      'quantity'             => $quantity,
+					  'currency_code'        => "Rs.",
                    );
 
 
@@ -369,7 +371,7 @@ class Mindstermob_Mobileconnect_Model_Products extends Mage_Core_Model_Abstract 
                                 'id'                    => $product->getId(),
                                 'name'                  => $product->getName(),
                                 'description'           => $product->getShortDescription(),
-                                'price'                 => $product->getPrice()+0,  //." ".$currencyCode,
+                                'price'                 => number_format($product->getPrice(),2),  //." ".$currencyCode,
                                 'href'                  => $product->getProductUrl(),
                                 'currency_code'         => "Rs.",
                                 'thumb'                 => $product_image,
@@ -534,7 +536,7 @@ class Mindstermob_Mobileconnect_Model_Products extends Mage_Core_Model_Abstract 
                                    'id'                    => $product->getId(),
                                    'name'                  => $product->getName(),
                                    'description'           => $product->getShortDescription(),
-                                   'price'                 => $product->getPrice()+0,  //." ".$currencyCode,
+                                   'price'                 => number_format($product->getPrice(),2),  //." ".$currencyCode,
                                    'href'                  => $product->getProductUrl(),
                                     'thumb'                => $product_image,
                                     'currency_code'        => "Rs.",
@@ -595,7 +597,7 @@ class Mindstermob_Mobileconnect_Model_Products extends Mage_Core_Model_Abstract 
                                    'id'                    => $product->getId(),
                                    'name'                  => $product->getName(),
                                    'description'           => $product->getShortDescription(),
-                                   'price'                 => $product->getPrice()+0,  //." ".$currencyCode,
+                                   'price'                 => number_format($product->getPrice(),2),  //." ".$currencyCode,
                                    'href'                  => $product->getProductUrl(),
                                     'image'                => $product_image,
                                     'currency_code'        => "Rs.",
@@ -662,7 +664,7 @@ class Mindstermob_Mobileconnect_Model_Products extends Mage_Core_Model_Abstract 
                                    'id'                    => $product->getId(),
                                    'name'                  => $product->getName(),
                                    'description'           => $product->getShortDescription(),
-                                   'price'                 => $product->getPrice()+0,  //." ".$currencyCode,
+                                   'price'                 => number_format($product->getPrice(),2),  //." ".$currencyCode,
                                    'href'                  => $product->getProductUrl(),
                                     'thumb'                => $product_image,
                                     'currency_code'        => "Rs.",
@@ -729,7 +731,7 @@ class Mindstermob_Mobileconnect_Model_Products extends Mage_Core_Model_Abstract 
                                    'id'                    => $product->getId(),
                                    'name'                  => $product->getName(),
                                    'description'           => $product->getShortDescription(),
-                                   'price'                 => $product->getPrice()+0,  //." ".$currencyCode,
+                                   'price'                 => number_format($product->getPrice(),2),  //." ".$currencyCode,
                                    'href'                  => $product->getProductUrl(),
                                     'image'                => $product_image,
                                     'currency_code'        => "Rs.",
@@ -898,6 +900,7 @@ class Mindstermob_Mobileconnect_Model_Products extends Mage_Core_Model_Abstract 
         $json["product"]["is_in_stock"]=$details["is_in_stock"];
         $json["product"]["image"]=$base_url->getBaseurl()."media/catalog/product".$details["image"];
         $json["product"]["thumbnail"]=$details["thumbnail"];
+		$json["product"]["currency_code"]= "Rs.";
          //=========attribute details======================//
          $colorValue = Mage::getModel('catalog/product')
 			->load($product_id)

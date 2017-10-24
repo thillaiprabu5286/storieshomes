@@ -160,15 +160,19 @@ class Mindstermob_Mobileconnect_Model_Checkout extends Mage_Core_Model_Abstract 
                            "qty"=>$cart->qty,
                            "id"=>$product_id,
                             "name"=>$details["name"],
-                            "price"=>$details["price"]+0,   
-                            "total_price"=>$details["price"]* $cart->qty,
+                            //"price"=>$details["price"]+0,   
+							"price"=> number_format($details["price"],2),
+                            //"total_price"=>$details["price"]* $cart->qty,
+							
+							 "total_price"=> number_format($details["price"],2)* $cart->qty,
                             "description"=>$details["description"],
                             "short_description"=>$details["short_description"],
                             "is_in_stock"=>$instock,
                            /* "image"=> getBaseurl()."media/catalog/product".$details["image"],*/
                            "image"=> $base_url->getBaseurl_products((string)Mage::helper('catalog/image')->init($product, 'small_image')->keepAspectRatio(true)->resize(200, 200)),
                             "thumbnail"=>$details["thumbnail"],
-                           "options"=>$cart->options
+                           "options"=>$cart->options,
+						 "currency_code" => "Rs.",
                         );
                        $grand_total=$grand_total+($details["price"]* $cart->qty);
                        $json["cart"][]=array("id"=>$cart->id,"qty"=>$cart->qty,"options"=>$cart->options);
@@ -191,7 +195,7 @@ class Mindstermob_Mobileconnect_Model_Checkout extends Mage_Core_Model_Abstract 
      }//======end of function=======//
      
       public function Checkout_payment($cartitems,$email,$addressId1,$payment_method){
-          $ouput_arr=array("payment_method"=>"","order_id"=>"","message"=>"","post"=>"","status"=>"0");
+          $ouput_arr=array("payment_method"=>"","order_id"=>"","message"=>"","post"=>null,"status"=>"0");
 
 
             //=============save order and get order id================================//
