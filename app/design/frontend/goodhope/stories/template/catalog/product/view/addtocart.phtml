@@ -31,14 +31,29 @@
         <?php if(!$_product->isGrouped()): ?>
             <div class="qty-holder">
                 <label for="qty"><?php echo $this->__('Qty:') ?></label>
-                <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
-                <div class="qty-changer">
-                    <a href="javascript:void(0)" class="qty_inc"><i class="fa fa-sort-asc" aria-hidden="true"></i></a>
-                    <a href="javascript:void(0)" class="qty_dec"><i class="fa fa-sort-desc" aria-hidden="true"></i></a>
+                <div class="input-group spinner">
+                    <input type="text" name="qty" id="qty" class="form-control" value="1" title="<?php echo $this->__('Qty') ?>" class="input-text qty">
+                    <div class="input-group-btn-vertical">
+                        <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+                        <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+                    </div>
                 </div>
             </div>
         <?php endif; ?>
         <button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart pull-right" onclick="productAddToCartForm.submit(this)"><span><span><i class="fa fa-shopping-cart" aria-hidden="true"></i> <?php echo $buttonTitle ?></span></span></button>
         <?php echo $this->getChildHtml('', true, true) ?>
     </div>
+        <script>
+            (function ($) {
+                $('.spinner .btn:first-of-type').on('click', function() {
+                    $('.spinner input').val( parseInt($('.spinner input').val(), 10) + 1);
+                });
+                $('.spinner .btn:last-of-type').on('click', function() {
+                    if($('.spinner input').val() >= 2) {
+                        $('.spinner input').val(parseInt($('.spinner input').val(), 10) - 1);
+                    }
+                });
+            })(jQuery);
+        </script>
 <?php endif; ?>
+
