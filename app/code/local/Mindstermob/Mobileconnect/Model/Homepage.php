@@ -173,7 +173,7 @@ $base_url = Mage::getModel('mobileconnect/baseurl');
     public function getFavourites($data,$email, $password){
       
         $base_url=Mage::getModel('mobileconnect/baseurl');
-         $json = array('status'=>'0','login'=>'0','message'=>'','items' => array());
+         $json = array('status'=>'0','login'=>'0','message'=>'','items' => array(),'currency_code'=> 'Rs.');
        
            
            foreach($data as $product){
@@ -196,6 +196,7 @@ $base_url = Mage::getModel('mobileconnect/baseurl');
                             "name"=>$details["name"],
                            // "price"=>$details["price"]+0,   
 						   "price"=> number_format($details["price"],2),
+						   "currency_code"=>"Rs",
                            // "total_price"=>$details["price"]* $cart->qty,
                             "description"=>$details["description"],
                             "short_description"=>$details["short_description"],

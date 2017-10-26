@@ -894,13 +894,14 @@ class Mindstermob_Mobileconnect_Model_Products extends Mage_Core_Model_Abstract 
 
         //material,dimensions,color,sku
         $json["product"]["name"]=$details["name"];
-        $json["product"]["price"]=$details["price"]+0;
+       // $json["product"]["price"]=$details["price"]+0;
+	   $json["product"]["price"] = number_format($details["price"],2);
         $json["product"]["description"]=$details["description"];
         $json["product"]["short_description"]=$details["short_description"];
         $json["product"]["is_in_stock"]=$details["is_in_stock"];
         $json["product"]["image"]=$base_url->getBaseurl()."media/catalog/product".$details["image"];
         $json["product"]["thumbnail"]=$details["thumbnail"];
-		$json["product"]["currency_code"]= "Rs.";
+		//$json["product"]["currency_code"]= "Rs.";
          //=========attribute details======================//
          $colorValue = Mage::getModel('catalog/product')
 			->load($product_id)
@@ -944,6 +945,7 @@ class Mindstermob_Mobileconnect_Model_Products extends Mage_Core_Model_Abstract 
         $json["product"]["top_new_arrivals"] = $this->getTopnewarrival($product_id);
         $json["product"]["top_most_viewed"] = $this->getTopMostViewedProducts($product_id);
         $json["product"]["votes"] = $this->getVotes($product_id);
+		$json["currency_code"] = "Rs.";
         return(json_encode($json));
 
   }//=======end of function=============//      

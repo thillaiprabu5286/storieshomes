@@ -665,8 +665,10 @@ $customer = Mage::getModel('customer/customer')
                                             "street" => $data->street,
                                             "city" => $data->city ,
                                             "country_id" => "IN",
-                                           "region" => "KL",
-                                            "region_id" => "502",
+											"region" => $data->id_state,
+                                           //"region" => "KL",
+                                            //"region_id" => "502",
+											"region_id" => $data->region_id,
                                             "postcode" => $data->postcode,
                                             "telephone" => $data->phone_mobile,
                                             "fax" => "",
@@ -799,7 +801,7 @@ $customer = Mage::getModel('customer/customer')
     }//============end of function======//
  
      public function getAddressformdata($country_id,$login_email) {
-        $json=array("status"=>"success","message"=>"","data"=>"","country_data"=>"");
+        $json=array("status"=>"success","message"=>"","data"=>null,"country_data"=>"");
         if($login_email!=""){
 
 

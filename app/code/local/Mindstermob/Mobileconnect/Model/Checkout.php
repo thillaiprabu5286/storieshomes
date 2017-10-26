@@ -156,6 +156,7 @@ class Mindstermob_Mobileconnect_Model_Checkout extends Mage_Core_Model_Abstract 
                        if($stockItemData["qty"] < $cart->qty && $cart->qty != $stockItemData["qty"]){
                             $instock=0;
                        }
+					   $tot_price =number_format($details["price"],2)* $cart->qty;
                        $json["items"][]=array( "stock_quantity"=>$stockItemData["qty"],
                            "qty"=>$cart->qty,
                            "id"=>$product_id,
@@ -164,7 +165,7 @@ class Mindstermob_Mobileconnect_Model_Checkout extends Mage_Core_Model_Abstract 
 							"price"=> number_format($details["price"],2),
                             //"total_price"=>$details["price"]* $cart->qty,
 							
-							 "total_price"=> number_format($details["price"],2)* $cart->qty,
+							 "total_price"=> number_format($tot_price,2),
                             "description"=>$details["description"],
                             "short_description"=>$details["short_description"],
                             "is_in_stock"=>$instock,
@@ -184,11 +185,14 @@ class Mindstermob_Mobileconnect_Model_Checkout extends Mage_Core_Model_Abstract 
                }
            }
 
-           $json["grandtotal"]=$grand_total;
+           //$json["grandtotal"]=$grand_total;
+		    $json["grandtotal"] = number_format($grand_total,2);
            $ship_rate=Mage::getStoreConfig('carriers/flatrate/price');
            $json["ship_rate"]=$ship_rate;
-           $json["net_amount"]=$grand_total+$ship_rate;
-           
+           //$json["net_amount"]=$grand_total+$ship_rate;
+		   $net_amt = $grand_total+$ship_rate;
+		   $json["net_amount"] = number_format($net_amt,2);
+           $json["currency_code"] => "Rs.";
            return $json;
          
          
