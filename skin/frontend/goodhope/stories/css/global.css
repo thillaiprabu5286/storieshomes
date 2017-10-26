@@ -78,7 +78,7 @@ label{
 /*header*/
 header{
 	height: 179px;
-	margin-left: 134px;
+	padding-left: 134px;
 }
 header .logo{
 	position: absolute;
@@ -147,7 +147,7 @@ input:-webkit-autofill {background-color: #eee !important;}
 	padding-top: 35px;
 	padding-left: 40px;
 	float: left;
-	width: 180px;
+	width: 190px;
 }
 .header-top .user-account a{
 	display: block;
@@ -258,6 +258,11 @@ input:-webkit-autofill {background-color: #eee !important;}
 
 .mini-products-list .item {border-bottom: 1px solid #eee;padding-bottom: 10px;padding-top: 10px;}
 
+.mini-products-list li.item {padding: 10px;background: #fff;}
+.mini-products-list li.item a.product-image {float: left;padding-right: 10px;}
+.product-details {float: left}
+
+
 /* Product Category Pages */
 
 /* Product Category Sidebar */
@@ -295,6 +300,7 @@ input:-webkit-autofill {background-color: #eee !important;}
 .mega-dropdown-menu > li > ul > li.view-all {clear: both; border-top: 1px solid #eee;padding-left: 5px;margin-top: 20px;}
 
 /*mega menu*/
+.dropdown:hover .dropdown-menu {display: block !important;}
 .mega-dropdown {
   position: static !important;
 }
@@ -304,6 +310,7 @@ input:-webkit-autofill {background-color: #eee !important;}
     box-shadow: none;
     border-radius: 0;
     -webkit-box-shadow: none;
+	z-index: 10000;
 }
 .mega-dropdown-menu > li > ul {
 	padding: 0;
@@ -312,13 +319,26 @@ input:-webkit-autofill {background-color: #eee !important;}
 .mega-dropdown-menu > li > ul > li {
 	list-style: none;
 }
+.header-fixed {
+	position: fixed;
+	top:0; left:0;
+	width: 100%;
+	z-index: 1000;
+	box-shadow: 0 0 5px #999;
+	border-bottom: 1px solid #999;}
+.header-fixed .mega-menu-wapper li a.dropdown-toggle {padding: 5px 10px;font-size: 12px;}
+.header-fixed .mega-menu-wapper li a span img {height: 20px;}
+.header-fixed .mega-menu-wapper li a span {height: auto;}
+.fixed-header-logo {max-width: 42px;display: none;}
+.fixed-header-logo a {padding: 0 !important;}
+.fixed-header-logo img {height: 56px !important;}
+
 .mega-dropdown-menu > li > ul > li > a {
 	display: block;
 	font-size: 16px;
-	padding: 3px 5px;
+	padding: 5px;
 	text-transform: capitalize;
 	text-align: left;
-	font-weight: bold;
 }
 .mega-dropdown-menu > li ul > li > a:hover,
 .mega-dropdown-menu > li ul > li > a:focus {
@@ -883,6 +903,37 @@ input:-webkit-autofill {background-color: #eee !important;}
 	background: #eeeeee;
 	padding:50px;
 }
+
+.qty-holder {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 7px;
+	width: 60px
+}
+
+.qty-changer {
+	display: inline-block;
+	vertical-align: middle
+}
+
+.qty-changer > a {
+	width: 16px;
+	height: 16px;
+	display: block;
+	border: 1px solid #e1e1e1;
+	color: #ccc;
+	line-height: 14px;
+	text-align: center;
+	margin-bottom: 6px;
+	border-radius: 3px;
+	font-size: 8px;
+	background-color: #fff
+}
+
+.qty-changer > a.qty_dec {
+	margin-bottom: 0
+}
+
 .product-detail-cont .product-detail {
 	padding:30px 0 0 30px;
 }
@@ -958,6 +1009,41 @@ input:-webkit-autofill {background-color: #eee !important;}
 
 /* Product View Page */
 .product-view {text-align: left}
+.spinner input {
+	text-align: right;
+	border-radius: 0;
+	font-size: 16px;
+	letter-spacing: 2px;
+}
+.input-group-btn-vertical {
+	position: relative;
+	white-space: nowrap;
+	width: 1%;
+	vertical-align: middle;
+	display: table-cell;
+}
+.input-group-btn-vertical > .btn {
+	display: block;
+	float: none;
+	width: 100%;
+	max-width: 100%;
+	padding: 8px;
+	margin-left: -1px;
+	position: relative;
+	border-radius: 0;
+}
+.input-group-btn-vertical > .btn:first-child {
+	border-top-right-radius: 4px;
+}
+.input-group-btn-vertical > .btn:last-child {
+	margin-top: -2px;
+	border-bottom-right-radius: 4px;
+}
+.input-group-btn-vertical i{
+	position: absolute;
+	top: 0;
+	left: 4px;
+}
 
 /*product detail tab*/
 .product-detail-tab{
@@ -1245,7 +1331,7 @@ footer .about-stories p.about-us{
 	.topCartContent {right: auto; left: -190px;width: 250px;}
 	.top-info-cont .world-map-detail {right: auto; left: 0;}
 	.top-info-cont .world-map-detail p {font-size: 18px;width: 0px;padding-top: 10px;}
-	.header-bottom .navbar-inverse .navbar-collapse {position: absolute;  z-index: 99999;  background-color: #ddd;  width: 100%;}
+	.header-bottom .navbar-inverse .navbar-collapse {position: absolute;z-index: 99999;background-color: #ddd;width: 100%;}
 	.slider-area .main-banner{
 		width: 100% !important;
 	}

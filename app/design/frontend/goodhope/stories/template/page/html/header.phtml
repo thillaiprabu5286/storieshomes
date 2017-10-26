@@ -2,6 +2,7 @@
 <?php
     $store = Mage::app()->getStore();
     $code  = $store->getCode();
+    $is_loggedIn = Mage::helper('customer')->isLoggedIn()
 ?>
 
 <?php
@@ -65,13 +66,17 @@
             <div class="user-account">
                 <ul class="list-inline">
                     <li>
-                        <a href="<?php echo Mage::getBaseUrl() ?>customer/account/"><i class="fa fa-sign-in" aria-hidden="true"></i>
-                             Login</a>
+                        <?php if ($is_loggedIn): ?>
+                            <a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>"><i class="fa fa-sign-out" aria-hidden="true"></i> <?php echo $this->__('Logout'); ?></a>
+                            <?php else: ?>
+                            <a href="<?php echo Mage::getBaseUrl() ?>customer/account/"><i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo $this->__('Login'); ?></a>
+                        <?php endif; ?>
                     </li>
+                    <?php if (!($is_loggedIn)): ?>
                     <li>
-                        <a href="<?php echo Mage::getBaseUrl() ?>customer/account/create/"><i class="fa fa-user-plus" aria-hidden="true"></i>
-                             Register</a>
+                        <a href="<?php echo Mage::getBaseUrl() ?>customer/account/create/"><i class="fa fa-user-plus" aria-hidden="true"></i> <?php echo $this->__('Register'); ?></a>
                     </li>
+                    <?php endif; ?>
 
                 </ul>
             </div>
