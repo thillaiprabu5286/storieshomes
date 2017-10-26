@@ -115,7 +115,7 @@ input[type=email], input[type=search], input[type=number], input[type=password],
 .onestepcheckout-review-terms-description-container{display: none;}
 #onestepcheckout-place-order{margin-top: 15px;height: 118px;}
 .onestepcheckout-place-order-process img{width: 15px;height: 15px;}
-#onestepcheckout-place-order-button {width: 100%;}
+#onestepcheckout-place-order-button {width: 100%;background: #a77000;padding: 15px;color: #fff;}
 #onestepcheckout-place-order-button.onestepcheckout-place-order-button-disabled,#onestepcheckout-place-order-button.onestepcheckout-place-order-button-disabled:visited,#onestepcheckout-place-order-button.onestepcheckout-place-order-button-disabled:hover{color: #f8f8ff;cursor: default;}
 #onestepcheckout-place-order-button.onestepcheckout-place-order-button-disabled span{background-color: transparent !important;background-position: 0 -40px;}
 #onestepcheckout-place-order-button.onestepcheckout-place-order-button-disabled span span{    background-position: 100% 100%;}
