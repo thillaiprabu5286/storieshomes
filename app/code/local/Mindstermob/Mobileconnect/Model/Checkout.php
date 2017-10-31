@@ -192,7 +192,7 @@ class Mindstermob_Mobileconnect_Model_Checkout extends Mage_Core_Model_Abstract 
            //$json["net_amount"]=$grand_total+$ship_rate;
 		   $net_amt = $grand_total+$ship_rate;
 		   $json["net_amount"] = number_format($net_amt,2);
-           $json["currency_code"] => "Rs.";
+                   $json["currency_code"] = "Rs.";
            return $json;
          
          
