@@ -10,7 +10,7 @@
 <config>
     <modules>
         <Mango_Attributeswatches>
-            <active>false</active>
+            <active>true</active>
             <codePool>local</codePool>
         </Mango_Attributeswatches>
     </modules>

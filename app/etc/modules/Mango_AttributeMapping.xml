@@ -9,7 +9,7 @@
 <config>
     <modules>
         <Mango_Attributemapping>
-            <active>false</active>
+            <active>true</active>
             <codePool>local</codePool>
         </Mango_Attributemapping>
     </modules>
