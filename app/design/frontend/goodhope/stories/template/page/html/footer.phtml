@@ -24,14 +24,6 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<!--<div class="footer-container">
-    <div class="footer">
-        <?php /*echo $this->getChildHtml() */?>
-        <p class="bugs"><?php /*echo $this->__('Help Us to Keep Magento Healthy') */?> - <a href="http://www.magentocommerce.com/bug-tracking" onclick="this.target='_blank'"><strong><?php /*echo $this->__('Report All Bugs') */?></strong></a> <?php /*echo $this->__('(ver. %s)', Mage::getVersion()) */?></p>
-        <address><?php /*echo $this->getCopyright() */?></address>
-    </div>
-</div>-->
-
 <!-- footer -->
 <footer>
     <div class="container">
@@ -41,7 +33,7 @@
                     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-contact-block')->toHtml(); ?>
                 </div>
                 <div class="col-md-4 col-sm-4">
-                        <?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe.phtml')->toHtml(); ?>
+                    <?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe.phtml')->toHtml(); ?>
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-social-block')->toHtml(); ?>
@@ -49,15 +41,11 @@
             </div>
         </div>
         <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-about-block')->toHtml(); ?>
-
-        <?php echo $this->getChildHtml('custom_footer_links') ?>
-
+        <?php //echo $this->getChildHtml('custom_footer_links') ?>
         <div class="footer-bottom">
             <p>Copyright 2017 Stories Homes furniture Store. All Rights Reserved</p>
         </div>
-
     </div>
 </footer>
-
 <script src="<?php echo $this->getSkinUrl('js/owl.carousel.min.js') ?>"></script>
 <script src="<?php echo $this->getSkinUrl('js/common.js') ?>"></script>
