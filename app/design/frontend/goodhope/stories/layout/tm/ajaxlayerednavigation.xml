@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
+    <default>
+        <remove name="left.newsletter"/>
+    </default>
     <catalog_category_layered translate="label">
         <label>Catalog Category (Anchor)</label>
         <remove name="catalog.leftnav"/>
