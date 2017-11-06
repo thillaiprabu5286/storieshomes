@@ -98,7 +98,7 @@ $isAllowComment = Mage::getStoreConfig('lotusbreath_onestepcheckout/general/allo
                     <div class="col-3">
                         <?php if (!Mage::getSingleton('core/session')->getShopId()
                             && Mage::app()->getWebsite()->getCode() != 'qa'): ?>
-                            <div id="coupon_patial">
+                            <div id="shop_patial">
                                 <h3 class="ptitle"><?php echo $this->__("Shop ID Information");?></h3>
                                 <?php echo $this->getChildHtml('shop'); ?>
                             </div>
@@ -111,7 +111,6 @@ $isAllowComment = Mage::getStoreConfig('lotusbreath_onestepcheckout/general/allo
                         <?php if( Mage::getStoreConfig('lotusbreath_onestepcheckout/general/allowshowcoupon') ):?>
                             <div id="coupon_patial">
                                 <h3 class="ptitle"><?php echo $this->__("Discount Codes");?></h3>
-
                                 <?php echo $this->getChildHtml('coupon'); ?>
                             </div>
                         <?php endif;?>
@@ -153,6 +152,12 @@ $isAllowComment = Mage::getStoreConfig('lotusbreath_onestepcheckout/general/allo
         </div>
     </form>
 </div>
+
+<?php if (Mage::getStoreConfig('zodiya_config/general/welcomepopup')
+    && empty(Mage::getSingleton('core/session')->getShopId())): ?>
+    <?php echo $this->getLayout()->createBlock('zodiya_affiliates/main')->setTemplate('zodiya/affiliates/checkout.phtml')->toHtml() ?>
+<?php endif; ?>
+
 
 <script type="text/javascript">
     //<![CDATA[

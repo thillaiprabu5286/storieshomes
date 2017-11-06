@@ -8,10 +8,6 @@
                    value="<?php echo $this->htmlEscape($this->getCouponCode()) ?>"/>
 
         </div>
-        <div>
-            <div id="coupon-success-msg" class="sucesss"></div>
-            <div id="coupon-error-msg" class="error"></div>
-        </div>
         <div class="lt-buttons-set">
             <?php
             $classRemovedCouponBtn = 'hidden';
@@ -31,6 +27,12 @@
             <?php if (strlen($this->getCouponCode())): ?>
             <?php endif; ?>
         </div>
+        <br clear="all">
+        <div>
+            <div id="coupon-success-msg" class="sucesss"></div>
+            <div id="coupon-error-msg" class="error"></div>
+        </div>
+
 
     </div>
 </div>
