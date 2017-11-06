@@ -48,6 +48,7 @@ Default layout, loads most of the pages
                 <action method="addCss"><stylesheet>css/global.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/owl.carousel.min.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/owl.theme.default.min.css</stylesheet></action>
+                <action method="addCss"><stylesheet>css/left_push_menu.css</stylesheet></action>
 
                 <action method="addJs"><script>prototype/prototype.js</script></action>
                 <action method="addJs"><script>lib/ccard.js</script></action>

@@ -143,7 +143,7 @@ select option { padding-right:10px; }
 select.multiselect option { border-bottom:1px solid #b6b6b6; padding:2px 5px; }
 select.multiselect option:last-child { border-bottom:0; }
 textarea { overflow:auto; }
-input.radio { margin-right:3px; float: left}
+input.radio {margin: 3px 10px;float: left}
 #onestepcheckout-shipping-method label {margin-left: 5px;}
 #onestepcheckout-payment-method input.radio {margin-top: 10px !important;}
 input.checkbox { margin-right:3px; }
@@ -169,7 +169,7 @@ input.input-text:focus,select:focus,textarea:focus { background-color:#edf7fd; }
 /* Form lists */
 /* Grouped fields */
 /*.form-list { width:535px; margin:0 auto; overflow:hidden; }*/
-.form-list li { margin:0 0 8px; }
+.form-list li { margin:0 0 8px;margin-top: 20px;}
 .form-list label { float:left; color:#666; font-weight:bold; position:relative; z-index:0; }
 .form-list label.required {}
 .form-list label.required em { float:right; font-style:normal; color:#eb340a; position:absolute; top:0; right:-8px; }
@@ -177,12 +177,12 @@ input.input-text:focus,select:focus,textarea:focus { background-color:#edf7fd; }
 .form-list li.control .input-box { clear:none; display:inline; width:auto; }
 /*.form-list li.fields { margin-right:-15px; }*/
 .form-list .input-box { display:block; clear:both; width:100%; }
-.form-list .field { float:left; width:275px; }
+.form-list .field {float:left;width: 48.5%;margin-right: 10px;}
 .form-list input.input-text { width:100%; padding: 10px}
 .form-list textarea { width:254px; height:10em; }
-.form-list select { width:260px; }
-.form-list li.wide .input-box { width:535px; }
-.form-list li.wide input.input-text { width:529px; }
+.form-list select {width: 100%;height: 40px;}
+.form-list li.wide .input-box { width:100%; }
+.form-list li.wide input.input-text { width:100%; }
 .form-list li.wide textarea { width:529px; }
 .form-list li.wide select { width:535px; }
 .form-list li.additional-row { border-top:1px solid #ccc; margin-top:10px; padding-top:7px; }
@@ -393,7 +393,7 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 
 .data-table tfoot { border-bottom:1px solid #d9dde3; }
 .data-table tfoot tr {border-top: 1px solid #aaa; border-bottom: 1px solid #aaa; }
-.data-table tfoot td { padding-top:1px; padding-bottom:1px; border-bottom:0; border-right:1px solid #d9dde3; }
+.data-table tfoot td { padding-top:7px; padding-bottom:7px; border-bottom:0; border-right:1px solid #d9dde3; }
 .data-table tfoot strong { font-size:16px; }
 
 .data-table tbody th.label {text-transform: uppercase;}
@@ -818,7 +818,7 @@ tr.summary-details-excluded { font-style:italic; }
 .products-list div.item { border-bottom:1px solid #d9ddd3; padding:12px 10px; overflow: hidden;}
 .products-list div.item.last { border-bottom:0; }
 .products-list .product-image { float:left; width:22%; margin:0 0 10px; }
-.products-list .product-shop { margin-left:150px; }
+.products-list .product-shop {float: left;width: 78%;}
 .products-list .product-name { margin:0 0 5px; font-weight:bold; font-size:13px; color:#203548; }
 .products-list .product-name a { color:#203548; font-size: 16px;}
 .products-list .price-box { float:left; margin:3px 13px 5px 0; }
@@ -1367,12 +1367,12 @@ tr.summary-details-excluded { font-style:italic; }
 
 /* One Page Checkout */
 .block-progress { border:0; margin:0; }
-.block-progress .block-title { background:none; border:0; padding:0; margin:0 0 5px; }
-.block-progress .block-title strong { font-size:13px; color:#0a263c; }
+.block-progress .block-title { background:none; border:0; padding:0; margin:10px 0 10px 5px; }
+.block-progress .block-title strong { font-size:14px; color:#0a263c; }
 .block-progress .block-content { background:none; }
 .block-progress dt { font-size:13px; font-weight:bold; line-height:1.35; background:#eee; border:1px solid #a3aeb3; margin:0 0 6px; padding:2px 8px; color:#999; }
-.block-progress dd { background:#eee; border:1px solid #a3aeb3; border-top:0; padding:8px 13px; margin:0 0 6px; }
-.block-progress dt.complete { margin:0; background:#d0dce1; color:#5e8ab4; }
+.block-progress dd { background:#fffdf9; border:1px solid #efd7a8; border-top:0; padding:8px 13px; margin:0 0 6px; }
+.block-progress dt.complete { margin:0; background:#dca73d; color:#fff; }
 .block-progress dd.complete {}
 .block-progress p { margin:0; }
 .block-progress .cards-list dt { background:none; border:0 none; color:inherit; font-size:12px; margin:5px 0; padding:0; }
@@ -1382,11 +1382,11 @@ tr.summary-details-excluded { font-style:italic; }
 /* show/hide "change" link for progress step depend on complete status
  * should be placed in .css file */
 .opc-block-progress dt.complete a,
-.opc-block-progress dt.complete .separator { display: inline; }
+.opc-block-progress dt.complete .separator { display: inline;color:#fff;}
 .opc-block-progress dt a,
 .opc-block-progress dt .separator { display: none; }
 
-.opc .buttons-set { margin-top:0; padding-top:2em; }
+.opc .buttons-set { margin-top:0;}
 .opc .buttons-set p.required { margin:0; padding:0 0 10px; }
 .opc .buttons-set .back-link small { display:none; }
 .opc .buttons-set .back-link a { background:url(../images/i_arrow-top.gif) 0 50% no-repeat; padding-left:16px; }
@@ -1402,12 +1402,12 @@ tr.summary-details-excluded { font-style:italic; }
 .opc .step-title h2 { float:left; margin:0; font:bold 13px/16px Arial, Helvetica, sans-serif; color:#999; }
 .opc .step-title a { display:none; float:right; font-size:11px; line-height:16px; }
 
-.opc .allow .step-title { background:#d0dce1; border:1px solid #a3aeb3; border-bottom:0; color:#a4b3b9; cursor:pointer; }
-.opc .allow .step-title .number { background:#dbe6eb; border-color:#dbe6eb; color:#a4b3b9; }
-.opc .allow .step-title h2 { color:#a4b3b9; }
+.opc .allow .step-title {padding: 10px;background:#efefef; border:1px solid #d4d4d4; border-bottom:0; color:#a4b3b9; cursor:pointer; }
+.opc .allow .step-title .number {background: #d0d0d0;border-color: #a9a9a9;color: #a9a9a9;}
+.opc .allow .step-title h2 { color:#a9a9a9; }
 /*.opc .allow .step-title a { display:block; }*/
 
-.opc .active .step-title { background: none; border:1px solid #bbb; padding-bottom:5px; color:#dca73c; cursor:default; }
+.opc .active .step-title { background: #fffdf9; border:1px solid #bbb; padding-bottom:5px; color:#dca73c; cursor:default; }
 .opc .active .step-title .number { background:#dca73c; border-color:#f19900; color:#fff; }
 .opc .active .step-title h2 { color:#dca73c; }
 /*.opc .active .step-title a { display:none; }*/
@@ -1416,8 +1416,8 @@ tr.summary-details-excluded { font-style:italic; }
 .opc .step .tool-tip { right:30px; }
 
 #opc-login .buttons-set { border-top:0; }
-#opc-login h3 { font-size:13px; border-bottom:1px solid #e4e4e4; padding-bottom:2px; text-transform:uppercase; }
-#opc-login h4 { font-size:1em; font-weight:bold; margin:0; color:#2f2f2f; }
+#opc-login h3 { font-size:16px;font-weight:bold;border-bottom:1px solid #e4e4e4; padding-bottom:10px;}
+#opc-login h4 { font-size:1em; font-weight:bold; color:#2f2f2f; }
 
 #opc-shipping_method .buttons-set { border-top:0; }
 .opc .gift-messages-form { margin:0 -30px; background:#f6f1eb; border:1px solid #e9e4de; border-width:1px 0; padding:22px 24px 22px 30px; }

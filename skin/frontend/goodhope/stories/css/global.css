@@ -14,7 +14,6 @@ body {
 	color: #333;
 	background:#fff;
 	text-align: left;
-	font-family: 'layarbahteraddw01-regularRg' !important;
 }
 .clearfix {
 	display: block;
@@ -66,7 +65,6 @@ a img:hover {
 }
 p, h1, h2, h3, h4, h5, h6 {
 	padding: 0;
-	font-weight: 300;
 }
 label{
 	font-weight: normal;
@@ -77,8 +75,8 @@ label{
 
 /*header*/
 header{
-	height: 179px;
-	padding-left: 134px;
+	height: 136px;
+	padding-left: 102px;
 }
 header .logo{
 	position: absolute;
@@ -86,11 +84,10 @@ header .logo{
 	top: 0;
 	display: block;
 	text-indent: -999999px;
+	height: 35%;
 }
-header .logo img:hover{
-	opacity: 10;
-
-}
+header .logo img {display: block;height: 136px;}
+header .logo img:hover{opacity: 10;}
 
 .header-top{
 	height: 84px;
@@ -258,7 +255,7 @@ input:-webkit-autofill {background-color: #eee !important;}
 
 .mini-products-list .item {border-bottom: 1px solid #eee;padding-bottom: 10px;padding-top: 10px;}
 
-.mini-products-list li.item {padding: 10px;background: #fff;}
+.mini-products-list li.item {background: #fff;}
 .mini-products-list li.item a.product-image {float: left;padding-right: 10px;}
 .product-details {float: left}
 
@@ -587,8 +584,7 @@ input:-webkit-autofill {background-color: #eee !important;}
 	font-size: 17px;
 	display: block;
 	height: 50px;
-	text-decoration: underline;
-	color: #898688;
+	color: #666;
 	padding-bottom: 15px;
 }
 .product-box a.product-title:hover{
@@ -650,6 +646,7 @@ input:-webkit-autofill {background-color: #eee !important;}
 	padding-bottom:30px;
 	margin:0;
 	text-transform: uppercase;
+	font-weight: bold;
 }
 .new-arrival-cont a.view-all{
 	text-transform: uppercase;
@@ -865,6 +862,7 @@ input:-webkit-autofill {background-color: #eee !important;}
 	padding-bottom: 40px;
 	margin:0;
 	text-transform: uppercase;
+	font-weight: bold;
 }
 
 .filters{
@@ -1326,7 +1324,7 @@ footer .about-stories p.about-us{
 		width: 90%;
 	}
 	.header-top {
-		height: 129px;
+		height: 101px;
 	}
 	.topCartContent {right: auto; left: -190px;width: 250px;}
 	.top-info-cont .world-map-detail {right: auto; left: 0;}
@@ -1433,6 +1431,10 @@ footer .about-stories p.about-us{
 
 	.col2-set .col-2, .col2-set .col-1 {width: 100%}
 	.fieldset {margin: 8px 0;}
+
+	.header-top .search-cont {margin-top: 5px;}
+	.header-top .user-account {padding-top: 15px;}
+	.header-top .cart-wrapper {padding-top: 15px;}
 
 }
 @media only screen and (max-width: 600px) {
