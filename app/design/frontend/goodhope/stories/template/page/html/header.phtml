@@ -34,29 +34,10 @@
  * @var Mage_Page_Block_Html_Header $this
  */
 ?>
-<!--<div class="header-container">
-    <div class="header">
-        <?php /*if ($this->getIsHomePage()):*/?>
-        <h1 class="logo"><strong><?php /*echo $this->getLogoAlt() */?></strong><a href="<?php /*echo $this->getUrl('') */?>" title="<?php /*echo $this->getLogoAlt() */?>" class="logo"><img src="<?php /*echo $this->getLogoSrc() */?>" alt="<?php /*echo $this->getLogoAlt() */?>" /></a></h1>
-        <?php /*else:*/?>
-        <a href="<?php /*echo $this->getUrl('') */?>" title="<?php /*echo $this->getLogoAlt() */?>" class="logo"><strong><?php /*echo $this->getLogoAlt() */?></strong><img src="<?php /*echo $this->getLogoSrc() */?>" alt="<?php /*echo $this->getLogoAlt() */?>" /></a>
-        <?php /*endif*/?>
-        <div class="quick-access">
-            <?php /*echo $this->getChildHtml('topSearch') */?>
-            <p class="welcome-msg"><?php /*echo $this->getChildHtml('welcome') */?> <?php /*echo $this->getAdditionalHtml() */?></p>
-            <?php /*echo $this->getChildHtml('topLinks') */?>
-            <?php /*echo $this->getChildHtml('store_language') */?>
-        </div>
-        <?php /*echo $this->getChildHtml('topContainer'); */?>
-    </div>
-</div>
---><?php /*echo $this->getChildHtml('topMenu') */?>
-
-
 <header>
     <a href="<?php echo Mage::getBaseUrl(); ?>" class="logo"><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/logo.jpg') ?>" alt=""></a>
     <div class="header-top">
-            <div class="phone-no"><span class="txt-01">Contact</span> <span class="txt-02">0495 243 3633</span></div>
+            <div class="phone-no"><span class="txt-01">Contact</span> <span class="txt-02">(0495)243-3633</span></div>
             <div class="search-cont">
                 <div class="search-area">
                     <a href="javascript:void(0);" class="search-icon"><i class="icon-search"></i></a>
@@ -77,16 +58,12 @@
                         <a href="<?php echo Mage::getBaseUrl() ?>customer/account/create/"><i class="fa fa-user-plus" aria-hidden="true"></i> <?php echo $this->__('Register'); ?></a>
                     </li>
                     <?php endif; ?>
-
                 </ul>
             </div>
-
             <div class="cart-wrapper">
                 <?php echo $this->getChildHtml('minicart'); ?>
             </div>
-
     </div>
-
     <div class="header-bottom">
         <?php echo $this->getChildHtml('custom_top_menu') ?>
     </div>
