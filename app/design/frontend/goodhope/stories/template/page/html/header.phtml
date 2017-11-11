@@ -2,7 +2,8 @@
 <?php
     $store = Mage::app()->getStore();
     $code  = $store->getCode();
-    $is_loggedIn = Mage::helper('customer')->isLoggedIn()
+    $is_loggedIn = Mage::helper('customer')->isLoggedIn();
+    $menuHelper = Mage::helper('megamenu');
 ?>
 
 <?php
@@ -34,10 +35,18 @@
  * @var Mage_Page_Block_Html_Header $this
  */
 ?>
+<div class="mobile-nav side-block container">
+    <div class="menu-all-pages-container">
+        <ul class="menu">
+            <?php echo $menuHelper->getMobileMenuContent($only_categories); ?>
+        </ul>
+    </div>
+</div>
+<div class="mobile-nav-overlay close-mobile-nav"></div>
 <header>
-    <a href="<?php echo Mage::getBaseUrl(); ?>" class="logo"><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/logo.jpg') ?>" alt=""></a>
+    <a href="<?php echo Mage::getBaseUrl(); ?>" class="logo"><img src="<?php echo $this->getSkinUrl('images/logo.jpg') ?>" alt=""></a>
     <div class="header-top">
-            <div class="phone-no"><span class="txt-01">Contact</span> <span class="txt-02">(0495)243-3633</span></div>
+            <div class="phone-no"><span class="txt-01">Contact</span> <span class="txt-02">(0495) 243-3633</span></div>
             <div class="search-cont">
                 <div class="search-area">
                     <a href="javascript:void(0);" class="search-icon"><i class="icon-search"></i></a>
@@ -64,8 +73,11 @@
                 <?php echo $this->getChildHtml('minicart'); ?>
             </div>
     </div>
-    <div class="header-bottom">
+    <div class="menu-wrap">
+        <div class="hidden-sm hidden-xs">
         <?php //echo $this->getChildHtml('custom_top_menu') ?>
         <?php echo $this->getChildHtml('topMenu') ?>
+        </div>
+        <div class="toggle-menu menu-icon hidden-lg hidden-md"><a class="menu-trigger" href="javascript:void(0)" title="Menu"><i class="fa fa-2x fa-bars"></i></a></div>
     </div>
 </header>

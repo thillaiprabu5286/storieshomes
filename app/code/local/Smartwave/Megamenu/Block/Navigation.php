@@ -80,7 +80,7 @@ class Smartwave_Megamenu_Block_Navigation extends Mage_Catalog_Block_Navigation
         
         $staticWidth = $catModel->getData('sw_cat_static_width');
         if(!$staticWidth)
-			$staticWidth = "500px";
+			$staticWidth = "1200px";
             
         // --- category name ---
         $name = $this->escapeHtml($category->getName());
@@ -113,7 +113,7 @@ class Smartwave_Megamenu_Block_Navigation extends Mage_Catalog_Block_Navigation
             $html[] = '<a href="'.$this->getCategoryUrl($category).'">'.$cat_icon.$name.$catLabel.'</a>';
             if ($mode != 'mb') {
                 if($blockType == 'staticwidth'){
-                    $html[] = '<div class="nav-sublist-dropdown" style="display: none; width:'.$staticWidth.';">';
+                    $html[] = '<div class="nav-sublist-dropdown" style="display: none; max-width:'.$staticWidth.';">';
                     $html[] = '<div class="container">';
                 } else {
                     $html[] = '<div class="nav-sublist-dropdown" style="display: none;">';
@@ -191,8 +191,8 @@ class Smartwave_Megamenu_Block_Navigation extends Mage_Catalog_Block_Navigation
             $block = self::$_cms_block_model->setStoreId(Mage::app()->getStore()->getId())->load($blockId);            
             if (!$block) continue;
                         
-            $blockTitle = $block->getTitle();            
-            $blockContent = $block->getContent(); 
+            $blockTitle = $block->getTitle();
+            $blockContent = $block->getContent();
             $blockContent = self::$_processor->filter($blockContent);
             if (!$blockContent) continue;
             $html[] = '<li class="menu-full-width">';
@@ -203,7 +203,7 @@ class Smartwave_Megamenu_Block_Navigation extends Mage_Catalog_Block_Navigation
             $html[] = $blockTitle;
             $html[] = '</a>';
             $html[] = '<div class="nav-sublist-dropdown">';
-            $html[] = '<div class="container">';
+            $html[] = '<div class="row">';
             $html[] = $blockContent;
             $html[] = '</div>';
             $html[] = '</div>';            
