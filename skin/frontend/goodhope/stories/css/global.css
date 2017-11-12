@@ -330,6 +330,13 @@ input:-webkit-autofill {background-color: #eee !important;}
 .fixed-header-logo a {padding: 0 !important;}
 .fixed-header-logo img {height: 56px !important;}
 
+.sticky-header {position: fixed !important;width: 100%;left:0;z-index: 9000;}
+.sticky-header .header-wrapper {padding-left: 70px;}
+.sticky-header-logo {float: left;position: absolute;display: none;}
+.sticky-header .sticky-header-logo {display: block}
+.sticky-header .main-nav .menu > li .nav-sublist-dropdown {left: 75px;}
+
+
 .mega-dropdown-menu > li > ul > li > a {
 	display: block;
 	font-size: 16px;

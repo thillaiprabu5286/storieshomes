@@ -74,6 +74,7 @@
             </div>
     </div>
     <div class="menu-wrap">
+        <a href="<?php echo Mage::getBaseUrl(); ?>" class="sticky-header-logo" style="float: left;position: absolute;"><img src="<?php echo $this->getSkinUrl('images/logo.jpg') ?>" height="100px" alt=""></a>
         <div class="hidden-sm hidden-xs">
         <?php //echo $this->getChildHtml('custom_top_menu') ?>
         <?php echo $this->getChildHtml('topMenu') ?>
@@ -81,3 +82,30 @@
         <div class="toggle-menu menu-icon hidden-lg hidden-md"><a class="menu-trigger" href="javascript:void(0)" title="Menu"><i class="fa fa-2x fa-bars"></i></a></div>
     </div>
 </header>
+
+<style>
+
+</style>
+<script type="text/javascript">
+    //<![CDATA[
+    jQuery(document).ready(function(){
+        <?php
+        //if($sticky_menu){
+        ?>
+        var scrolled = false;
+        jQuery(window).scroll(function(){
+            if(200<jQuery(window).scrollTop() && !scrolled){
+                jQuery('.menu-wrap').addClass('sticky-header').css('top','-50px').animate({top:'0px'}, 500);
+                scrolled = true;
+            }
+            if(200>jQuery(window).scrollTop() && scrolled){
+                jQuery('.menu-wrap').removeClass('sticky-header');
+                scrolled = false;
+            }
+        })
+        <?php
+        //}
+        ?>
+    });
+    //]]>
+</script>
