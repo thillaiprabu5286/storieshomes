@@ -263,9 +263,13 @@ class Mindstermob_Mobileconnect_Model_Products extends Mage_Core_Model_Abstract 
          
          $json=array('success' => true,"products"=>array());
             $base_url=Mage::getModel('mobileconnect/baseurl');
+            $key_ex = explode(' ', $searchstring);
+             foreach ($key_ex as $value) {
+                      $searchkey.= $value.'%';
+              }
             $product_collection = Mage::getResourceModel('catalog/product_collection')
                          ->addAttributeToSelect('*')
-                         ->addAttributeToFilter('name', array('like' => '%'.$searchstring.'%'))
+                         ->addAttributeToFilter('name', array('like' => '%'.$value.'%'))
                          ->load();
 
             foreach ($product_collection as $product) {

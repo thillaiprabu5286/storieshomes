@@ -685,23 +685,27 @@ $customer = Mage::getModel('customer/customer')
 
 
                         //print_r($address);exit;
-                         $address->setData("prefix", $addressData["prefix"]);
-                        $address->setData("firstname", $addressData["firstname"]);
-                        $address->setData("middlename", $addressData["middlename"]);
-                        $address->setData("lastname", $addressData["lastname"]);
-                        $address->setData("suffix", $addressData["suffix"]);
-                        $address->setData("company", $addressData["company"]);
-                        $address->setData("street", $addressData["street"]);
-                        $address->setData("city", $addressData["city"]);
-                        $address->setData("country_id", $addressData["country_id"]);
-                        $address->setData("region", $addressData["region"]);
-                        $address->setData("region_id", $addressData["region_id"]);
-                        $address->setData("postcode", $addressData["postcode"]);
-                        $address->setData("telephone", $addressData["telephone"]);
-                        $address->setData("fax", $addressData["fax"]);
-                        $address->setData("is_default_billing", $addressData["is_default_billing"]);
-                        $address->setData("is_default_shipping", $addressData["is_default_shipping"]);
-                        $address->save();
+                        //  $address->setData("prefix", $addressData["prefix"]);
+                        // $address->setData("firstname", $addressData["firstname"]);
+                        // $address->setData("middlename", $addressData["middlename"]);
+                        // $address->setData("lastname", $addressData["lastname"]);
+                        // $address->setData("suffix", $addressData["suffix"]);
+                        // $address->setData("company", $addressData["company"]);
+                        // $address->setData("street", $addressData["street"]);
+                        // $address->setData("city", $addressData["city"]);
+                        // $address->setData("country_id", $addressData["country_id"]);
+                        // $address->setData("region", $addressData["region"]);
+                        // $address->setData("region_id", $addressData["region_id"]);
+                        // $address->setData("postcode", $addressData["postcode"]);
+                        // $address->setData("telephone", $addressData["telephone"]);
+                        // $address->setData("fax", $addressData["fax"]);
+                        // $address->setData("is_default_billing", $addressData["is_default_billing"]);
+                        // $address->setData("is_default_shipping", $addressData["is_default_shipping"]);
+                        // $address->save();
+                         $address   = Mage::getModel('customer/address');
+                         $address->addData($addressData);
+                         $customer->addAddress($address);
+                         $customer->save();
 
 
 
@@ -955,11 +959,11 @@ $customer = Mage::getModel('customer/customer')
                               if($temp_arr["entity_id"]!==$addressId1 && $temp_arr["entity_id"]!==$addressId2){
 
                                  // $customerAddress[] = $address->toArray();
-                                  $temp_arr["firstname"]=ucfirst($temp_arr["firstname"]);
-                                  $temp_arr["street"]=ucfirst($temp_arr["street"]);
-                                   $temp_arr["company"]=ucfirst($temp_arr["company"]);
-                                   $temp_arr["city"]=ucfirst($temp_arr["city"]);
-                                  $customerAddress[] = $temp_arr;
+                                  // $temp_arr["firstname"]=ucfirst($temp_arr["firstname"]);
+                                  // $temp_arr["street"]=ucfirst($temp_arr["street"]);
+                                  //  $temp_arr["company"]=ucfirst($temp_arr["company"]);
+                                  //  $temp_arr["city"]=ucfirst($temp_arr["city"]);
+                                  $customerAddress[] = array("street"=>($temp_arr["street"]),"firstname"=>($temp_arr["firstname"]),"lastname"=>($temp_arr["lastname"]),"company"=>($temp_arr["company"]),"city"=>($temp_arr["city"]),"country_id"=>($temp_arr["country_id"]),"region"=>($temp_arr["region"]),"postcode"=>($temp_arr["postcode"]),"phone_mobile"=>($temp_arr["telephone"]),"id_address"=>($temp_arr["entity_id"]),"alias"=>null);
                               }
 
                            //print_r($customerAddress) ."----------------------";
