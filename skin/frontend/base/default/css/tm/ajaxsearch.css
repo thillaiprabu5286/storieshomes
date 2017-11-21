@@ -1,15 +1,15 @@
 .autocomplete-w1 {z-index:999; position:absolute; top:7px; left:16px; /* IE6 fix: */ _top:1px; }
-.autocomplete { width:435px !important; border:1px solid #ccc; background:#fff; box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); cursor: default; text-align:left; max-height:350px; overflow:auto; margin:-9px 6px 6px -15px; /* IE specific: */ _height:350px; _margin:0px 6px 6px 0; overflow-x:hidden; -webkit-overflow-scrolling: touch; }
+.autocomplete { width:490px !important; border:1px solid #ccc; background:#fff; box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); cursor: default; text-align:left; max-height:350px; overflow:auto; margin:-9px 6px 6px -15px; /* IE specific: */ _height:350px; _margin:0px 6px 6px 0; overflow-x:hidden; -webkit-overflow-scrolling: touch; }
 .autocomplete .selected { background:#F0F0F0; }
 .autocomplete div { padding: 10px;clear: both;overflow: hidden;line-height: 1.1em;color: #000;font-size: 13px;border-bottom: 1px dotted #aaa;cursor: pointer;}
 .autocomplete strong { font-weight:bold; color:#3399FF; }
-.autocomplete .ajaxsearchimage {float: left; margin:2px 6px 2px 2px;}
+.autocomplete .ajaxsearchimage {float: left; margin:2px 16px 2px 2px;}
 .autocomplete .ajaxsearchdescription {font-size: 0.7em;}
 .mini-search-right .block-content, .mini-search-left .block-content { padding:5px 10px; }
 .mini-search-right label, .mini-search-left label { font-weight:bold; }
 
-.autocomplete div p {font-size: 16px;line-height: 20px;margin-top: 7px;}
-#anonymous_element_1{z-index:999;}
+.autocomplete div p {font-size: 14px;line-height: 16px;margin-top: 10px;letter-spacing: .5px;text-transform: uppercase;}
+#anonymous_element_1{z-index:999;left: 0 !important;}
 #searchajaxico {background:url(../../images/tm/ajaxsearch/loader.gif) no-repeat left 2px; width: 20px; height: 20px; position:absolute; left:230px; display: none;}
 #search-leftajaxico {background:url(../../images/tm/ajaxsearch/loader.gif) no-repeat left 2px; width: 20px; height: 20px; position:absolute; left:150px; display: none; top:21px;}
 #search-rightajaxico {background:url(../../images/tm/ajaxsearch/loader.gif) no-repeat left 2px; width: 20px; height: 20px; position:absolute; left:150px; display: none; top:21px;}
@@ -33,8 +33,9 @@
 .mini-search-right .button {display: inline-block; }
 
 .headerajaxsearchwindow { text-align: center; background-color: #D8D8D8; color: #000; font-size: 14px; font-style: oblique; margin-bottom: 0;}
+.mini-search .autocomplete .headerajaxsearchwindow:first-of-type {    display: none;}
 .headercategorysearch { text-align: center; }
-p.headercategorysearch { margin: 0; font-style: oblique; font-weight: bold; font-size: 12px; border-bottom: 1px solid #AAAAAA; }
+p.headercategorysearch {display: none; margin: 0; font-style: oblique; font-weight: bold; font-size: 12px; border-bottom: 1px solid #AAAAAA; }
 p.ajaxsearch-small { margin: 0; }
 
 .ajaxsearch-category-select { width: 50px; margin-right: 4px; float: left; }
@@ -75,16 +76,24 @@ p.ajaxsearch-small { margin: 0; }
 /* rwd theme styles */
 @media only screen and (min-width: 771px) {
     #header-search { width: auto !important; }
+    .header-top .search-cont {float: left;}
 }
 @media only screen and (max-width: 770px) {
     #search_mini_form.rwd .search-field-wrapper { float: none; }
-    .autocomplete {width: 350px !important;}
+    .autocomplete {width: 450px !important;}
+}
+@media only screen and (max-width: 600px) {
+    .autocomplete { width:297px !important;}
+    .header-top .search-cont {
+        width: 300px !important;
+    }
+}
+@media only screen and (max-width: 460px) {
+    .autocomplete { width:260px !important;}
+    .header-top .search-cont {width: 263px !important;}
 }
 .rwd .mini-search .button,
 .rwd .ajaxsearch-category-select { height: 40px; }
 #header-search.skip-active .search-field-wrapper .close { display: none; }
 .rwd.folded #searchajaxico { margin-left: -25px; }
 .rwd .btn-search i { display: none; }
-
-/* Mobile view fix */
-@media only screen and (max-width:540px) { .autocomplete { width:250px !important;margin-left: -50px;} }

@@ -331,7 +331,7 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 .breadcrumbs li strong { font-weight:bold; }
 
 /* Page Heading */
-.page-title { width:100%; overflow:hidden; padding: 0 0 15px; border-bottom:1px solid #eee; }
+.page-title { width:100%; overflow:hidden; padding: 0 0 10px; margin-bottom: 20px; border-bottom:1px solid #eee; }
 .page-title h1,
 .page-title h2 {float: left; margin:0; font-size:20px; font-weight: bold}
 .page-title .separator { margin:0 3px; }
@@ -381,7 +381,7 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 .data-table td.last,
 .data-table th.last { border-right:0; }
 .data-table tr.last th,
-.data-table tr.last td { border-bottom:0 !important; }
+.data-table tr.last td { border-bottom:0 !important;padding: 10px;}
 .data-table th { padding:3px 8px; font-weight:bold; }
 .data-table td { padding:3px 8px; }
 
@@ -417,7 +417,7 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 .info-table td { padding:2px 0; }
 
 /* Shopping cart total summary row expandable to details */
-#shopping-cart-table th {border-top: 1px solid #bbb; border-bottom: 1px solid #bbb !important; padding: 5px 10px;}
+#shopping-cart-table th {border-top: 1px solid #bbb; border-bottom: 1px solid #bbb !important; padding: 10px;text-transform: uppercase;font-size: 13px;}
 #shopping-cart-table thead {background-color: #eee;}
 
 tr.summary-total { cursor:pointer; }
@@ -477,7 +477,7 @@ tr.summary-details-excluded { font-style:italic; }
 .link-compare { font-weight:bold; }
 .link-print { /*background:url(../images/i_print.gif) 0 2px no-repeat; padding:2px 0 2px 25px;*/ font-weight:bold; color:#dc6809; }
 .link-rss { background:url(../images/i_rss.gif) 0 2px no-repeat; padding-left:18px; line-height:14px; white-space:nowrap; }
-.btn-remove  { display:block;font-size: 10px;margin-top: 15px;}
+.btn-remove  { display:block;font-size: 10px;}
 .btn-previous  { display:block; width:11px; height:11px; font-size:0; line-height:0; background:url(../images/btn_previous.gif) 0 0 no-repeat; text-indent:-999em; overflow:hidden; }
 .btn-remove2 { display:block; width:16px; height:16px; font-size:0; line-height:0; background:url(../images/btn_trash.gif) 0 0 no-repeat; text-indent:-999em; overflow:hidden; }
 .btn-edit    { display:block; width:11px; height:11px; font-size:0; line-height:0; background:url(../images/btn_edit.gif) 0 0 no-repeat; text-indent:-999em; overflow:hidden; }
@@ -593,14 +593,15 @@ tr.summary-details-excluded { font-style:italic; }
 #nav li div.shown-sub { left:0; z-index:999; }
 #nav li .shown-sub ul.shown-sub,
 #nav li .shown-sub li div.shown-sub { left:100px; }
+
 /********** Navigation > */
 /* ======================================================================================= */
 
 
 /* Sidebar =============================================================================== */
 .block { border:1px solid #d2a13c; margin:0 0 15px; }
-.block .block-title {  border-bottom:1px solid #ddd; padding:2px 9px; }
-.block .block-title strong { display:block; font:bold 12px/16px Arial, Helvetica, sans-serif; min-height:16px; padding:1px 0 1px; text-transform:uppercase; color:#dca73c; }
+.block .block-title {  border-bottom:1px solid #ddd; padding:5px 9px; }
+.block .block-title strong { display:block; font:bold 12px/16px Arial, Helvetica, sans-serif; min-height:16px; padding:1px 0 1px; text-transform:uppercase; color:#fff; }
 .block .block-title a { text-decoration:none !important; }
 .block .block-subtitle { margin:0; padding:5px 9px; font-size:1em; font-weight:bold; color:#0a263c; }
 .block .block-content div.item { padding:7px 9px; }
@@ -638,7 +639,7 @@ tr.summary-details-excluded { font-style:italic; }
 .block-compared .block-title strong,
 .block-related .block-title strong,
 .block-tags .block-title strong,
-.block-login .block-title strong {  background-position:0 0; background-repeat:no-repeat; padding-left:21px; }
+.block-login .block-title strong {  background-position:0 0; background-repeat:no-repeat;}
 
 /* Mini Products List */
 .block-cart .mini-products-list .product-details .product-name,
@@ -680,12 +681,11 @@ tr.summary-details-excluded { font-style:italic; }
 .block-layered-nav .actions a { float:none; }
 
 /* Block: Cart */
-.block-cart .block-title { /*border-bottom:0;*/ }
-.block-cart .block-title strong { background-image:url(../images/i_block-cart.gif); }
+.block-cart .block-title { /*border-bottom:0;*/ background-color: #dca73d;}
 .block-cart .summary { background:#fff; padding:2px 8px 8px; margin:-1px 0 0; position:relative; z-index:1; }
-.block-cart .amount { margin:0; }
+.block-cart .amount { margin:5px; }
 .block-cart .amount a { font-weight:bold; }
-.block-cart .subtotal { margin:5px 0 0; padding:2px 0; background:#fbebd9; text-align:center; }
+.block-cart .subtotal { margin:5px 0 0; padding:5px 0; background:#fbebd9; text-align:center; font-size: 14px;}
 .block-cart .subtotal .price { font-weight:bold; }
 .block-cart .actions { border-bottom:1px solid #d2a13d; }
 .block-cart .actions .paypal-logo { float:left; width:100%; margin:3px 0 0; text-align:right; }
@@ -1201,7 +1201,7 @@ tr.summary-details-excluded { font-style:italic; }
 /* Shopping Cart Table */
 .cart-table th { padding:2px 10px; }
 .cart-table td { padding:10px;}
-.cart-table .product-name { font-weight:bold; margin:0 0 5px; color:#2f2f2f; }
+.cart-table .product-name {font-size: 1.2em;margin:0 0 5px;}
 .cart-table .item-msg { margin:5px 0; font-size:11px; font-weight:bold; color:#df280a; }
 .cart-table tfoot td { padding:5px 10px; }
 .cart-table .btn-continue { float:left; }
@@ -1209,6 +1209,9 @@ tr.summary-details-excluded { font-style:italic; }
 .cart-table .btn-update,
 .cart-table .btn-empty { float:right; }
 .cart-table .btn-update { margin-left:10px; }
+.cart-table .link-wishlist {color:#000 !important;text-decoration: underline;}
+.cart-table tbody tr td:last-of-type {background-color: #eee;}
+.cart-table .qty-holder input {text-align: center}
 
 /* Shopping Cart Collateral boxes */
 .cart .cart-collaterals { padding:25px 0 0; }
@@ -1248,7 +1251,8 @@ tr.summary-details-excluded { font-style:italic; }
 .cart .totals td { padding:1px 15px 1px 7px; }
 .cart .totals tr.last td {}
 .cart .totals tfoot th { padding:5px 15px 5px 7px; }
-.cart .totals tfoot td { padding-top:5px; padding-bottom:5px; }
+.cart .totals tfoot td { padding-top:5px; padding-bottom:5px; font-size: 18px;}
+.cart .totals tfoot td  .price {font-size: 18px;}
 .cart .totals tfoot th strong,
 .cart .totals tfoot td strong { font-size:15px; }
 .cart .totals .checkout-types { font-size:13px; padding:8px 15px 15px; text-align:right; }
@@ -1541,18 +1545,17 @@ tr.summary-details-excluded { font-style:italic; }
 
 /* General Box */
 .box-account { background:#fff url(../images/bkg_account_box.gif) 0 0 repeat-x; border:1px solid #ccc; border-color:#ccc #999 #999 #ccc; padding:15px; margin: 0 0 20px; }
-.box-account .box-head { border-bottom:1px solid #d9dde3; margin:0 0 10px; text-align:right; }
-.box-account .box-head h2 { float:left; margin:0; font-size:13px; font-weight:bold; text-transform:uppercase; background-position:0 0; background-repeat:no-repeat; padding-left:21px;}
+.box-account .box-head { border-bottom:1px solid #d9dde3; margin:0 0 20px; padding-bottom: 10px; text-align:right; }
+.box-account .box-head h2 { float:left; margin:0; font-size:14px; font-weight:bold; text-transform:uppercase; background-position:0 0; background-repeat:no-repeat; }
 
 .dashboard .box .box-title { background:url(../images/bkg_divider1.gif) 0 100% repeat-x; padding:0 0 2px; margin:0 0 8px; text-align:right; }
 .dashboard .box .box-title h3,
-.dashboard .box .box-title h4 { float:left; font-size:13px; font-weight:bold; margin:0; }
+.dashboard .box .box-title h4 { float:left; font-size:14px; font-weight:bold; margin:0; }
 
 /* Block: Recent Orders */
 .dashboard .box-recent .box-head h2 { background-image:url(../images/i_folder-table.gif); }
 
 /* Block: Account Information */
-.dashboard .box-info .box-head h2 { background-image:url(../images/i_ma-info.gif); }
 .dashboard .box-info h4 { font-size:11px; font-weight:bold; text-transform:uppercase; }
 
 /* Block: Reviews */

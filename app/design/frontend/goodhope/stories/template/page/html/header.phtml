@@ -46,35 +46,35 @@
 <header>
     <a href="<?php echo Mage::getBaseUrl(); ?>" class="logo"><img src="<?php echo $this->getSkinUrl('images/logo.jpg') ?>" alt=""></a>
     <div class="header-top">
-            <div class="phone-no"><span class="txt-01">Contact</span> <span class="txt-02">(0495) 243-3633</span></div>
-            <div class="search-cont">
-                <div class="search-area">
-                    <a href="javascript:void(0);" class="search-icon"><i class="icon-search"></i></a>
-                    <?php echo $this->getChildHtml('topSearch'); ?>
+            <div class="phone-no col-sm-2"><span class="txt-01">Contact</span> <span class="txt-02">(0495) 243-3633</span></div>
+            <div class="col-sm-6 col-xs-12" style="position: inherit">
+                <div class="search-cont">
+                    <div class="search-area">
+                        <a href="javascript:void(0);" class="search-icon"><i class="icon-search"></i></a>
+                        <?php echo $this->getChildHtml('topSearch'); ?>
+                    </div>
                 </div>
             </div>
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 pull-right header-right-wrap" style="position: inherit">
             <div class="user-account">
                 <ul class="list-inline">
-                    <li>
-                        <?php if ($is_loggedIn): ?>
-                            <a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>"><i class="fa fa-sign-out" aria-hidden="true"></i> <?php echo $this->__('Logout'); ?></a>
-                            <?php else: ?>
-                            <a href="<?php echo Mage::getBaseUrl() ?>customer/account/"><i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo $this->__('Login'); ?></a>
-                        <?php endif; ?>
-                    </li>
+                    <?php if ($is_loggedIn): ?>
+                    <li><a href="<?php echo Mage::getBaseUrl() ?>customer/account/"> <i class="fa fa-user" aria-hidden="true"></i> <?php echo $this->__('My Account'); ?></a></li>
+                    <li><a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>"><i class="fa fa-sign-out" aria-hidden="true"></i> <?php echo $this->__('Logout'); ?> </a></li>
+                    <?php else: ?>
+                    <li><a href="<?php echo Mage::getBaseUrl() ?>customer/account/"><i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo $this->__('Login'); ?></a></li>
+                    <?php endif; ?>
                     <?php if (!($is_loggedIn)): ?>
-                    <li>
-                        <a href="<?php echo Mage::getBaseUrl() ?>customer/account/create/"><i class="fa fa-user-plus" aria-hidden="true"></i> <?php echo $this->__('Register'); ?></a>
-                    </li>
+                    <li><a href="<?php echo Mage::getBaseUrl() ?>customer/account/create/"><i class="fa fa-user-plus" aria-hidden="true"></i> <?php echo $this->__('Register'); ?></a></li>
                     <?php endif; ?>
                 </ul>
             </div>
             <div class="cart-wrapper">
                 <?php echo $this->getChildHtml('minicart'); ?>
             </div>
+            </div>
     </div>
     <div class="menu-wrap">
-        <a href="<?php echo Mage::getBaseUrl(); ?>" class="sticky-header-logo" style="float: left;position: absolute;"><img src="<?php echo $this->getSkinUrl('images/logo.jpg') ?>" height="100px" alt=""></a>
         <div class="hidden-sm hidden-xs">
         <?php //echo $this->getChildHtml('custom_top_menu') ?>
         <?php echo $this->getChildHtml('topMenu') ?>
@@ -82,10 +82,6 @@
         <div class="toggle-menu menu-icon hidden-lg hidden-md"><a class="menu-trigger" href="javascript:void(0)" title="Menu"><i class="fa fa-2x fa-bars"></i></a></div>
     </div>
 </header>
-
-<style>
-
-</style>
 <script type="text/javascript">
     //<![CDATA[
     jQuery(document).ready(function(){
@@ -95,11 +91,11 @@
         var scrolled = false;
         jQuery(window).scroll(function(){
             if(200<jQuery(window).scrollTop() && !scrolled){
-                jQuery('.menu-wrap').addClass('sticky-header').css('top','-50px').animate({top:'0px'}, 500);
+                jQuery('header').addClass('sticky-header').css('top','-50px').animate({top:'0px'}, 500);
                 scrolled = true;
             }
             if(200>jQuery(window).scrollTop() && scrolled){
-                jQuery('.menu-wrap').removeClass('sticky-header');
+                jQuery('header').removeClass('sticky-header');
                 scrolled = false;
             }
         })

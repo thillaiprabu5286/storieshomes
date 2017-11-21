@@ -178,7 +178,15 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <?php endif; ?>
     <?php endif; ?>
     <td class="a-center">
-        <input name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text qty" maxlength="12" />
+            <div class="qty-holder">
+                <div class="input-group spinner<?php echo $_item->getId() ?>">
+                    <input type="text" name="cart[<?php echo $_item->getId() ?>][qty]" id="qty" value="<?php echo $this->getQty() ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty form-control">
+                    <div class="input-group-btn-vertical">
+                        <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+                        <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+                    </div>
+                </div>
+            </div>
     </td>
 
     <!--Sub total starts here -->
@@ -275,5 +283,17 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <?php endif; ?>
     </td>
     <?php endif; ?>
-    <td class="a-center"><a href="<?php echo $this->getDeleteUrl()?>" title="<?php echo $this->__('Remove item')?>" class="btn-remove btn-remove2"><?php echo $this->__('Remove item')?></a></td>
+    <td class="a-center"><a href="<?php echo $this->getDeleteUrl()?>" title="<?php echo $this->__('Remove item')?>"> <h6><i class="fa fa-trash" aria-hidden="true"></i> <br><?php echo $this->__('Remove Item')?></h6></a></td>
 </tr>
+<script>
+    (function ($) {
+        $('.spinner<?php echo $_item->getId() ?> .btn:first-of-type').on('click', function() {
+            $('.spinner<?php echo $_item->getId() ?> input').val( parseInt($('.spinner<?php echo $_item->getId() ?> input').val(), 10) + 1);
+        });
+        $('.spinner<?php echo $_item->getId() ?> .btn:last-of-type').on('click', function() {
+            if($('.spinner<?php echo $_item->getId() ?> input').val() >= 2) {
+                $('.spinner<?php echo $_item->getId() ?> input').val(parseInt($('.spinner<?php echo $_item->getId() ?> input').val(), 10) - 1);
+            }
+        });
+    })(jQuery);
+</script>

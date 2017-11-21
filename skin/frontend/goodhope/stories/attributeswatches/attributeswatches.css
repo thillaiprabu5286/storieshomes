@@ -142,7 +142,7 @@
 
 .product-image,#product-media-container {
     position: relative;
-    z-index: 9;
+    z-index: 1;
 }
 .catalog-product-view .product-image #wrap img {
     max-width: 100% !important;

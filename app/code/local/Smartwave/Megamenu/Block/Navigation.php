@@ -271,7 +271,7 @@ class Smartwave_Megamenu_Block_Navigation extends Mage_Catalog_Block_Navigation
     public function drawMenuItem($children, $level = 1, $type, $width, $mode = 'dt')
     {
         $keyCurrent = self::$_key_current;
-        $html = '';        
+        $html = '';
         foreach ($children as $child)
         {
             if (is_object($child) && $child->getIsActive())
