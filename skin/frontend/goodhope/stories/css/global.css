@@ -77,7 +77,7 @@ label{
 
 /*header*/
 header{
-	padding-left: 94px;
+	padding-left: 91px;
 }
 header .logo{
 	position: absolute;
@@ -87,7 +87,7 @@ header .logo{
 	text-indent: -999999px;
 	height: 35%;
 }
-header .logo img {display: block;height: 125px;}
+header .logo img {display: block;height: 122px;}
 header .logo img:hover{opacity: 10;}
 
 .header-top{
@@ -1021,6 +1021,7 @@ header .header-right-wrap {width: 17%}
 	border-radius: 0;
 	font-size: 16px;
 	letter-spacing: 2px;
+	z-index: 0 !important;
 }
 ..input-group {z-index: 0}
 .input-group-btn-vertical {
