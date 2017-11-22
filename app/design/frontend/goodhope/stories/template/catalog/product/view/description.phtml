@@ -37,10 +37,3 @@
         <?php echo $this->helper('catalog/output')->productAttribute($this->getProduct(), $_description, 'description') ?>
     </div>
 <?php endif; ?>
-<div style='margin-top:10px;'>
-    
-    <?php
-    //Additional information block
-    echo $this->getLayout()->createBlock('catalog/product_view_attributes', '', array('template' => 'catalog/product/view/attributes.phtml'))->toHtml();
-    ?>
-</div>
