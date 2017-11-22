@@ -263,9 +263,13 @@ class Mindstermob_Mobileconnect_Model_Products extends Mage_Core_Model_Abstract 
          
          $json=array('success' => true,"products"=>array());
             $base_url=Mage::getModel('mobileconnect/baseurl');
+            $key_ex = explode(' ', $searchstring);
+             foreach ($key_ex as $value) {
+                      $searchkey.= $value.'%';
+              }
             $product_collection = Mage::getResourceModel('catalog/product_collection')
                          ->addAttributeToSelect('*')
-                         ->addAttributeToFilter('name', array('like' => '%'.$searchstring.'%'))
+                         ->addAttributeToFilter('name', array('like' => '%'.$value.'%'))
                          ->load();
 
             foreach ($product_collection as $product) {
@@ -417,11 +421,11 @@ class Mindstermob_Mobileconnect_Model_Products extends Mage_Core_Model_Abstract 
            ->setNickname($_customer->getFirstname())
            ->save();
            $_review->aggregate();
-          $rating_options = array(
-           1 => array(1,2,3,4,5), // <== Look at your database table `rating_option` for these vals
-           2 => array(6,7,8,9,10),
-           3 => array(11,12,13,14,15)
-           );
+           $rating_options = array(
+            1 => array(1 => 1,  2 => 2,  3 => 3,  4 => 4,  5 => 5),
+            2 => array(1 => 6,  2 => 7,  3 => 8,  4 => 9,  5 => 10),
+            3 => array(1 => 11, 2 => 12, 3 => 13, 4 => 14, 5 => 15),
+        );
 
            $rating_options_selected = array(
            1 => $row_source_review['review_value1'], // <== Look at your database table `rating_option` for these vals

@@ -156,7 +156,7 @@ class Mindstermob_Mobileconnect_Model_Checkout extends Mage_Core_Model_Abstract 
                        if($stockItemData["qty"] < $cart->qty && $cart->qty != $stockItemData["qty"]){
                             $instock=0;
                        }
-					   $tot_price =number_format($details["price"],2)* $cart->qty;
+					   $tot_price =$details["price"]* $cart->qty;
                        $json["items"][]=array( "stock_quantity"=>$stockItemData["qty"],
                            "qty"=>$cart->qty,
                            "id"=>$product_id,
