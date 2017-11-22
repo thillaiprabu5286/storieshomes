@@ -69,6 +69,8 @@ class Thzz_Filterproducts_Block_Bestsellers_Home_List extends Mage_Catalog_Block
 
         $products->getSelect()->order('ordered_qty DESC');
 
+        echo (string)$products->getSelect();exit;
+
         $this->_productCollection = $products;
         return $this->_productCollection;
     }
@@ -82,17 +84,6 @@ class Thzz_Filterproducts_Block_Bestsellers_Home_List extends Mage_Catalog_Block
     {
         return $this->_getProductCollection();
     }
-
-    /**
-     * Retrieve loaded category collection
-     *
-     * @return Mage_Eav_Model_Entity_Collection_Abstract
-     */
-    public function getMobileLoadedProductCollection()
-    {
-        return $this->_getMobileProductCollection();
-    }
-
 
     public function getToolbarHtml()
     {}

@@ -3,7 +3,6 @@ $_coreHelper = Mage::helper('core');
 $store = Mage::app()->getStore();
 $code = $store->getCode();
 $_productCollection = $this->getLoadedProductCollection();
-$_productCollection->addAttributeToSelect('news_from_date')->addAttributeToSelect('news_to_date');
 $_helper = $this->helper('catalog/output');
 $_image_helper = $this->helper('catalog/image');
 ?>
