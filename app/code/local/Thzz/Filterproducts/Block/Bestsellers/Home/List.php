@@ -16,6 +16,7 @@ class Thzz_Filterproducts_Block_Bestsellers_Home_List extends Mage_Catalog_Block
 	protected function _getProductCollection()
     {
         $storeId = Mage::app()->getStore()->getId();
+        /** @var Mage_Reports_Model_Resource_Product_Collection $products */
         $products = Mage::getResourceModel('reports/product_collection')->addAttributeToSelect('*');
         $adapter              = $products->getConnection();
         $orderTableAliasName  = $adapter->quoteIdentifier('order');
@@ -69,7 +70,7 @@ class Thzz_Filterproducts_Block_Bestsellers_Home_List extends Mage_Catalog_Block
 
         $products->getSelect()->order('ordered_qty DESC');
 
-        echo (string)$products->getSelect();exit;
+        $str = (string)$products->getSelect();
 
         $this->_productCollection = $products;
         return $this->_productCollection;
