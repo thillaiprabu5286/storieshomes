@@ -600,7 +600,7 @@ tr.summary-details-excluded { font-style:italic; }
 
 /* Sidebar =============================================================================== */
 .block { border:1px solid #d2a13c; margin:0 0 15px; }
-.block .block-title {  border-bottom:1px solid #ddd; padding:5px 9px; }
+.block .block-title {  border-bottom:1px solid #ddd; padding:5px 9px; background-color: #dca73d;}
 .block .block-title strong { display:block; font:bold 12px/16px Arial, Helvetica, sans-serif; min-height:16px; padding:1px 0 1px; text-transform:uppercase; color:#fff; }
 .block .block-title a { text-decoration:none !important; }
 .block .block-subtitle { margin:0; padding:5px 9px; font-size:1em; font-weight:bold; color:#0a263c; }
@@ -609,12 +609,15 @@ tr.summary-details-excluded { font-style:italic; }
 .block .btn-remove,
 .block .btn-edit {margin:1px 0 2px 0px; }
 .block .actions {padding:6px 9px; text-align:right; }
-.block .actions a { float:left; }
+.block .actions a { float:left;margin-top: 5px}
 .block .actions button.button {width: 100%;}
 .block .empty { margin:0; padding:5px 9px; }
 
 .block li.odd { background-color:#f4f3f3; }
 .block li.even { background-color:#fafafa; }
+
+#cart-sidebar-reorder .product-name a {font-size: 12px;}
+#cart-sidebar-reorder .product-name {margin-bottom: 5px;}
 
 /* Mini Blocks */
 .block-cart,
@@ -762,9 +765,8 @@ tr.summary-details-excluded { font-style:italic; }
 .block-subscribe .actions button.button span { border-color:#406a83; background:#618499; }
 
 /* Block: Reorder */
-.block-reorder .block-title strong { background-image:url(../images/i_block-list.gif); }
-.block-reorder input.checkbox { float:left; margin:2px -20px 0 0; }
-.block-reorder .product-name { margin-left:20px; }
+.block-reorder input.checkbox { float:left; margin:2px -20px 0 10px; }
+.block-reorder .product-name { margin-left:30px; }
 .block-reorder .validation-advice { margin:3px 9px 7px; }
 
 /* Block: Banner */

@@ -454,5 +454,5 @@ background-position: top center; }
 	color:#F2E282;
 }
 
-.main-nav .menu .nav-sublist-dropdown .container .menu-item-has-children {height: 205px;overflow: hidden;margin-bottom: 10px;border-right: 1px solid #ddd;}
+.main-nav .menu .nav-sublist-dropdown .container .menu-item-has-children {height: 190px;overflow: hidden;margin-bottom: 10px;border-right: 1px solid #ddd;}
 .main-nav .menu .nav-sublist-dropdown .container .menu-item-has-children:last-of-type, .main-nav .menu .nav-sublist-dropdown .container .menu-item-has-children:nth-of-type(5) {border-right: none;}

@@ -49,3 +49,7 @@
 </footer>
 <script src="<?php echo $this->getSkinUrl('js/owl.carousel.min.js') ?>"></script>
 <script src="<?php echo $this->getSkinUrl('js/common.js') ?>"></script>
+<script>
+    jQuery(".main-nav .menu > li.menu-static-width .nav-sublist-dropdown .container ul > li .nav-sublist ul li:nth-of-type(8)").addClass("removeElements");
+    jQuery('.main-nav .menu > li.menu-static-width .nav-sublist-dropdown .container ul > li .nav-sublist ul li.removeElements').nextAll('li').remove();
+</script>
