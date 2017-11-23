@@ -4,13 +4,10 @@ $code = $store->getCode();
 ?>
 <?php $_helper = Mage::helper('catalog/category') ?>
 <?php $_categories = $_helper->getStoreCategories() ?>
-
-    <!-- slider area -->
+<!-- slider area -->
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('homepage-slider')->toHtml(); ?>
-
 <?php echo $this->getLayout()->createBlock('filterproducts/new_home_list')->setProductCount(16)->setTemplate('filterproducts/new.phtml')->toHtml(); ?>
-
-    <!-- Categories items container -->
+<!-- Categories items container -->
 <?php if (count($_categories) > 0): ?>
     <div class="container">
         <div class="total-item-cont clearfix">
@@ -40,8 +37,4 @@ $code = $store->getCode();
         </div>
     </div>
 <?php endif; ?>
-
-
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('homepage-tab-content')->toHtml(); ?>
-
-<?php echo $this->getLayout()->createBlock('filterproducts/new_home_list')->setProductCount(16)->setTemplate('filterproducts/best-sellers.phtml')->toHtml(); ?>
