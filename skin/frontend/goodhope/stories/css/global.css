@@ -442,15 +442,13 @@ header .header-right-wrap {width: 17%}
 	position:absolute;
 	right: 0;
 	width: 60%;
-	background:url(../images/world-map.png) no-repeat left top;
 }
 .top-info-cont .world-map-detail p{
 	color: #fff;
 	font-size: 20px;
-	width: 150px;
-	float: right;
+	width: 300px;
 	padding: 10px;
-	padding-top: 25px;
+	padding-top: 45px;
 }
 .top-info-cont  .top-info-detail{
 	width: 50%;
