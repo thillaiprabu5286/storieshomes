@@ -15,6 +15,7 @@ $_image_helper = $this->helper('catalog/image');
     <div class="best-seller-cont">
         <h2>Best Sellers</h2>
         <div class="row">
+            <div id="best-sellers-carousel" class="owl-carousel owl-theme" style="display: block">
             <?php $i = 0;
             foreach ($_productCollection as $_product):
             $product = $_product; ?>
@@ -62,6 +63,7 @@ $_image_helper = $this->helper('catalog/image');
             </div>
             <?php $i++; ?>
             <?php endforeach; ?>
+            </div>
     </div>
 </div>
 <?php endif; ?>

@@ -11,10 +11,12 @@ $code = $store->getCode();
 <?php if (count($_categories) > 0): ?>
     <div class="container">
         <div class="total-item-cont clearfix">
+            <div id="carousel2" class="owl-carousel owl-theme" style="display: block">
             <?php $i = 0; ?>
             <?php foreach ($_categories as $_category): ?>
                 <?php if ($i++ == 6) break; ?>
                 <?php $ID = $_category->getId(); ?>
+                <div class="item">
                 <div class="total-item-box">
                     <div class="img-holder">
                         <?php $thumb = Mage::getModel('catalog/category')->load($ID)->getThumbnail(); ?>
@@ -32,8 +34,9 @@ $code = $store->getCode();
                         </a>
                     </div>
                 </div>
+                </div>
             <?php endforeach; ?>
-
+            </div>
         </div>
     </div>
 <?php endif; ?>

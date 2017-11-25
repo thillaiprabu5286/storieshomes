@@ -49,7 +49,18 @@
 </footer>
 <script src="<?php echo $this->getSkinUrl('js/owl.carousel.min.js') ?>"></script>
 <script src="<?php echo $this->getSkinUrl('js/common.js') ?>"></script>
+
 <script>
     jQuery(".main-nav .menu > li.menu-static-width .nav-sublist-dropdown .container ul > li .nav-sublist ul li:nth-of-type(8)").addClass("removeElements");
     jQuery('.main-nav .menu > li.menu-static-width .nav-sublist-dropdown .container ul > li .nav-sublist ul li.removeElements').nextAll('li').remove();
+
+    jQuery( function() {jQuery( "#tabs" ).tabs();});
+    jQuery(function() {
+        jQuery(".designers-main-tab .nav-tabs li").click(function() {
+            // remove classes from all
+            jQuery(".designers-main-tab .nav-tabs li").removeClass("active");
+            // add class to the one we clicked
+            jQuery(this).addClass("active");
+        });
+    });
 </script>

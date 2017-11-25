@@ -895,12 +895,12 @@ tr.summary-details-excluded { font-style:italic; }
 .block .regular-price .price { color:#2f2f2f; }
 
 /* Old price */
-.old-price { margin:0; }
+.old-price { margin:0; float: left}
 .old-price .price-label { white-space:nowrap; color:#999;}
 .old-price .price { font-weight:bold; color:#c76200; text-decoration:line-through; font-size: 12px;}
 
 /* Special price */
-.special-price { margin:0; padding:3px 0; }
+.special-price { margin:0; padding:3px 0; float: right;}
 .special-price .price-label {display: none; font-size:13px; font-weight:bold; white-space:nowrap; color:#cd5033; }
 .special-price .price { font-size:16px; font-weight:bold; color:#c76200; }
 
