@@ -1357,7 +1357,7 @@ footer .about-stories p.about-us{
 
 @media only screen and (max-width: 768px) {
 	.header-top .search-cont {width: 100%}
-	button.button span {padding: 3px 10px;font-size: 10px;}
+	button.button span {padding: 7px 20px;font-size: 14px;}
 	.products-grid-view .grid-item {min-height: 270px;width: 31.6%;}
 	.products-grid-view .grid-item .product-name {font-size: .9em;}
 	.regular-price .price, .special-price .price {font-size: 14px;}
@@ -1496,6 +1496,30 @@ footer .about-stories p.about-us{
 	.pager .pages .current {padding: 6px;}
 	.slider-area .owl-theme .owl-nav {display: none}
 	.mega-menu-wapper .level3 li a {text-align: right}
+
+	.header-top .search-cont {width: 300px !important;}
+	.designers-cont .designers-main-tab ul.nav-tabs {width: 700px;}
+	.designers-cont .designers-main-tab ul.nav-tabs li {width: 115px;}
+	ul.nav-tabs li a {font-size: 11px}
+	.designers-cont h2 {font-size: 14px}
+	.designer-info .designer-desc .designer-name {font-size: 14px;line-height: 0}
+	.designers-cont .designer-bio {font-size: 12px}
+	.product-box .img-holder a img {width: 120px}
+	.product-box a.product-title {font-size: 14px;height: 40px;margin-bottom: 15px;}
+	.product-box .img-holder {min-height: 135px;}
+	.product-box .buy-now-btn {top: 100px;}
+	footer .our-partner .img-holder {width: 33%;}
+	footer .about-stories p.about-us {font-size: 11px;}
+	.product-box .img-holder {min-height: 160px;}
+	.product-box a.product-title {font-size: 14px}
+	.menu-wrap {padding: 5px 0;}
+	.breadcrumbs {margin: 20px 0 0px;}
+	button.btn-checkout span {padding: 0 10px !important;}
+	#shopping-cart-table button.button span {padding: 2px 5px;font-size: 11px;max-height: 30px;}
+	.cart-table .product-name {font-size: 1.1em;}
+	.cart-table .btn-empty span, .cart-table .btn-update, .cart-table .btn-empty {float: left;}
+	.cart-table .btn-empty {margin-top: 5px !important;}
+	.cart-table .btn-continue {min-width: 155px;}
 }
 @media only screen and (max-width: 500px) {
 	.total-item-box {width: 100%}

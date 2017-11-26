@@ -87,13 +87,11 @@ p.ajaxsearch-small { margin: 0; }
     .autocomplete .ajaxsearchimage {margin: 2px 5px 2px 2px;}
     .autocomplete div {padding: 5px}
     .autocomplete div p {font-size: 13px;line-height: 14px;margin-top: 0;}
-    .header-top .search-cont {
-        width: 300px !important;
-    }
 }
 @media only screen and (max-width: 460px) {
-    .autocomplete { width:262px !important;}
-    .header-top .search-cont {width: 263px !important;}
+    .autocomplete { width:230px !important;height: 230px;}
+    .header-top .search-cont {width: 230px !important;}
+    .sticky-header .autocomplete-w1 {top: -3px;}
 }
 .rwd .mini-search .button,
 .rwd .ajaxsearch-category-select { height: 40px; }
