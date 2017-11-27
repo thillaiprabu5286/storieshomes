@@ -91,7 +91,8 @@ p.ajaxsearch-small { margin: 0; }
 @media only screen and (max-width: 460px) {
     .autocomplete { width:230px !important;height: 230px;}
     .header-top .search-cont {width: 230px !important;}
-    .sticky-header .autocomplete-w1 {top: -3px;}
+    .autocomplete-w1 {top:17px;}
+    .sticky-header .autocomplete-w1 {top: 7px;}
 }
 .rwd .mini-search .button,
 .rwd .ajaxsearch-category-select { height: 40px; }
