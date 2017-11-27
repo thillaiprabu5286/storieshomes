@@ -166,7 +166,7 @@ border-bottom: 1px solid #dbdbdb; }
 display: block; }
 .fixed-header .menu > li.menu-full-width .nav-sublist-dropdown,
 .main-nav .menu > li.menu-full-width .nav-sublist-dropdown {
-padding: 25px 0 30px;
+padding: 0;
 width: 100%;
 left: 0;
 right: 0;
