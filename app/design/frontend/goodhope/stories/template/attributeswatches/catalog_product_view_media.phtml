@@ -176,7 +176,7 @@ $_hide_gallery = (int)$_settings['hide_gallery'] && $this->getGalleryImages()->c
     endif;?>
     <?php if ($_product->getSpecialPrice() > 0): ?>
     <div class="discount-label red">
-        <span><?php echo $discountPercent ?>% -<?php echo $this->__('Off'); ?></span>
+        <span><?php echo $discountPercent ?>% <small>-<?php echo $this->__('Off'); ?></small></span>
     </div>
     <?php endif; ?>
     <?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
