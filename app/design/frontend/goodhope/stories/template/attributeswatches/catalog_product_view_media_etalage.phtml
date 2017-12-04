@@ -50,6 +50,15 @@ $_gallery_selectors = !(bool)Mage::getStoreConfig("attributeswatches/settings/sw
     <ul id="etalage">
         <?php foreach ($this->getGalleryImages() as $_image): ?>
             <li  class="<?php echo $_image->getAssociatedAttributes(); ?> product-image-thumbs" <?php if($_gallery_selectors):?>data-config="<?php echo $_image->getConfigValue();?>"<?php endif;?> <?php if ($_image->getDisabled()): ?>style="display:none;"<?php endif; ?>>
+                <?php if ($_product->getSpecialPrice() > 0):
+                    $discount = ($_product->getPrice() - $_product->getSpecialPrice()) / $_product->getPrice();
+                    $discountPercent = round($discount * 100);
+                endif;?>
+                <?php if ($_product->getSpecialPrice() > 0): ?>
+                    <div class="discount-label red">
+                        <span><?php echo $discountPercent ?>% <small>-<?php echo $this->__('Off'); ?></small></span>
+                    </div>
+                <?php endif; ?>
                 <img class="etalage_source_image" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($_zoom_image_width, $_zoom_image_height); ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /> 
                 <img class="etalage_thumb_image" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($_large_image_width, $_large_image_height); ?>" data-anchor="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($_zoom_image_width, $_zoom_image_height); ?>"  data-attributes-class="<?php echo $_image->getAssociatedAttributes(); ?>"/>
             </li>

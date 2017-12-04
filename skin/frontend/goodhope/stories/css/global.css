@@ -700,6 +700,12 @@ header.sticky-header .logo img {height: 79px;}
 .new-arrival-cont .owl-item img{
 	width: auto !important;
 }
+
+.new-arrival-cont .product-box .product-desc .product-price .old-price {float: left}
+.new-arrival-cont .product-box .product-desc .product-price .special-price {float: right}
+.best-seller-cont .product-box .product-desc .product-price .old-price {float: left}
+.best-seller-cont .product-box .product-desc .product-price .special-price {float: right}
+
 #carousel .owl-prev{
     text-indent: -999999px;
     height: 40px;
