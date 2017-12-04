@@ -1019,7 +1019,7 @@ tr.summary-details-excluded { font-style:italic; }
 .product-view .product-img-box .more-views li { float:left; margin:0 0 8px 9px; }
 .product-view .product-img-box .more-views li a { float:left; width:56px; height:56px; border:2px solid #ddd; overflow:hidden; }
 
-.product-view .product-img-box .discount-label {position: absolute;z-index: 2;right: 0;background-color: rgba(0, 0, 0, .4);padding: 10px 20px;color: #fff;font-weight: bold;font-size: 22px;top: 50px;}
+.product-view .product-img-box .discount-label {position: absolute;z-index: 2;right: 0;background-color: rgba(0, 0, 0, .4);padding: 7px 15px;color: #fff;font-weight: bold;font-size: 18px;top: 50px;}
 .product-view .product-img-box .discount-label small {font-size: 70%;}
 
 .product-image-popup { margin:0 auto; }
