@@ -87,7 +87,7 @@ header .logo{
 	text-indent: -999999px;
 	height: 35%;
 }
-header .logo img {display: block;height: 122px;}
+header .logo img {display: block;height: 120px;}
 header .logo img:hover{opacity: 10;}
 
 .header-top{
@@ -779,20 +779,17 @@ header.sticky-header .logo img {height: 79px;}
 	background-color:#231f20;
 }
 .designer-info .designer-thumb{
-	width: 77px;
-	height: 77px;
 	float: left;
 	margin-right: 30px;
 }
 .designer-info .designer-thumb img{
-	width: 77px;
-	height: 77px;
+	width: 120px;
+	height: 120px;
 	border-radius: 100px;
 	-moz-border-radius: 100px;
 	-webkit-border-radius: 100px;
 }
 .designer-info .designer-desc{
-	float: left;
 	padding-top: 15px;
 }
 .designer-info .designer-desc .designer-name{
@@ -1363,8 +1360,8 @@ footer .about-stories p.about-us{
 	.regular-price .price, .special-price .price {font-size: 14px;}
 	.old-price .price {font-size: 10px;}
 	.mega-menu-wapper li a {padding: 8px 14px;}
-	header {padding-left: 106px;}
-	header .logo img {height: 142px;}
+	header {padding-left: 102px;}
+	header .logo img {height: 136px;}
 	.header-top .search-cont {width: 453px !important;}
 	.menu-wrap {overflow: hidden}
 	.header-top {padding: 5px;}
