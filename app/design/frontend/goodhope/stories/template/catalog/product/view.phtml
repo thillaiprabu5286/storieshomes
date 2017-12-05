@@ -39,6 +39,7 @@
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
 <div class="product-view">
     <div class="product-essential">
+    <div class="container">
     <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
         <?php echo $this->getBlockHtml('formkey') ?>
         <div class="no-display">
@@ -66,6 +67,7 @@
                         <?php echo $this->getChildHtml('addtocart') ?>
                     <?php endif; ?>
                 </div>
+                <hr />
                 <?php echo $this->getChildHtml('addto') ?>
                 <?php echo $this->getChildHtml('extra_buttons') ?>
             <?php elseif (!$_product->isSaleable()): ?>
@@ -81,7 +83,7 @@
             <?php endif;?>
 
             <?php if ($this->canEmailToFriend()): ?>
-                <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
+                <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><i class="fa fa-envelope" aria-hidden="true"></i></a></p>
             <?php endif; ?>
 
         </div>
@@ -143,17 +145,56 @@
     //]]>
     </script>
     </div>
+    </div>
 
     <div class="product-collateral">
-<?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
-        <div class="box-collateral <?php echo "box-{$alias}"?>">
-            <?php if ($title = $this->getChildData($alias, 'title')):?>
-            <h2><?php echo $this->escapeHtml($title); ?></h2>
-            <?php endif;?>
-            <?php echo $html; ?>
-        </div>
-<?php endforeach;?>
-        <?php echo $this->getChildHtml('upsell_products') ?>
+            <div id="tabs" class="product-desc-tab">
+                <!-- Nav Tab -->
+                <div class="product-desc-main-tab">
+                <div class="container">
+                    <div>
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tabs-1" >Details</a></li>
+                            <li><a href="#tabs-2">Reviews</a></li>
+                        </ul>
+                    </div>
+                </div>
+                </div>
+                <!-- Tab Content -->
+                <div class="content">
+                    <div class="container">
+                        <div class="tab-content">
+                            <div id="tabs-1" class="tab-pane">
+                                <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
+                                    <div class="box-collateral <?php echo "box-{$alias}"?>">
+                                        <?php if ($title = $this->getChildData($alias, 'title')):?>
+                                            <h2><?php echo $this->escapeHtml($title); ?></h2>
+                                        <?php endif;?>
+                                        <?php echo $html; ?>
+                                    </div>
+                                <?php endforeach;?>
+                            </div>
+                            <div id="tabs-2" class="tab-pane">
+                                <?php echo $this->getChildHtml('reviews') ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <?php echo $this->getChildHtml('product_additional_data') ?>
-    </div>
+        </div>
 </div>
+<script type="text/javascript">
+    jQuery( function() {jQuery( "#tabs" ).tabs();});
+    jQuery(function() {
+        jQuery(".product-desc-main-tab .nav-tabs li").click(function() {
+            // remove classes from all
+            jQuery(".product-desc-main-tab .nav-tabs li").removeClass("active");
+            // add class to the one we clicked
+            jQuery(this).addClass("active");
+        });
+    });
+</script>
+
+<?php //echo $this->getChildHtml('upsell_products') ?>
+<?php //echo $this->getBlockHtml('catalog.product.related'); ?>

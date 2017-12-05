@@ -38,8 +38,8 @@
 <?php echo $this->getChildHtml('after_body_start') ?>
     <?php echo $this->getChildHtml('global_notices') ?>
         <?php echo $this->getChildHtml('header') ?>
-        <div class="container">
-            <?php echo $this->getChildHtml('breadcrumbs') ?>
+        <div class="<?php if(Mage::registry('current_product')) { echo "product-view-wrap";}else{echo "container";} ?>">
+                <?php echo $this->getChildHtml('breadcrumbs') ?>
             <div class="content-wrap">
                 <?php echo $this->getChildHtml('global_messages') ?>
                 <?php echo $this->getChildHtml('content') ?>

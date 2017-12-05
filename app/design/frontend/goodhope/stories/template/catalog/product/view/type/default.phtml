@@ -27,6 +27,14 @@
 <?php /* @var $this Mage_Catalog_Block_Product_View_Abstract */?>
 <?php $_product = $this->getProduct() ?>
 <?php $_helper = $this->helper('catalog/output'); ?>
+<?php
+$_color = $_product->getAttributeText("color");
+$_size = $_product->getData("size");
+$_material = $_product->getAttributeText("material");
+$_seatingCapacity = $_product->getData("seatingcapacity");
+$_dimensions = $_product->getData("dimensions");
+
+?>
 
 <?php if ($this->displayProductStockStatus()): ?>
     <?php if ($_product->isAvailable()): ?>
@@ -37,7 +45,60 @@
 <?php endif; ?>
 <?php if ($_product->getShortDescription()):?>
     <div class="short-description">
-        <h2><?php echo $this->__('Quick Overview') ?></h2>
+        <div class="row product-highlights">
+            <div class="col-xs-3 left-col">
+                <?php if ($_color): ?>
+                    <h5><?php echo $this->__('Color') ?></h5>
+                <?php endif; ?>
+                <?php if ($_size): ?>
+                    <h5><?php echo $this->__('Size') ?></h5>
+                <?php endif; ?>
+                <?php if ($_dimensions): ?>
+                    <h5><?php echo $this->__('Dimension') ?></h5>
+                <?php endif; ?>
+                <?php if ($_material): ?>
+                    <h5><?php echo $this->__('Material') ?></h5>
+                <?php endif; ?>
+                <?php if ($_seatingCapacity): ?>
+                    <h5><?php echo $this->__('Seating Capacity') ?></h5>
+                <?php endif; ?>
+            </div>
+            <div class="col-xs-1">
+                <?php if ($_color): ?>
+                    <h5>:</h5>
+                <?php endif; ?>
+                <?php if ($_size): ?>
+                    <h5>:</h5>
+                <?php endif; ?>
+                <?php if ($_dimensions): ?>
+                    <h5>:</h5>
+                <?php endif; ?>
+                <?php if ($_material): ?>
+                    <h5>:</h5>
+                <?php endif; ?>
+                <?php if ($_seatingCapacity): ?>
+                    <h5>:</h5>
+                <?php endif; ?>
+            </div>
+            <div class="col-xs-8 right-col">
+                <?php if ($_color): ?>
+                    <h5> <?php echo $_color ?></h5>
+                <?php endif; ?>
+                <?php if ($_size): ?>
+                    <h5> <?php echo $_size ?></h5>
+                <?php endif; ?>
+                <?php if ($_dimensions): ?>
+                    <h5> <?php echo $_dimensions ?></h5>
+                <?php endif; ?>
+                <?php if ($_material): ?>
+                    <h5> <?php echo $_material ?></h5>
+                <?php endif; ?>
+                <?php if ($_seatingCapacity): ?>
+                    <h5> <?php echo $_seatingCapacity ?></h5>
+                <?php endif; ?>
+            </div>
+        </div>
+        <h2><?php echo $this->__('Short Description') ?></h2>
         <p class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></p>
     </div>
 <?php endif;?>

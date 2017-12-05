@@ -1042,12 +1042,21 @@ header.sticky-header .logo img {height: 79px;}
 
 /* Product View Page */
 .product-view {text-align: left}
+.product-view  button.button span {padding: 5px 20px}
+.product-desc-tab .tab-content {padding: 30px;}
+.product-desc-main-tab {background-color: #eee;border-bottom: 1px solid #ddd;}
+.product-desc-main-tab .nav-tabs li a {padding: 20px 50px;text-transform: uppercase;}
+.product-desc-main-tab .nav-tabs {border-bottom: none}
+.product-desc-main-tab .nav-tabs > li.active > a, .product-desc-main-tab .nav-tabs > li.active > a:focus, .product-desc-main-tab .nav-tabs > li.active > a:hover {border: 1px solid #ddd;border-bottom-color: transparent;}
+
 .spinner input {
 	text-align: right;
 	border-radius: 0;
 	font-size: 16px;
 	letter-spacing: 2px;
 	z-index: 0 !important;
+	min-height: 42px;
+	text-align: center;
 }
 .input-group {z-index: 0}
 .input-group-btn-vertical {
@@ -1062,7 +1071,7 @@ header.sticky-header .logo img {height: 79px;}
 	float: none;
 	width: 100%;
 	max-width: 100%;
-	padding: 8px;
+	padding: 10px;
 	margin-left: -1px;
 	position: relative;
 	border-radius: 0;
@@ -1076,8 +1085,8 @@ header.sticky-header .logo img {height: 79px;}
 }
 .input-group-btn-vertical i{
 	position: absolute;
-	top: 0;
-	left: 4px;
+	top: 2px;
+	left: 6px;
 }
 
 /*product detail tab*/
@@ -1525,7 +1534,6 @@ footer .about-stories p.about-us{
 	.cart-table .btn-continue {min-width: 155px;}
 	#shopping-cart-table th {font-size: 11px;}
 	.cart-table td {font-size: 11px}
-	.qty-holder {width: 40px}
 	.cart-table tbody tr td:last-of-type h6 {font-size: 10px;margin: 0;}
 }
 @media only screen and (max-width: 500px) {
