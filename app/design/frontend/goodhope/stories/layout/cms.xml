@@ -86,4 +86,11 @@ Default layout, loads most of the pages
         </reference>
     </cms_index_defaultnoroute>
 
+        <cms_index_index>
+            <reference name="content">
+                <!-- home featured products -->
+                <block type="catalog/product_list" name="home.featured.products" after="-" template="catalog/product/list-home-featured.phtml" />
+            </reference>
+        </cms_index_index>
+
 </layout>

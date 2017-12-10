@@ -1,0 +1,118 @@
+<?php
+$_coreHelper = Mage::helper('core');
+$_helper = Mage::helper('catalog/category');
+$offlineProductCategoryId = 181;
+$offlineCategory = Mage::getModel('catalog/category');
+$offlineCategory->load($offlineProductCategoryId);
+$offlineCollection = $offlineCategory->getProductCollection();
+$offlineCollection->addAttributeToSelect('*');
+?>
+
+<!-- Header Part -->
+<section id="header_opart">
+    <div id="logo_main">
+        <a href="<?php echo Mage::getBaseUrl(); ?>"><img src="<?php echo $this->getSkinUrl('deals/images/logo.jpg') ?>" alt=""></a>
+    </div>
+    <div id="banner_bg" class="bg_inner" >
+        <<div class="eff_1"><img src="<?php echo $this->getSkinUrl('deals/images/efft1.png') ?>"></div>
+        <div class="eff_2"><img src="<?php echo $this->getSkinUrl('deals/images/efft2.png') ?>"></div>
+        <div class="offer_txt"><img src="<?php echo $this->getSkinUrl('deals/images/text_main.png') ?>"></div>
+        <div class="tag_inner"><div class="tag_inner_fix"><img src="<?php echo $this->getSkinUrl('deals/images/offer_tag.png') ?>"></div></div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div id="txt_header_inn">
+                <h2 class="head1">Offline <span>offers</span></h2>
+                <div class="view2"><a href="<?php echo Mage::getBaseUrl(); ?>deals-page">Back</a></div>
+                <span class="txt1_new">To avail this one-of-its-kind offer, leave whatever you are doing  and rush to  our showrooms right now.
+                <span class="head5">Our great offers are always exclusively offline. Hurry!</span>
+                </span>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Enquiry Box -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="popup_head1">
+                <span>Are you Interested?</span>
+                <div class="close1"><a  data-dismiss="modal" aria-label="Close"><img src="images/close.png"></a></div>
+            </div>
+
+            <div class="popup_content">
+                <span class="formtxt1"><span>*</span>Name</span>
+                <input type="text" name="textfield" id="textfield" class="form1">
+                <span class="formtxt1"><span>*</span>Phone No.</span>
+                <input type="text" name="textfield" id="textfield" class="form1">
+                <span class="formtxt1">Email Id</span>
+                <input type="text" name="textfield" id="textfield" class="form1">
+                <input type="submit" name="button" id="button" value="Submit" class="btn1">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Offline Part -->
+<section id="ofline_offers_inner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <!-- Limited Stock -->
+                <div id="home_offline_offers_inn">
+                    <?php foreach ($offlineCollection as $_product): ?>
+                        <div class="pro_listing">
+                                <div class="pro_listing_fix">
+                                    <div class="pro_img"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"></div>
+                                    <div class="pro_txt2"><span><?php echo $_product->getName(); ?></span></div>
+                                    <div class="price_offer"><span>Rs.<br><?php echo $_coreHelper->currency($_product['price'], false) ?></span></div>
+                                    <div class="link1"><a  data-target="#myModal" data-toggle="modal">Are you Interested?</a></div>
+                                </div>
+                        </div>
+                    <?php endforeach; ?>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Online Offer -->
+<div id="online_offersinn">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="img_off_inn"><img src="<?php echo $this->getSkinUrl('deals/images/sofa8.jpg') ?>"></div>
+                <div class="link1"><a href="<?php echo Mage::getBaseUrl(); ?>deals-page#online_offers">Online Offers</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Part -->
+<section id="footer_part">
+    Copyright 2017 Stories Homes furniture Store. All Rights Reserved.
+    <div id="footer_social">
+        <a href="https://www.facebook.com/storieshomes/" target="_blank"><img src="<?php echo $this->getSkinUrl('deals/images/facebook.png') ?>"></a>
+        <a href="https://twitter.com/storieshomes" target="_blank"><img src="<?php echo $this->getSkinUrl('deals/images/twitter.png') ?>"></a>
+        <a href="https://plus.google.com/109433990579268309932" target="_blank"><img src="<?php echo $this->getSkinUrl('deals/images/google_plus.png') ?>"></a>
+        <a href="https://in.pinterest.com/storieshomes00/" target="_blank"><img src="<?php echo $this->getSkinUrl('deals/images/pintrest.png') ?>"></a>
+        <a href="https://www.houzz.com/pro/stories-interiors/stories-homes" target="_blank"><img src="<?php echo $this->getSkinUrl('deals/images/houzz.png') ?>"></a>
+    </div>
+</section>
+
+<div id="story_lol_mob">
+    <img src="<?php echo $this->getSkinUrl('deals/images/logo.jpg') ?>">
+</div>
+
+<script src="<?php echo $this->getSkinUrl('js/deals/jquery.min.js') ?>"></script>
+<script src="<?php echo $this->getSkinUrl('js/deals/bootstrap.min.js') ?>"></script>
+<script src="<?php echo $this->getSkinUrl('js/deals/ui.js') ?>"></script>
