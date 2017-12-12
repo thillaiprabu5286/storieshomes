@@ -1,11 +1,15 @@
 <?php
 $_coreHelper = Mage::helper('core');
 $_helper = Mage::helper('catalog/category');
-$offlineProductCategoryId = 181;
-$offlineCategory = Mage::getModel('catalog/category');
-$offlineCategory->load($offlineProductCategoryId);
-$offlineCollection = $offlineCategory->getProductCollection();
-$offlineCollection->addAttributeToSelect('*');
+$_category = Mage::registry('current_category');
+$_category->load($this->getData('category_id'));
+$catCollection = $_category->getProductCollection();
+$catCollection->getSelect()->limit(30);
+$catCollection->addAttributeToSelect('*');
+$catUrlKey = $_category->getUrlKey();
+$prevUrl = Mage::helper('core/http')->getHttpReferer() ? Mage::helper('core/http')->getHttpReferer()  : Mage::getUrl();
+$onlineUrl = $_category->getParentCategory()->getUrl();
+$offlineUrl = Mage::getModel('catalog/category')->getCollection()->addAttributeToFilter('url_key', 'offline-offers')->getFirstItem();
 ?>
 
 <!-- Header Part -->
@@ -14,7 +18,7 @@ $offlineCollection->addAttributeToSelect('*');
         <a href="<?php echo Mage::getBaseUrl(); ?>"><img src="<?php echo $this->getSkinUrl('deals/images/logo.jpg') ?>" alt=""></a>
     </div>
     <div id="banner_bg" class="bg_inner" >
-        <<div class="eff_1"><img src="<?php echo $this->getSkinUrl('deals/images/efft1.png') ?>"></div>
+        <div class="eff_1"><img src="<?php echo $this->getSkinUrl('deals/images/efft1.png') ?>"></div>
         <div class="eff_2"><img src="<?php echo $this->getSkinUrl('deals/images/efft2.png') ?>"></div>
         <div class="offer_txt"><img src="<?php echo $this->getSkinUrl('deals/images/text_main.png') ?>"></div>
         <div class="tag_inner"><div class="tag_inner_fix"><img src="<?php echo $this->getSkinUrl('deals/images/offer_tag.png') ?>"></div></div>
@@ -25,11 +29,8 @@ $offlineCollection->addAttributeToSelect('*');
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div id="txt_header_inn">
-                <h2 class="head1">Offline <span>offers</span></h2>
-                <div class="view2"><a href="<?php echo Mage::getBaseUrl(); ?>deals-page">Back</a></div>
-                <span class="txt1_new">To avail this one-of-its-kind offer, leave whatever you are doing  and rush to  our showrooms right now.
-                <span class="head5">Our great offers are always exclusively offline. Hurry!</span>
-                </span>
+                <h2 class="head1"><?php echo $_category->getParentCategory()->getName(); ?></h2>
+                <div class="view2"><a href="<?php echo $prevUrl; ?>">Back</a></div>
             </div>
 
         </div>
@@ -65,17 +66,18 @@ $offlineCollection->addAttributeToSelect('*');
 <section id="ofline_offers_inner">
     <div class="container">
         <div class="row">
+            <span class="head3a"><?php echo $_category->getName(); ?></span>
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <!-- Limited Stock -->
                 <div id="home_offline_offers_inn">
-                    <?php foreach ($offlineCollection as $_product): ?>
+                    <?php foreach ($catCollection as $_product): ?>
                         <div class="pro_listing">
-                                <div class="pro_listing_fix">
-                                    <div class="pro_img"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"></div>
-                                    <div class="pro_txt2"><span><?php echo $_product->getName(); ?></span></div>
-                                    <div class="price_offer"><span>Rs.<br><?php echo $_coreHelper->currency($_product['price'], false) ?></span></div>
-                                    <div class="link1"><a  data-target="#myModal" data-toggle="modal">Are you Interested?</a></div>
-                                </div>
+                            <div class="pro_listing_fix">
+                                <div class="pro_img"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"></div>
+                                <div class="pro_txt2"><span><?php echo $_product->getName(); ?></span></div>
+                                <div class="price_offer"><span>Rs.<br><?php echo $_coreHelper->currency($_product['price'], false) ?></span></div>
+                                <div class="link1"><a  data-target="#myModal" data-toggle="modal">Are you Interested?</a></div>
+                            </div>
                         </div>
                     <?php endforeach; ?>
                     <div class="clearfix"></div>
@@ -85,17 +87,32 @@ $offlineCollection->addAttributeToSelect('*');
     </div>
 </section>
 
-<!-- Online Offer -->
-<div id="online_offersinn">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="img_off_inn"><img src="<?php echo $this->getSkinUrl('deals/images/sofa8.jpg') ?>"></div>
-                <div class="link1"><a href="<?php echo Mage::getBaseUrl(); ?>deals-page#online_offers">Online Offers</a></div>
+<?php if($catUrlKey == 'offline-offers'): ?>
+    <!-- Online Offer -->
+    <div id="online_offersinn">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="img_off_inn"><img src="<?php echo $this->getSkinUrl('deals/images/sofa8.jpg') ?>"></div>
+                    <div class="link1"><a href="<?php echo $onlineUrl . '#online_offers' ?>">Online Offers</a></div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+<?php else: ?>
+    <!-- Offline Offer -->
+    <div id="online_offersinn">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="img_off_inn"><img src="<?php echo $this->getSkinUrl('deals/images/offline7.jpg') ?>"></div>
+                    <div class="link1"><a href="<?php echo $offlineUrl->getUrl(); ?>">Offline Offers</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+
 
 <!-- Footer Part -->
 <section id="footer_part">

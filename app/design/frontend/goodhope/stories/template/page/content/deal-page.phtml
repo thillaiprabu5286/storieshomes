@@ -1,16 +1,18 @@
 <?php
 $_coreHelper = Mage::helper('core');
 $_helper = Mage::helper('catalog/category');
-$offlineProductCategoryId = 181;
-$offlineCategory = Mage::getModel('catalog/category');
-$offlineCategory->load($offlineProductCategoryId);
+
+$offlineId = Mage::getModel('catalog/category')->getCollection()->addAttributeToFilter('url_key', 'offline-offers')->getFirstItem();
+$offlineCategory = Mage::getModel('catalog/category')->load($offlineId->getId());
 $offlineCollection = $offlineCategory->getProductCollection();
 $offlineCollection->getSelect()->limit(3);
 $offlineCollection->addAttributeToSelect('*');
 
-$onlineProductCategoryId = Mage::getModel('catalog/category')->load(182);
-$onlineCategory = explode(',',$onlineProductCategoryId->getChildren());
-$onlineCollection = $onlineProductCategoryId->getCollection()->addAttributeToSelect("*")->addFieldToFilter("entity_id", array("in", $onlineCategory) );
+$onlineId = Mage::getModel('catalog/category')->getCollection()->addAttributeToFilter('url_key', 'online-offers')->getFirstItem();
+$onlineCategory = Mage::getModel('catalog/category')->load($onlineId->getId());
+$onlineCollection = $onlineCategory->getChildrenCategories();
+$onlineCollection->getSelect()->limit(5);
+$onlineCollection->addAttributeToSelect('*');
 ?>
 
 <!-- Header Part -->
@@ -26,7 +28,6 @@ $onlineCollection = $onlineProductCategoryId->getCollection()->addAttributeToSel
     </div>
     <div id="chair_banner"><img src="<?php echo $this->getSkinUrl('deals/images/bg3.png') ?>"></div>
 </section>
-
 <!-- Offline Part -->
 <section id="ofline_offers">
     <div class="container">
@@ -34,12 +35,12 @@ $onlineCollection = $onlineProductCategoryId->getCollection()->addAttributeToSel
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <!-- Limited Stock -->
                 <div class="limited_stock"><span>Limited<br>Stock</span></div>
-                <h2 class="head4">offline <span>offers</span></h2>
-                <div class="view2"><a href="<?php echo Mage::getBaseUrl(); ?>offline-offers">View All</a></div>
+                <h2 class="head4"><span><?php echo $offlineCategory->getName(); ?></span></h2>
+                <div class="view2"><a href="<?php echo $offlineCategory->getUrl(); ?>">View All</a></div>
                 <div id="home_offline_offers">
                     <?php foreach ($offlineCollection as $_product): ?>
                     <div class="pro_listing">
-                        <a href="<?php echo Mage::getBaseUrl(); ?>offline-offers">
+                        <a href="<?php echo $offlineCategory->getUrl(); ?>">
                             <div class="pro_listing_fix">
                                 <div class="price_offer"><span>Rs.<br/><?php echo $_coreHelper->currency($_product['price'], false) ?></span></div>
                                 <div class="pro_img"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"></div>
@@ -59,19 +60,20 @@ $onlineCollection = $onlineProductCategoryId->getCollection()->addAttributeToSel
 <section id="online_offers">
     <div class="container">
         <div class="row">
-            <h2 class="head1">online <span>offers</span></h2>
+            <h2 class="head1"><span><?php echo $onlineCategory->getName(); ?></span></h2>
             <?php $i = 0; ?>
             <?php foreach ($onlineCollection as $_category): ?>
                 <?php $ID = $_category->getId(); ?>
                 <?php $thumb = Mage::getModel('catalog/category')->load($ID)->getThumbnail(); ?>
-                <?php if(!($ID == 185)): ?>
+                <?php $description = Mage::getModel('catalog/category')->load($ID)->getDescription(); ?>
+                <?php if(!($i == 2)): ?>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div id="bed_h">
                             <div id="bed_h_img"><img src="<?php echo Mage::getBaseUrl('media') . 'catalog/category/' . $thumb; ?>" class="img-responsive"></div>
                             <div id="bed_h_txt">
                                 <h2 class="head3"><?php echo $_category->getName(); ?></h2>
-                                <div id="upto2">upto<br><span><?php echo $_category->getDescription(); ?>%</span><br>off</div>
-                                <div class="view1"><a href="<?php echo Mage::getBaseUrl() . $_category->getUrlKey(); ?>">View All</a></div>
+                                <div id="upto2">upto<br><span><?php echo $description; ?>%</span><br>off</div>
+                                <div class="view1"><a href="<?php echo $_category->getUrl($_category); ?>">View All</a></div>
                             </div>
                         </div>
                     </div>
@@ -80,11 +82,12 @@ $onlineCollection = $onlineProductCategoryId->getCollection()->addAttributeToSel
                         <div id="home_decore">
                             <h2 class="head2"><?php echo $_category->getName(); ?></h2>
                             <div id="decore_img"><img src="<?php echo Mage::getBaseUrl('media') . 'catalog/category/' . $thumb; ?>"></div>
-                            <div id="upto1">upto<br><span><?php echo $_category->getDescription(); ?>%</span> off</div>
+                            <div id="upto1">upto<br><span><?php echo $description; ?>%</span> off</div>
                         </div>
-                        <div class="viewall_btn"><a href="<?php echo Mage::getBaseUrl() . $_category->getUrlKey(); ?>">View All</a></div>
+                        <div class="viewall_btn"><a href="<?php echo $_category->getUrl($_category); ?>">View All</a></div>
                     </div>
                 <?php endif; ?>
+                <?php $i++; ?>
             <?php endforeach; ?>
         </div>
     </div>

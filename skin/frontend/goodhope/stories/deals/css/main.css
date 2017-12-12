@@ -111,6 +111,9 @@ body{background: #fff!important;}
 
 .head3a{color:#3b342d;font:18px 'layar_regular', sans-serif;text-transform:uppercase;border-bottom:solid 4px #ece3a8;display:inline-block;padding:0 0 4px 0;margin:0 0 10px 30px;}
 
+.page-title.category-title {display: none}
+
+
 #upto3{color:#7f1a06;font:25px 'layar_regular', sans-serif;text-transform:uppercase}
 #upto3 span{font:65px 'layar_bold', sans-serif;}
 #dining_h{width:auto;margin:160px 0 0 0;position:relative;border-left:solid 1px #feceac;padding:0 0 0 0;}
