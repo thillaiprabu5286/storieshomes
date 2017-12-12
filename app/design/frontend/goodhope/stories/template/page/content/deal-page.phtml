@@ -42,7 +42,7 @@ $onlineCollection->addAttributeToSelect('*');
                     <div class="pro_listing">
                         <a href="<?php echo $offlineCategory->getUrl(); ?>">
                             <div class="pro_listing_fix">
-                                <div class="price_offer"><span>Rs.<br/><?php echo $_coreHelper->currency($_product['price'], false) ?></span></div>
+                                <div class="price_offer"><span><?php echo $_coreHelper->currency($_product->getData('offline_deal_price')); ?></span></div>
                                 <div class="pro_img"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"></div>
                                 <div class="pro_txt1"><span><?php echo $_product->getName(); ?></span></div>
                             </div>
