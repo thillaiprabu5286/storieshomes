@@ -49,7 +49,7 @@ $offlineUrl = Mage::getModel('catalog/category')->getCollection()->addAttributeT
                             <?php $ID = $_product->getId(); ?>
                             <div class="pro_listing">
                                 <div class="pro_listing_fix">
-                                    <div class="pro_img"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"></div>
+                                    <div class="pro_img"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(600); ?>"></div>
                                     <div class="pro_txt2"><span><?php echo $_product->getName(); ?></span></div>
                                     <div class="price_offer"><span><?php echo $_coreHelper->currency($_product->getData('offline_deal_price')); ?></span></div>
                                     <div class="link1"><a  data-target="#myModal<?php echo $ID; ?>" data-toggle="modal">Are you Interested?</a></div>
@@ -64,12 +64,12 @@ $offlineUrl = Mage::getModel('catalog/category')->getCollection()->addAttributeT
                                             $telephone = $_POST['telephone'];
                                             $message = $_POST['message'];
 
-                                            $to = "contact@storieshomes.com";
+                                            $to = "info@storieshomes.com";
                                             $subject = "Stories Home 'Offline Deal Form Submission'";
 
                                             $headers = "From: " . strip_tags($email_field) . "\r\n";
                                             $headers .= "Reply-To: ". strip_tags($email_field) . "\r\n";
-                                            $headers .= "CC: ziajunaidi@gmail.com\r\n";
+                                            $headers .= "CC: storieshomes@gmail.com\r\n";
                                             $headers .= "MIME-Version: 1.0\r\n";
                                             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
@@ -189,7 +189,7 @@ $offlineUrl = Mage::getModel('catalog/category')->getCollection()->addAttributeT
                         <?php foreach ($catCollection as $_product): ?>
                             <div class="pro_listing">
                                 <div class="pro_listing_fix">
-                                    <div class="pro_img"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"></div>
+                                    <div class="pro_img"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(600); ?>"></div>
                                     <div class="pro_txt2"><span><?php echo $_product->getName(); ?></span></div>
                                     <div class="old_new">
                                     <?php if ($_product->getSpecialPrice() > 0): ?>
@@ -240,9 +240,5 @@ $offlineUrl = Mage::getModel('catalog/category')->getCollection()->addAttributeT
 <div id="story_lol_mob">
     <img src="<?php echo $this->getSkinUrl('deals/images/logo.jpg') ?>">
 </div>
-
-<script src="<?php echo $this->getSkinUrl('js/deals/jquery.min.js') ?>"></script>
-<script src="<?php echo $this->getSkinUrl('js/deals/bootstrap.min.js') ?>"></script>
-<script src="<?php echo $this->getSkinUrl('js/deals/ui.js') ?>"></script>
 
 
