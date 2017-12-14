@@ -1,0 +1,115 @@
+<?php
+$_coreHelper = Mage::helper('core');
+$_helper = Mage::helper('catalog/category');
+
+$offlineId = Mage::getModel('catalog/category')->getCollection()->addAttributeToFilter('url_key', 'offline-offers')->getFirstItem();
+$offlineCategory = Mage::getModel('catalog/category')->load($offlineId->getId());
+$offlineCollection = $offlineCategory->getProductCollection();
+$offlineCollection->getSelect()->limit(3);
+$offlineCollection->addAttributeToSelect('*');
+
+$onlineId = Mage::getModel('catalog/category')->getCollection()->addAttributeToFilter('url_key', 'online-offers')->getFirstItem();
+$onlineCategory = Mage::getModel('catalog/category')->load($onlineId->getId());
+$onlineCollection = $onlineCategory->getChildrenCategories();
+$onlineCollection->getSelect()->limit(5);
+$onlineCollection->addAttributeToSelect('*');
+?>
+
+<!-- Header Part -->
+<section id="header_opart">
+    <div id="logo_main">
+        <a href="<?php echo Mage::getBaseUrl(); ?>"><img src="<?php echo $this->getSkinUrl('deals/images/logo.jpg') ?>" alt=""></a>
+    </div>
+    <div id="banner_bg" >
+        <div class="eff_1"><img src="<?php echo $this->getSkinUrl('deals/images/efft1.png') ?>"></div>
+        <div class="eff_2"><img src="<?php echo $this->getSkinUrl('deals/images/efft2.png') ?>"></div>
+        <div class="offer_txt"><img src="<?php echo $this->getSkinUrl('deals/images/text_main.png') ?>"></div>
+        <div class="offer_logo"><img src="<?php echo $this->getSkinUrl('deals/images/offer_tag.png') ?>"></div>
+    </div>
+    <div id="chair_banner"><img src="<?php echo $this->getSkinUrl('deals/images/bg3.png') ?>"></div>
+</section>
+<!-- Offline Part -->
+<section id="ofline_offers">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <!-- Limited Stock -->
+                <div class="limited_stock"><span>Limited<br>Stock</span></div>
+                <h2 class="head4"><span><?php echo $offlineCategory->getName(); ?></span></h2>
+                <div class="view2"><a href="<?php echo $offlineCategory->getUrl(); ?>">View All</a></div>
+                <div id="home_offline_offers">
+                    <?php foreach ($offlineCollection as $_product): ?>
+                    <div class="pro_listing">
+                        <a href="<?php echo $offlineCategory->getUrl(); ?>">
+                            <div class="pro_listing_fix">
+                                <div class="price_offer"><span>Rs.<br/><?php echo $_coreHelper->currency($_product['price'], false) ?></span></div>
+                                <div class="pro_img"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"></div>
+                                <div class="pro_txt1"><span><?php echo $_product->getName(); ?></span></div>
+                            </div>
+                        </a>
+                    </div>
+                    <?php endforeach; ?>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Online Offers -->
+<section id="online_offers">
+    <div class="container">
+        <div class="row">
+            <h2 class="head1"><span><?php echo $onlineCategory->getName(); ?></span></h2>
+            <?php $i = 0; ?>
+            <?php foreach ($onlineCollection as $_category): ?>
+                <?php $ID = $_category->getId(); ?>
+                <?php $thumb = Mage::getModel('catalog/category')->load($ID)->getThumbnail(); ?>
+                <?php $description = Mage::getModel('catalog/category')->load($ID)->getDescription(); ?>
+                <?php if(!($i == 2)): ?>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div id="bed_h">
+                            <div id="bed_h_img"><img src="<?php echo Mage::getBaseUrl('media') . 'catalog/category/' . $thumb; ?>" class="img-responsive"></div>
+                            <div id="bed_h_txt">
+                                <h2 class="head3"><?php echo $_category->getName(); ?></h2>
+                                <div id="upto2">upto<br><span><?php echo $description; ?>%</span><br>off</div>
+                                <div class="view1"><a href="<?php echo $_category->getUrl($_category); ?>">View All</a></div>
+                            </div>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div id="home_decore">
+                            <h2 class="head2"><?php echo $_category->getName(); ?></h2>
+                            <div id="decore_img"><img src="<?php echo Mage::getBaseUrl('media') . 'catalog/category/' . $thumb; ?>"></div>
+                            <div id="upto1">upto<br><span><?php echo $description; ?>%</span> off</div>
+                        </div>
+                        <div class="viewall_btn"><a href="<?php echo $_category->getUrl($_category); ?>">View All</a></div>
+                    </div>
+                <?php endif; ?>
+                <?php $i++; ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</section>
+
+<!-- Footer Part -->
+<section id="footer_part">
+    Copyright 2017 Stories Homes furniture Store. All Rights Reserved.
+    <div id="footer_social">
+        <a href="https://www.facebook.com/storieshomes/" target="_blank"><img src="<?php echo $this->getSkinUrl('deals/images/facebook.png') ?>"></a>
+        <a href="https://twitter.com/storieshomes" target="_blank"><img src="<?php echo $this->getSkinUrl('deals/images/twitter.png') ?>"></a>
+        <a href="https://plus.google.com/109433990579268309932" target="_blank"><img src="<?php echo $this->getSkinUrl('deals/images/google_plus.png') ?>"></a>
+        <a href="https://in.pinterest.com/storieshomes00/" target="_blank"><img src="<?php echo $this->getSkinUrl('deals/images/pintrest.png') ?>"></a>
+        <a href="https://www.houzz.com/pro/stories-interiors/stories-homes" target="_blank"><img src="<?php echo $this->getSkinUrl('deals/images/houzz.png') ?>"></a>
+    </div>
+</section>
+
+<div id="story_lol_mob">
+    <img src="<?php echo $this->getSkinUrl('deals/images/logo.jpg') ?>">
+</div>
+
+<script src="<?php echo $this->getSkinUrl('js/deals/jquery.min.js') ?>"></script>
+<script src="<?php echo $this->getSkinUrl('js/deals/bootstrap.min.js') ?>"></script>
+<script src="<?php echo $this->getSkinUrl('js/deals/ui.js') ?>"></script>
