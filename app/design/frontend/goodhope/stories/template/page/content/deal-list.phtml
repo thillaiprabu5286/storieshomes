@@ -25,69 +25,134 @@ $offlineUrl = Mage::getModel('catalog/category')->getCollection()->addAttributeT
     </div>
 </section>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div id="txt_header_inn">
-                <h2 class="head1"><?php echo $_category->getParentCategory()->getName(); ?></h2>
-                <div class="view2"><a href="<?php echo $prevUrl; ?>">Back</a></div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-
-<!-- Enquiry Box -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-
-            <div class="popup_head1">
-                <span>Are you Interested?</span>
-                <div class="close1"><a  data-dismiss="modal" aria-label="Close"><img src="images/close.png"></a></div>
-            </div>
-
-            <div class="popup_content">
-                <span class="formtxt1"><span>*</span>Name</span>
-                <input type="text" name="textfield" id="textfield" class="form1">
-                <span class="formtxt1"><span>*</span>Phone No.</span>
-                <input type="text" name="textfield" id="textfield" class="form1">
-                <span class="formtxt1">Email Id</span>
-                <input type="text" name="textfield" id="textfield" class="form1">
-                <input type="submit" name="button" id="button" value="Submit" class="btn1">
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<!-- Offline Part -->
-<section id="ofline_offers_inner">
+<?php if($catUrlKey == 'offline-offers'): ?>
     <div class="container">
         <div class="row">
-            <span class="head3a"><?php echo $_category->getName(); ?></span>
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <!-- Limited Stock -->
-                <div id="home_offline_offers_inn">
-                    <?php foreach ($catCollection as $_product): ?>
-                        <div class="pro_listing">
-                            <div class="pro_listing_fix">
-                                <div class="pro_img"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"></div>
-                                <div class="pro_txt2"><span><?php echo $_product->getName(); ?></span></div>
-                                <div class="price_offer"><span>Rs.<br><?php echo $_coreHelper->currency($_product['price'], false) ?></span></div>
-                                <div class="link1"><a  data-target="#myModal" data-toggle="modal">Are you Interested?</a></div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                    <div class="clearfix"></div>
+                <div id="txt_header_inn">
+                    <h2 class="head1"><?php echo $_category->getName(); ?></h2>
+                    <div class="view2"><a href="<?php echo Mage::getBaseUrl(); ?>">Home</a> <a href="<?php echo $_category->getParentCategory()->getUrl(); ?>">Deal</a></div>
+                    <p><?php echo $_category->getDescription(); ?></p>
                 </div>
             </div>
         </div>
     </div>
-</section>
+    <!-- Offline Part -->
+    <section id="ofline_offers_inner">
+        <div class="container">
+            <div class="row">
+                <span class="head3a"><?php echo $_category->getName(); ?></span>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <!-- Limited Stock -->
+                    <div id="home_offline_offers_inn">
+                        <?php foreach ($catCollection as $_product): ?>
+                            <?php $ID = $_product->getId(); ?>
+                            <div class="pro_listing">
+                                <div class="pro_listing_fix">
+                                    <div class="pro_img"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(600); ?>"></div>
+                                    <div class="pro_txt2"><span><?php echo $_product->getName(); ?></span></div>
+                                    <div class="price_offer"><span><?php echo $_coreHelper->currency($_product->getData('offline_deal_price')); ?></span></div>
+                                    <div class="link1"><a  data-target="#myModal<?php echo $ID; ?>" data-toggle="modal">Are you Interested?</a></div>
 
-<?php if($catUrlKey == 'offline-offers'): ?>
+                                    <?php if(isset($_POST['submit' . $ID] )) : ?>
+                                        <div id="form-alert<?php echo $ID; ?>" class="alert alert-success">
+                                            <?php
+                                            $name_field = $_POST['name'];
+                                            $email_field = $_POST['email'];
+                                            $product = $_POST['product'];
+                                            $productId = $_POST['product-id'];
+                                            $telephone = $_POST['telephone'];
+                                            $message = $_POST['message'];
+
+                                            $to = "info@storieshomes.com";
+                                            $subject = "Stories Home 'Offline Deal Form Submission'";
+
+                                            $headers = "From: " . strip_tags($email_field) . "\r\n";
+                                            $headers .= "Reply-To: ". strip_tags($email_field) . "\r\n";
+                                            $headers .= "CC: storieshomes@gmail.com\r\n";
+                                            $headers .= "MIME-Version: 1.0\r\n";
+                                            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+                                            $body = '<html><body>';
+                                            $body .= '<img src="http://www.storieshomes.com/skin/frontend/goodhope/stories/images/logo.jpg" alt="Stories Home" />';
+                                            $body .= '<h1>Stories Home Offline Deal Form Submission</h1>';
+                                            $body .= '<table rules="all" style="border-color: #666;" cellpadding="10">';
+                                            $body .= "<tr style='background: #eee;'><td><strong>Name:</strong> </td><td>" . $name_field . "</td></tr>";
+                                            $body .= "<tr><td><strong>Email:</strong> </td><td>" . $email_field . "</td></tr>";
+                                            $body .= "<tr><td><strong>Telephone:</strong> </td><td>" . $telephone . "</td></tr>";
+                                            $body .= "<tr><td><strong>Interested Product:</strong> </td><td>" . $product . "</td></tr>";
+                                            $body .= "<tr><td><strong>Product Id:</strong> </td><td>" . $productId . "</td></tr>";
+                                            $body .= "<tr><td><strong>Message:</strong> </td><td>" . $message . "</td></tr>";
+                                            $body .= "</table>";
+                                            $body .= "</body></html>";
+
+                                            echo "Thanks <b>$name_field</b> for your interest in <br><br><h4>$product</h4> We'll get back to you as soon as possible!";
+                                            mail($to, $subject, $body, $headers); ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+
+                            <!-- Enquiry Box -->
+                            <div class="modal fade" id="myModal<?php echo $ID; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="popup_head1">
+                                            <span>Are you Interested?</span>
+                                            <div class="close1"><a  data-dismiss="modal" aria-label="Close"><img src="<?php echo $this->getSkinUrl('deals/images/close.png') ?>"></a></div>
+                                        </div>
+
+                                        <div class="popup_content">
+                                            <form name="contactform" method="post" action="<?php echo $offlineUrl; ?>#form-alert<?php echo $ID; ?>">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="name">Name</label>
+                                                            <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" required />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="email">Email Address</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                                                                <input type="text" name="email" class="form-control" id="email" placeholder="Enter email" required  />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="email">Telephone Number</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+                                                                <input type="number" name="telephone" class="form-control" id="telephone" placeholder="Enter phone" required  />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="product">Interested Product</label>
+                                                            <input type="text" name="product" class="form-control" id="product" readonly="readonly" value="<?php echo $_product->getName(); ?>" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="message">Message</label>
+                                                            <textarea name="message" id="message" class="form-control" rows="5" cols="25" required placeholder="Message"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <input type="hidden" name="product-id" id="product-id" value="<?php echo $ID; ?>"/>
+                                                        <button type="submit" name="submit<?php echo $ID; ?>" class="btn1 pull-right" id="btnContactUs">Send Message</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Online Offer -->
     <div id="online_offersinn">
         <div class="container">
@@ -99,7 +164,54 @@ $offlineUrl = Mage::getModel('catalog/category')->getCollection()->addAttributeT
             </div>
         </div>
     </div>
+
 <?php else: ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div id="txt_header_inn">
+                    <h2 class="head1"><?php echo $_category->getParentCategory()->getName(); ?></h2>
+                    <div class="view2"><a href="<?php echo Mage::getBaseUrl(); ?>">Home</a> <a href="<?php $parentCat = $_category->getParentCategory(); echo $parentCat->getParentCategory()->getUrl(); ?>">Deal</a></div>
+                    <p><?php echo $_category->getParentCategory()->getDescription(); ?></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Online Part -->
+    <section id="ofline_offers_inner">
+        <div class="container">
+            <div class="row">
+                <span class="head3a"><?php echo $_category->getName(); ?></span>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <!-- Limited Stock -->
+                    <div id="home_offline_offers_inn">
+                        <?php foreach ($catCollection as $_product): ?>
+                            <div class="pro_listing">
+                                <div class="pro_listing_fix">
+                                    <div class="pro_img"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(600); ?>"></div>
+                                    <div class="pro_txt2"><span><?php echo $_product->getName(); ?></span></div>
+                                    <div class="old_new">
+                                    <?php if ($_product->getSpecialPrice() > 0): ?>
+                                        <?php $discount = ($_product->getPrice() - $_product->getSpecialPrice()) / $_product->getPrice(); ?>
+                                        <?php $discountPercent = floor($discount * 100); ?>
+                                        <?php echo $_coreHelper->currency($_product->getSpecialPrice()); ?>
+                                        <span class="old"><?php echo $_coreHelper->currency($_product->getPrice()) ?></span>
+                                        <p><?php echo $discountPercent; ?>% Off</p>
+                                    <?php else: ?>
+                                        <?php echo $_coreHelper->currency($_product->getPrice()) ?>
+                                    <?php endif; ?>
+                                    </div>
+                                    <div class="link1"><a href="<?php echo $_product->getProductUrl(); ?>" target="_blank">Buy Now</a></div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Offline Offer -->
     <div id="online_offersinn">
         <div class="container">
@@ -112,7 +224,6 @@ $offlineUrl = Mage::getModel('catalog/category')->getCollection()->addAttributeT
         </div>
     </div>
 <?php endif; ?>
-
 
 <!-- Footer Part -->
 <section id="footer_part">
@@ -130,6 +241,4 @@ $offlineUrl = Mage::getModel('catalog/category')->getCollection()->addAttributeT
     <img src="<?php echo $this->getSkinUrl('deals/images/logo.jpg') ?>">
 </div>
 
-<script src="<?php echo $this->getSkinUrl('js/deals/jquery.min.js') ?>"></script>
-<script src="<?php echo $this->getSkinUrl('js/deals/bootstrap.min.js') ?>"></script>
-<script src="<?php echo $this->getSkinUrl('js/deals/ui.js') ?>"></script>
+
