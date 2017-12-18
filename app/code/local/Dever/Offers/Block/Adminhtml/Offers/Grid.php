@@ -43,9 +43,9 @@ class Dever_Offers_Block_Adminhtml_Offers_Grid extends Mage_Adminhtml_Block_Widg
             'index'     => 'telephone'
         ));
 
-        $this->addColumn('product_id', array(
-            'header'    => $helper->__('Product Id'),
-            'index'     => 'product_id'
+        $this->addColumn('product_name', array(
+            'header'    => $helper->__('Product Name'),
+            'index'     => 'product_name'
         ));
 
         $this->addColumn('price', array(
@@ -57,6 +57,16 @@ class Dever_Offers_Block_Adminhtml_Offers_Grid extends Mage_Adminhtml_Block_Widg
             'header'    => $helper->__('Coupon Code'),
             'index'     => 'coupon_code'
         ));
+
+        /*$this->addColumn('sms_sent', array(
+            'header'    => $helper->__('Notify Customer'),
+            'index'     => 'sms_sent',
+            'type'      => 'options',
+            'options'   => array(
+                '1'         => $helper->__("Yes"),
+                '0'         => $helper->__("No"),
+            ),
+        ));*/
 
         return parent::_prepareColumns();
     }

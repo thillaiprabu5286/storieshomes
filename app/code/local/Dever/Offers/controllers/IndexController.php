@@ -9,7 +9,6 @@ class Dever_Offers_IndexController extends Mage_Core_Controller_Front_Action
 {
     public function postAction()
     {
-        $debug = true;
         try {
             $post = $this->getRequest()->getPost();
             if ($post) {
@@ -28,13 +27,18 @@ class Dever_Offers_IndexController extends Mage_Core_Controller_Front_Action
                         'product_name' => $model->getProductName(),
                         'coupon_code' => $model->getCouponCode()
                     );
+
                     //Trigger Email
                     $this->_notifyUsersByEmail($options);
 
                     //Trigger Sms
                     /** @var Dever_Sms_Helper_Data $helper */
                     $helper = Mage::helper('dever_sms');
-                    $helper->triggerSms('deals', $model->getTelephone());
+                    $helper->sendSms('deals', $options);
+
+                    /*if ($responseCode == '200') {
+
+                    }*/
 
                     Mage::getSingleton('core/session')->addSuccess(
                         Mage::helper('dever_offers')->__('Thanks for registration. Promo code will be shared in email/sms shortly.')

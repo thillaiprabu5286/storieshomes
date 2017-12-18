@@ -25,8 +25,8 @@ class Dever_Sms_Helper_Data extends Mage_Core_Helper_Abstract
         }
 
         //Send Sms
-        $this->triggerSms($content, $options['phone']);
-        //return $content;
+        $response = $this->triggerSms($content, $options['phone']);
+        return $response;
     }
 
     public function triggerSms($content, $mobile)
@@ -36,8 +36,8 @@ class Dever_Sms_Helper_Data extends Mage_Core_Helper_Abstract
             'password' => 'stories123',
             'mobile' => $mobile,
             'message' => urlencode($content),
-            'sendername' => Mage::getStoreConfig('dever_config/smsgateway/sender_id'),
-            'routetype' => 1
+            'sendername' => 'STORIS',
+            'routetype' => 0
         );
 
         $apiUrl = 'http://sapteleservices.in/SMS_API/sendsms.php';
