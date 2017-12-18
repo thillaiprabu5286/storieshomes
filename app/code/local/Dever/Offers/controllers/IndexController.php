@@ -32,7 +32,7 @@ class Dever_Offers_IndexController extends Mage_Core_Controller_Front_Action
                     );
 
                     //Trigger Email
-                    $this->_notifyUsersByEmail($options);
+                    //$this->_notifyUsersByEmail($options);
 
                     //Trigger Sms
                     /** @var Dever_Sms_Helper_Data $helper */
