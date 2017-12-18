@@ -15,8 +15,10 @@ class Dever_Offers_IndexController extends Mage_Core_Controller_Front_Action
                 $model = Mage::getModel('dever_offers/offers');
                 $model->addData($post);
                 //Generate uniq coupon code
-                $model->setCouponCode(uniqid('ST'))
-                    ->setCreatedAt(date('Y-m-d H:i:s'))
+                $currDateTime = date('Y-m-d H:i:s');
+                $couponCode = 'ST' . strtotime($currDateTime);
+                $model->setCouponCode($couponCode)
+                    ->setCreatedAt($currDateTime)
                     ->setProductName($post['product']);
                 if ($model->save()) {
 
@@ -25,7 +27,8 @@ class Dever_Offers_IndexController extends Mage_Core_Controller_Front_Action
                         'email' => $model->getEmail(),
                         'phone' => $model->getTelephone(),
                         'product_name' => $model->getProductName(),
-                        'coupon_code' => $model->getCouponCode()
+                        'coupon_code' => $model->getCouponCode(),
+                        'price' => $model->getPrice()
                     );
 
                     //Trigger Email
@@ -36,18 +39,14 @@ class Dever_Offers_IndexController extends Mage_Core_Controller_Front_Action
                     $helper = Mage::helper('dever_sms');
                     $helper->sendSms('deals', $options);
 
-                    /*if ($responseCode == '200') {
-
-                    }*/
-
                     Mage::getSingleton('core/session')->addSuccess(
-                        Mage::helper('dever_offers')->__('Thanks for registration. Promo code will be shared in email/sms shortly.')
+                        Mage::helper('dever_offers')->__('Thanks for registration. Promo code will be shared in sms shortly.')
                     );
                 }
             }
         } catch (Exception $e) {
             Mage::getSingleton('core/session')->addError(
-                Mage::helper('dever_offers')->__('You have already registered for this deal. Please check for online offers.')
+                Mage::helper('dever_offers')->__('You have already registered for offline deals. Please check for online offers.')
             );
         }
 
@@ -58,23 +57,21 @@ class Dever_Offers_IndexController extends Mage_Core_Controller_Front_Action
 
     protected function _notifyUsersByEmail($options)
     {
+        /** @var Mage_Core_Model_Email_Template $emailTemplate */
         $emailTemplate = Mage::getModel('core/email_template')->loadDefault('offers_template');
 
         //Variables for Confirmation Mail.
         $emailTemplateVariables = array();
-        $emailTemplateVariables['name'] = $options['name'];
-        $emailTemplateVariables['email'] = $options['email'];
-        $emailTemplateVariables['phone'] = $options['phone'];
         $emailTemplateVariables['product_name'] = $options['product_name'];
         $emailTemplateVariables['coupon_code'] = $options['coupon_code'];
+        $emailTemplateVariables['price'] = $options['price'];
 
         //Appending the Custom Variables to Template.
         $processedTemplate = $emailTemplate->getProcessedTemplate($emailTemplateVariables);
 
         //Subject
         $message = "Thanks {$options['name']} for your interest in {$options['product_name']}";
-        $emailTemplate
-            ->setSenderName(Mage::getStoreConfig('trans_email/ident_custom1/name'))
+        $emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_custom1/name'))
             ->setSenderEmail(Mage::getStoreConfig('trans_email/ident_custom1/email'))
             ->setTemplateSubject($message)
             ->setBody($processedTemplate)

@@ -15,10 +15,7 @@ class Dever_Sms_Helper_Data extends Mage_Core_Helper_Abstract
         switch ($type)
         {
             case 'deals':
-                $content = "Dear customer\n,
-                Thanks for your interest in our products. You have availed the product {$options['product_name']} for Rs.{$options['price']}. 
-                The code is {$options['coupon_code']}. Please show this message at the store when you are visiting. For availing this offer you need to buy products from our store for a minimum of 5000 Rupees\n.
-                Team Stories";
+                $content = "Dear customer,\nThanks for your interest in our products.You have availed the product {$options['product_name']} for Rs.{$options['price']}. The code is {$options['coupon_code']}. Please show this message at the store when you are visiting. For availing this offer you need to buy products from our store for a minimum of 5000 Rupees.\nTeam Stories\n";
                 break;
             default:
                 //Do Nothing
@@ -35,12 +32,12 @@ class Dever_Sms_Helper_Data extends Mage_Core_Helper_Abstract
             'username' => 'stories',
             'password' => 'stories123',
             'mobile' => $mobile,
-            'message' => urlencode($content),
+            'message' => $content,
             'sendername' => 'STORIS',
-            'routetype' => 0
+            'routetype' => 2
         );
 
-        $apiUrl = 'http://sapteleservices.in/SMS_API/sendsms.php';
+        $apiUrl = 'http://sapteleservices.com/SMS_API/sendsms.php';
         $url = $apiUrl . "?" . http_build_query($data);
 
         $client = curl_init($url);
