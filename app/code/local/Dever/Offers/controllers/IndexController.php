@@ -43,7 +43,7 @@ class Dever_Offers_IndexController extends Mage_Core_Controller_Front_Action
             }
         } catch (Exception $e) {
             Mage::getSingleton('core/session')->addError(
-                Mage::helper('dever_offers')->__('You have already registered for this deal.')
+                Mage::helper('dever_offers')->__('You have already registered for this deal. Please check for online offers.')
             );
         }
 

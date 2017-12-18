@@ -53,43 +53,6 @@ $offlineUrl = Mage::getModel('catalog/category')->getCollection()->addAttributeT
                                     <div class="pro_txt2"><span><?php echo $_product->getName(); ?></span></div>
                                     <div class="price_offer"><span><?php echo $_coreHelper->currency($_product->getData('offline_deal_price')); ?></span></div>
                                     <div class="link1"><a  data-target="#myModal<?php echo $ID; ?>" data-toggle="modal">Are you Interested?</a></div>
-
-                                    <?php /*if(isset($_POST['submit' . $ID] )) : */?><!--
-                                        <div id="form-alert<?php /*echo $ID; */?>" class="alert alert-success">
-                                            <?php
-/*                                            $name_field = $_POST['name'];
-                                            $email_field = $_POST['email'];
-                                            $product = $_POST['product'];
-                                            $productId = $_POST['product-id'];
-                                            $telephone = $_POST['telephone'];
-                                            $message = $_POST['message'];
-
-                                            $to = "info@storieshomes.com";
-                                            $subject = "Stories Home 'Offline Deal Form Submission'";
-
-                                            $headers = "From: " . strip_tags($email_field) . "\r\n";
-                                            $headers .= "Reply-To: ". strip_tags($email_field) . "\r\n";
-                                            $headers .= "CC: storieshomes@gmail.com\r\n";
-                                            $headers .= "MIME-Version: 1.0\r\n";
-                                            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-                                            $body = '<html><body>';
-                                            $body .= '<img src="http://www.storieshomes.com/skin/frontend/goodhope/stories/images/logo.jpg" alt="Stories Home" />';
-                                            $body .= '<h1>Stories Home Offline Deal Form Submission</h1>';
-                                            $body .= '<table rules="all" style="border-color: #666;" cellpadding="10">';
-                                            $body .= "<tr style='background: #eee;'><td><strong>Name:</strong> </td><td>" . $name_field . "</td></tr>";
-                                            $body .= "<tr><td><strong>Email:</strong> </td><td>" . $email_field . "</td></tr>";
-                                            $body .= "<tr><td><strong>Telephone:</strong> </td><td>" . $telephone . "</td></tr>";
-                                            $body .= "<tr><td><strong>Interested Product:</strong> </td><td>" . $product . "</td></tr>";
-                                            $body .= "<tr><td><strong>Product Id:</strong> </td><td>" . $productId . "</td></tr>";
-                                            $body .= "<tr><td><strong>Message:</strong> </td><td>" . $message . "</td></tr>";
-                                            $body .= "</table>";
-                                            $body .= "</body></html>";
-
-                                            echo "Thanks <b>$name_field</b> for your interest in <br><br><h4>$product</h4> We'll get back to you as soon as possible!";
-                                            mail($to, $subject, $body, $headers); */?>
-                                        </div>
-                                    --><?php /*endif; */?>
                                 </div>
                             </div>
 
@@ -121,7 +84,7 @@ $offlineUrl = Mage::getModel('catalog/category')->getCollection()->addAttributeT
                                                             <label for="email">Telephone Number</label>
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-                                                                <input type="number" name="telephone" class="form-control" id="telephone" placeholder="Enter phone" required  />
+                                                                <input type="number" name="telephone" class="form-control" id="telephone" placeholder="9842198421" required  />
                                                             </div>
                                                         </div>
                                                     </div>
