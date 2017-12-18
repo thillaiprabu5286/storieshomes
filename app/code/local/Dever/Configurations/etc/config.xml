@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Dever_Configurations>
+            <version>0.0.1</version>
+        </Dever_Configurations>
+    </modules>
+    <global>
+        <helpers>
+            <dever_configurations>
+                <class>Dever_Configurations_Helper</class>
+            </dever_configurations>
+        </helpers>
+    </global>
+</config>

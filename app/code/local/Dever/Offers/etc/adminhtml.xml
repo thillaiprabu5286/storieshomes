@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <dever_offers>
+                        <title>Offers</title>
+                        <sort_order>10</sort_order>
+                        <children>
+                            <offers>
+                                <title>Manage Booking</title>
+                                <action>adminhtml/offers/</action>
+                                <sort_order>10</sort_order>
+                            </offers>
+                        </children>
+                    </dever_offers>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

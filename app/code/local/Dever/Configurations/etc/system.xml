@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <Dever_Configurations translate="label" module="dever_configurations">
+            <label>Dever</label>
+            <sort_order>1</sort_order>
+        </Dever_Configurations>
+    </tabs>
+</config>

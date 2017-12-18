@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_offers_index>
+        <reference name="content">
+            <block type="dever_offers/adminhtml_offers" name="dever_offers_grid" />
+        </reference>
+    </adminhtml_offers_index>
+    <adminhtml_offers_edit>
+        <reference name="content">
+            <block type="dever_offers/adminhtml_offers_edit" name="dever_offers_edit" />
+        </reference>
+    </adminhtml_offers_edit>
+</layout>

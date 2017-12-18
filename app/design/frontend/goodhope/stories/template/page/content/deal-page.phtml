@@ -30,32 +30,32 @@ $onlineCollection->addAttributeToSelect('*');
 </section>
 
 <!-- Offline Part -->
-<!--<section id="ofline_offers">
+<section id="ofline_offers">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="limited_stock"><span>Limited<br>Stock</span></div>
-                <h2 class="head4"><span><?php /*echo $offlineCategory->getName(); */?></span></h2>
-                <div class="view2"><a href="<?php /*echo $offlineCategory->getUrl(); */?>">View All</a></div>
+                <h2 class="head4"><span><?php echo $offlineCategory->getName(); ?></span></h2>
+                <div class="view2"><a href="<?php echo $offlineCategory->getUrl(); ?>">View All</a></div>
                 <div id="home_offline_offers">
-                    <?php /*foreach ($offlineCollection as $_product): */?>
+                    <?php foreach ($offlineCollection as $_product): ?>
                     <div class="pro_listing">
-                        <a href="<?php /*echo $offlineCategory->getUrl(); */?>">
+                        <a href="<?php echo $offlineCategory->getUrl(); ?>">
                             <div class="pro_listing_fix">
-                                <div class="price_offer"><span><?php /*echo $_coreHelper->currency($_product->getData('offline_deal_price')); */?></span></div>
-                                <div class="pro_img"><img src="<?php /*echo $this->helper('catalog/image')->init($_product, 'image')->resize(600); */?>"></div>
-                                <div class="pro_txt1"><span><?php /*echo $_product->getName(); */?></span></div>
+                                <div class="price_offer"><span><?php echo $_coreHelper->currency($_product->getData('offline_deal_price')); ?></span></div>
+                                <div class="pro_img"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(600); ?>"></div>
+                                <div class="pro_txt1"><span><?php echo $_product->getName(); ?></span></div>
                             </div>
                         </a>
                     </div>
-                    <?php /*endforeach; */?>
+                    <?php endforeach; ?>
                     <div class="clearfix"></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
--->
+
 <!-- Online Offers -->
 <section id="online_offers">
     <div class="container">

@@ -54,10 +54,10 @@ $offlineUrl = Mage::getModel('catalog/category')->getCollection()->addAttributeT
                                     <div class="price_offer"><span><?php echo $_coreHelper->currency($_product->getData('offline_deal_price')); ?></span></div>
                                     <div class="link1"><a  data-target="#myModal<?php echo $ID; ?>" data-toggle="modal">Are you Interested?</a></div>
 
-                                    <?php if(isset($_POST['submit' . $ID] )) : ?>
-                                        <div id="form-alert<?php echo $ID; ?>" class="alert alert-success">
+                                    <?php /*if(isset($_POST['submit' . $ID] )) : */?><!--
+                                        <div id="form-alert<?php /*echo $ID; */?>" class="alert alert-success">
                                             <?php
-                                            $name_field = $_POST['name'];
+/*                                            $name_field = $_POST['name'];
                                             $email_field = $_POST['email'];
                                             $product = $_POST['product'];
                                             $productId = $_POST['product-id'];
@@ -87,9 +87,9 @@ $offlineUrl = Mage::getModel('catalog/category')->getCollection()->addAttributeT
                                             $body .= "</body></html>";
 
                                             echo "Thanks <b>$name_field</b> for your interest in <br><br><h4>$product</h4> We'll get back to you as soon as possible!";
-                                            mail($to, $subject, $body, $headers); ?>
+                                            mail($to, $subject, $body, $headers); */?>
                                         </div>
-                                    <?php endif; ?>
+                                    --><?php /*endif; */?>
                                 </div>
                             </div>
 
@@ -103,7 +103,7 @@ $offlineUrl = Mage::getModel('catalog/category')->getCollection()->addAttributeT
                                         </div>
 
                                         <div class="popup_content">
-                                            <form name="contactform" method="post" action="<?php echo $offlineUrl; ?>#form-alert<?php echo $ID; ?>">
+                                            <form name="contactform" method="post" action="<?php echo $this->getUrl('deals/index/post') ?>">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
@@ -136,7 +136,8 @@ $offlineUrl = Mage::getModel('catalog/category')->getCollection()->addAttributeT
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <input type="hidden" name="product-id" id="product-id" value="<?php echo $ID; ?>"/>
+                                                        <input type="hidden" name="price" id="price" value="<?php echo $_product->getData('offline_deal_price'); ?>"/>
+                                                        <input type="hidden" name="product_id" id="product_id" value="<?php echo $ID; ?>"/>
                                                         <button type="submit" name="submit<?php echo $ID; ?>" class="btn1 pull-right" id="btnContactUs">Send Message</button>
                                                     </div>
                                                 </div>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Dever_Configurations>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Dever_Configurations>
+    </modules>
+</config>
