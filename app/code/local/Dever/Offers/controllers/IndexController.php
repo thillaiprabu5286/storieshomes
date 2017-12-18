@@ -47,7 +47,7 @@ class Dever_Offers_IndexController extends Mage_Core_Controller_Front_Action
             );
         }
 
-        $this->_redirect('*/*/');
+        $this->_redirectUrl(Mage::getUrl('deals'));
 
         return $this;
     }
