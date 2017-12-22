@@ -31,13 +31,13 @@ class Dever_Offers_IndexController extends Mage_Core_Controller_Front_Action
                         'price' => $model->getPrice()
                     );
 
-                    //Trigger Email
-                    //$this->_notifyUsersByEmail($options);
-
                     //Trigger Sms
                     /** @var Dever_Sms_Helper_Data $helper */
                     $helper = Mage::helper('dever_sms');
                     $helper->sendSms('deals', $options);
+
+                    //Trigger Email
+                    $this->_notifyUsersByEmail($options);
 
                     Mage::getSingleton('core/session')->addSuccess(
                         Mage::helper('dever_offers')->__('Thanks for registration. Promo code will be shared in sms shortly.')
@@ -49,9 +49,7 @@ class Dever_Offers_IndexController extends Mage_Core_Controller_Front_Action
                 Mage::helper('dever_offers')->__('You have already registered for offline deals. Please check for online offers.')
             );
         }
-
         $this->_redirectUrl(Mage::getUrl('deals'));
-
         return $this;
     }
 
