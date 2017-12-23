@@ -37,10 +37,6 @@
     var FORM_KEY = '<?php echo $this->getFormKey() ?>';
 </script>
 
-<?php if (Mage::helper('zodiya_all')->isResellerLoggedIn()): ?>
-    <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('agents.css') ?>" />
-<?php endif; ?>
-
 <?php echo $this->getCssJsHtml() ?>
 
 <?php if($this->getCanLoadExtJs()): ?>
