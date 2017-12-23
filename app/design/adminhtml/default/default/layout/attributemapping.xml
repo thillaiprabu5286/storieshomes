@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_attributemapping_index>
+        <reference name="content">
+            <block type="attributemapping/adminhtml_attributemapping" name="attributemapping" />
+        </reference>
+        <reference name="head">
+            <action method="addJs"><file>attributemapping/jquery-1.12.2.min.js</file></action>
+            <action method="addJs"><file>attributemapping/jQuery-noConflict.js</file></action>
+            <action method="addJs"><file>attributemapping/scripts.js</file></action>
+            <action method="addCss"><file>attributemapping/style.css</file></action>
+        </reference>
+    </adminhtml_attributemapping_index>
+</layout>

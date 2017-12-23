@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_recommenderproduct_related>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="recommender/catalog_product_edit_tab_related" name="catalog.product.edit.tab.related"/>
+        </block>
+    </adminhtml_recommenderproduct_related>
+
+    <adminhtml_recommenderproduct_relatedgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="recommender/catalog_product_edit_tab_related" name="catalog.product.edit.tab.related"/>
+        </block>
+    </adminhtml_recommenderproduct_relatedgrid>
+
+    <adminhtml_recommenderproduct_crosssell>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="recommender/catalog_product_edit_tab_crosssell" name="catalog.product.edit.tab.crosssell"/>
+        </block>
+    </adminhtml_recommenderproduct_crosssell>
+
+    <adminhtml_recommenderproduct_crosssellgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="recommender/catalog_product_edit_tab_crosssell" name="catalog.product.edit.tab.crosssell"/>
+        </block>
+    </adminhtml_recommenderproduct_crosssellgrid>
+
+</layout>

@@ -10,17 +10,17 @@
  * http://opensource.org/licenses/afl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    design
  * @package     default_default
- * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
@@ -88,46 +88,84 @@ function toggleCal(id) {
 //]]>
 </script>
 <?php endif; ?>
-<div class="content-header">
-    <table cellspacing="0">
-        <tr>
-            <td><h3 class="head-dashboard"><?php echo $this->__('Dashboard') ?></h3></td>
-        </tr>
-    </table>
-</div>
-<div class="dashboard-container">
-    <?php echo $this->getChildHtml('store_switcher') ?>
-    <table cellspacing="25" width="100%">
-        <tr>
-            <td><?php echo $this->getChildHtml('sales') ?>
-                <div class="entry-edit">
-                    <div class="entry-edit-head"><h4><?php echo $this->__('Last 5 Orders') ?></h4></div>
-                    <fieldset class="np"><?php echo $this->getChildHtml('lastOrders'); ?></fieldset>
-                </div>
-                <div class="entry-edit">
-                    <div class="entry-edit-head"><h4><?php echo $this->__('Last 5 Search Terms') ?></h4></div>
-                    <fieldset class="np"><?php echo $this->getChildHtml('lastSearches'); ?></fieldset>
-                </div>
-                <div class="entry-edit">
-                    <div class="entry-edit-head"><h4><?php echo $this->__('Top 5 Search Terms') ?></h4></div>
-                    <fieldset class="np"><?php echo $this->getChildHtml('topSearches'); ?></fieldset>
-                </div>
-            </td>
-            <td>
-                <div class="entry-edit" style="border:1px solid #ccc;">
-                    <?php echo $this->getChildHtml('diagrams') ?>
-                    <?php if (is_array($this->getChild('diagrams')->getTabsIds())) : ?>
-                        <div id="diagram_tab_content"></div>
-                    <?php endif; ?>
-                    <div style="margin:20px;">
-                        <?php echo $this->getChildHtml('totals') ?>
+
+
+<?php if (!Mage::helper('zodiya_all')->isResellerLoggedIn()): ?>
+    <div class="content-header">
+        <table cellspacing="0">
+            <tr>
+                <td><h3 class="head-dashboard"><?php echo $this->__('Dashboard') ?></h3></td>
+            </tr>
+        </table>
+    </div>
+    <div class="dashboard-container">
+        <?php echo $this->getChildHtml('store_switcher') ?>
+        <table cellspacing="25" width="100%">
+            <tr>
+                <td>
+                    <?php echo $this->getChildHtml('sales') ?>
+                    <div class="entry-edit">
+                        <div class="entry-edit-head"><h4><?php echo $this->__('Last 5 Orders') ?></h4></div>
+                        <fieldset class="np"><?php echo $this->getChildHtml('lastOrders'); ?></fieldset>
                     </div>
-                    <div style="margin:20px;">
-                        <?php echo $this->getChildHtml('grids') ?>
-                        <div id="grid_tab_content"></div>
+                    <div class="entry-edit">
+                        <div class="entry-edit-head"><h4><?php echo $this->__('Last 5 Search Terms') ?></h4></div>
+                        <fieldset class="np"><?php echo $this->getChildHtml('lastSearches'); ?></fieldset>
                     </div>
-                </div>
-            </td>
-        </tr>
-    </table>
-</div>
+                    <div class="entry-edit">
+                        <div class="entry-edit-head"><h4><?php echo $this->__('Top 5 Search Terms') ?></h4></div>
+                        <fieldset class="np"><?php echo $this->getChildHtml('topSearches'); ?></fieldset>
+                    </div>
+                </td>
+                <td>
+                    <div class="entry-edit" style="border:1px solid #ccc;">
+                        <?php echo $this->getChildHtml('diagrams') ?>
+                        <?php if (is_array($this->getChild('diagrams')->getTabsIds())) : ?>
+                            <div id="diagram_tab_content"></div>
+                        <?php endif; ?>
+                        <div style="margin:20px;">
+                            <?php echo $this->getChildHtml('totals') ?>
+                        </div>
+                        <div style="margin:20px;">
+                            <?php echo $this->getChildHtml('grids') ?>
+                            <div id="grid_tab_content"></div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+<?php else: ?>
+    <div class="content-header">
+        <table cellspacing="0">
+            <tr>
+                <td><h3 class="head-dashboard"><?php echo $this->__('Partner Dashboard') ?></h3></td>
+            </tr>
+        </table>
+    </div>
+    <div class="dashboard-container reseller-container">
+        <?php echo $this->getChildHtml('store_switcher') ?>
+        <table cellspacing="25" width="100%">
+            <tr>
+                <td>
+                    <?php echo $this->getChildHtml('sales') ?>
+                    <!--<div class="entry-edit" style="clear: both;">
+                        <div class="entry-edit-head"><h4><?php /*echo $this->__('Last 5 Orders') */?></h4></div>
+                        <fieldset class="np"><?php /*echo $this->getChildHtml('lastOrders'); */?></fieldset>
+                    </div>-->
+                    <div class="entry-edit" style="clear: both;">
+                        <div class="entry-edit-head"><h4><?php echo $this->__('Last 5 Search Terms') ?></h4></div>
+                        <fieldset class="np"><?php echo $this->getChildHtml('lastSearches'); ?></fieldset>
+                    </div>
+                    <div class="entry-edit" style="clear: both;">
+                        <div class="entry-edit-head"><h4><?php echo $this->__('Top 5 Search Terms') ?></h4></div>
+                        <fieldset class="np"><?php echo $this->getChildHtml('topSearches'); ?></fieldset>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+<?php endif; ?>
+
+
+
