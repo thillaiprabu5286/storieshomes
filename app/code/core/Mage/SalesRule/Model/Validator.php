@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_SalesRule
- * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 
@@ -197,6 +197,29 @@ class Mage_SalesRule_Model_Validator extends Mage_Core_Model_Abstract
                             return false;
                         }
                     }
+
+                    // check per mobile usage limit
+                    $mobile = $address->getQuote()->getShippingAddress()->getTelephone();
+                    $shopId = $address->getQuote()->getShopId();
+                    if ($mobile || $shopId) {
+                        $options = array (
+                            'mobile' => $mobile,
+                            'shop_id'   => $shopId
+                        );
+                        $couponUsage = new Varien_Object();
+                        Mage::getResourceModel('goodhope_salesrule/coupon_custom')
+                            ->loadByCustomCoupon(
+                                $couponUsage,
+                                $options,
+                                $coupon->getId()
+                            );
+                        if ($couponUsage->getCouponId() &&
+                            $couponUsage->getTimesUsed() >= $coupon->getUsagePerMobile()
+                        ) {
+                            $rule->setIsValidForAddress($address, false);
+                            return false;
+                        }
+                    }
                 }
             }
         }
@@ -312,10 +335,8 @@ class Mage_SalesRule_Model_Validator extends Mage_Core_Model_Abstract
         }
 
         $appliedRuleIds = array();
+        $this->_stopFurtherRules = false;
         foreach ($this->_getRules() as $rule) {
-            if ($this->_stopFurtherRules) {
-                break;
-            }
 
             /* @var $rule Mage_SalesRule_Model_Rule */
             if (!$this->_canProcessRule($rule, $address)) {

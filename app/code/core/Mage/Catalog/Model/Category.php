@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_Catalog
- * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 
@@ -942,47 +942,18 @@ class Mage_Catalog_Model_Category extends Mage_Catalog_Model_Abstract
     }
 
     /**
-     * Init indexing process after category save
+     * Callback function which called after transaction commit in resource model
      *
      * @return Mage_Catalog_Model_Category
      */
-    protected function _afterSave()
+    public function afterCommitCallback()
     {
-        $result = parent::_afterSave();
-        Mage::getSingleton('index/indexer')->processEntityAction(
-            $this, self::ENTITY, Mage_Index_Model_Event::TYPE_SAVE
-        );
-        return $result;
+        parent::afterCommitCallback();
+
+        /** @var \Mage_Index_Model_Indexer $indexer */
+        $indexer = Mage::getSingleton('index/indexer');
+        $indexer->processEntityAction($this, self::ENTITY, Mage_Index_Model_Event::TYPE_SAVE);
+
+        return $this;
     }
-    
-        //mujeeb custom resize category image
-
-    public function getCategoryImage(Mage_Catalog_Model_Category $category, $width = 250, $height = 250) {
-        // return when no image exists
-        if (!$category->getImage()) {
-            return false;
-        }
-
-        // return when the original image doesn't exist
-        $imagePath = Mage::getBaseDir('media') . DS . 'catalog' . DS . 'category'
-                . DS . $category->getImage();
-        if (!file_exists($imagePath)) {
-            return false;
-        }
-
-        // resize the image if needed
-        $rszImagePath = Mage::getBaseDir('media') . DS . 'catalog' . DS . 'category'
-                . DS . 'cache' . DS . $width . 'x' . $height . DS
-                . $category->getImage();
-        if (!file_exists($rszImagePath)) {
-            $image = new Varien_Image($imagePath);
-            $image->resize($width, $height);
-            $image->save($rszImagePath);
-        }
-
-        // return the image URL
-        return Mage::getBaseUrl('media') . '/catalog/category/cache/' . $width . 'x'
-                . $height . '/' . $category->getImage();
-    }
-
 }

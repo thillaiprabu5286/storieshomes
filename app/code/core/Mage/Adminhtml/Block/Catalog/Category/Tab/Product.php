@@ -1,13 +1,13 @@
 <?php
 /**
- * Magento
+ * Magento Enterprise Edition
  *
  * NOTICE OF LICENSE
  *
- * This source file is subject to the Open Software License (OSL 3.0)
- * that is bundled with this package in the file LICENSE.txt.
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
  * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/osl-3.0.php
+ * http://www.magentocommerce.com/license/enterprise-edition
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
  * to license@magentocommerce.com so we can send you a copy immediately.
@@ -20,8 +20,8 @@
  *
  * @category    Mage
  * @package     Mage_Adminhtml
- * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
  */
 
 /**
@@ -77,6 +77,7 @@ class Mage_Adminhtml_Block_Catalog_Category_Tab_Product extends Mage_Adminhtml_B
             ->addAttributeToSelect('name')
             ->addAttributeToSelect('sku')
             ->addAttributeToSelect('price')
+            ->addAttributeToSelect('special_price')
             ->addStoreFilter($this->getRequest()->getParam('store'))
             ->joinField('position',
                 'catalog/category_product',
@@ -84,6 +85,9 @@ class Mage_Adminhtml_Block_Catalog_Category_Tab_Product extends Mage_Adminhtml_B
                 'product_id=entity_id',
                 'category_id='.(int) $this->getRequest()->getParam('id', 0),
                 'left');
+
+        $collection->joinAttribute('status', 'catalog_product/status', 'entity_id', null, 'inner');
+
         $this->setCollection($collection);
 
         if ($this->getCategory()->getProductsReadonly()) {
@@ -131,6 +135,21 @@ class Mage_Adminhtml_Block_Catalog_Category_Tab_Product extends Mage_Adminhtml_B
             'currency_code' => (string) Mage::getStoreConfig(Mage_Directory_Model_Currency::XML_PATH_CURRENCY_BASE),
             'index'     => 'price'
         ));
+        $this->addColumn('special_price', array(
+            'header'    => Mage::helper('catalog')->__('Special Price'),
+            'type'  => 'currency',
+            'width'     => '1',
+            'currency_code' => (string) Mage::getStoreConfig(Mage_Directory_Model_Currency::XML_PATH_CURRENCY_BASE),
+            'index'     => 'special_price'
+        ));
+        $this->addColumn('status',
+            array(
+                'header'=> Mage::helper('catalog')->__('Status'),
+                'width' => '70px',
+                'index' => 'status',
+                'type'  => 'options',
+                'options' => Mage::getSingleton('catalog/product_status')->getOptionArray(),
+            ));
         $this->addColumn('position', array(
             'header'    => Mage::helper('catalog')->__('Position'),
             'width'     => '1',

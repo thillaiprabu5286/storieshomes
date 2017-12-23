@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_Sales
- * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 /**
@@ -132,7 +132,7 @@ class Mage_Sales_Model_Order_Pdf_Invoice extends Mage_Sales_Model_Order_Pdf_Abst
             /* Add document text and number */
             $this->insertDocumentNumber(
                 $page,
-                Mage::helper('sales')->__('Proforma Invoice # ') . $invoice->getIncrementId()
+                Mage::helper('sales')->__('Invoice # ') . $invoice->getIncrementId()
             );
             /* Add table */
             $this->_drawHeader($page);
@@ -151,7 +151,6 @@ class Mage_Sales_Model_Order_Pdf_Invoice extends Mage_Sales_Model_Order_Pdf_Abst
                 Mage::app()->getLocale()->revert();
             }
         }
-  $this->inserttailtextss($page , $invoice);
         $this->_afterGetPdf();
         return $pdf;
     }
@@ -172,33 +171,5 @@ class Mage_Sales_Model_Order_Pdf_Invoice extends Mage_Sales_Model_Order_Pdf_Abst
             $this->_drawHeader($page);
         }
         return $page;
-    }
-     
-     //mujeeb added
-    function inserttailtextss(&$page , &$invoice) {
-
-        $this->y -= 20;
-        $page->setFillColor(new Zend_Pdf_Color_Rgb(0.93, 0.92, 0.92));
-        $page->setLineColor(new Zend_Pdf_Color_GrayScale(0.5));
-        $page->setLineWidth(0.5);
-        $page->drawRectangle(25, $this->y, 570, $this->y - 20);
-        $page->setFillColor(new Zend_Pdf_Color_Rgb(1, 1, 1));
-
-        $page->setFillColor(new Zend_Pdf_Color_RGB(0.1, 0.1, 0.1));
-       
-        $font = Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_HELVETICA);
-        
-        
-        $page->drawText('Thank You for shopping with Us', 240, $this->y - 13, 'UTF-8');
-        $page->setFont($font, 8);
-        $page->drawText('Return Policy: Stories try to delivery perfectly each and everytime.But in the off-chance that you need to return the item,please do so with the', 35, $this->y - 35, 'UTF-8');
-        $page->drawText('original brand box/price tag,original packaging and invoice without which it will be really difficult for us to act on your request,Shade variation ', 35, $this->y - 45, 'UTF-8');
-        $page->drawText('and crazing are inherent charecteristics in the manufacture of all products. Please help us in hepling you.', 35, $this->y - 55, 'UTF-8');
-        $page->setFont($font, 6);
-        $page->drawText('              Terms and conditions apply. ', 350, $this->y - 70, 'UTF-8');
-        $page->setFont($font, 8);
-        $page->drawText('The goods sold as part of this shipment are intended for end user consumption / retail sale and not for re-sale. ', 35, $this->y - 95, 'UTF-8');
-        //$page->drawText($txt, 26, $this->y - 45, 'UTF-8');
-        $this->y -= 50;
     }
 }

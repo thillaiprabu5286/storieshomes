@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_Catalog
- * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 
@@ -53,26 +53,28 @@ class Mage_Catalog_Block_Product_View extends Mage_Catalog_Block_Product_Abstrac
         $headBlock = $this->getLayout()->getBlock('head');
         if ($headBlock) {
             $product = $this->getProduct();
-            $title = $product->getMetaTitle();
-            if ($title) {
-                $headBlock->setTitle($title);
-            }
-            $keyword = $product->getMetaKeyword();
-            $currentCategory = Mage::registry('current_category');
-            if ($keyword) {
-                $headBlock->setKeywords($keyword);
-            } elseif ($currentCategory) {
-                $headBlock->setKeywords($product->getName());
-            }
-            $description = $product->getMetaDescription();
-            if ($description) {
-                $headBlock->setDescription( ($description) );
-            } else {
-                $headBlock->setDescription(Mage::helper('core/string')->substr($product->getDescription(), 0, 255));
-            }
-            if ($this->helper('catalog/product')->canUseCanonicalTag()) {
-                $params = array('_ignore_category' => true);
-                $headBlock->addLinkRel('canonical', $product->getUrlModel()->getUrl($product, $params));
+            if ($product) {
+                $title = $product->getMetaTitle();
+                if ($title) {
+                    $headBlock->setTitle($title);
+                }
+                $keyword = $product->getMetaKeyword();
+                $currentCategory = Mage::registry('current_category');
+                if ($keyword) {
+                    $headBlock->setKeywords($keyword);
+                } elseif ($currentCategory) {
+                    $headBlock->setKeywords($product->getName());
+                }
+                $description = $product->getMetaDescription();
+                if ($description) {
+                    $headBlock->setDescription( ($description) );
+                } else {
+                    $headBlock->setDescription(Mage::helper('core/string')->substr($product->getDescription(), 0, 255));
+                }
+                if ($this->helper('catalog/product')->canUseCanonicalTag()) {
+                    $params = array('_ignore_category' => true);
+                    $headBlock->addLinkRel('canonical', $product->getUrlModel()->getUrl($product, $params));
+                }
             }
         }
 

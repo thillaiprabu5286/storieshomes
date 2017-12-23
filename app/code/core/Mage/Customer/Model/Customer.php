@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_Customer
- * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 /**
@@ -173,7 +173,7 @@ class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract
             );
         }
         if (!$this->validatePassword($password)) {
-            throw Mage::exception('Mage_Core', Mage::helper('customer')->__('Invalid Email or password.'),
+            throw Mage::exception('Mage_Core', Mage::helper('customer')->__('Invalid login or password.'),
                 self::EXCEPTION_INVALID_EMAIL_OR_PASSWORD
             );
         }
@@ -371,6 +371,7 @@ class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract
     {
         $this->setData('password', $password);
         $this->setPasswordHash($this->hashPassword($password));
+        $this->setPasswordConfirmation(null);
         return $this;
     }
 
@@ -687,7 +688,7 @@ class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract
      */
     public function sendPasswordResetConfirmationEmail()
     {
-        $storeId = $this->getStoreId();
+        $storeId = Mage::app()->getStore()->getId();
         if (!$storeId) {
             $storeId = $this->_getWebsiteStoreId();
         }
@@ -820,6 +821,7 @@ class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract
      */
     public function validate()
     {
+        $debug = true;
         $errors = array();
         if (!Zend_Validate::is( trim($this->getFirstname()) , 'NotEmpty')) {
             $errors[] = Mage::helper('customer')->__('The first name cannot be empty.');
@@ -829,9 +831,9 @@ class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract
             $errors[] = Mage::helper('customer')->__('The last name cannot be empty.');
         }
 
-        if (!Zend_Validate::is($this->getEmail(), 'EmailAddress')) {
+        /*if (!Zend_Validate::is($this->getEmail(), 'EmailAddress')) {
             $errors[] = Mage::helper('customer')->__('Invalid email address "%s".', $this->getEmail());
-        }
+        }*/
 
         $password = $this->getPassword();
         if (!$this->getId() && !Zend_Validate::is($password , 'NotEmpty')) {
@@ -840,7 +842,7 @@ class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract
         if (strlen($password) && !Zend_Validate::is($password, 'StringLength', array(6))) {
             $errors[] = Mage::helper('customer')->__('The minimum password length is %s', 6);
         }
-        $confirmation = $this->getConfirmation();
+        $confirmation = $this->getPasswordConfirmation();
         if ($password != $confirmation) {
             $errors[] = Mage::helper('customer')->__('Please make sure your passwords match.');
         }
@@ -1344,5 +1346,17 @@ class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract
         }
 
         return false;
+    }
+
+    /**
+     * Clean password's validation data (password, password_confirmation)
+     *
+     * @return Mage_Customer_Model_Customer
+     */
+    public function cleanPasswordsValidationData()
+    {
+        $this->setData('password', null);
+        $this->setData('password_confirmation', null);
+        return $this;
     }
 }
