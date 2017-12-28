@@ -15,7 +15,7 @@ class Dever_Sms_Helper_Data extends Mage_Core_Helper_Abstract
         switch ($type)
         {
             case 'deals':
-                $content = "Dear {$options['name']},\nThank you for your interest in our product: {$options['product_name']} of product code: {$options['sku']} for Rs.{$options['price']}. Your coupon code is {$options['coupon_code']}. Show the coupon at store during the time of purchase. Limited stocks only. Visit Stories,Calicut. Hurry up. T&C Apply.\nRegards,\nTeam Stories";
+                $content = "Dear {$options['name']},\nThank you for your interest in our product: {$options['product_name']} of product code: {$options['sku']} for Rs.{$options['price']}. Your coupon code is {$options['coupon_code']}. Show the coupon at store during the time of purchase. Limited stocks only. Visit Stories, Calicut. Hurry up. T&C Apply.\nRegards,\nTeam Stories";
                 break;
             default:
                 //Do Nothing
