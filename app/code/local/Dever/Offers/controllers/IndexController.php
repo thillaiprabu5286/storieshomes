@@ -22,11 +22,15 @@ class Dever_Offers_IndexController extends Mage_Core_Controller_Front_Action
                     ->setProductName($post['product']);
                 if ($model->save()) {
 
+                    /** @var Mage_Catalog_Model_Product $product */
+                    $product = Mage::getModel('catalog/product')->load($model->getProductId());
+
                     $options = array (
                         'name' => $model->getName(),
                         'email' => $model->getEmail(),
                         'phone' => $model->getTelephone(),
-                        'product_name' => $model->getProductName(),
+                        'product_name' => $product->getName(),
+                        'sku'   => $product->getSku(),
                         'coupon_code' => $model->getCouponCode(),
                         'price' => $model->getPrice()
                     );
