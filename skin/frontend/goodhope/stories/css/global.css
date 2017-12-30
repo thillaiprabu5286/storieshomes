@@ -749,7 +749,6 @@ header.sticky-header .logo img {height: 79px;}
 /*designers*/
 .designers-cont{
 	padding: 0 0 0 0;
-	margin-bottom: 50px;
 	border-top: 1px solid #e6d1c8;
 }
 .designers-cont h2{
@@ -1358,8 +1357,8 @@ footer .about-stories p.about-us{
 	.menu-wrap {overflow: hidden;width: 100%;}
 	header .header-right-wrap {width: 100%;}
 	.header-top {height: inherit;padding: 5px;}
-	header.sticky-header .logo img {height: 97px;}
-	.sticky-header {padding-left: 73px;}
+	header.sticky-header .logo img {height: 95px;}
+	.sticky-header {padding-left: 72px;}
 	.sticky-header .menu-wrap {padding: 2px 0;}
 	.sticky-header .fa-2x {font-size: 1.5em;}
 	.designers-main-tab {overflow: hidden;width: 100%;OVERFLOW-X: SCROLL;}
@@ -1370,13 +1369,13 @@ footer .about-stories p.about-us{
 @media only screen and (max-width: 768px) {
 	.header-top .search-cont {width: 100%}
 	button.button span {padding: 7px 20px;font-size: 14px;}
-	.products-grid-view .grid-item {min-height: 270px;width: 31.6%;}
-	.products-grid-view .grid-item .product-name {font-size: .9em;}
+	.products-grid-view .grid-item {min-height: 305px;width: 31.6%;margin: 5px}
+	.products-grid-view .grid-item .product-name {font-size: 1em;line-height: 18px;}
 	.regular-price .price, .special-price .price {font-size: 14px;}
 	.old-price .price {font-size: 10px;}
 	.mega-menu-wapper li a {padding: 8px 14px;}
-	header {padding-left: 102px;}
-	header .logo img {height: 136px;}
+	header {padding-left: 105px;}
+	header .logo img {height: 140px;}
 	.header-top .search-cont {width: 453px !important;}
 	.menu-wrap {overflow: hidden}
 	.header-top {padding: 5px;}
@@ -1516,7 +1515,7 @@ footer .about-stories p.about-us{
 	.designers-cont h2 {font-size: 14px}
 	.designer-info .designer-desc .designer-name {font-size: 14px;line-height: 0}
 	.designers-cont .designer-bio {font-size: 12px}
-	.product-box .img-holder a img {width: 100%;height: 140px;}
+	.product-box .img-holder a img {height: 140px;}
 	.product-box a.product-title {font-size: 14px;height: 40px;margin-bottom: 15px;}
 	.product-box .img-holder {min-height: 135px;}
 	.product-box .buy-now-btn {top: 100px;}

@@ -274,8 +274,6 @@ body.mobile-nav-shown .mobile-nav.side-block {
 .menu.side-menu > li.menu-full-width .nav-sublist-dropdown .container ul > li .nav-sublist ul li ul, .menu.side-menu > li.menu-static-width .nav-sublist-dropdown .container ul > li .nav-sublist ul li ul {
     margin-left: 10px;
 }
-
-
 .mobile-nav {
     background-color: #151515;
     display: none;
