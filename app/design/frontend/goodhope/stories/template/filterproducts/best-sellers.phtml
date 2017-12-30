@@ -3,7 +3,7 @@ $_coreHelper = Mage::helper('core');
 $store = Mage::app()->getStore();
 $code = $store->getCode();
 $category = new Mage_Catalog_Model_Category();
-$category->load(181);
+$category->load(179);
 $_productCollection = $category->getProductCollection();
 $_productCollection->addAttributeToSelect('*');
 $_helper = $this->helper('catalog/output');
