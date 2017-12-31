@@ -40,4 +40,5 @@ $code = $store->getCode();
         </div>
     </div>
 <?php endif; ?>
+<?php echo $this->getLayout()->createBlock('filterproducts/new_home_list')->setTemplate('filterproducts/best-sellers.phtml')->toHtml(); ?>
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('homepage-tab-content')->toHtml(); ?>
