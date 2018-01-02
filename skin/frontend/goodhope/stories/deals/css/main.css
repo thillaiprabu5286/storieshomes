@@ -55,7 +55,8 @@ body{background: #fff!important;}
 #logo_main{position:absolute;right:10%;z-index:999}
 #logo_main img{max-width:100%}
 
-
+.messages {position: fixed;top: 0;width: 100%;height: 100%;left: 0;background-color: rgba(0, 0, 0, 0.3);z-index: 9;}
+.messages li.success-msg {position: relative;top: 35%;width: 400px;margin: 0 auto !important;background-image: none;padding: 10px 20px !important;}
 
 
 
