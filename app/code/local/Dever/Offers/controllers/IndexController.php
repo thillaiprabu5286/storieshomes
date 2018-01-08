@@ -45,7 +45,7 @@ class Dever_Offers_IndexController extends Mage_Core_Controller_Front_Action
                     $this->_notifyUsersByEmail($options);
 
                     Mage::getSingleton('core/session')->addSuccess(
-                        Mage::helper('dever_offers')->__('Thanks for registration. Promo code will be shared in sms shortly.')
+                        Mage::helper('dever_offers')->__('Thanks for registration. Promo code will be shared in sms shortly. You may not receive the message when DND service is activated in your phone. For any assistance please contact us at : +91-9072345014.')
                     );
                 }
             }
