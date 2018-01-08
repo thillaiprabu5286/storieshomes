@@ -66,7 +66,7 @@ $offlineUrl = Mage::getModel('catalog/category')->getCollection()->addAttributeT
                                         </div>
 
                                         <div class="popup_content">
-                                            <form name="contactform" method="post" action="<?php echo $this->getUrl('deals/index/post') ?>">
+                                            <form id="contactform" name="contactform" method="post" action="<?php echo $this->getUrl('deals/index/post') ?>">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
@@ -95,7 +95,7 @@ $offlineUrl = Mage::getModel('catalog/category')->getCollection()->addAttributeT
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="message">Message</label>
-                                                            <textarea name="message" id="message" class="form-control" rows="5" cols="25" required placeholder="Message"></textarea>
+                                                            <textarea name="message" id="message" class="form-control" rows="5" cols="25" placeholder="Message"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
@@ -204,5 +204,3 @@ $offlineUrl = Mage::getModel('catalog/category')->getCollection()->addAttributeT
 <div id="story_lol_mob">
     <img src="<?php echo $this->getSkinUrl('deals/images/logo.jpg') ?>">
 </div>
-
-
