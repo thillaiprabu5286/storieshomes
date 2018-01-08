@@ -19,6 +19,7 @@ class Dever_Offers_IndexController extends Mage_Core_Controller_Front_Action
                 $couponCode = 'ST' . strtotime($currDateTime);
                 $model->setCouponCode($couponCode)
                     ->setCreatedAt($currDateTime)
+                    ->setUpdatedAt($currDateTime)
                     ->setProductName($post['product']);
                 if ($model->save()) {
 

@@ -18,5 +18,4 @@ class Dever_Offers_Block_Adminhtml_Offers_Edit extends Mage_Adminhtml_Block_Widg
     {
         return Mage::helper('dever_offers')->__('Edit Booking');
     }
-
 }
