@@ -27,7 +27,7 @@ $_image_helper = $this->helper('catalog/image');
                 <div class="product-box text-center">
                     <div class="img-holder">
                         <a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($product, 'thumbnail'), null, true) ?>" class="img-responsive">
-                                <img src="<?php echo $_image_helper->init($product, 'thumbnail')->resize(194); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($product, 'thumbnail'), null, true) ?>"/>
+                                <img src="<?php echo $_image_helper->init($product, 'thumbnail')->resize(250); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($product, 'thumbnail'), null, true) ?>"/>
                             </a>
                     </div>
                     <div class="product-desc">
