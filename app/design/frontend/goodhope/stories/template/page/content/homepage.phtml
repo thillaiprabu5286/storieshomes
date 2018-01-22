@@ -2,12 +2,17 @@
 $store = Mage::app()->getStore();
 $code = $store->getCode();
 ?>
-<?php $_helper = Mage::helper('catalog/category') ?>
-<?php $_categories = $_helper->getStoreCategories() ?>
 <!-- slider area -->
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('homepage-slider')->toHtml(); ?>
-<?php echo $this->getLayout()->createBlock('filterproducts/new_home_list')->setTemplate('filterproducts/new.phtml')->toHtml(); ?>
+<?php echo $this->getLayout()
+    ->createBlock('filterproducts/new_home_list')
+    ->setCount(32)
+    ->setCategoryId(193)
+    ->setTemplate('filterproducts/new.phtml')
+    ->toHtml(); ?>
 <!-- Categories items container -->
+<?php $_helper = Mage::helper('catalog/category') ?>
+<?php $_categories = $_helper->getStoreCategories() ?>
 <?php if (count($_categories) > 0): ?>
     <div class="container">
         <div class="total-item-cont clearfix">
@@ -25,8 +30,7 @@ $code = $store->getCode();
                         </a>
                     </div>
                     <div class="item-desc text-center">
-                        <?php $products_count = Mage::getModel('catalog/category')->load($_category->getId())
-                            ->getProductCount(); ?>
+                        <?php $products_count = Mage::getModel('catalog/category')->load($_category->getId())->getProductCount(); ?>
                         <span class="total-number"><?php  echo ($products_count); ?></span>
                         <span class="item-txt">items</span>
                         <a id="<?php echo $ID ?>" class="item-title" href="<?php echo $_helper->getCategoryUrl($_category); ?>">
@@ -40,5 +44,10 @@ $code = $store->getCode();
         </div>
     </div>
 <?php endif; ?>
-<?php echo $this->getLayout()->createBlock('filterproducts/new_home_list')->setTemplate('filterproducts/best-sellers.phtml')->toHtml(); ?>
+<?php echo $this->getLayout()
+    ->createBlock('filterproducts/new_home_list')
+    ->setCount(32)
+    ->setCategoryId(179)
+    ->setTemplate('filterproducts/best-sellers.phtml')
+    ->toHtml(); ?>
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('homepage-tab-content')->toHtml(); ?>
