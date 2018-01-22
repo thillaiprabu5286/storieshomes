@@ -6,7 +6,7 @@ $code = $store->getCode();
 <?php $_categories = $_helper->getStoreCategories() ?>
 <!-- slider area -->
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('homepage-slider')->toHtml(); ?>
-<?php echo $this->getLayout()->createBlock('filterproducts/new_home_list')->setProductCount(16)->setTemplate('filterproducts/new.phtml')->toHtml(); ?>
+<?php echo $this->getLayout()->createBlock('filterproducts/new_home_list')->setTemplate('filterproducts/new.phtml')->toHtml(); ?>
 <!-- Categories items container -->
 <?php if (count($_categories) > 0): ?>
     <div class="container">

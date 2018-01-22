@@ -2,13 +2,15 @@
 $_coreHelper = Mage::helper('core');
 $store = Mage::app()->getStore();
 $code = $store->getCode();
-$_productCollection = $this->getLoadedProductCollection();
-$_productCollection->addAttributeToSelect('news_from_date')->addAttributeToSelect('news_to_date');
+$category = new Mage_Catalog_Model_Category();
+$category->load(193);
+$_productCollection = $category->getProductCollection();
+$_productCollection->addAttributeToSelect('*');
 $_helper = $this->helper('catalog/output');
 $_image_helper = $this->helper('catalog/image');
 ?>
 
-<!-- new arrival container -->
+    <!-- new arrival container -->
 <?php if(!$_productCollection->count()): ?>
     <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
 <?php else: ?>
