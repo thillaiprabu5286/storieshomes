@@ -1,0 +1,269 @@
+/* COMMON PART CSS
+////////////////////////////*/
+a {
+    outline: none;
+    border: 0px;
+    -webkit-transition: all .3s ease-in-out .0s;
+    -moz-transition: all .3s ease-in-out .0s;
+    -ms-transition: all .3s ease-in-out .0s;
+    -o-transition: all .3s ease-in-out .0s;
+    transition: all .3s ease-in-out .0s;
+    position: relative;
+}
+
+a:after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    transition: 0.4s;
+}
+
+a:hover:after {
+    width: 100%;
+}
+
+body {
+    background: #050505 !important;
+}
+
+::selection {
+    background: #526dff;
+    color: #fff; /* Safari - webkit */
+}
+
+::-moz-selection {
+    background: #526dff;
+    color: #fff; /* Firef x */
+}
+
+/*HEADER PART
+//////////////////////////////////*/
+/*CONTENT PART
+/////////////////////////////////*/
+.carousel-indicators {
+    position: relative !important;
+    width: 100% !important;
+    left: 0 !important;
+    margin: 0 0 0 0 !important;
+    display: block
+}
+
+.carousel-indicators li {
+    width: 33.333% !important;
+    float: left;
+    display: block !important;
+    height: auto !important;
+    margin: 0 0 0 0 !important;
+    background: none !important;
+    border: 0 !important;
+    color: #4d4d4d;
+    text-indent: inherit !important;
+    padding: 70px 0 50px 105px !important;
+    text-transform: uppercase;
+    font: 400 11px 'Exo', sans-serif;
+    letter-spacing: 3px;
+    position: relative
+}
+
+.carousel-indicators .active {
+    color: #fff !important;
+}
+
+.big_no {
+    font: 400 30px 'Exo', sans-serif;
+    display: inline-block;
+    margin: 0 0 0 0;
+    position: relative;
+    position: absolute;
+    left: 50px;
+    top: 40px
+}
+
+.carousel-indicators p {
+    width: 250px;
+    text-align: left;
+}
+
+.banner1 {
+    background: url(../images/banner1.jpg) no-repeat center center fixed;
+    position: fixed !important;
+    height: 100% !important;
+    width: 100% !important;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.banner2 {
+    background: url(../images/banner2.jpg) no-repeat center center fixed;
+    position: fixed !important;
+    height: 100% !important;
+    width: 100% !important;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.banner3 {
+    background: url(../images/banner3.jpg) no-repeat center center fixed;
+    position: fixed !important;
+    height: 100% !important;
+    width: 100% !important;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.banner4 {
+    background: url(../images/banner4.jpg) no-repeat center center fixed;
+    position: fixed !important;
+    height: 100% !important;
+    width: 100% !important;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.mob {
+    display: none
+}
+
+#logo {
+    position: fixed;
+    left: 35px;
+    top: 35px;
+    z-index: 999;
+}
+
+#txt1 {
+    position: absolute;
+    right: 100px;
+    color: #fff;
+    text-transform: uppercase;
+    font: 22px 'layar_regular', sans-serif;
+    z-index: 999;
+    top: 40%;
+}
+
+#txt1 span {
+    display: block;
+    font: 37px 'layar_bold', sans-serif;
+    text-decoration: underline;
+    margin: 7px 0 0 0
+}
+
+#txt1 a {
+    text-decoration: none;
+    color: #fff
+}
+
+#txt1 a:hover {
+    color: #000
+}
+
+#go {
+    position: absolute;
+    right: 100px;
+    bottom: 40px;
+}
+
+#go a {
+    color: #fff;
+    text-decoration: none;
+    font: 20px 'layar_regular', sans-serif
+}
+
+#go a:hover {
+    color: #000
+}
+
+/* MOBILE PART CSS
+////////////////////////////*/
+@media (max-width: 1800px) {
+}
+
+@media (max-width: 1600px) {
+}
+
+@media (max-width: 1300px) {
+
+}
+
+@media (max-width: 1199px) {
+
+}
+
+@media (max-width: 991px) {
+
+}
+
+@media (max-width: 767px) {
+
+    .desk {
+        display: none
+    }
+
+    .mob {
+        display: block
+    }
+
+    #gohome {
+        position: relative;
+        bottom: inherit;
+        left: auto;
+        padding: 40px 20px 20px 20px;
+    }
+
+    #gohome2 {
+        position: relative;
+        bottom: inherit;
+        left: auto;
+        padding: 0 20px 20px 20px;
+        right: inherit
+    }
+
+    #logo {
+        position: relative;
+        left: inherit;
+        top: inherit;
+        padding: 30px 20px 20px 20px;
+        text-align: center
+    }
+
+    #txt1 {
+        position: relative;
+        right: inherit;
+        top: inherit;
+        font-size: 20px;
+        padding: 30px 20px 60px 20px;
+    }
+
+    #txt1 span {
+        font-size: 30px;
+    }
+
+    #go {
+        position: relative;
+        right: inherit;
+        padding: 20px;
+    }
+
+}
+
+@media (max-width: 580px) {
+
+}
+
+@media (max-width: 360px) {
+
+}
+
+@media (max-width: 320px) {
+
+}
