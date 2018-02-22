@@ -170,7 +170,7 @@ body {
 #go {
     position: absolute;
     right: 100px;
-    /*bottom: 40px;*/
+    bottom: 40px;
 }
 
 #go a {
@@ -251,7 +251,6 @@ body {
     #go {
         position: relative;
         right: inherit;
-        padding: 20px;
     }
 
 }
