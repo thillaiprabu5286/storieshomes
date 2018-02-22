@@ -251,6 +251,8 @@ body {
     #go {
         position: relative;
         right: inherit;
+        padding: 20px;
+        bottom: 40px;
     }
 
 }
