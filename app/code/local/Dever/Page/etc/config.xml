@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Mage
+ * @package     Mage_Page
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Dever_Page>
+            <version>0.0.0.1</version>
+        </Dever_Page>
+    </modules>
+    <global>
+        <page>
+            <layouts>
+                <empty module="page" translate="label">
+                    <label>Empty</label>
+                    <template>page/empty.phtml</template>
+                    <layout_handle>page_empty</layout_handle>
+                </empty>
+                <one_column module="page" translate="label">
+                    <label>1 column</label>
+                    <template>page/1column.phtml</template>
+                    <layout_handle>page_one_column</layout_handle>
+                    <is_default>1</is_default>
+                </one_column>
+                <two_columns_left module="page" translate="label">
+                    <label>2 columns with left bar</label>
+                    <template>page/2columns-left.phtml</template>
+                    <layout_handle>page_two_columns_left</layout_handle>
+                </two_columns_left>
+                <two_columns_right module="page" translate="label">
+                    <label>2 columns with right bar</label>
+                    <template>page/2columns-right.phtml</template>
+                    <layout_handle>page_two_columns_right</layout_handle>
+                </two_columns_right>
+                <three_columns module="page" translate="label">
+                    <label>3 columns</label>
+                    <template>page/3columns.phtml</template>
+                    <layout_handle>page_three_columns</layout_handle>
+                </three_columns>
+                <stories_homepage>
+                    <label>Homepage</label>
+                    <template>page/stories/home.phtml</template>
+                    <layout_handle>stories_homepage</layout_handle>
+                </stories_homepage>
+            </layouts>
+        </page>
+    </global>
+</config>

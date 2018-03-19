@@ -13,7 +13,6 @@ class Mindstermob_Mobileconnect_Model_Homepage extends Mage_Core_Model_Abstract 
         ////print_r($banner_config["slideritem1"]["image"]);exit;
         ////echo "saved ";exit;
         $sliderItems = array();
-        
         $item = 0;
         for ($i = 0; $i < 6; $i++)
         {
@@ -42,7 +41,6 @@ class Mindstermob_Mobileconnect_Model_Homepage extends Mage_Core_Model_Abstract 
         $offerbanners["link"] = $banner_config["mobileoffer"]["link"];
         $offerbanners["link"] = $banner_config["mobileoffer"]["title"];
         return $offerbanners;
-       
     }
     //============New Arrival products=================//
     

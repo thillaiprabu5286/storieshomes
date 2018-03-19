@@ -1,0 +1,107 @@
+<?php
+
+	$bannerCollection = $this->getCollection();
+	$configData = Mage::getStoreConfig('bannerpro');
+	if($configData['settings']['time_delay'] != null) {
+		$timeDelay = $configData['settings']['time_delay'];
+	}
+	else {
+ 		$timeDelay = 5000;
+	}
+	$i = 1;
+?>
+
+<div id="owl-demo5" class="owl-carousel">
+		<?php foreach ($bannerCollection as $banner): $effects .= $banner->getEffects().", "; ?>   
+<div class="item">
+<div class="s8_left ani_active ani"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $banner->getFilename() ?>" alt="designer"/></div>
+             
+               <div class="s8_right">
+                                  <?php if ($configData['settings']['show_description'] == '1' && $banner->getText() != ""):?>
+
+                                                        <?php echo $banner->getText() ?>
+                                                <?php endif; ?>
+                                    
+              </div>
+				
+				
+</div><!--itemclass-->	
+    	<?php $i++; endforeach; ?>
+</div>  	
+	
+
+
+
+
+
+<!--<div id="owl-around-world">-->
+    
+    <!--<div class="item">-->           
+<!--    <div class="s8_left ani_active ani"><img src="{{media url="wysiwyg/blog/designerImg.jpg"}}" alt="designer"/></div>
+
+            <div class="s8_right">
+                                            <p>Born in Bedong, a small city north of Malaysia. PH Teoh is a System Analyst by profession and graduated in University of Windsor, Canada in 1985.
+            PH Teoh has worked in the family business in his early years in various industries until 1991 he started venture into wood industries operating sawmilling, kiln drying plant and manufacturing of moulded components for the furniture industries.
+            In 1998, established Timber Tone Industries to manufacture wooden furniture for export. Then, It was in 2003 that he started to produce his own designs.
+            He is motivated by passion for quality, aesthetic value, functionality and innovative design and these are the main ingredients that he strive for on each of his product.
+            From 2005 to 2012, he has earned a few awards and recognition during the furniture exhibition in Malaysia Furniture International Fair which was held every March of the year..</p>
+                                        <div class="DesignerName">P H TEOH, Malayasia</div>Designername
+                                       <div class="DesignerCountryFlag"><img src="{{media url="wysiwyg/blog/denmark_Flag.png"}}" alt="flag"/></div>
+             </div>-->
+    <!--</div>-->
+   
+    
+<!--</div>-->
+
+<!--<div class="clear-all">&nbsp;</div>-->
+<script type="text/javascript">
+    
+    $j("#owl-around-world").owlCarousel({
+
+      loop:true,
+            margin:10,
+            nav:true,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:5
+                }
+            }
+      }); 
+      
+      
+// <![CDATA[
+	$j(document).ready(function() {                   
+	    var slider = $j("#divSimpleSlider").cycle({
+	        fx: '<?php echo $effects; ?>',
+	        speed: 1000,
+	        timeout: <?php echo $timeDelay ?>,
+	        prev: '.prev',
+	        next: '.next',
+	        pager: '#divSimpleSliderRotate',
+	        pagerEvent: 'click',
+	        fastOnEvent: false,
+	        pause: 0,
+	        pause_btn: '#pause_btn',
+	        play_btn: '#play_btn',
+			randomizeEffects: false
+	    });                                
+	});
+	$j('#pause_btn').click(function() { 
+    	$j('#divSimpleSlider').cycle('pause'); 
+		document.getElementById('pause_btn').className = 'no-display';
+		document.getElementById('play_btn').className = 'play';
+	});
+	
+	$j('#play_btn').click(function() { 
+    	$j('#divSimpleSlider').cycle('resume'); 
+		document.getElementById('play_btn').className = 'no-display';
+		document.getElementById('pause_btn').className = 'pause';
+	});
+// ]]>
+</script>
